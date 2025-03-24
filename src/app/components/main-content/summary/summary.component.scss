@@ -9,26 +9,50 @@
 .greeting {
     font-weight: 700;
     font-size: 64px;
+    padding: 150px 0 72px;
 }
 
 .info-container {
+    // width: 912px;
     display: grid;
-    // grid-template-columns: repeat(auto-fill);
-    // grid-auto-rows: 150px;
-    grid-gap: 5px;
-    box-sizing: border-box;
-    padding: 0 30px 30px 30px;
+    grid-template-areas:
+        "urgent urgent urgent board"
+        "todo progress feedback done";
+    grid-template-columns: repeat(auto-fill);
+    gap: 32px;
+    // box-sizing: border-box;
+    // padding: 0 30px 30px 30px;
     justify-content: center;
+    >div:nth-child(1) {
+        grid-area: urgent;
+    }
+    >div:nth-child(2) {
+        grid-area: board;
+    }
+    >div:nth-child(3) {
+        grid-area: todo;
+    }
+    >div:nth-child(4) {
+        grid-area: progress;
+    }
+    >div:nth-child(5) {
+        grid-area: feedback;
+    }
+    >div:nth-child(6) {
+        grid-area: done;
+    }
 }
 
 .urgent-tasks-container {
-    height: 191px;
+    // height: 191px;
     width: 672px;
     border-radius: 20px;
     @include colors.bg-red-dark;
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 50px;
 }
 
 .tasks-number {
@@ -36,6 +60,12 @@
     flex-direction: column;
     align-items: center;
     gap: 3px;
+}
+
+.line {
+    @include colors.bg-ivory;
+    width: 3px;
+    height: 172px;
 }
 
 .deadline {
