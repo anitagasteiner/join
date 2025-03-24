@@ -1,6 +1,13 @@
 @use './app/shared/colors.scss' as colors;
 
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    src: url('assets/fonts/Inter-VariableFont_slnt_wght.ttf');    
+}
+
 body {
+    font-family: 'Inter', sans-serif;
     margin: 0;
     @include colors.bg-ivory;
 }
