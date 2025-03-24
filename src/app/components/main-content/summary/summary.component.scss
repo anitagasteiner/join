@@ -1,10 +1,31 @@
 @use './../../../shared/colors.scss' as colors;
 
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.greeting {
+    font-weight: 700;
+    font-size: 64px;
+}
+
+.info-container {
+    display: grid;
+    // grid-template-columns: repeat(auto-fill);
+    // grid-auto-rows: 150px;
+    grid-gap: 5px;
+    box-sizing: border-box;
+    padding: 0 30px 30px 30px;
+    justify-content: center;
+}
+
 .urgent-tasks-container {
-    height: 100px;
-    width: 400px;
+    height: 191px;
+    width: 672px;
     border-radius: 20px;
-    @include colors.bg-red;
+    @include colors.bg-red-dark;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -22,4 +43,33 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
+}
+
+.number {
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.date {
+    font-weight: 700;
+    font-size: 33px;
+}
+
+.description {
+    font-weight: 400;
+    font-size: 23px;
+}
+
+.tasks-container {
+    height: 219px;
+    width: 204px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasks-to-do-container {
+    border-radius: 20px;
+    @include colors.bg-red;
 }
