@@ -2,12 +2,12 @@
 
 @font-face {
     font-display: swap;
-    font-family: 'Inter';
-    src: url('assets/fonts/Inter-VariableFont_slnt_wght.ttf');    
+    font-family: 'Open-Sans';
+    src: url('assets/fonts/OpenSans-VariableFont_wdth_wght.ttf');    
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open-Sans', sans-serif;
     margin: 0;
     @include colors.bg-ivory;
 }
