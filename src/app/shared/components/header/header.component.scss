@@ -1,7 +1,7 @@
 @use './../../colors.scss' as colors;
 
 header {
-    @include colors.bg-red-dark;
+    @include colors.bg-dark;
     height: 50px;
 }
 

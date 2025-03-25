@@ -10,6 +10,7 @@
     font-weight: 700;
     font-size: 64px;
     padding: 150px 0 72px;
+    @include colors.color-grey-dark;
 }
 
 .info-container {
@@ -20,7 +21,7 @@
         "todo progress feedback done";
     grid-template-columns: repeat(auto-fill);
     gap: 32px;
-    // box-sizing: border-box;
+    box-sizing: border-box;
     // padding: 0 30px 30px 30px;
     justify-content: center;
     >div:nth-child(1) {
@@ -43,11 +44,16 @@
     }
 }
 
+img {
+    height: 76px;
+    width: 76px;
+}
+
 .urgent-tasks-container {
     // height: 191px;
     width: 672px;
     border-radius: 20px;
-    @include colors.bg-red-dark;
+    @include colors.bg-dark;
     display: flex;
     // justify-content: space-around;
     justify-content: center;
@@ -55,7 +61,7 @@
     gap: 50px;
 }
 
-.tasks-number {
+.urgent-tasks-left {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,14 +74,18 @@
     height: 172px;
 }
 
-.deadline {
+.urgent-tasks-right {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
 }
 
-.number {
+.img-number {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
     font-weight: 700;
     font-size: 48px;
 }
@@ -91,8 +101,12 @@
 }
 
 .tasks-container {
+    border-radius: 20px;
+    @include colors.border-grey-light;
+    @include colors.color-dark;
     height: 219px;
     width: 204px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,5 +115,5 @@
 
 .tasks-to-do-container {
     border-radius: 20px;
-    @include colors.bg-red;
+    @include colors.bg-light;
 }
