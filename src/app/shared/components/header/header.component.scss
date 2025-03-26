@@ -3,6 +3,12 @@
 header {
     @include colors.bg-dark;
     height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
- 
+.header-right {
+    display: flex;
+    gap: 20px;
+}
