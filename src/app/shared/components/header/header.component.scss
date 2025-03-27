@@ -6,9 +6,50 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 20px 36px;
+    z-index: 999;
 }
 
 .header-right {
     display: flex;
+    align-items: center;
     gap: 20px;
+    >div:nth-child(1) {
+        font-size: 19px;
+    }
+    >div:nth-child(n+2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+    >div:nth-child(2) {
+        width: 20px;
+        height: 20px;
+        font-size: 19px;
+        @include colors.border-ivory;        
+    }
+    >div:nth-child(3) {
+        width: 56px;
+        height: 56px;
+        font-size: 32px;
+        font-weight: 600;
+        @include colors.color-dark;
+        @include colors.border-ivory;
+        @include colors.bg-dark;
+        position: relative;
+        z-index: 1;
+    }
+    >div:nth-child(3)::before {
+        content: '';
+        width: 92%;
+        height: 92%;
+        @include colors.bg-ivory;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
 }

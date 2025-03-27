@@ -3,8 +3,10 @@ $colors: (
     orange-dark: rgba(218, 123, 34, 1),
     green-light: rgba(200, 203, 84, 1),
     green-dark: rgba(140, 135, 80, 1),
-    blue-light: rgba(65, 176, 191, 1),
-    blue-dark: rgba(55, 122, 147),
+    // blue-light: rgba(65, 176, 191, 1),
+    blue-light: rgba(210, 227, 255, 1),
+    // blue-dark: rgba(55, 122, 147),
+    blue-dark: rgba(69, 137, 255, 1),
     red-light: rgba(225, 106, 99, 1),
     red-dark: rgba(113, 3, 4, 1),
     grey-light: rgba(224, 224, 224, 1),
@@ -39,7 +41,7 @@ $colors: (
 
 @mixin color-dark {
     $color: map-get($colors, blue-dark);
-    color: $color;
+    color: $color !important;
 }
 
 @mixin color-grey-dark {
@@ -49,6 +51,11 @@ $colors: (
 
 @mixin border-grey-light {
     $border-color: map-get($colors, grey-light);
+    border: 2px solid $border-color;
+}
+
+@mixin border-ivory {
+    $border-color: map-get($colors, ivory);
     border: 2px solid $border-color;
 }
 
