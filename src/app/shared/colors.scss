@@ -54,6 +54,11 @@ $colors: (
     border: 2px solid $border-color;
 }
 
+@mixin border-right-grey-light {
+    $border-color: map-get($colors, grey-light);
+    border-right: 2px solid $border-color;
+}
+
 @mixin border-ivory {
     $border-color: map-get($colors, ivory);
     border: 2px solid $border-color;

@@ -1,3 +1,5 @@
+@use './../../../shared/colors.scss' as colors;
+
 nav {
     height: calc(100dvh - 96px);
     width: 232px;
@@ -8,19 +10,32 @@ nav {
     top: 96px;
     left: 0;
     font-size: 16px;
-    padding-left: 48px;
+    box-sizing: border-box;
+    @include colors.border-right-grey-light;
 }
 
 .top-container {
+    width: 186px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
-    padding-top: 42px;
+    gap: 15px;
+    padding-top: 38px;
+    padding-left: 23px;
     >div {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        padding: 8px 0 8px 30px;
+        box-sizing: border-box;
+        border-radius: 8px;
         gap: 8px;
+        &:hover {
+            cursor: pointer;
+            @include colors.bg-light;
+        }
         >img {
             height: 22px;
             width: 22px;
@@ -32,5 +47,6 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding-left: 56px;
     padding-bottom: 66px;
 }
