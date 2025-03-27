@@ -2,12 +2,16 @@
 
 header {
     @include colors.bg-dark;
-    height: 50px;
+    height: 96px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 36px;
+    box-sizing: border-box;
     z-index: 999;
+    >img {
+        height: 56px;
+    }
 }
 
 .header-right {
