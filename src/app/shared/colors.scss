@@ -46,7 +46,7 @@ $colors: (
 
 @mixin color-grey-dark {
     $color: map-get($colors, grey-dark);
-    color: $color;
+    color: $color !important;
 }
 
 @mixin border-grey-light {

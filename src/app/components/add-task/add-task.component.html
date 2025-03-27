@@ -1,1 +1,64 @@
-<p>add-task works!</p>
+<div class="main-container">
+
+    <form>
+
+        <fieldset>
+            <input placeholder="Enter a title" onfocus="this.placeholder=''" type="text" name="title" id="title" required>
+            <legend></legend>
+        </fieldset>
+
+        <fieldset>
+            <textarea minlength="10" rows="3" placeholder="Enter a description" onfocus="this.placeholder=''" type="text" name="description" id="description"></textarea>
+            <legend><b>Description</b> (optional)</legend>
+        </fieldset>
+
+        <fieldset>
+            <input placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
+            <legend><b>Due date</b></legend>
+        </fieldset>
+
+        <fieldset class="priority">
+            <label>
+                <input type="radio" name="priority" value="3">
+                <span>Urgent</span>
+                <img src="/img/prio-urgent.svg">
+            </label>
+            <label>
+                <input type="radio" name="priority" value="2">
+                <span>Medium</span>
+                <img src="/img/prio-medium.svg">
+            </label>
+            <label>
+                <input type="radio" name="priority" value="1">
+                <span>Low</span>
+                <img src="/img/prio-low.svg">
+            </label>             
+            <legend><b>Priority</b></legend>
+        </fieldset>
+
+        <fieldset>
+            <select>
+                <option value="0">Select contacts to assign</option>
+                <option value="1">Contact A</option>
+                <option value="2">Contact B</option>                
+            </select>
+            <legend><b>Assigned to</b> (optional)</legend>
+        </fieldset>
+
+        <fieldset>
+            <select>
+                <option value="0">Select task category</option>
+                <option value="1">Category A</option>
+                <option value="2">Category B</option>                
+            </select>
+            <legend><b>Category</b></legend>
+        </fieldset>
+
+        <fieldset>
+            <input placeholder="Add new subtask" onfocus="this.placeholder=''" type="text" name="subtasks" id="subtasks">
+            <legend><b>Subtasks</b> (optional)</legend>
+        </fieldset>
+
+    </form>
+
+</div>
