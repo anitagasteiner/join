@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import { MainContentComponent } from './components/main-content/main-content.component';
+import { SummaryComponent } from './components/summary/summary.component';
+
 
 export const routes: Routes = [
-    { path: '', component: MainContentComponent }
+    { path: '', component: SummaryComponent }
 ];
