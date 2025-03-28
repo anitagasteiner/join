@@ -17,3 +17,57 @@ body {
     height: calc(100dvh - 96px);
     margin-left: 232px;
 }
+
+
+// Forms
+
+fieldset {
+    border: none;
+}
+
+input, textarea, select {
+    width: 440px;
+    @include colors.bg-ivory;
+    @include colors.border-grey-light;
+    border-radius: 10px;
+    font-family: 'Open-Sans', sans-serif;
+    font-size: 19px;
+    @include colors.color-grey-dark;
+    box-sizing: border-box;
+}
+
+input:-moz-placeholder, /* Firefox 18- */
+input::-moz-placeholder, /* Firefox 19+ */
+input:-ms-input-placeholder, /* IE 10+ */
+input::-webkit-input-placeholder, /* Webkit based */
+input::placeholder,
+textarea:-moz-placeholder, /* Firefox 18- */
+textarea::-moz-placeholder, /* Firefox 19+ */
+textarea:-ms-input-placeholder, /* IE 10+ */
+textarea::-webkit-input-placeholder, /* Webkit based */
+textarea::placeholder,
+select:-moz-placeholder, /* Firefox 18- */
+select::-moz-placeholder, /* Firefox 19+ */
+select:-ms-input-placeholder, /* IE 10+ */
+select::-webkit-input-placeholder, /* Webkit based */
+select::placeholder { /* Modern browsers */
+    @include colors.color-grey-dark;  
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background: url('/img/drop-down-arrow.svg') no-repeat right 16px center;
+}
+
+::placeholder {
+    @include colors.color-grey-dark;
+}
+
+.btn-submit {
+    width: auto;
+    height: auto;
+    @include colors.bg-dark;
+    border: none !important;
+    border-radius: 10px;
+}
