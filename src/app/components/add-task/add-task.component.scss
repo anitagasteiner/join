@@ -1,13 +1,13 @@
 @use './../../shared/colors.scss' as colors;
 
 .main-container {
-    margin-left: 232px;
+    position: relative;
 }
 
 form {
-    width: 488px;
+    width: 488px;    
     >fieldset:nth-child(1) {
-        margin-top: 64px;
+        padding-top: 64px;
         >input {
             font-size: 32px !important;
         }
@@ -88,4 +88,50 @@ select {
     background: url('/img/due-date.svg') center no-repeat;
     margin-right: 19px;
     cursor: pointer;
+}
+
+.btns-create-clear {
+    display: flex;
+    gap: 25px;
+    position: absolute;
+    bottom: 55px;
+    right: 42px;    
+}
+
+.btn-create-clear {
+    font-size: 23px !important;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: 'Open-Sans', sans-serif;
+    font-size: 19px;
+    @include colors.color-grey-dark;
+    padding: 8px 0 8px 12px;
+    box-sizing: border-box;
+}
+
+.btn-clear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 18px 16px 23px;
+    @include colors.bg-ivory;
+    @include colors.border-grey-light;
+    >img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.btn-create {
+    padding: 16px 38px 16px 10px;
+    width: auto;
+    height: auto;
+    @include colors.bg-dark;
+    @include colors.color-ivory;
+    border: none !important;
+    background-image: url('/img/check.svg');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 24px 24px;
 }

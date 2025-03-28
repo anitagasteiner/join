@@ -12,3 +12,8 @@ body {
     margin: 0;
     @include colors.bg-ivory;
 }
+
+.main-container {
+    height: calc(100dvh - 96px);
+    margin-left: 232px;
+}
