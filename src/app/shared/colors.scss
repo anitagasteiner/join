@@ -22,6 +22,11 @@ $colors: (
     background-color: $bg-color;
 }
 
+@mixin bg-orange-dark {
+    $bg-color: map.get($colors, "orange-dark");
+    background-color: $bg-color;
+}
+
 // @mixin bg-eggshell {
 //     $bg-color: map.get($colors, eggshell);
 //     background-color: $bg-color;
