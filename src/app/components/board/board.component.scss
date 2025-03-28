@@ -24,3 +24,20 @@ button {
     background-size: 15px 15px;
     @include colors.color-ivory;
 }
+
+.board-header {
+    padding-top: 48px;
+    padding-left: 64px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 35px;
+    font-size: 23px;
+    font-weight: 700;
+    >div {
+        display: flex;
+        justify-content: space-between;
+        width: 248px;
+    }
+
+}
