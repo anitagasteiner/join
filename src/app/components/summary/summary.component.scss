@@ -1,4 +1,5 @@
 @use './../../shared/colors.scss' as colors;
+@use './../../shared/breakpoints.scss' as bp;
 
 .main-container {
     display: flex;
@@ -7,23 +8,35 @@
 }
 
 .greeting {
-    font-weight: 700;
-    font-size: 64px;
-    padding: 150px 0 72px;
-    @include colors.color-grey-dark;
+    display: none;
+    @include bp.lg {
+        display: unset;
+        font-weight: 700;
+        font-size: 64px;
+        padding: 150px 0 72px;
+        @include colors.color-grey-dark;
+    }    
 }
 
 .info-container {
     // width: 912px;
     display: grid;
     grid-template-areas:
-        "urgent urgent urgent board"
-        "todo progress feedback done";
+        "urgent urgent"
+        "todo todo"
+        "board progress"
+        "feedback done";
     grid-template-columns: repeat(auto-fill);
-    gap: 32px;
+    gap: 16px;
     box-sizing: border-box;
     // padding: 0 30px 30px 30px;
     // justify-content: center;
+    @include bp.xl {
+        grid-template-areas:
+        "urgent urgent urgent board"
+        "todo progress feedback done";
+        gap: 32px;
+    }
     >div:nth-child(1) {
         grid-area: urgent;
     }
@@ -45,20 +58,31 @@
 }
 
 img {
-    height: 76px;
-    width: 76px;
+    height: 63px;
+    width: 63px;
+    @include bp.xl {
+        height: 76px;
+        width: 76px;
+    }    
 }
 
 .urgent-tasks-container {
     // height: 191px;
-    width: 672px;
-    border-radius: 20px;
+    margin-top: 64px;
+    width: 396px;
+    border-radius: 30px;
     @include colors.bg-dark;
     display: flex;
     // justify-content: space-around;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 16px;
+    @include bp.xl {
+        margin-top: 0;
+        width: 672px;
+        border-radius: 20px;
+        gap: 50px;
+    }
 }
 
 .urgent-tasks-left {
@@ -66,12 +90,21 @@ img {
     flex-direction: column;
     align-items: center;
     gap: 3px;
+    >div >img {
+        @include colors.border-grey-light;
+        border-radius: 50%;            
+    }
 }
 
 .line {
     @include colors.bg-ivory;
     width: 3px;
-    height: 172px;
+    height: 118px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    @include bp.xl {
+        height: 172px;
+    }
 }
 
 .urgent-tasks-right {
@@ -92,27 +125,49 @@ img {
 
 .date {
     font-weight: 700;
-    font-size: 33px;
+    font-size: 23px;
+    @include bp.xl {
+        font-size: 33px;
+    }
 }
 
 .description {
-    font-size: 23px;
+    font-size: 19px;
+    @include bp.xl {
+        font-size: 23px;
+    }
 }
 
 .tasks-container {
-    border-radius: 20px;
+    border-radius: 30px;
     @include colors.border-grey-light;
     @include colors.color-dark;
-    height: 219px;
-    width: 204px;
+    height: 152px;
+    width: 186px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 7px;
+    @include bp.xl {
+        border-radius: 20px;
+        height: 219px;
+        width: 204px;
+    }
 }
 
 .tasks-to-do-container {
-    border-radius: 20px;
+    flex-direction: row;
+    gap: 16px;
+    border-radius: 30px;
+    width: 396px;
+    height: 106px;
     @include colors.bg-light;
+    @include bp.xl {
+        flex-direction: column;
+        border-radius: 20px;
+        width: 204px;
+        height: 219px;
+    }
 }
