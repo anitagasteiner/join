@@ -1,29 +1,45 @@
 @use './../../../shared/colors.scss' as colors;
+@use './../../../shared/breakpoints.scss' as bp;
 
 nav {
-    height: calc(100dvh - 96px);
-    width: 232px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 76px;
+    width: 100dvw;    
     position: absolute;
-    top: 96px;
+    bottom: 0;
     left: 0;
-    font-size: 16px;
+    right: 0;
+    font-size: 15px;
     box-sizing: border-box;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
     @include colors.border-right-grey-light;
+    @include bp.xl {
+        height: calc(100dvh - 96px);
+        width: 232px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        top: 96px;
+        font-size: 16px;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+    }
 }
 
-.top-container {
-    width: 186px;
+.nav-container {
+    // width: 100dvw;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-    padding-top: 38px;
-    padding-left: 23px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    @include bp.xl {
+        width: 186px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding-top: 38px;
+        padding-left: 23px;
+    }
     >div {
         display: flex;
+        flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         width: 100%;
@@ -31,7 +47,11 @@ nav {
         padding: 8px 0 8px 30px;
         box-sizing: border-box;
         border-radius: 8px;
-        gap: 8px;
+        gap: 4px;
+        @include bp.xl {
+            flex-direction: row;
+            gap: 8px;
+        }
         &:hover {
             cursor: pointer;
             @include colors.bg-light;
@@ -44,9 +64,12 @@ nav {
 }
 
 .bottom-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding-left: 56px;
-    padding-bottom: 66px;
+    display: none;
+    @include bp.xl {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding-left: 56px;
+        padding-bottom: 66px;
+    }    
 }

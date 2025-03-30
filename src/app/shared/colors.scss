@@ -17,6 +17,11 @@ $colors: (
     "ivory": rgba(255, 250, 240, 1)
 );
 
+// @mixin box-shadow-top {
+//     $shadow-color: map.get($colors, "grey-dark");
+//     box-shadow: 0 0 6px 0 $shadow-color;
+// }
+
 @mixin bg-ivory {
     $bg-color: map.get($colors, "ivory");
     background-color: $bg-color;
