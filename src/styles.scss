@@ -15,7 +15,7 @@ body {
 }
 
 .main-container {
-    height: calc(100dvh - 80px);
+    height: calc(100dvh - 80px - 76px);
     @include bp.xl {
         height: calc(100dvh - 96px);
         margin-left: 232px;

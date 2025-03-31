@@ -6,7 +6,10 @@
 }
 
 form {
-    width: 488px;    
+    width: 100dvw;
+    @include bp.xl {
+        width: 488px;
+    }
     >fieldset:nth-child(1) {
         padding-top: 64px;
         >input {
@@ -53,11 +56,14 @@ input, textarea, select {
 
 .btns-create-clear {
     display: flex;
-    gap: 25px;
+    justify-content: center;
+    gap: 8px;
     position: absolute;
-    bottom: 80px;
-    right: 42px;
+    bottom: 110px;
+    left: 0;
+    right: 0;
     @include bp.xl {
+        gap: 25px;
         bottom: 55px;
         right: 42px;
     }
@@ -72,14 +78,15 @@ input, textarea, select {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 18px;
-    padding: 12px 18px 12px 23px;
+    gap: 8px;
+    padding: 10px 12px 10px 12px;
     border-radius: 10px;
     box-sizing: border-box;
     @include colors.bg-ivory;
     @include colors.border-grey-light;
     @include bp.xl {
         padding: 16px 18px 16px 23px;
+        gap: 18px;
     }
     >img {
         width: 24px;
@@ -88,7 +95,7 @@ input, textarea, select {
 }
 
 .btn-create {
-    padding: 12px 38px 12px 10px;
+    padding: 10px 38px 10px 12px;
     background-image: url('/img/check.svg');
     background-repeat: no-repeat;
     background-position: right 8px center;
