@@ -1,4 +1,5 @@
 @use './../../shared/colors.scss' as colors;
+@use './../../shared/breakpoints.scss' as bp;
 
 .main-container {
     position: relative;
@@ -54,8 +55,12 @@ input, textarea, select {
     display: flex;
     gap: 25px;
     position: absolute;
-    bottom: 55px;
-    right: 42px;    
+    bottom: 80px;
+    right: 42px;
+    @include bp.xl {
+        bottom: 55px;
+        right: 42px;
+    }
 }
 
 .btn-create-clear {
@@ -68,11 +73,14 @@ input, textarea, select {
     justify-content: center;
     align-items: center;
     gap: 18px;
-    padding: 16px 18px 16px 23px;
+    padding: 12px 18px 12px 23px;
     border-radius: 10px;
     box-sizing: border-box;
     @include colors.bg-ivory;
     @include colors.border-grey-light;
+    @include bp.xl {
+        padding: 16px 18px 16px 23px;
+    }
     >img {
         width: 24px;
         height: 24px;
@@ -80,10 +88,13 @@ input, textarea, select {
 }
 
 .btn-create {
-    padding: 16px 38px 16px 10px;
+    padding: 12px 38px 12px 10px;
     background-image: url('/img/check.svg');
     background-repeat: no-repeat;
     background-position: right 8px center;
     background-size: 24px 24px;
     @include colors.color-ivory;
+    @include bp.xl {
+        padding: 16px 38px 16px 10px;
+    }
 }
