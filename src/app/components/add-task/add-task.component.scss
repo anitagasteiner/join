@@ -6,10 +6,10 @@
 }
 
 form {
-    width: 100dvw;
-    @include bp.xl {
-        width: 488px;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
     >fieldset:nth-child(1) {
         padding-top: 64px;
         >input {
@@ -37,7 +37,12 @@ form {
 }
 
 input, textarea, select {
+    width: calc(100dvw - 10px);
+    max-width: 488px;
     padding: 8px 0 8px 12px;
+    @include bp.xl {
+        width: 488px;
+    }
 }
 
 #subtasks {
@@ -59,7 +64,7 @@ input, textarea, select {
     justify-content: center;
     gap: 8px;
     position: absolute;
-    bottom: 110px;
+    bottom: 36px;
     left: 0;
     right: 0;
     @include bp.xl {
@@ -95,6 +100,7 @@ input, textarea, select {
 }
 
 .btn-create {
+    width: auto;
     padding: 10px 38px 10px 12px;
     background-image: url('/img/check.svg');
     background-repeat: no-repeat;
