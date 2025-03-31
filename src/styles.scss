@@ -1,4 +1,5 @@
 @use './app/shared/colors.scss' as colors;
+@use './app/shared/breakpoints.scss' as bp;
 
 @font-face {
     font-display: swap;
@@ -14,8 +15,11 @@ body {
 }
 
 .main-container {
-    height: calc(100dvh - 96px);
-    margin-left: 232px;
+    height: calc(100dvh - 80px);
+    @include bp.xl {
+        height: calc(100dvh - 96px);
+        margin-left: 232px;
+    }
 }
 
 
