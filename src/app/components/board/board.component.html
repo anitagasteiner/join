@@ -8,30 +8,49 @@
 
     </div>
 
-    <div class="board-header">
+    <div class="tasks-container">
 
         <div>
             To do
             <img src="/img/plus-btn.svg">
-        </div>
+        </div>       
+
+        @for (task of tasks; track task.title; let index = $index) {
+            @if (task.status == 0) {
+                <app-task [task]="task"></app-task>
+            }            
+        }
+
         <div>
             In progress
             <img src="/img/plus-btn.svg">
         </div>
+
+        @for (task of tasks; track task.title; let index = $index) {
+            @if (task.status == 1) {
+                <app-task [task]="task"></app-task>
+            }            
+        }
+
         <div>
             Awaiting feedback
             <img src="/img/plus-btn.svg">
         </div>
+
+        @for (task of tasks; track task.title; let index = $index) {
+            @if (task.status == 2) {
+                <app-task [task]="task"></app-task>
+            }            
+        }
+
         <div>
             Done
         </div>
 
-    </div>
-
-    <div class="tasks-container">
-
         @for (task of tasks; track task.title; let index = $index) {
-            <app-task [task]="task"></app-task>
+            @if (task.status == 3) {
+                <app-task [task]="task"></app-task>
+            }            
         }
 
     </div>

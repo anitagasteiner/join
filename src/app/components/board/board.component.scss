@@ -1,17 +1,35 @@
 @use './../../shared/colors.scss' as colors;
+@use './../../shared/breakpoints.scss' as bp;
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
 
 .search-add-container {
     padding-top: 72px;
-    padding-left: 65px;
+    // padding-left: 65px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 35px;
 }
 
+input {
+    width: calc(100dvw - 15px);
+    padding: 8px 0 8px 12px;
+    @include bp.xs {
+        width: calc(100dvw - 50px);
+    }
+    @include bp.sm {
+        width: 488px;
+    }
+}
+
 .search-task {
     // font-size: 16px;
-    padding: 12px 196px 12px 16px;
     background: url('/img/search.svg') no-repeat right 21px center;
 }
 
@@ -23,30 +41,33 @@ button {
     background-position: right 16px center;
     background-size: 15px 15px;
     @include colors.color-ivory;
-}
-
-.board-header {
-    padding-top: 48px;
-    padding-left: 64px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 35px;
-    font-size: 23px;
-    font-weight: 700;
-    >div {
-        display: flex;
-        justify-content: space-between;
-        width: 248px;
-        box-sizing: border-box;
+    display: none;
+    @include bp.lg {
+        display: unset;
     }
 }
+
+// .board-header {
+//     padding-top: 48px;
+//     padding-left: 64px;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-start;
+//     align-items: center;
+//     gap: 35px;
+// }
 
 .tasks-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding-top: 29px;
-    padding-left: 64px;
+    // padding-left: 64px;
+    >div {
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        font-size: 23px;
+        font-weight: 700;
+    }
 }

@@ -22,6 +22,7 @@ export class BoardComponent {
       priority: "Medium",
       assigned: "Anita Gasteiner",
       category: "Technical Task",
+      status: 0,
       subtasks: {
         subtask1: "Create template 1.",
         subtask2: "Create template 2."
@@ -35,9 +36,24 @@ export class BoardComponent {
       priority: "Urgent",
       assigned: "Anita Gasteiner",
       category: "Technical Task",
+      status: 1,
       subtasks: {
         subtask1: "Define CSS naming conventions.",
         subtask2: "Define CSS structure."
+      }
+    },
+    {
+      id: "3",
+      title: "Create Test Users",
+      description: "Define test user stories.",
+      date: "",
+      priority: "Urgent",
+      assigned: "Anita Gasteiner",
+      category: "User Story",
+      status: 0,
+      subtasks: {
+        subtask1: "Create person.",
+        subtask2: "Describe person and corresponding user story."
       }
     }
   ];
