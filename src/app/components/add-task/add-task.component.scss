@@ -6,8 +6,10 @@
 }
 
 form {
+    width: 100dvw;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 8px;
     align-items: center;
     >fieldset:nth-child(1) {
@@ -37,10 +39,12 @@ form {
 }
 
 input, textarea, select {
-    width: calc(100dvw - 10px);
-    max-width: 488px;
+    width: calc(100dvw - 15px);
     padding: 8px 0 8px 12px;
-    @include bp.xl {
+    @include bp.xs {
+        width: calc(100dvw - 50px);
+    }
+    @include bp.sm {
         width: 488px;
     }
 }
@@ -68,6 +72,7 @@ input, textarea, select {
     left: 0;
     right: 0;
     @include bp.xl {
+        justify-content: flex-end;
         gap: 25px;
         bottom: 55px;
         right: 42px;
