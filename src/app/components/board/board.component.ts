@@ -22,7 +22,7 @@ export class BoardComponent {
       priority: "Medium",
       assigned: "Anita Gasteiner",
       category: "Technical Task",
-      status: 0,
+      status: "to-do",
       subtasks: {
         subtask1: "Create template 1.",
         subtask2: "Create template 2."
@@ -36,7 +36,7 @@ export class BoardComponent {
       priority: "Urgent",
       assigned: "Anita Gasteiner",
       category: "Technical Task",
-      status: 1,
+      status: "in-progress",
       subtasks: {
         subtask1: "Define CSS naming conventions.",
         subtask2: "Define CSS structure."
@@ -50,10 +50,66 @@ export class BoardComponent {
       priority: "Urgent",
       assigned: "Anita Gasteiner",
       category: "User Story",
-      status: 0,
+      status: "to-do",
       subtasks: {
         subtask1: "Create person.",
         subtask2: "Describe person and corresponding user story."
+      }
+    },
+    {
+      id: "4",
+      title: "Create Board Situations",
+      description: "Create and define usage situations for board section.",
+      date: "",
+      priority: "Urgent",
+      assigned: "Anita Gasteiner",
+      category: "User Story",
+      status: "waiting",
+      subtasks: {
+        subtask1: "Create test situations.",
+        subtask2: "Describe test situations."
+      }
+    },
+    {
+      id: "5",
+      title: "Create Summary Situations",
+      description: "Create and define usage situations for summary section.",
+      date: "",
+      priority: "Low",
+      assigned: "Anita Gasteiner",
+      category: "User Story",
+      status: "waiting",
+      subtasks: {
+        subtask1: "Create test situations.",
+        subtask2: "Describe test situations."
+      }
+    },
+    {
+      id: "6",
+      title: "Create Add Task Situations",
+      description: "Create and define usage situations for add task section.",
+      date: "",
+      priority: "Medium",
+      assigned: "Anita Gasteiner",
+      category: "User Story",
+      status: "to-do",
+      subtasks: {
+        subtask1: "Create test situations.",
+        subtask2: "Describe test situations."
+      }
+    },
+    {
+      id: "7",
+      title: "Create Contacts Situations",
+      description: "Create and define usage situations for contacts section.",
+      date: "",
+      priority: "Urgent",
+      assigned: "Anita Gasteiner",
+      category: "User Story",
+      status: "done",
+      subtasks: {
+        subtask1: "Create test situations.",
+        subtask2: "Describe test situations."
       }
     }
   ];

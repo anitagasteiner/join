@@ -19,6 +19,7 @@ export class TaskComponent {
     priority: "Medium",
     assigned: "Anita Gasteiner",
     category: "Technical Task",
+    status: "to-do",
     subtasks: {
       subtask1: "Create template 1.",
       subtask2: "Create template 2."

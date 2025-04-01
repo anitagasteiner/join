@@ -1,6 +1,6 @@
 @use './../../../shared/colors.scss' as colors;
 
-.task-container {
+.task-container {    
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -8,29 +8,37 @@
     border-radius: 24px;
     width: 252px;
     box-sizing: border-box;
+    padding: 16px;
 }
 
-.category {
-    padding: 4px 16px;
-    @include colors.bg-orange-dark;
+.category {    
+    width: fit-content;
+    @include colors.bg-orange-bright;
     border-radius: 8px;
+    padding: 4px 16px;
 }
 
 .title {
     @include colors.color-dark;
     font-size: 16px;
     font-weight: 700;
-    padding: 24px 0 8px 16px;
+    padding-top: 24px;
+    padding-bottom: 8px;
 }
 
-.subtitle {
+.description {
     @include colors.color-grey-dark;
-    padding-bottom: 24px;
-    padding-left: 16px;
+}
+
+.subtasks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 24px;
 }
 
 .assigned-priority {
     display: flex;
     justify-content: space-between;
-    padding: 24px 16px 16px 16px;
+    padding-top: 24px;
 }
