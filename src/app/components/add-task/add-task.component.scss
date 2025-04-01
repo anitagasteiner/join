@@ -12,7 +12,7 @@ form {
     gap: 8px;
     align-items: center;
     >fieldset:nth-child(1) {
-        padding-top: 64px;
+        padding-top: 48px;
         >input {
             font-size: 32px !important;
         }
@@ -80,7 +80,10 @@ input, textarea, select {
 
 .btn-create-clear {
     font-size: 23px !important;
-    @include colors.color-grey-dark;    
+    @include colors.color-grey-dark;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .btn-clear {
@@ -93,7 +96,7 @@ input, textarea, select {
     box-sizing: border-box;
     @include colors.bg-ivory;
     @include colors.border-grey-light;
-    @include bp.lg {
+    @include bp.sm {
         padding: 16px 18px 16px 23px;
         gap: 18px;
     }

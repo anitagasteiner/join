@@ -75,4 +75,7 @@ select {
     @include colors.bg-dark;
     border: none !important;
     border-radius: 10px;
+    &:hover {
+        cursor: pointer;
+    }
 }
