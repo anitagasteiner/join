@@ -4,8 +4,10 @@
 .main-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: 32px;
     overflow: auto;
+    padding-left: 16px;
 }
 
 .search-add-container {
@@ -18,13 +20,13 @@
 }
 
 input {
-    width: calc(100dvw - 15px);
+    width: 280px;
     padding: 8px 0 8px 12px;
     @include bp.xs {
-        width: calc(100dvw - 50px);
+        width: 384px;
     }
-    @include bp.sm {
-        width: 488px;
+    @include bp.lg {
+        width: 312px;
     }
 }
 
@@ -35,12 +37,13 @@ input {
 
 button {
     font-size: 23px !important;
-    padding: 12px 48px 12px 10px;
+    padding: 10px 48px 10px 10px;
     background-image: url('/img/add-light.svg');
     background-repeat: no-repeat;
     background-position: right 16px center;
     background-size: 15px 15px;
     @include colors.color-ivory;
+    box-sizing: border-box;
     display: none;
     @include bp.lg {
         display: unset;
@@ -57,17 +60,41 @@ button {
 //     gap: 35px;
 // }
 
+.tasks-main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding-top: 29px;
+    // padding-left: 64px; 
+}
+
 .tasks-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding-top: 29px;
-    // padding-left: 64px;
-    >div {
+    >div:nth-child(1) {
+        @include colors.color-black-light;
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         box-sizing: border-box;
         font-size: 23px;
         font-weight: 700;
+        width: 280px;
+        @include bp.xs {
+            width: 384px;
+        }
+        @include bp.lg {
+            width: 280px;
+        }
+        >img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+    >div:nth-child(2) {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
     }
 }

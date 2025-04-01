@@ -8,50 +8,74 @@
 
     </div>
 
-    <div class="tasks-container">
+    <div class="tasks-main-container">
 
-        <div>
-            To do
-            <img src="/img/plus-btn.svg">
-        </div>       
+        <div class="tasks-container">
 
-        @for (task of tasks; track task.title; let index = $index) {
-            @if (task.status == 0) {
-                <app-task [task]="task"></app-task>
-            }            
-        }
+            <div>
+                To do
+                <img src="/img/plus-btn.svg">
+            </div>
 
-        <div>
-            In progress
-            <img src="/img/plus-btn.svg">
+            <div>
+                @for (task of tasks; track task.title; let index = $index) {
+                    @if (task.status == 0) {
+                        <app-task [task]="task"></app-task>
+                    }            
+                }
+            </div>
+
         </div>
 
-        @for (task of tasks; track task.title; let index = $index) {
-            @if (task.status == 1) {
-                <app-task [task]="task"></app-task>
-            }            
-        }
+        <div class="tasks-container">
 
-        <div>
-            Awaiting feedback
-            <img src="/img/plus-btn.svg">
+            <div>
+                In progress
+                <img src="/img/plus-btn.svg">
+            </div>
+
+            <div>
+                @for (task of tasks; track task.title; let index = $index) {
+                    @if (task.status == 1) {
+                        <app-task [task]="task"></app-task>
+                    }            
+                }
+            </div>
+
         </div>
 
-        @for (task of tasks; track task.title; let index = $index) {
-            @if (task.status == 2) {
-                <app-task [task]="task"></app-task>
-            }            
-        }
+        <div class="tasks-container">
 
-        <div>
-            Done
+            <div>
+                Awaiting feedback
+                <img src="/img/plus-btn.svg">
+            </div>
+
+            <div>
+                @for (task of tasks; track task.title; let index = $index) {
+                    @if (task.status == 2) {
+                        <app-task [task]="task"></app-task>
+                    }            
+                }
+            </div>            
+
         </div>
 
-        @for (task of tasks; track task.title; let index = $index) {
-            @if (task.status == 3) {
-                <app-task [task]="task"></app-task>
-            }            
-        }
+        <div class="tasks-container">
+
+            <div>
+                Done
+            </div>
+
+            <div>
+                @for (task of tasks; track task.title; let index = $index) {
+                    @if (task.status == 3) {
+                        <app-task [task]="task"></app-task>
+                    }            
+                }
+            </div>
+
+        </div>        
 
     </div>
 

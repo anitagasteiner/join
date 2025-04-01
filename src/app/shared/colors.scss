@@ -13,6 +13,7 @@ $colors: (
     "red-dark": rgba(113, 3, 4, 1),
     "grey-light": rgba(224, 224, 224, 1),
     "grey-dark": rgba(42, 54, 71, 1),
+    "black-light": rgba(66, 82, 110, 1),
     // eggshell: rgba(249, 254, 255, 1),
     "ivory": rgba(255, 250, 240, 1)
 );
@@ -63,6 +64,11 @@ $colors: (
 
 @mixin color-grey-dark {
     $color: map.get($colors, "grey-dark");
+    color: $color !important;
+}
+
+@mixin color-black-light {
+    $color: map.get($colors, "black-light");
     color: $color !important;
 }
 
