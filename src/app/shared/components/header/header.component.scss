@@ -10,13 +10,13 @@ header {
     padding: 20px 25px;
     box-sizing: border-box;
     z-index: 999;
-    @include bp.xl {
+    @include bp.lg {
         height: 96px;
         padding: 20px 36px;
     }
     >img {
         height: 39px;
-        @include bp.xl {
+        @include bp.lg {
             height: 56px;
         }        
     }
@@ -28,7 +28,7 @@ header {
     gap: 20px;
     >div:nth-child(1) {
         display: none;
-        @include bp.xl {
+        @include bp.lg {
             display: unset;
             font-size: 19px;
         }        
@@ -41,7 +41,7 @@ header {
     }
     >div:nth-child(2) {
         display: none;
-        @include bp.xl {
+        @include bp.lg {
             display: unset;
             width: 20px;
             height: 20px;
@@ -59,7 +59,7 @@ header {
         @include colors.bg-dark;
         position: relative;
         z-index: 1;
-        @include bp.xl {
+        @include bp.lg {
             width: 56px;
             height: 56px;
             font-size: 36px;

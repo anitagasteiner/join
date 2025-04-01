@@ -14,7 +14,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    @include bp.xl {
+    @include bp.lg {
         height: calc(100dvh - 96px);
         width: 232px;
         // display: flex;
@@ -36,7 +36,7 @@ nav {
     align-items: center;
     margin-top: 15px;
     margin-bottom: 15px;
-    @include bp.xl {
+    @include bp.lg {
         width: 186px;
         flex-direction: column;
         align-items: flex-start;
@@ -56,7 +56,7 @@ nav {
         box-sizing: border-box;
         border-radius: 8px;
         gap: 4px;
-        @include bp.xl {
+        @include bp.lg {
             flex-direction: row;
             justify-content: flex-start;
             padding: 8px 0 8px 30px;
@@ -76,7 +76,7 @@ nav {
 
 .bottom-container {
     display: none;
-    @include bp.xl {
+    @include bp.lg {
         display: flex;
         flex-direction: column;
         gap: 24px;
