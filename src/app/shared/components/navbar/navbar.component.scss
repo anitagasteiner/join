@@ -15,7 +15,7 @@ nav {
     justify-content: center;
     align-items: center;
     @include bp.lg {
-        height: calc(100dvh - 96px);
+        height: calc(100dvh - 96px + 24px);
         width: 232px;
         // display: flex;
         flex-direction: column;

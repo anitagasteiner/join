@@ -34,15 +34,15 @@ header {
         }        
     }
     >div:nth-child(n+2) {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        vertical-align: text-top;
         border-radius: 50%;
     }
     >div:nth-child(2) {
         display: none;
         @include bp.lg {
             display: unset;
+            text-align: center;
+            padding: 0.5px 1.5px 2.5px 1.5px;
             width: 20px;
             height: 20px;
             font-size: 19px;
@@ -50,6 +50,9 @@ header {
         }                
     }
     >div:nth-child(3) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 40px;
         height: 40px;
         font-size: 20px;
