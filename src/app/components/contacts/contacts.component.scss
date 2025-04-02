@@ -42,10 +42,80 @@
     }
 }
 
+.contact-list-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .contact-details-container {
     display: none;
+    padding: 72px 0 0 82px;
     @include bp.lg {
         display: unset;
         width: fit-content;
     }    
+}
+
+.contact-head-container {
+    display: flex;
+    flex-direction: row;
+    gap: 54px;
+    margin-bottom: 21px;
+}
+
+.contact-icon {
+    @include colors.bg-orange-bright;
+    @include colors.color-ivory;
+    border-radius: 50%;
+    min-width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 47px;    
+}
+
+.contact-head-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    >div:nth-child(1) {
+        font-weight: 600;
+        font-size: 48px;
+    }
+}
+
+.contact-edit-delete {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    >div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        >img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 23px;
+    margin: 0 0 21px;
+}
+
+.contact-mail-container {
+    margin-bottom: 22px;
+}
+
+h3 {
+    margin: 0 0 15px;
 }

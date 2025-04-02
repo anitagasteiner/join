@@ -20,7 +20,7 @@ body {
     height: calc(100dvh - 80px - 76px - 24px);
     padding-bottom: 24px;
     @include bp.lg {
-        height: calc(100dvh - 96px - 24px);
+        height: calc(100dvh - 96px);
         margin-left: 232px;
     }
 }
@@ -81,4 +81,8 @@ select {
     &:hover {
         cursor: pointer;
     }
+}
+
+.contact-mail {
+    @include colors.color-dark;
 }

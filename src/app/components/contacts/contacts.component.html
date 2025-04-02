@@ -4,15 +4,54 @@
 
         <div class="btn-container">
             <button class="btn-submit">Add new contact</button>
-        </div>        
+        </div>
 
-        @for (contact of contacts; track contact.name; let index = $index) {
-            <app-contact [contact]="contact"></app-contact>
-        }
+        <div class="contact-list-container">
+            @for (contact of contacts; track contact.name; let index = $index) {
+                <app-contact [contact]="contact"></app-contact>
+            }
+        </div>
+ 
     </div>
 
     <div class="contact-details-container">
-        Contact Details will follow here.
+
+        <div class="contact-head-container">
+
+            <div class="contact-icon">AB</div>
+
+            <div class="contact-head-right">
+                <div>Katharina Hofstetter</div>
+                <div class="contact-edit-delete">
+                    <div>
+                        <img src="/img/edit.svg">
+                        Edit
+                    </div>
+                    <div>
+                        <img src="/img/delete.svg">
+                        Delete
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contact-info-container">
+
+            <h2>Contact Information</h2>
+
+            <div class="contact-mail-container">
+                <h3>Email</h3>
+                <div class="contact-mail">kathi.h&#64;gmail.com</div>
+            </div>
+
+            <div class="contact-phone-container">
+                <h3>Phone</h3>
+                <div>+43 680 123 45 67</div>
+            </div>            
+
+        </div>
+
     </div>
 
 </div>
