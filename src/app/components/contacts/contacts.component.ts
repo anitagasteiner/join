@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ContactComponent } from './contact/contact.component';
-// import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contacts',
   imports: [
-    // CommonModule,
+    CommonModule,
     ContactComponent
   ],
   templateUrl: './contacts.component.html',

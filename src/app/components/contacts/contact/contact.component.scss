@@ -1,0 +1,39 @@
+@use './../../../shared/colors.scss' as colors;
+
+.contact-container {
+    width: 352px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 35px;
+    padding: 15px 0 15px 24px;
+}
+
+.contact-icon {
+    @include colors.bg-orange-bright;
+    @include colors.color-ivory;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.contact-name-mail-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.contact-name {
+    font-size: 19px;
+}
+
+.contact-mail {
+    @include colors.color-dark;
+}
