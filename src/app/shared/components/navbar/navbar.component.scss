@@ -84,3 +84,13 @@ nav {
         padding-bottom: 66px;
     }    
 }
+
+.color-blue {
+    @include colors.color-dark;
+}
+
+.bg-color-blue {
+    @include bp.lg {
+        @include colors.bg-light;
+    }
+}
