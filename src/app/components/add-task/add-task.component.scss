@@ -3,6 +3,7 @@
 
 .main-container {
     position: relative;
+    overflow: auto;
 }
 
 form {
@@ -66,13 +67,12 @@ input, textarea, select {
     display: flex;
     justify-content: center;
     gap: 8px;
-    position: absolute;
-    bottom: 36px;
-    left: 0;
-    right: 0;
+    margin-top: 8px;
     @include bp.lg {
         justify-content: flex-end;
+        margin-top: 0;
         gap: 25px;
+        position: absolute;
         bottom: 55px;
         right: 42px;
     }

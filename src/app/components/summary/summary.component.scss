@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: auto;
 }
 
 .greeting {
@@ -23,6 +24,7 @@
 
 .info-container {
     // width: 912px;
+    height: 100%;
     margin-top: 56px;
     display: grid;
     grid-template-areas:
