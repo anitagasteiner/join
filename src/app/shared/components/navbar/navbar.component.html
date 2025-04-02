@@ -1,32 +1,32 @@
 <nav>
 
     <div class="nav-container">
-        <div routerLink="" routerLinkActive="active" [ngClass]="{'color-blue': activeNavBtn == 'summary', 'bg-color-blue': activeNavBtn == 'summary'}" (click)="changeColor('summary')">
-            @if (activeNavBtn == "summary") {
+        <div routerLink="" routerLinkActive="active" [ngClass]="{'color-blue': generalService.activeNavBtn == 'summary', 'bg-color-blue': generalService.activeNavBtn == 'summary'}" (click)="changeColor('summary')">
+            @if (generalService.activeNavBtn == "summary") {
                 <img src="/img/nav-summary-blue.svg">
             } @else {
                 <img src="/img/nav-summary.svg">
             }            
             Summary
         </div>
-        <div routerLink="add-task" routerLinkActive="active" [ngClass]="{'color-blue': activeNavBtn == 'add-task', 'bg-color-blue': activeNavBtn == 'add-task'}" (click)="changeColor('add-task')">
-            @if (activeNavBtn == "add-task") {
+        <div routerLink="add-task" routerLinkActive="active" [ngClass]="{'color-blue': generalService.activeNavBtn == 'add-task', 'bg-color-blue': generalService.activeNavBtn == 'add-task'}" (click)="changeColor('add-task')">
+            @if (generalService.activeNavBtn == "add-task") {
                 <img src="/img/nav-add-task-blue.svg">
             } @else {
                 <img src="/img/nav-add-task.svg">
             }
             Add Task
         </div>
-        <div routerLink="board" routerLinkActive="active" [ngClass]="{'color-blue': activeNavBtn == 'board', 'bg-color-blue': activeNavBtn == 'board'}" (click)="changeColor('board')">
-            @if (activeNavBtn == "board") {
+        <div routerLink="board" routerLinkActive="active" [ngClass]="{'color-blue': generalService.activeNavBtn == 'board', 'bg-color-blue': generalService.activeNavBtn == 'board'}" (click)="changeColor('board')">
+            @if (generalService.activeNavBtn == "board") {
                 <img src="/img/nav-board-blue.svg">
             } @else {
                 <img src="/img/nav-board.svg">
             }
             Board
         </div>
-        <div routerLink="contacts" routerLinkActive="active" [ngClass]="{'color-blue': activeNavBtn == 'contacts', 'bg-color-blue': activeNavBtn == 'contacts'}" (click)="changeColor('contacts')">
-            @if (activeNavBtn == "contacts") {
+        <div routerLink="contacts" routerLinkActive="active" [ngClass]="{'color-blue': generalService.activeNavBtn == 'contacts', 'bg-color-blue': generalService.activeNavBtn == 'contacts'}" (click)="changeColor('contacts')">
+            @if (generalService.activeNavBtn == "contacts") {
                 <img src="/img/nav-contacts-blue.svg">
             } @else {
                 <img src="/img/nav-contacts.svg">

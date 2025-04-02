@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { GeneralService } from '../../../general.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,18 +16,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NavbarComponent {
 
-  activeNavBtn: string = "summary";
-
-  constructor() {
-    let activeNavBtnInLocalStorage = localStorage.getItem('activeNavBtn');
-    if (activeNavBtnInLocalStorage) {
-      this.activeNavBtn = activeNavBtnInLocalStorage;
-    }
-  }
+  generalService = inject(GeneralService);
 
   changeColor(btn: string) {
-    this.activeNavBtn = btn;
-    localStorage.setItem('activeNavBtn', this.activeNavBtn);
+    this.generalService.activeNavBtn = btn; 
   }
 
 }

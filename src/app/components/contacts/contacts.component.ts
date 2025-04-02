@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ContactComponent } from './contact/contact.component';
 import { CommonModule } from '@angular/common';
+import { GeneralService } from '../../general.service';
 
 @Component({
   selector: 'app-contacts',
@@ -12,6 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './contacts.component.scss'
 })
 export class ContactsComponent {
+
+  generalService = inject(GeneralService);
 
   contacts = [
     {
@@ -33,5 +36,9 @@ export class ContactsComponent {
       phone: "+436801232149"
     }
   ];
+
+  constructor() {
+    this.generalService.activeNavBtn = 'contacts';
+  }  
 
 }

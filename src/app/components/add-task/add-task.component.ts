@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { GeneralService } from '../../general.service';
 
 @Component({
   selector: 'app-add-task',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './add-task.component.scss'
 })
 export class AddTaskComponent {
+
+  generalService = inject(GeneralService);
+
+  constructor() {
+    this.generalService.activeNavBtn = 'add-task';
+  }
 
 }

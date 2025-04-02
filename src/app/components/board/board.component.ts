@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { CommonModule } from '@angular/common';
+import { GeneralService } from '../../general.service';
 
 @Component({
   selector: 'app-board',
@@ -12,6 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './board.component.scss'
 })
 export class BoardComponent {
+
+  generalService = inject(GeneralService);
 
   tasks = [
     {
@@ -112,6 +115,10 @@ export class BoardComponent {
         subtask2: "Describe test situations."
       }
     }
-  ];
+  ];  
+
+  constructor() {
+    this.generalService.activeNavBtn = 'board';
+  }
 
 }
