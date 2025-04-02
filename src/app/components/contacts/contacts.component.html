@@ -1,1 +1,7 @@
-<p>contacts works!</p>
+<div class="main-container">
+
+    @for (contact of contacts; track contact.name; let index = $index) {
+        <app-contact [contact]="contact"></app-contact>
+    }
+
+</div>
