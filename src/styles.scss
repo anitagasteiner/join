@@ -7,6 +7,12 @@
     src: url('/fonts/OpenSans-VariableFont_wdth_wght.ttf');    
 }
 
+html {
+    scroll-behavior: smooth;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 body {
     font-family: 'Open-Sans', sans-serif;
     font-weight: 400;
@@ -16,12 +22,21 @@ body {
     overflow: hidden;
 }
 
+.main-width {
+    @include bp.xxl {
+        position: relative;
+        margin: 0 auto;
+        max-width: 1600px;
+    }
+}
+
 .main-container {
     height: calc(100dvh - 80px - 76px - 24px);
     padding-bottom: 24px;
     overflow: auto;
     @include bp.lg {
         height: calc(100dvh - 96px);
+        // height: calc(100dvh - 96px - 24px);
         margin-left: 232px;
     }
 }

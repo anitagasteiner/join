@@ -9,9 +9,10 @@
 .contacts-container {
     display: flex;
     flex-direction: column;
-    width: 100dvw;
-    @include bp.lg {
+    width: 100dvw;    
+    @include bp.xl {
         width: 456px;
+        height: calc(100dvh - 96px);
         box-shadow: 4px 0 6px 0 rgba(0, 0, 0, 0.08);
         display: flex;
         flex-direction: column;
@@ -53,9 +54,9 @@
 .contact-details-container {
     display: none;
     padding: 72px 0 0 82px;
-    @include bp.lg {
-        display: unset;
-        width: fit-content;
+    width: fit-content;
+    @include bp.xl {
+        display: unset;        
     }    
 }
 
