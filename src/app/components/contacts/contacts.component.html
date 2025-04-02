@@ -1,7 +1,18 @@
 <div class="main-container">
 
-    @for (contact of contacts; track contact.name; let index = $index) {
-        <app-contact [contact]="contact"></app-contact>
-    }
+    <div class="contacts-container">
+
+        <div class="btn-container">
+            <button class="btn-submit">Add new contact</button>
+        </div>        
+
+        @for (contact of contacts; track contact.name; let index = $index) {
+            <app-contact [contact]="contact"></app-contact>
+        }
+    </div>
+
+    <div class="contact-details-container">
+        Contact Details will follow here.
+    </div>
 
 </div>
