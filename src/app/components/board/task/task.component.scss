@@ -19,11 +19,11 @@
 }
 
 .bg-orange-bright {
-    @include colors.bg-orange-bright;
+    @include colors.bg-orange-bright-tasks;
 }
 
 .bg-blue-bright {
-    @include colors.bg-blue-bright;
+    @include colors.bg-blue-bright-tasks;
 }
 
 .title {

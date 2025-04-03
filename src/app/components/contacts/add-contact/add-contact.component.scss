@@ -1,0 +1,66 @@
+@use './../../../shared/colors.scss' as colors;
+
+.add-contact-container {
+    max-width: 396px;
+    max-height: 650px;
+    box-sizing: border-box;
+}
+
+.top-container {
+    @include colors.bg-blue-bright;
+    @include colors.color-ivory;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif !important;
+    height: 328px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    >div {
+        font-size: 21px;
+    }
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 47px;
+    margin: 0;
+}
+
+.bottom-container {
+    @include colors.bg-ivory;
+    @include colors.border-grey-light;
+    border-top: none;
+    height: 428px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    >fieldset >input {
+        width: 364px;
+    }
+    >div >input {
+        margin-top: 76px;
+        width: auto;
+        padding: 10px 38px 10px 12px;
+        background-image: url('/img/check.svg');
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        background-size: 24px 24px;
+        @include colors.color-ivory;
+    }
+}
+
+.btn-create {
+    @include colors.color-ivory;
+}

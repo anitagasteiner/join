@@ -92,7 +92,7 @@
 }
 
 .contact-icon {
-    @include colors.bg-orange-bright;
+    @include colors.bg-pink;
     @include colors.color-ivory;
     border-radius: 50%;
     min-width: 120px;
@@ -147,9 +147,17 @@ h3 {
 }
 
 .add-contact-container {
+    align-self: center;
+    justify-self: center;
     position: absolute;
     top: 48px;
     left: 48px;
     right: 48px;
     bottom: 48px;
+    @include bp.lg {
+        top: 0;
+        left: unset;
+        right: 24px;
+        bottom: unset;
+    }
 }
