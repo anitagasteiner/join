@@ -10,16 +10,9 @@ import { Component, Input } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
-export class ContactComponent {  
-
-  // contact = {
-  //   name: '',
-  //   email: '',
-  //   phone: ''
-  // }
+export class ContactComponent {
 
   @Input()contact = {
-    id: "1",
     name: "Katharina Hofstetter",
     email: "kathi.h@gmail.com",
     phone: "+436801234567"

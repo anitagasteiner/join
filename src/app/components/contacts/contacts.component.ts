@@ -25,25 +25,4 @@ export class ContactsComponent {
     this.generalService.activeNavBtn = 'contacts';
   }
 
-  // contacts = [
-  //   {
-  //     id: "1",
-  //     name: "Katharina Hofstetter",
-  //     email: "kathi.h@gmail.com",
-  //     phone: "+436801234567"
-  //   },
-  //   {
-  //     id: "2",
-  //     name: "Martin Bauer",
-  //     email: "martin.bauer@web.de",
-  //     phone: "+436807654321"
-  //   },
-  //   {
-  //     id: "3",
-  //     name: "Anna Kopetzky",
-  //     email: "a.kopetzky@posteo.de",
-  //     phone: "+436801232149"
-  //   }
-  // ]; 
-
 }

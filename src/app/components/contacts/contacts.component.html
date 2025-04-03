@@ -7,10 +7,9 @@
         </div>
 
         <div class="contact-list-container">
-            <!-- @for (contact of items$; track contact.name; let index = $index) {
+            @for (contact of contacts$ | async; track contact.name; let index = $index) {
                 <app-contact [contact]="contact"></app-contact>
-            } -->
-                <app-contact *ngFor="let contact of contacts$ | async"></app-contact>
+            }
         </div>
  
     </div>
