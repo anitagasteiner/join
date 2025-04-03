@@ -7,4 +7,6 @@ export class GeneralService {
 
   activeNavBtn: string = 'summary';
 
+  addContactFormOpened: boolean = false;
+
 }

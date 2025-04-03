@@ -27,4 +27,8 @@ export class ContactsComponent {
     this.generalService.activeNavBtn = 'contacts';
   }
 
+  showAddContactForm() {
+    this.generalService.addContactFormOpened = true;
+  }
+
 }

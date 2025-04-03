@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { GeneralService } from '../../../general.service';
 
 @Component({
   selector: 'app-add-contact',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './add-contact.component.scss'
 })
 export class AddContactComponent {
+
+  generalService = inject(GeneralService);
+
+  hideAddContactForm() {
+    this.generalService.addContactFormOpened = false;
+  }
 
 }
