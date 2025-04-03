@@ -12,7 +12,6 @@ import { Component, Input } from '@angular/core';
 export class TaskComponent {
 
   @Input()task = {
-    id: "1",
     title: "HTML Base Template Creation",
     description: "Create reusable HTML base templates.",
     date: "",

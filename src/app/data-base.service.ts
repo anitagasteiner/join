@@ -12,9 +12,9 @@ export class DataBaseService {
 
   constructor() {}
   
-  getData(contacts: string): Observable<any[]> {
-    const contactCollection = collection(this.firestore, contacts);
-    return collectionData(contactCollection, { idField: 'id' });
+  getData(data: string): Observable<any[]> {
+    const dataCollection = collection(this.firestore, data);
+    return collectionData(dataCollection, { idField: 'id' });
   }
 
 }
