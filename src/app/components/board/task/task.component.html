@@ -1,6 +1,6 @@
 <div class="task-container">
 
-    <div class="category">{{task.category}}</div>
+    <div class="category" [ngClass]="{'bg-orange-bright': task.category == 'Technical Task', 'bg-blue-bright': task.category == 'User Story'}">{{task.category}}</div>
     <div class="title">{{task.title}}</div>
     <div class="description">{{task.description}}</div>
     <div class="subtasks">

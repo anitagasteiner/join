@@ -11,11 +11,19 @@
     padding: 16px;
 }
 
-.category {    
-    width: fit-content;
-    @include colors.bg-orange-bright;
+.category {
+    width: fit-content;   
     border-radius: 8px;
     padding: 4px 16px;
+    @include colors.color-ivory;
+}
+
+.bg-orange-bright {
+    @include colors.bg-orange-bright;
+}
+
+.bg-blue-bright {
+    @include colors.bg-blue-bright;
 }
 
 .title {

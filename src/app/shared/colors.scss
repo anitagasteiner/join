@@ -2,6 +2,7 @@
 
 $colors: (
     "orange-bright": rgba(255, 122, 0, 1),
+    "blue-bright": rgba(0, 56, 255, 1),
     // "orange-light": rgba(247, 183, 129, 1),
     // "orange-dark": rgba(218, 123, 34, 1),
     // "green-light": rgba(200, 203, 84, 1),
@@ -26,6 +27,11 @@ $colors: (
 
 @mixin bg-orange-bright {
     $bg-color: map.get($colors, "orange-bright");
+    background-color: $bg-color;
+}
+
+@mixin bg-blue-bright {
+    $bg-color: map.get($colors, "blue-bright");
     background-color: $bg-color;
 }
 
