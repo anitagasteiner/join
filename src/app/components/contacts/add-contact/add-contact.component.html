@@ -1,37 +1,41 @@
-<div class="add-contact-container">
-
-    <img src="/img/close.svg" (click)="hideAddContactForm()">
-
-    <div class="top-container">        
-        <h2>Add contact</h2>
-        <div>Tasks are better with a team!</div>
-    </div>
+<div class="bg-container">
     
-    <div class="bottom-container">
+    <div class="add-contact-container">
 
-        <form>
-    
-            <fieldset>
-                <input placeholder="Name" onfocus="this.placeholder=''" type="text" name="name" id="name" required>
-                <legend></legend>
-            </fieldset>
+        <img src="/img/close.svg" (click)="hideAddContactForm()">
 
-            <fieldset>
-                <input placeholder="Email" onfocus="this.placeholder=''" type="email" name="email" id="email" required>
-                <legend></legend>
-            </fieldset>
+        <div class="top-container">        
+            <h2>Add contact</h2>
+            <div>Tasks are better with a team!</div>
+        </div>
+        
+        <div class="bottom-container">
 
-            <fieldset>
-                <input placeholder="Phone" onfocus="this.placeholder=''" type="text" name="phone" id="phone" required>
-                <legend></legend>
-            </fieldset>
-    
-            <div class="btn-create-container">            
-                <input class="btn-submit" type="submit" value="Create contact">
-            </div>  
-    
-        </form>
-    
+            <form>
+        
+                <fieldset>
+                    <input placeholder="Name" onfocus="this.placeholder=''" type="text" name="name" id="name" required>
+                    <legend></legend>
+                </fieldset>
+
+                <fieldset>
+                    <input placeholder="Email" onfocus="this.placeholder=''" type="email" name="email" id="email" required>
+                    <legend></legend>
+                </fieldset>
+
+                <fieldset>
+                    <input placeholder="Phone" onfocus="this.placeholder=''" type="text" name="phone" id="phone" required>
+                    <legend></legend>
+                </fieldset>
+        
+                <div class="btn-create-container">            
+                    <input class="btn-submit" type="submit" value="Create contact">
+                </div>  
+        
+            </form>
+        
+        </div>
+
     </div>
 
 </div>

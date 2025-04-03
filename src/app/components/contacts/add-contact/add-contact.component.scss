@@ -1,16 +1,37 @@
 @use './../../../shared/colors.scss' as colors;
 @use './../../../shared/breakpoints.scss' as bp;
 
+.bg-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include bp.lg {
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+}
+
 .add-contact-container {
     max-width: 396px;
     max-height: 650px;
     box-sizing: border-box;
+    position: relative;
     >img {
         width: 32px;
         height: 32px;
-        margin-bottom: -60px;
-        margin-left: 314px;
         cursor: pointer;
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        @include bp.lg {
+            top: 26px;
+            right: 26px;
+        }
     }
 }
 
@@ -56,9 +77,15 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 24px;
     >fieldset >input {
+        font-size: 19px;
         width: 364px;
+        margin: 0 16px;
+        border-radius: 0;
+        border: none;
+        padding-left: 21px;
+        @include colors.border-bottom-grey-light;
     }
     >div >input {
         margin-top: 76px;
@@ -70,6 +97,18 @@ form {
         background-size: 24px 24px;
         @include colors.color-ivory;
     }
+}
+
+#name {
+    background: url('/img/person.svg') no-repeat right 8px center;
+}
+
+#email {
+    background: url('/img/mail.svg') no-repeat right 8px center;
+}
+
+#phone {
+    background: url('/img/phone.svg') no-repeat right 8px center;
 }
 
 .btn-create {

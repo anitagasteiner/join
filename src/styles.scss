@@ -66,27 +66,18 @@ input, textarea, select {
     border-radius: 10px;
     font-family: 'Open-Sans', sans-serif;
     font-size: 19px;
-    @include colors.color-grey-dark;
+    @include colors.color-grey-light;
     box-sizing: border-box;
 }
 
-input:-moz-placeholder, /* Firefox 18- */
-input::-moz-placeholder, /* Firefox 19+ */
-input:-ms-input-placeholder, /* IE 10+ */
-input::-webkit-input-placeholder, /* Webkit based */
-input::placeholder,
-textarea:-moz-placeholder, /* Firefox 18- */
-textarea::-moz-placeholder, /* Firefox 19+ */
-textarea:-ms-input-placeholder, /* IE 10+ */
-textarea::-webkit-input-placeholder, /* Webkit based */
-textarea::placeholder,
-select:-moz-placeholder, /* Firefox 18- */
-select::-moz-placeholder, /* Firefox 19+ */
-select:-ms-input-placeholder, /* IE 10+ */
-select::-webkit-input-placeholder, /* Webkit based */
-select::placeholder { /* Modern browsers */
-    @include colors.color-grey-dark;  
+input::placeholder, textarea::placeholder, select::placeholder {
+    @include colors.color-grey-light;
 }
+
+// input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, input::-webkit-input-placeholder, input::placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea::placeholder,
+// select:-moz-placeholder, select::-moz-placeholder, select:-ms-input-placeholder, select::-webkit-input-placeholder, select::placeholder { 
+//     @include colors.color-grey-light;
+// }
 
 select {
     cursor: pointer;

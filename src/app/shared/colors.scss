@@ -8,6 +8,7 @@ $colors: (
     "blue-light": rgba(210, 227, 255, 1),
     "blue-dark": rgba(69, 137, 255, 1),
     "grey-light": rgba(224, 224, 224, 1),
+    "grey-light-transparent": rgba(224, 224, 224, 0.5),
     "grey-dark": rgba(42, 54, 71, 1),
     "black-light": rgba(66, 82, 110, 1),
     "ivory": rgba(255, 250, 240, 1)
@@ -52,6 +53,11 @@ $colors: (
     color: $color;
 }
 
+@mixin grey-light-transparent {
+    $bg-color: map.get($colors, "grey-light-transparent");
+    background-color: $bg-color;
+}
+
 @mixin color-dark {
     $color: map.get($colors, "blue-dark");
     color: $color !important;
@@ -67,6 +73,11 @@ $colors: (
     color: $color !important;
 }
 
+@mixin color-grey-light {
+    $color: map.get($colors, "grey-light");
+    color: $color !important;
+}
+
 @mixin color-black-light {
     $color: map.get($colors, "black-light");
     color: $color !important;
@@ -75,6 +86,11 @@ $colors: (
 @mixin border-grey-light {
     $border-color: map.get($colors, "grey-light");
     border: 2px solid $border-color;
+}
+
+@mixin border-bottom-grey-light {
+    $border-color: map.get($colors, "grey-light");
+    border-bottom: 2px solid $border-color;
 }
 
 @mixin border-ivory {
