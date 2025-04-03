@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-contact',
   imports: [
@@ -9,7 +10,13 @@ import { Component, Input } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
-export class ContactComponent {
+export class ContactComponent {  
+
+  // contact = {
+  //   name: '',
+  //   email: '',
+  //   phone: ''
+  // }
 
   @Input()contact = {
     id: "1",

@@ -7,6 +7,4 @@ export class GeneralService {
 
   activeNavBtn: string = 'summary';
 
-  constructor() { }
-  
 }
