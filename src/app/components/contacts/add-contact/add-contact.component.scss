@@ -1,9 +1,14 @@
 @use './../../../shared/colors.scss' as colors;
+@use './../../../shared/breakpoints.scss' as bp;
 
 .add-contact-container {
     max-width: 396px;
     max-height: 650px;
     box-sizing: border-box;
+    >img {
+        margin-bottom: -56px;
+        margin-left: 318px;
+    }
 }
 
 .top-container {
@@ -18,6 +23,9 @@
     height: 328px;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
+    @include bp.lg {
+        border-top-right-radius: unset;
+    }
     >div {
         font-size: 21px;
     }
