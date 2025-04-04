@@ -44,6 +44,7 @@ body {
         height: calc(100dvh - 96px);
         // height: calc(100dvh - 96px - 24px);
         margin-left: 232px;
+        @include colors.border-right-grey-light;
     }
 }
 

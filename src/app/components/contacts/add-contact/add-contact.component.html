@@ -16,19 +16,25 @@
                 <fieldset>
                     <input #name="ngModel" [(ngModel)]="newContact.name" placeholder="Name" onfocus="this.placeholder=''" type="text" name="name" id="name" required pattern="[A-Za-zÄäÖöÜüß\-]{2,} [A-Za-zÄäÖöÜüß\-]{2,}">
                     <legend></legend>
-                    <!-- <span class="notification">Please insert your first and last name (at least two characters each).</span> -->
+                    @if (!name.valid && name.touched && !name.disabled) {
+                        <span class="notification">Please insert your first and last name (at least two characters each).</span>
+                    }
                 </fieldset>
 
                 <fieldset>
                     <input #email="ngModel" [(ngModel)]="newContact.email" placeholder="Email" onfocus="this.placeholder=''" type="email" name="email" id="email" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
                     <legend></legend>
-                    <!-- <span class="notification">Please insert your email address.</span> -->
+                    @if (!email.valid && email.touched && !email.disabled) {
+                        <span class="notification">Please insert your email address.</span>
+                    }
                 </fieldset>
 
                 <fieldset>
                     <input #phone="ngModel" [(ngModel)]="newContact.phone" placeholder="Phone" onfocus="this.placeholder=''" type="text" name="phone" id="phone" required pattern="\+[0-9]{1,3} [0-9]{4,14}">
                     <legend></legend>
-                    <!-- <span class="notification">Please insert your phone number using the following format: +123 1234567890.</span> -->
+                    @if (!phone.valid && phone.touched && !phone.disabled) {
+                        <span class="notification">Please insert your phone number using the following format: +123 1234567890.</span>
+                    }
                 </fieldset>
         
                 <div class="btn-create-container">            

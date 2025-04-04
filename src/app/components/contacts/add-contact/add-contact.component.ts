@@ -45,7 +45,7 @@ export class AddContactComponent {
     if (form.invalid) {
       console.log('form invalid');
       this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
-      return; // Senden verhindern, wenn das Formular ungültig ist
+      return;
     }
     this.isLoading = true;
     this.successMessage = '';
@@ -55,6 +55,7 @@ export class AddContactComponent {
       await this.dataBaseService.addData('contacts', this.newContact); // 'contacts' als Sammlungsname
       this.successMessage = 'Kontakt erfolgreich gespeichert!';
       form.resetForm();
+      this.hideAddContactForm();
     } catch (error: any) {
       this.errorMessage = 'Fehler beim Speichern des Kontakts: ' + error.message;
       console.error('Fehler beim Speichern des Kontakts: ', error);
@@ -62,26 +63,5 @@ export class AddContactComponent {
       this.isLoading = false;
     }
   }
-
-  //TODO Reactive Forms
-
-
-
-//von meinem Portfolio:
-  // onSubmit(ngForm: NgForm) {
-  //   if (ngForm.submitted && ngForm.form.valid) {
-  //     this.http.post(this.post.endPoint, this.post.body(this.contactData))
-  //       .subscribe({
-  //         next: (response) => {
-  //           this.showMailSentInfo();
-  //           ngForm.resetForm();
-  //         },
-  //         error: (error) => {
-  //           console.error(error);
-  //         },
-  //         complete: () => this.showMailNotSentInfo(),
-  //       });
-  //   }
-  // }
 
 }

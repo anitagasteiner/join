@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { CommonModule } from '@angular/common';
 import { GeneralService } from '../../general.service';

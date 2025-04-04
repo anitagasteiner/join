@@ -88,9 +88,24 @@ $colors: (
     border: 2px solid $border-color;
 }
 
+@mixin border-top-grey-light {
+    $border-color: map.get($colors, "grey-light");
+    border-top: 2px solid $border-color;
+}
+
 @mixin border-bottom-grey-light {
     $border-color: map.get($colors, "grey-light");
     border-bottom: 2px solid $border-color;
+}
+
+@mixin border-left-grey-light {
+    $border-color: map.get($colors, "grey-light");
+    border-left: 2px solid $border-color;
+}
+
+@mixin border-right-grey-light {
+    $border-color: map.get($colors, "grey-light");
+    border-right: 2px solid $border-color;    
 }
 
 @mixin border-ivory {

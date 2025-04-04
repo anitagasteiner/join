@@ -12,6 +12,9 @@ header {
     @include bp.lg {
         height: 96px;
         padding: 20px 36px;
+        @include colors.border-left-grey-light;
+        @include colors.border-right-grey-light;
+        @include colors.border-top-grey-light;
     }
     >img {
         height: 39px;

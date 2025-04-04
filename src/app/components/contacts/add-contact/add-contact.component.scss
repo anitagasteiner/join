@@ -77,18 +77,21 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
-    >fieldset >input {
-        font-size: 19px;
-        width: 364px;
-        margin: 0 16px;
-        border-radius: 0;
-        border: none;
-        padding-left: 21px;
-        @include colors.border-bottom-grey-light;
+    gap: 40px;
+    >fieldset{
+        position: relative;    
+        >input {
+            font-size: 19px;
+            width: 364px;
+            margin: 0 16px;
+            border-radius: 0;
+            border: none;
+            padding-left: 21px;
+            @include colors.border-bottom-grey-light;
+        }
     }
     >div >input {
-        margin-top: 76px;
+        margin-top: 52px;
         width: auto;
         padding: 10px 38px 10px 12px;
         background-image: url('/img/check.svg');
@@ -109,6 +112,15 @@ form {
 
 #phone {
     background: url('/img/phone.svg') no-repeat right 8px center;
+}
+
+.notification {
+    position: absolute;
+    left: 8px;
+    top: 32px;
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .btn-create {
