@@ -39,7 +39,10 @@
         
                 <div class="btn-create-container">            
                     <input class="btn-submit" type="submit" value="Create contact">
-                </div>  
+                    @if (contactAdded) {
+                        <div class="contact-added">Contact successfully added.</div>
+                    }
+                </div>
         
             </form>
         
