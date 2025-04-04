@@ -18,6 +18,8 @@ export class NavbarComponent {
 
   generalService = inject(GeneralService);
 
+  constructor() { }
+
   changeColor(btn: string) {
     this.generalService.activeNavBtn = btn; 
   }

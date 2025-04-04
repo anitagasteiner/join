@@ -18,9 +18,12 @@ export class BoardComponent {
 
   tasks$: Observable<any[]>;
 
-  generalService = inject(GeneralService);
+  // generalService = inject(GeneralService);
 
-  constructor(private dataBaseService: DataBaseService) {
+  constructor(
+    private dataBaseService: DataBaseService,
+    private generalService: GeneralService
+  ) {
     this.tasks$ = this.dataBaseService.getData('tasks');
     this.generalService.activeNavBtn = 'board';
   }

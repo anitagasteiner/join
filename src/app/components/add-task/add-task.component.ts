@@ -9,9 +9,9 @@ import { GeneralService } from '../../general.service';
 })
 export class AddTaskComponent {
 
-  generalService = inject(GeneralService);
+  // generalService = inject(GeneralService);
 
-  constructor() {
+  constructor(private generalService: GeneralService) {
     this.generalService.activeNavBtn = 'add-task';
   }
 
