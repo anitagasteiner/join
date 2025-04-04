@@ -7,7 +7,8 @@ $breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1440px
+  xxl: 1440px,
+  xxxl: 1600px
 );
 
 // @mixin xxs {
@@ -113,3 +114,12 @@ $breakpoints: (
 //     @content;
 //   }
 // }
+
+
+@mixin xxxl {
+  $value: map.get($breakpoints, xxxl);
+
+  @media only screen and (min-width: #{$value}) {
+    @content;
+  }
+}
