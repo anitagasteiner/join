@@ -8,9 +8,11 @@ export class GeneralService {
   activeNavBtn: string = 'summary';
 
   addContactFormOpened: boolean = false;
+  editContactFormOpened: boolean = false;
 
-  hideAddContactForm() {
+  hideContactForm() {
     this.addContactFormOpened = false;
+    this.editContactFormOpened = false;    
   }
 
 }

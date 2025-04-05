@@ -24,7 +24,7 @@
             <div class="contact-head-right">
                 <div>Katharina Hofstetter</div>
                 <div class="contact-edit-delete">
-                    <div>
+                    <div (click)="showEditContactForm()">
                         <img src="/img/edit.svg">
                         Edit
                     </div>
@@ -55,7 +55,7 @@
 
     </div>
 
-    <div class="add-contact-container" [ngClass]="{'d-none': generalService.addContactFormOpened == false}">
+    <div class="add-contact-container" [ngClass]="{'d-none': !generalService.addContactFormOpened && !generalService.editContactFormOpened}">
         <app-add-edit-contact></app-add-edit-contact>
     </div>
 

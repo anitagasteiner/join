@@ -11,7 +11,10 @@ import { GeneralService } from '../../../../general.service';
     FormsModule
   ],
   templateUrl: './add-contact-form.component.html',
-  styleUrl: './add-contact-form.component.scss',
+  styleUrls: [
+    './add-contact-form.component.scss',
+    './../add-edit-contact-form.scss'
+  ],
   providers: [DataBaseService] // Service hier bereitstellen!
 })
 export class AddContactFormComponent {
@@ -42,7 +45,7 @@ export class AddContactFormComponent {
       form.resetForm();
       this.contactAdded = true;
       setTimeout(() => {
-        this.generalService.hideAddContactForm();
+        this.generalService.hideContactForm();
         this.contactAdded = false;
       }, 1000);
     } catch (error: any) {

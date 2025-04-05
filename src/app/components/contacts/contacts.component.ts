@@ -31,4 +31,8 @@ export class ContactsComponent {
     this.generalService.addContactFormOpened = true;
   }
 
+  showEditContactForm() {
+    this.generalService.editContactFormOpened = true;
+  }
+
 }

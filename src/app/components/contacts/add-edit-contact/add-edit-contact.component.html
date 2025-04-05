@@ -2,17 +2,25 @@
     
     <div class="add-edit-contact-container">
 
-        <img src="/img/close.svg" (click)="this.generalService.hideAddContactForm()">
+        <img src="/img/close.svg" (click)="this.generalService.hideContactForm()">
 
-        <div class="top-container">        
-            <h2>Add contact</h2>
+        <div class="top-container">
+            @if (this.generalService.addContactFormOpened) {
+                <h2>Add contact</h2>
+            }
+            @if (this.generalService.editContactFormOpened) {
+                <h2>Edit contact</h2>
+            }
             <div>Tasks are better with a team!</div>
         </div>
         
         <div class="bottom-container">
-
-            <app-add-contact-form></app-add-contact-form>            
-        
+            @if (this.generalService.addContactFormOpened) {
+                <app-add-contact-form></app-add-contact-form>
+            }
+            @if (this.generalService.editContactFormOpened) {
+                <app-edit-contact-form></app-edit-contact-form>
+            }                    
         </div>
 
     </div>
