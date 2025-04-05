@@ -1,23 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
-import { GeneralService } from '../../../general.service';
 import { CommonModule } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { DataBaseService } from '../../../data-base.service';
-
+import { DataBaseService } from '../../../../data-base.service';
+import { GeneralService } from '../../../../general.service';
 
 @Component({
-  selector: 'app-add-contact',
+  selector: 'app-add-contact-form',
   imports: [
     CommonModule,
     FormsModule
   ],
-  templateUrl: './add-contact.component.html',
-  styleUrl: './add-contact.component.scss',
+  templateUrl: './add-contact-form.component.html',
+  styleUrl: './add-contact-form.component.scss',
   providers: [DataBaseService] // Service hier bereitstellen!
 })
-export class AddContactComponent {
-
-  // generalService = inject(GeneralService);
+export class AddContactFormComponent {
 
   newContact = {
       name: "",
@@ -34,10 +31,6 @@ export class AddContactComponent {
     private generalService: GeneralService
   ) {}
 
-  hideAddContactForm() {
-    this.generalService.addContactFormOpened = false;
-  }
-
   async onSubmit(form: NgForm) {
     if (form.invalid) {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
@@ -49,13 +42,14 @@ export class AddContactComponent {
       form.resetForm();
       this.contactAdded = true;
       setTimeout(() => {
-        this.hideAddContactForm();
+        this.generalService.hideAddContactForm();
         this.contactAdded = false;
       }, 1000);
     } catch (error: any) {
       console.error('Fehler beim Speichern des Kontakts: ', error);
-    } finally {
     }
+    // finally {
+    // }
   }
 
 }

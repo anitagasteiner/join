@@ -19,7 +19,7 @@
     }
 }
 
-.add-contact-container {
+.add-edit-contact-container {
     max-width: 396px;
     max-height: 650px;
     box-sizing: border-box;
@@ -74,76 +74,4 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    >fieldset{
-        position: relative;    
-        >input {
-            font-size: 19px;
-            width: 364px;
-            margin: 0 16px;
-            border-radius: 0;
-            border: none;
-            padding-left: 21px;
-            @include colors.border-bottom-grey-light;
-        }
-    }
-    >div >input {
-        margin-top: 52px;
-        width: auto;
-        padding: 10px 38px 10px 12px;
-        background-image: url('/img/check.svg');
-        background-repeat: no-repeat;
-        background-position: right 8px center;
-        background-size: 24px 24px;
-        @include colors.color-ivory;
-    }
-}
-
-#name {
-    background: url('/img/person.svg') no-repeat right 8px center;
-}
-
-#email {
-    background: url('/img/mail.svg') no-repeat right 8px center;
-}
-
-#phone {
-    background: url('/img/phone.svg') no-repeat right 8px center;
-}
-
-.notification {
-    position: absolute;
-    left: 8px;
-    top: 32px;
-    color: red;
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.btn-create-container {
-    position: relative;
-}
-
-.btn-create {
-    @include colors.color-ivory;
-}
-
-.contact-added {
-    @include colors.border-grey-light;
-    @include colors.color-dark;
-    @include colors.bg-ivory;
-    border-radius: 10px;
-    padding: 5px;
-    font-size: 18px;
-    text-align: center;
-    transform:  rotate(-6deg);
-    position: absolute;
-    top: 36px;
-    left: -5px;    
 }

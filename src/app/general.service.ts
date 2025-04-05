@@ -9,4 +9,8 @@ export class GeneralService {
 
   addContactFormOpened: boolean = false;
 
+  hideAddContactForm() {
+    this.addContactFormOpened = false;
+  }
+
 }

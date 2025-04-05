@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import { GeneralService } from '../../general.service';
 import { DataBaseService } from '../../data-base.service';
 import { Observable } from 'rxjs';
-import { AddContactComponent } from './add-contact/add-contact.component';
+import { AddEditContactComponent } from './add-edit-contact/add-edit-contact.component';
 
 @Component({
   selector: 'app-contacts',
   imports: [
     CommonModule,
     ContactComponent,
-    AddContactComponent
+    AddEditContactComponent
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
