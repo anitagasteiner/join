@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DataBaseService } from '../../../../data-base.service';
 import { GeneralService } from '../../../../general.service';
@@ -19,13 +19,12 @@ import { GeneralService } from '../../../../general.service';
 })
 export class EditContactFormComponent {
 
-  newContact = {
-    name: "",
-    email: "",
-    phone: ""
-  };
+  @Input() contact!: any; // kommt zB aus der Liste
+  @Output() updated = new EventEmitter<void>();
+  @Output() cancelled = new EventEmitter<void>();
 
-  contactAdded: boolean = false;
+  editedContact: any = {};
+  contactEdited: boolean = false;
 
   @ViewChild('contactForm') contactForm!: NgForm; // Zugriff auf das Formular
 
@@ -34,25 +33,38 @@ export class EditContactFormComponent {
     private generalService: GeneralService
   ) {}
 
+  ngOnInit() {
+    this.editedContact = { ...this.contact }; // Kopie, nicht direktes Binding!
+  }
+
   async onSubmit(form: NgForm) {
     if (form.invalid) {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
     }
     try {
-      console.log('Speichere Kontakt:', this.newContact);
-      await this.dataBaseService.addData('contacts', this.newContact); // 'contacts' als Sammlungsname
+      console.log('Ändere Kontakt:', this.editedContact);
+      await this.dataBaseService.updateData('contacts', this.editedContact.id, {
+        name: this.editedContact.name,
+        email: this.editedContact.email,
+        phone: this.editedContact.phone
+      });
       form.resetForm();
-      this.contactAdded = true;
+      this.contactEdited = true;
+      //this.updated.emit(); // Optional: Eltern-Komponente informieren
       setTimeout(() => {
         this.generalService.hideContactForm();
-        this.contactAdded = false;
+        this.contactEdited = false;
       }, 1000);
     } catch (error: any) {
-      console.error('Fehler beim Speichern des Kontakts: ', error);
+      console.error('Fehler beim Ändern des Kontakts: ', error);
     }
     // finally {
     // }
+  }
+
+  onCancel() {
+    this.cancelled.emit(); // zB Modal schließen
   }
 
 }

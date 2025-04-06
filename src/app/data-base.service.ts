@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, doc, Firestore, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -19,6 +19,13 @@ export class DataBaseService {
     return this.ngZone.run(() => { // Diese Firebase-Operation wird innerhalb der Angular-Zone ausgeführt, damit Change Detection zuverlässig funktioniert.
       const collectionRef = collection(this.firestore, collectionName);
       return addDoc(collectionRef, data);
+    });
+  }
+
+  async updateData(collectionName: string, docId: string, newData: any): Promise<void> {
+    const docRef = doc(this.firestore, collectionName, docId);
+    return this.ngZone.run(() => {
+      return updateDoc(docRef, newData);
     });
   }
 

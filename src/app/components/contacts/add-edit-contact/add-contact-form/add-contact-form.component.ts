@@ -20,9 +20,9 @@ import { GeneralService } from '../../../../general.service';
 export class AddContactFormComponent {
 
   newContact = {
-      name: "",
-      email: "",
-      phone: ""
+    name: "",
+    email: "",
+    phone: ""
   };
 
   contactAdded: boolean = false;
