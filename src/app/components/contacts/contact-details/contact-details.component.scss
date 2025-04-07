@@ -8,7 +8,6 @@
 }
 
 .contact-icon {
-    @include colors.bg-pink;
     @include colors.color-ivory;
     border-radius: 50%;
     min-width: 120px;

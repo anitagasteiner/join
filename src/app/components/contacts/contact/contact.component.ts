@@ -21,4 +21,8 @@ export class ContactComponent {
     color: ""
   };
 
+  showContactDetails() {
+    console.log('show contact details');
+  }
+
 }

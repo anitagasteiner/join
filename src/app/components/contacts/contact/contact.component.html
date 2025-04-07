@@ -1,4 +1,4 @@
-<div class="contact-container">
+<div class="contact-container" (click)="showContactDetails()">
 
     <!-- <div class="contact-icon">AB</div> -->
     <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
