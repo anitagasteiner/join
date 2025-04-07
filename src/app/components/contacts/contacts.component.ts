@@ -5,13 +5,15 @@ import { GeneralService } from '../../general.service';
 import { DataBaseService } from '../../data-base.service';
 import { Observable } from 'rxjs';
 import { AddEditContactComponent } from './add-edit-contact/add-edit-contact.component';
+import { ContactDetailsComponent } from './contact-details/contact-details.component';
 
 @Component({
   selector: 'app-contacts',
   imports: [
     CommonModule,
     ContactComponent,
-    AddEditContactComponent
+    AddEditContactComponent,
+    ContactDetailsComponent
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
@@ -31,8 +33,6 @@ export class ContactsComponent {
     this.generalService.addContactFormOpened = true;
   }
 
-  showEditContactForm() {
-    this.generalService.editContactFormOpened = true;
-  }
+
 
 }
