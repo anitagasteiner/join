@@ -22,8 +22,6 @@ export class ContactsComponent {
 
   contacts$: Observable<any[]>;
 
-  generalService = inject(GeneralService);
-
   displayedContact = {
     name: "",
     email: "",
@@ -31,17 +29,20 @@ export class ContactsComponent {
     color: ""
   };
 
+  generalService = inject(GeneralService);
+
   constructor(private dataBaseService: DataBaseService) {
     this.contacts$ = this.dataBaseService.getData('contacts');
     this.generalService.activeNavBtn = 'contacts';
   }
 
-  showAddContactForm() {
-    this.generalService.addContactFormOpened = true;
-  }
-
   showContactDetails(contact: any) {
     this.displayedContact = contact;
+    this.generalService.setSelectedContact(contact);
+  }
+
+  showAddContactForm() {
+    this.generalService.addContactFormOpened = true;
   }
 
 }

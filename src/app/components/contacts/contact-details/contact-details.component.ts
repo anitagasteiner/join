@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { GeneralService } from '../../../general.service';
 import { CommonModule } from '@angular/common';
 import { InitialsPipe } from '../../../initials.pipe';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contact-details',
@@ -14,12 +15,14 @@ import { InitialsPipe } from '../../../initials.pipe';
 })
 export class ContactDetailsComponent {
 
+  displayedContact$!: Observable<any>; // wird async verwendet im Template
+
   @Input()displayedContact: any;
 
-  constructor(private generalService: GeneralService) {}
+  generalService = inject(GeneralService);
 
-  showEditContactForm() {
-    this.generalService.showContactForm(this.displayedContact);
+  constructor() {
+    this.displayedContact$ = this.generalService.selectedContact$;
   }
 
 }

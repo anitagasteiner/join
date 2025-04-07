@@ -30,6 +30,10 @@ export class AddEditContactComponent {
 
   onContactUpdated() {
     this.generalService.hideContactForm();
+
+
+
+    
   }
 
 }

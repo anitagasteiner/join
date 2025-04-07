@@ -5,7 +5,7 @@
     <div class="contact-head-right">
         <div>{{displayedContact.name}}</div>
         <div class="contact-edit-delete">
-            <div (click)="showEditContactForm()">
+            <div (click)="this.generalService.showEditContactForm(this.displayedContact)">
                 <img src="/img/edit.svg">
                 Edit
             </div>
