@@ -1,9 +1,9 @@
 <div class="contact-head-container">
 
-    <div class="contact-icon">AB</div>
+    <div class="contact-icon" [ngClass]="displayedContact.color">{{ displayedContact.name | initials }}</div>
 
     <div class="contact-head-right">
-        <div>Katharina Hofstetter</div>
+        <div>{{displayedContact.name}}</div>
         <div class="contact-edit-delete">
             <div (click)="showEditContactForm()">
                 <img src="/img/edit.svg">
@@ -24,12 +24,12 @@
 
     <div class="contact-mail-container">
         <h3>Email</h3>
-        <div class="contact-mail">kathi.h&#64;gmail.com</div>
+        <div class="contact-mail">{{displayedContact.email}}</div>
     </div>
 
     <div class="contact-phone-container">
         <h3>Phone</h3>
-        <div>+43 680 123 45 67</div>
+        <div>{{displayedContact.phone}}</div>
     </div>            
 
 </div>

@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { InitialsPipe } from '../../../initials.pipe';
-
 
 @Component({
   selector: 'app-contact',
@@ -20,9 +19,5 @@ export class ContactComponent {
     phone: "+436801234567",
     color: ""
   };
-
-  showContactDetails() {
-    console.log('show contact details');
-  }
 
 }

@@ -24,6 +24,13 @@ export class ContactsComponent {
 
   generalService = inject(GeneralService);
 
+  displayedContact = {
+    name: "",
+    email: "",
+    phone: "",
+    color: ""
+  };
+
   constructor(private dataBaseService: DataBaseService) {
     this.contacts$ = this.dataBaseService.getData('contacts');
     this.generalService.activeNavBtn = 'contacts';
@@ -33,6 +40,8 @@ export class ContactsComponent {
     this.generalService.addContactFormOpened = true;
   }
 
-
+  showContactDetails(contact: any) {
+    this.displayedContact = contact;
+  }
 
 }
