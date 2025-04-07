@@ -1,17 +1,23 @@
 @use "sass:map";
 
 $colors: (
-    "orange-bright-tasks": rgba(255, 122, 0, 1),
+    "orange-bright-tasks": rgba(255, 165, 0, 1),
     "blue-bright-tasks": rgba(0, 56, 255, 1),
     "blue-bright": rgba(0, 93, 255, 1),
-    "pink": rgba(252, 113, 255, 1),
     "blue-light": rgba(210, 227, 255, 1),
     "blue-dark": rgba(69, 137, 255, 1),
     "grey-light": rgba(224, 224, 224, 1),
     "grey-light-transparent": rgba(224, 224, 224, 0.5),
     "grey-dark": rgba(42, 54, 71, 1),
     "black-light": rgba(66, 82, 110, 1),
-    "ivory": rgba(255, 250, 240, 1)
+    "ivory": rgba(255, 250, 240, 1),
+    "contact-blue": rgba(0, 190, 232, 1),
+    "contact-orange": rgba(255, 122, 0, 1),
+    "contact-violet": rgba(147, 39, 255, 1),
+    "contact-blueviolet": rgba(110, 82, 255,1),
+    "contact-pink": rgba(252, 113, 255, 1),
+    // "contact-green": rgba(144, 238, 144, 1),
+    "contact-green": rgba(60, 179, 113, 1)
 );
 
 @mixin bg-ivory {
@@ -34,8 +40,33 @@ $colors: (
     background-color: $bg-color;
 }
 
-@mixin bg-pink {
-    $bg-color: map.get($colors, "pink");
+@mixin bg-contact-blue {
+    $bg-color: map.get($colors, "contact-blue");
+    background-color: $bg-color;
+}
+
+@mixin bg-contact-orange {
+    $bg-color: map.get($colors, "contact-orange");
+    background-color: $bg-color;
+}
+
+@mixin bg-contact-violet {
+    $bg-color: map.get($colors, "contact-violet");
+    background-color: $bg-color;
+}
+
+@mixin bg-contact-blueviolet {
+    $bg-color: map.get($colors, "contact-blueviolet");
+    background-color: $bg-color;
+}
+
+@mixin bg-contact-pink {
+    $bg-color: map.get($colors, "contact-pink");
+    background-color: $bg-color;
+}
+
+@mixin bg-contact-green {
+    $bg-color: map.get($colors, "contact-green");
     background-color: $bg-color;
 }
 

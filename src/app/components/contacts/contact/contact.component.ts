@@ -17,7 +17,8 @@ export class ContactComponent {
   @Input()contact = {
     name: "Katharina Hofstetter",
     email: "kathi.h@gmail.com",
-    phone: "+436801234567"
+    phone: "+436801234567",
+    color: ""
   };
 
 }

@@ -22,8 +22,11 @@ export class AddContactFormComponent {
   newContact = {
     name: "",
     email: "",
-    phone: ""
+    phone: "",
+    color: ""
   };
+
+  availableContactColors = ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green']
 
   contactAdded: boolean = false;
 
@@ -39,6 +42,7 @@ export class AddContactFormComponent {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
     }
+    this.newContact.color = this.availableContactColors[Math.floor(Math.random() * this.availableContactColors.length)];
     try {
       console.log('Speichere Kontakt:', this.newContact);
       await this.dataBaseService.addData('contacts', this.newContact); // 'contacts' als Sammlungsname
