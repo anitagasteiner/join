@@ -19,7 +19,7 @@ export class ContactDetailsComponent {
   constructor(private generalService: GeneralService) {}
 
   showEditContactForm() {
-    this.generalService.editContactFormOpened = true;
+    this.generalService.showContactForm(this.displayedContact);
   }
 
 }

@@ -14,8 +14,7 @@ import { GeneralService } from '../../../../general.service';
   styleUrls: [
     './edit-contact-form.component.scss',
     './../add-edit-contact-form.scss'
-  ],
-  providers: [DataBaseService] // Service hier bereitstellen!
+  ]
 })
 export class EditContactFormComponent {
 
@@ -52,7 +51,7 @@ export class EditContactFormComponent {
       });
       form.resetForm();
       this.contactEdited = true;
-      //this.updated.emit(); // Optional: Eltern-Komponente informieren
+      this.updated.emit(); // Optional: Eltern-Komponente informieren -> Dann kann ich zB direkt nach dem Speichern den Kontakt neu laden.
       setTimeout(() => {
         this.generalService.hideContactForm();
         this.contactEdited = false;

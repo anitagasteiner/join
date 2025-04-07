@@ -3,14 +3,18 @@
     <div class="contacts-container">
 
         <div class="btn-container">
+
             <button class="btn-submit" (click)="showAddContactForm()"><img src='/img/add-contact.svg'></button>
             <button class="btn-submit" (click)="showAddContactForm()">Add new contact</button>
-        </div>
+
+        </div>    
 
         <div class="contact-list-container">
+
             @for (contact of contacts$ | async; track contact.name; let index = $index) {
                 <app-contact [contact]="contact" (click)="showContactDetails(contact)"></app-contact>
             }
+
         </div>
  
     </div>
@@ -23,8 +27,8 @@
 
     <div class="add-contact-container" [ngClass]="{'d-none': !generalService.addContactFormOpened && !generalService.editContactFormOpened}">
 
-        <app-add-edit-contact></app-add-edit-contact>
-        
+            <app-add-edit-contact></app-add-edit-contact>
+
     </div>
 
 </div>

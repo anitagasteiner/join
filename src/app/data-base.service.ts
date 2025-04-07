@@ -2,7 +2,6 @@ import { Injectable, NgZone } from '@angular/core';
 import { addDoc, collection, collectionData, doc, Firestore, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
