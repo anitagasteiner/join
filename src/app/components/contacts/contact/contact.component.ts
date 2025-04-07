@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { InitialsPipe } from '../../../initials.pipe';
 
 
 @Component({
   selector: 'app-contact',
   imports: [
-    CommonModule
+    CommonModule,
+    InitialsPipe
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
