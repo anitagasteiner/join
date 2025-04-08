@@ -52,6 +52,30 @@ body {
     display: none;
 }
 
+.orange {
+    @include colors.bg-contact-orange;
+}
+
+.blue {
+    @include colors.bg-contact-blue;
+}
+
+.violet {
+    @include colors.bg-contact-violet;
+}
+
+.blueviolet {
+    @include colors.bg-contact-blueviolet;
+}
+
+.pink {
+    @include colors.bg-contact-pink;
+}
+
+.green {
+    @include colors.bg-contact-green;
+}
+
 
 // Forms
 

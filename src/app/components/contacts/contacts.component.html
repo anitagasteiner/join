@@ -11,9 +11,10 @@
 
         <div class="contact-list-container">
 
-            @for (contact of contacts$ | async; track contact.name; let index = $index) {
+            @for (contact of contacts$ | async; track contact.id; let index = $index) { 
                 <app-contact [contact]="contact" (click)="showContactDetails(contact)"></app-contact>
             }
+            <!-- Mit track contact.id sage ich Angular, dass es id als eindeutigen Identifikator verwenden soll (für Change Detection). -->
 
         </div>
  
@@ -21,7 +22,8 @@
 
     <div class="contact-details-container">
 
-        <app-contact-details [displayedContact]="displayedContact"></app-contact-details>
+        <app-contact-details [ngClass]="{'d-none': !contactDetailsOpened}" [displayedContact]="displayedContact"></app-contact-details>
+        <!-- Die Details bekomme ich über das Input-Property displayedContact. -->
 
     </div>
 

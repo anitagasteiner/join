@@ -20,7 +20,7 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
 })
 export class ContactsComponent {
 
-  contacts$: Observable<any[]>;
+  contacts$: Observable<any[]>; // contacts$ ist ein Observable mit der Liste aller Kontakte
 
   displayedContact = {
     name: "",
@@ -31,6 +31,8 @@ export class ContactsComponent {
 
   generalService = inject(GeneralService);
 
+  contactDetailsOpened: boolean = false;
+
   constructor(private dataBaseService: DataBaseService) {
     this.contacts$ = this.dataBaseService.getData('contacts');
     this.generalService.activeNavBtn = 'contacts';
@@ -39,6 +41,7 @@ export class ContactsComponent {
   showContactDetails(contact: any) {
     this.displayedContact = contact;
     this.generalService.setSelectedContact(contact);
+    this.contactDetailsOpened = true;
   }
 
   showAddContactForm() {
