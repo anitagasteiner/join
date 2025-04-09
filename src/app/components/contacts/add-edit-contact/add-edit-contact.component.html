@@ -18,7 +18,7 @@
             @if (this.generalService.addContactFormOpened) {
                 <app-add-contact-form></app-add-contact-form>
             }
-            @if (this.generalService.editContactFormOpened) {
+            @if (this.generalService.editContactFormOpened && generalService.contactToBeEdited) {
                 <app-edit-contact-form [contact]="generalService.contactToBeEdited" (updated)="onContactUpdated()" (cancelled)="generalService.hideContactForm()"></app-edit-contact-form>
             }                    
         </div>
