@@ -16,14 +16,14 @@ import { Contact } from './../../../models/contact.model';
 })
 export class ContactDetailsComponent {
 
-  displayedContact$!: Observable<Contact>; // wird async verwendet im Template
-
-  @Input()displayedContact: any;
+  @Input()displayedContact!: Contact;
 
   generalService = inject(GeneralService);
 
+  displayedContact$: Observable<Contact> = this.generalService.selectedContact$; // displayedContact$ wird als Observable<Contact> deklariert und sofort auf den Wert des selectedContact$-Streams aus dem GeneralService gesetzt
+
   constructor() {
-    this.displayedContact$ = this.generalService.selectedContact$;
+    // this.displayedContact$ = this.generalService.selectedContact$;
   }
 
 }
