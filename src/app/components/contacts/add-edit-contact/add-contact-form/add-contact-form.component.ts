@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DataBaseService } from '../../../../data-base.service';
 import { GeneralService } from '../../../../general.service';
+import { Contact } from './../../../../models/contact.model';
 
 @Component({
   selector: 'app-add-contact-form',
@@ -19,11 +20,12 @@ import { GeneralService } from '../../../../general.service';
 })
 export class AddContactFormComponent {
 
-  newContact = {
-    name: "",
-    email: "",
-    phone: "",
-    color: ""
+  newContact: Contact = {
+    id: '',
+    name: '',
+    email: '',
+    phone: '',
+    color: ''
   };
 
   availableContactColors = ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green']

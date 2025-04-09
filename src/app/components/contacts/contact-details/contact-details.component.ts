@@ -3,6 +3,7 @@ import { GeneralService } from '../../../general.service';
 import { CommonModule } from '@angular/common';
 import { InitialsPipe } from '../../../initials.pipe';
 import { Observable } from 'rxjs';
+import { Contact } from './../../../models/contact.model';
 
 @Component({
   selector: 'app-contact-details',
@@ -15,7 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class ContactDetailsComponent {
 
-  displayedContact$!: Observable<any>; // wird async verwendet im Template
+  displayedContact$!: Observable<Contact>; // wird async verwendet im Template
 
   @Input()displayedContact: any;
 

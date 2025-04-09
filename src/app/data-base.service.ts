@@ -15,7 +15,7 @@ export class DataBaseService {
   }
 
   async addData(collectionName: string, data: any): Promise<any> {
-    return this.ngZone.run(() => { // Diese Firebase-Operation wird innerhalb der Angular-Zone ausgeführt, damit Change Detection zuverlässig funktioniert.
+    return this.ngZone.run(() => { 
       const collectionRef = collection(this.firestore, collectionName);
       return addDoc(collectionRef, data);
     });

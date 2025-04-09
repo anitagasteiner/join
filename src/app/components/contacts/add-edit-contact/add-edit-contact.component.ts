@@ -3,6 +3,7 @@ import { GeneralService } from '../../../general.service';
 import { CommonModule } from '@angular/common';
 import { AddContactFormComponent } from './add-contact-form/add-contact-form.component';
 import { EditContactFormComponent } from './edit-contact-form/edit-contact-form.component';
+import { Contact } from './../../../models/contact.model';
 
 
 @Component({
@@ -17,11 +18,12 @@ import { EditContactFormComponent } from './edit-contact-form/edit-contact-form.
 })
 export class AddEditContactComponent {
 
-  @Input()contact = {
-    name: "Katharina Hofstetter",
-    email: "kathi.h@gmail.com",
-    phone: "+436801234567",
-    color: ""
+  @Input()contact: Contact = {
+    id: '',
+    name: '',
+    email: '',
+    phone: '',
+    color: ''
   };
 
   generalService = inject(GeneralService);
@@ -30,10 +32,6 @@ export class AddEditContactComponent {
 
   onContactUpdated() {
     this.generalService.hideContactForm();
-
-
-
-    
   }
 
 }

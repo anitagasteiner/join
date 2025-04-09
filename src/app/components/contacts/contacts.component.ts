@@ -6,6 +6,7 @@ import { DataBaseService } from '../../data-base.service';
 import { Observable } from 'rxjs';
 import { AddEditContactComponent } from './add-edit-contact/add-edit-contact.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
+import { Contact } from './../../models/contact.model';
 
 @Component({
   selector: 'app-contacts',
@@ -20,13 +21,14 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
 })
 export class ContactsComponent {
 
-  contacts$: Observable<any[]>; // contacts$ ist ein Observable mit der Liste aller Kontakte
+  contacts$: Observable<Contact[]>; // contacts$ ist ein Observable mit der Liste aller Kontakte
 
-  displayedContact = {
-    name: "",
-    email: "",
-    phone: "",
-    color: ""
+  displayedContact: Contact = {
+    id: '',
+    name: '',
+    email: '',
+    phone: '',
+    color: ''
   };
 
   generalService = inject(GeneralService);
@@ -38,7 +40,7 @@ export class ContactsComponent {
     this.generalService.activeNavBtn = 'contacts';
   }
 
-  showContactDetails(contact: any) {
+  showContactDetails(contact: Contact) {
     this.displayedContact = contact;
     this.generalService.setSelectedContact(contact);
     this.contactDetailsOpened = true;

@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 import { FormsModule, NgForm } from '@angular/forms';
 import { DataBaseService } from '../../../../data-base.service';
 import { GeneralService } from '../../../../general.service';
+import { Contact } from './../../../../models/contact.model';
 
 @Component({
   selector: 'app-edit-contact-form',
@@ -18,7 +19,7 @@ import { GeneralService } from '../../../../general.service';
 })
 export class EditContactFormComponent {
 
-  @Input() contact!: any; // kommt zB aus der Liste
+  @Input() contact!: Contact; // kommt zB aus der Liste
   @Output() updated = new EventEmitter<void>();
   @Output() cancelled = new EventEmitter<void>();
 

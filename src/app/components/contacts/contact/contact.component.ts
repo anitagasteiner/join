@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
 import { InitialsPipe } from '../../../initials.pipe';
+import { Contact } from './../../../models/contact.model';
 
 @Component({
   selector: 'app-contact',
@@ -13,11 +14,12 @@ import { InitialsPipe } from '../../../initials.pipe';
 })
 export class ContactComponent {
 
-  @Input()contact = {
-    name: "Katharina Hofstetter",
-    email: "kathi.h@gmail.com",
-    phone: "+436801234567",
-    color: ""
+  @Input()contact: Contact = {
+    id: '',
+    name: '',
+    email: '',
+    phone: '',
+    color: ''
   };
 
 }
