@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
-import { addDoc, collection, collectionData, doc, Firestore, updateDoc } from '@angular/fire/firestore';
+import { DocumentData } from '@angular/fire/compat/firestore';
+import { addDoc, collection, collectionData, doc, Firestore, updateDoc, WithFieldValue } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,19 +10,19 @@ export class DataBaseService {
 
   constructor(private firestore: Firestore, private ngZone: NgZone) {}
   
-  getData(data: string): Observable<any[]> {
-    const dataCollection = collection(this.firestore, data);
-    return collectionData(dataCollection, { idField: 'id' });
+  getData<T extends object>(data: string): Observable<T[]> { // Mit <T> typisiere ich den Rückgabewert, damit ich zB direkt Observable<Contact[]> bekomme.
+    const dataCollection = collection(this.firestore, data); // Ich hole mir eine Collection aus Firestore.
+    return collectionData(dataCollection, { idField: 'id' }) as Observable<T[]>; // Alle Dokumente dieser Collection werden als Observable gelesen. Mit { idField: 'id' } wird die Firebase-Dokument-ID automatisch als Feld 'id' ins Ergebnisobjekt eingebunden.
   }
 
-  async addData(collectionName: string, data: any): Promise<any> {
-    return this.ngZone.run(() => { 
+  async addData<T extends WithFieldValue<DocumentData>>(collectionName: string, data: T): Promise<any> { // T extends WithFieldValue: Das ist der Typ, den Firestore für addDoc erwartet.
+    return this.ngZone.run(() => { // ngZone.run sorgt dafür, dass Angular das UI korrekt aktualisiert, falls Firestore zB außerhalb von Angulars Change Detection läuft
       const collectionRef = collection(this.firestore, collectionName);
       return addDoc(collectionRef, data);
     });
   }
 
-  async updateData(collectionName: string, docId: string, newData: any): Promise<void> {
+  async updateData<T extends { [key: string]: any }>(collectionName: string, docId: string, newData: T): Promise<void> { // T extends { [key: string]: any } -> Das ist, was updateDoc intern braucht - ein beliebiges Objekt mit Properties.
     const docRef = doc(this.firestore, collectionName, docId);
     return this.ngZone.run(() => {
       return updateDoc(docRef, newData);

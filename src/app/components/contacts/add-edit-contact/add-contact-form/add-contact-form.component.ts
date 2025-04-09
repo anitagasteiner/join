@@ -47,7 +47,7 @@ export class AddContactFormComponent {
     this.newContact.color = this.availableContactColors[Math.floor(Math.random() * this.availableContactColors.length)];
     try {
       console.log('Speichere Kontakt:', this.newContact);
-      await this.dataBaseService.addData('contacts', this.newContact); // 'contacts' als Sammlungsname
+      await this.dataBaseService.addData<Contact>('contacts', this.newContact); // 'contacts' als Sammlungsname
       form.resetForm();
       this.contactAdded = true;
       setTimeout(() => {

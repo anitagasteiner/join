@@ -36,7 +36,7 @@ export class ContactsComponent {
   contactDetailsOpened: boolean = false;
 
   constructor(private dataBaseService: DataBaseService) {
-    this.contacts$ = this.dataBaseService.getData('contacts');
+    this.contacts$ = this.dataBaseService.getData<Contact>('contacts'); // Ich habe hier <Contact> angegeben, weil ich in der Funktion getData eine Typisierung verlange.
     this.generalService.activeNavBtn = 'contacts';
   }
 

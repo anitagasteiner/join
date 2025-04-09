@@ -44,7 +44,8 @@ export class EditContactFormComponent {
     }
     try {
       console.log('Ändere Kontakt:', this.editedContact);
-      await this.dataBaseService.updateData('contacts', this.editedContact.id, {
+      await this.dataBaseService.updateData<Contact>('contacts', this.editedContact.id, {
+        id: this.editedContact.id,
         name: this.editedContact.name,
         email: this.editedContact.email,
         phone: this.editedContact.phone,
