@@ -1,14 +1,12 @@
 <div class="contact-container">
 
-    <ng-container *ngIf="contact"> <!-- wird nur gerendert, wenn contact wirklich vorhanden ist -> Fehler wie "Cannot read properties of undefined" werden dadurch vermieden -->
-
+    @if (contact) { <!-- wird nur gerendert, wenn contact wirklich vorhanden ist -> Fehler wie "Cannot read properties of undefined" werden dadurch vermieden -->
         <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
 
         <div class="contact-name-mail-container">
             <div class="contact-name">{{contact.name}}</div>
             <div class="contact-mail">{{contact.email}}</div>
         </div>
-
-    </ng-container>    
+    }       
 
 </div>

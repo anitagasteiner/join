@@ -14,7 +14,7 @@ import { Contact } from './../../../models/contact.model';
 })
 export class ContactComponent {
 
-  @Input() contact?: Contact; // Das Fragezeichen macht das Property optional, die Komponente benötigt beim Start also nicht zwingend einen Wert für contact. In Kombination mit *ngIf="contact" in der HTML-Datei wird verhindert, dass die Komponente versucht auf contact zuzugreifen, wenn es noch gar nicht gesetzt wurde.
+  @Input()contact?: Contact; // Das Fragezeichen macht das Property optional, die Komponente benötigt beim Start also nicht zwingend einen Wert für contact. In Kombination mit @if (contact) in der HTML-Datei wird verhindert, dass die Komponente versucht auf contact zuzugreifen, wenn es noch gar nicht gesetzt wurde.
 
   // @Input()contact: Contact = {
   //   id: '',
