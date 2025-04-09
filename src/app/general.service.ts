@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Contact } from './models/contact.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneralService {
 
-  private selectedContactSubject = new BehaviorSubject<any>(null);
-  selectedContact$ = this.selectedContactSubject.asObservable();
+  private selectedContactSubject = new BehaviorSubject<any>(null); // Ein BehaviorSubject ist eine spezielle Art von Subject, das den neuesten Wert speichert und diesen Wert sofort an neue Abonnenten weitergibt.
+  selectedContact$ = this.selectedContactSubject.asObservable(); // Das $-Suffix deutet an, dass es sich um einen Observable-Stream handelt.    
 
   activeNavBtn: string = 'summary';
 
   addContactFormOpened: boolean = false;
   editContactFormOpened: boolean = false;
-  contactToBeEdited: any = null;
+  contactToBeEdited: Contact | null = null;
 
-  setSelectedContact(contact: any) {
-    this.selectedContactSubject.next(contact);
+  setSelectedContact(contact: Contact) {
+    this.selectedContactSubject.next(contact); // Wenn this.selectedContactSubject.next(contact) aufgerufen wird, wird der Wert aktualisiert, und alle Abonnenten des selectedContact$-Streams erhalten sofort den neuen Wert.
   }
 
   showEditContactForm(contact: any) {
