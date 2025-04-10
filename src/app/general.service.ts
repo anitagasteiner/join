@@ -46,7 +46,7 @@ export class GeneralService {
       setTimeout(() => {
         this.hideContactForm();
         this.contactDeleted = false;
-      }, 3000); // 1000!!!!      
+      }, 1000);
       console.log('Kontakt gelöscht:', contact);
     } catch (error) {
       console.error('Fehler beim Löschen des Kontakts:', error);

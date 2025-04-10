@@ -24,6 +24,9 @@
     max-height: 650px;
     box-sizing: border-box;
     position: relative;
+    @include bp.lg {
+        max-width: 584px;
+    }
     >img {
         width: 32px;
         height: 32px;
@@ -52,9 +55,13 @@
     border-top-left-radius: 30px;
     @include bp.lg {
         border-top-right-radius: unset;
+        height: 362px;
     }
     >div {
         font-size: 21px;
+        @include bp.lg {
+            font-size: 27px;
+        }
     }
 }
 
@@ -62,6 +69,9 @@ h2 {
     font-weight: 700;
     font-size: 47px;
     margin: 0;
+    @include bp.lg {
+        font-size: 48px;
+    }
 }
 
 .bottom-container {
@@ -74,4 +84,31 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    @include bp.lg {
+        position: unset;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 72px 81px;
+        height: auto;
+    }
+}
+
+.contact-icon {
+    @include colors.color-ivory;
+    @include colors.bg-contact-grey;
+    @include colors.border-ivory;
+    border-radius: 50%;
+    min-width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    position: absolute;
+    top: -60px;
+    @include bp.lg {
+        position: unset;
+    }
 }

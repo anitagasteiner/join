@@ -17,7 +17,8 @@ $colors: (
     "contact-blueviolet": rgba(110, 82, 255,1),
     "contact-pink": rgba(252, 113, 255, 1),
     // "contact-green": rgba(144, 238, 144, 1),
-    "contact-green": rgba(60, 179, 113, 1)
+    "contact-green": rgba(60, 179, 113, 1),
+    "contact-grey": rgba(209, 209, 209, 1)
 );
 
 @mixin bg-ivory {
@@ -42,31 +43,36 @@ $colors: (
 
 @mixin bg-contact-blue {
     $bg-color: map.get($colors, "contact-blue");
-    background-color: $bg-color;
+    background-color: $bg-color !important;
 }
 
 @mixin bg-contact-orange {
     $bg-color: map.get($colors, "contact-orange");
-    background-color: $bg-color;
+    background-color: $bg-color !important;
 }
 
 @mixin bg-contact-violet {
     $bg-color: map.get($colors, "contact-violet");
-    background-color: $bg-color;
+    background-color: $bg-color !important;
 }
 
 @mixin bg-contact-blueviolet {
     $bg-color: map.get($colors, "contact-blueviolet");
-    background-color: $bg-color;
+    background-color: $bg-color !important;
 }
 
 @mixin bg-contact-pink {
     $bg-color: map.get($colors, "contact-pink");
-    background-color: $bg-color;
+    background-color: $bg-color !important;
 }
 
 @mixin bg-contact-green {
     $bg-color: map.get($colors, "contact-green");
+    background-color: $bg-color !important;
+}
+
+@mixin bg-contact-grey {
+    $bg-color: map.get($colors, "contact-grey");
     background-color: $bg-color;
 }
 
