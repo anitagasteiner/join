@@ -1,0 +1,43 @@
+@use './../../../../shared/colors.scss' as colors;
+@use './../../../../shared/breakpoints.scss' as bp;
+
+.btns-create-clear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-create-clear {
+    font-size: 19px !important;
+    box-sizing: border-box;
+    @include bp.lg {
+        font-size: 23px !important;        
+    }
+}
+
+.btn-clear {
+    padding: 12px 23px;
+    border-radius: 10px;
+    @include colors.color-grey-dark;
+    @include colors.bg-ivory;
+    @include colors.border-grey-light;    
+    @include bp.lg {
+        padding: 16px 23px;        
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btn-create {
+    width: auto;
+    padding: 12px 38px 12px 23px;
+    background-image: url('/img/check.svg');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 24px 24px;
+    @include bp.lg {
+        padding: 16px 38px 16px 23px;
+    }
+}

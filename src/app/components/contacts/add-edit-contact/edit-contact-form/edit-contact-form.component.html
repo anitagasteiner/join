@@ -24,11 +24,14 @@
         }
     </fieldset>
 
-    <div class="btn-create-container">
-        <input class="btn-submit" type="submit" value="Save">
-        @if (contactEdited) {
-            <div class="contact-added">Contact successfully changed.</div>
-        }
+    <div class="btns-create-clear">
+        <div class="btn-create-clear btn-clear">Delete</div>
+        <div class="btn-create-container">
+            <input class="btn-create-clear btn-create btn-submit" type="submit" value="Save">
+            @if (contactEdited) {
+                <div class="contact-added">Contact successfully changed.</div>
+            }
+        </div>
     </div>
 
 </form>

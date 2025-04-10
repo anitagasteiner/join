@@ -15,12 +15,15 @@ export class GeneralService {
   addContactFormOpened: boolean = false;
   editContactFormOpened: boolean = false;
   contactToBeEdited: Contact | null = null;
+  contactToBeDeleted: Contact | null = null;
 
   setSelectedContact(contact: Contact) {
     this.selectedContactSubject.next(contact); // Wenn this.selectedContactSubject.next(contact) aufgerufen wird, wird der Wert aktualisiert, und alle Abonnenten des selectedContact$-Streams erhalten sofort den neuen Wert.
   }
 
-  showEditContactForm(contact: any) {
+  showEditContactForm(contact: Contact) {
+    console.log('edit contact form opened');
+    // console.log(contact);
     this.contactToBeEdited = contact;
     this.editContactFormOpened = true;
   }
@@ -29,6 +32,11 @@ export class GeneralService {
     this.addContactFormOpened = false;
     this.editContactFormOpened = false;
     this.contactToBeEdited = null;
+  }
+
+  deleteContact(contact: Contact) {    
+    this.contactToBeDeleted = contact;
+    console.log('you want to delete this contact: ', this.contactToBeDeleted);
   }
 
 }

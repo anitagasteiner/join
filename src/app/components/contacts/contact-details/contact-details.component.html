@@ -9,7 +9,7 @@
                 <img src="/img/edit.svg">
                 Edit
             </div>
-            <div>
+            <div (click)="this.generalService.deleteContact(this.displayedContact)">
                 <img src="/img/delete.svg">
                 Delete
             </div>
