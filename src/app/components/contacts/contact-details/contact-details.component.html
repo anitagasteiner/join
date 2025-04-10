@@ -5,11 +5,11 @@
     <div class="contact-head-right">
         <div>{{displayedContact.name}}</div>
         <div class="contact-edit-delete">
-            <div (click)="this.generalService.showEditContactForm(this.displayedContact)">
+            <div (click)="this.generalService.showEditContactForm(displayedContact)">
                 <img src="/img/edit.svg">
                 Edit
             </div>
-            <div (click)="this.generalService.deleteContact(this.displayedContact)">
+            <div (click)="this.generalService.deleteContact(displayedContact)">
                 <img src="/img/delete.svg">
                 Delete
             </div>

@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    position: relative;
 }
 
 .btn-create-clear {
@@ -40,4 +41,18 @@
     @include bp.lg {
         padding: 16px 38px 16px 23px;
     }
+}
+
+.contact-changed {
+    @include colors.border-grey-light;
+    @include colors.color-dark;
+    @include colors.bg-ivory;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 18px;
+    text-align: center;
+    transform:  rotate(-6deg);
+    position: absolute;
+    top: 0;
+    left: -5px;
 }

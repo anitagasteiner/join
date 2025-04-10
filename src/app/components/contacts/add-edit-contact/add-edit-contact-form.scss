@@ -50,24 +50,6 @@ form {
     font-weight: 400;
 }
 
-.btn-create-container {
-    position: relative;
-}
-
 .btn-create {
     @include colors.color-ivory;
-}
-
-.contact-added {
-    @include colors.border-grey-light;
-    @include colors.color-dark;
-    @include colors.bg-ivory;
-    border-radius: 10px;
-    padding: 5px;
-    font-size: 18px;
-    text-align: center;
-    transform:  rotate(-6deg);
-    position: absolute;
-    top: 36px;
-    left: -5px;    
 }

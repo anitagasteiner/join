@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { DocumentData } from '@angular/fire/compat/firestore';
-import { addDoc, collection, collectionData, doc, Firestore, updateDoc, WithFieldValue } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, updateDoc, WithFieldValue } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -28,5 +28,12 @@ export class DataBaseService {
       return updateDoc(docRef, newData);
     });
   }
+
+  async deleteData(collectionName: string, docId: string): Promise<void> {
+    const docRef = doc(this.firestore, collectionName, docId);
+    return this.ngZone.run(() => deleteDoc(docRef));
+  }
+
+//TODO Typensicherheit erhöhen
 
 }

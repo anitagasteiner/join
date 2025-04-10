@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Contact } from './models/contact.model';
+import { DataBaseService } from './data-base.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +16,15 @@ export class GeneralService {
   addContactFormOpened: boolean = false;
   editContactFormOpened: boolean = false;
   contactToBeEdited: Contact | null = null;
-  contactToBeDeleted: Contact | null = null;
+  contactDeleted: boolean = false;
+
+  constructor(private dataBaseService: DataBaseService) {}
 
   setSelectedContact(contact: Contact) {
     this.selectedContactSubject.next(contact); // Wenn this.selectedContactSubject.next(contact) aufgerufen wird, wird der Wert aktualisiert, und alle Abonnenten des selectedContact$-Streams erhalten sofort den neuen Wert.
   }
 
   showEditContactForm(contact: Contact) {
-    console.log('edit contact form opened');
-    // console.log(contact);
     this.contactToBeEdited = contact;
     this.editContactFormOpened = true;
   }
@@ -34,9 +35,22 @@ export class GeneralService {
     this.contactToBeEdited = null;
   }
 
-  deleteContact(contact: Contact) {    
-    this.contactToBeDeleted = contact;
-    console.log('you want to delete this contact: ', this.contactToBeDeleted);
+  async deleteContact(contact: Contact): Promise<void> {
+    const confirmed = confirm(`Delete contact "${contact.name}"?`);
+    if (!confirmed) {
+      return;
+    }
+    try {
+      await this.dataBaseService.deleteData('contacts', contact.id);
+      this.contactDeleted = true;
+      setTimeout(() => {
+        this.hideContactForm();
+        this.contactDeleted = false;
+      }, 3000); // 1000!!!!      
+      console.log('Kontakt gelöscht:', contact);
+    } catch (error) {
+      console.error('Fehler beim Löschen des Kontakts:', error);
+    }
   }
 
 }

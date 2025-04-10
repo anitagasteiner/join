@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DataBaseService } from '../../../../data-base.service';
 import { GeneralService } from '../../../../general.service';
@@ -19,19 +19,18 @@ import { Contact } from './../../../../models/contact.model';
 })
 export class EditContactFormComponent {
 
-  @Input() contact!: Contact; // kommt zB aus der Liste
-  @Output() updated = new EventEmitter<void>();
-  @Output() cancelled = new EventEmitter<void>();
+  @Input()contact!: Contact; // kommt zB aus der Liste
+  @Output()updated = new EventEmitter<void>();
+  @Output()cancelled = new EventEmitter<void>();
+
+  generalService = inject(GeneralService);
 
   editedContact: any = {};
   contactEdited: boolean = false;
 
   @ViewChild('contactForm') contactForm!: NgForm; // Zugriff auf das Formular
 
-  constructor(
-    private dataBaseService: DataBaseService,
-    private generalService: GeneralService
-  ) {}
+  constructor(private dataBaseService: DataBaseService) {}
 
   ngOnInit() {
     this.editedContact = { ...this.contact }; // Kopie, nicht direktes Binding!
@@ -51,6 +50,7 @@ export class EditContactFormComponent {
         phone: this.editedContact.phone,
         color: this.editedContact.color
       });
+      // debugger;
       form.resetForm();
       this.contactEdited = true;
       this.updated.emit(); // Optional: Eltern-Komponente informieren -> Dann kann ich zB direkt nach dem Speichern den Kontakt neu laden.
