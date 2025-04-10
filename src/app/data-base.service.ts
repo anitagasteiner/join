@@ -34,6 +34,4 @@ export class DataBaseService {
     return this.ngZone.run(() => deleteDoc(docRef));
   }
 
-//TODO Typensicherheit erhöhen
-
 }

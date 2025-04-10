@@ -43,17 +43,13 @@ export class EditContactFormComponent {
     }
     try {
       console.log('Ändere Kontakt:', this.editedContact);
-      await this.dataBaseService.updateData<Contact>('contacts', this.editedContact.id, {
-        id: this.editedContact.id,
+      await this.dataBaseService.updateData<any>('contacts', this.editedContact.id, {
         name: this.editedContact.name,
         email: this.editedContact.email,
-        phone: this.editedContact.phone,
-        color: this.editedContact.color
+        phone: this.editedContact.phone
       });
-      // debugger;
       form.resetForm();
       this.contactEdited = true;
-      this.updated.emit(); // Optional: Eltern-Komponente informieren -> Dann kann ich zB direkt nach dem Speichern den Kontakt neu laden.
       setTimeout(() => {
         this.generalService.hideContactForm();
         this.contactEdited = false;
