@@ -16,7 +16,7 @@ import { Contact } from './../../../models/contact.model';
 })
 export class ContactDetailsComponent {
 
-  @Input()displayedContact!: Contact;
+  // @Input()displayedContact!: Contact;
 
   generalService = inject(GeneralService);
 

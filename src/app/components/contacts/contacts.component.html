@@ -22,14 +22,13 @@
 
     <div class="contact-details-container" [ngClass]="{'d-none': !generalService.contactDetailsOpened}">
 
-        <app-contact-details [displayedContact]="displayedContact"></app-contact-details>
-        <!-- Die Details bekomme ich über das Input-Property displayedContact. -->
+        <app-contact-details></app-contact-details>        
 
     </div>
 
     <div class="add-edit-contact-container" [ngClass]="{'d-none': !generalService.addContactFormOpened && !generalService.editContactFormOpened}">
 
-            <app-add-edit-contact></app-add-edit-contact>
+        <app-add-edit-contact></app-add-edit-contact>
 
     </div>
 
