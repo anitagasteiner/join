@@ -20,9 +20,9 @@
  
     </div>
 
-    <div class="contact-details-container">
+    <div class="contact-details-container" [ngClass]="{'d-none': !generalService.contactDetailsOpened}">
 
-        <app-contact-details [ngClass]="{'d-none': !contactDetailsOpened}" [displayedContact]="displayedContact"></app-contact-details>
+        <app-contact-details [displayedContact]="displayedContact"></app-contact-details>
         <!-- Die Details bekomme ich über das Input-Property displayedContact. -->
 
     </div>

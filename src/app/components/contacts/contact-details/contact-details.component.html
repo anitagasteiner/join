@@ -1,35 +1,45 @@
-<div class="contact-head-container">
+<div class="bg-container">
 
-    <div class="contact-icon" [ngClass]="displayedContact.color">{{ displayedContact.name | initials }}</div> <!-- ngClass: SCSS-Klasse basierend auf dem color-Attribut des displayedContact -->
+    <div class="contact-details-container">
 
-    <div class="contact-head-right">
-        <div>{{displayedContact.name}}</div>
-        <div class="contact-edit-delete">
-            <div (click)="this.generalService.showEditContactForm(displayedContact)">
-                <img src="/img/edit.svg">
-                Edit
+        <div class="contact-head-container">
+
+            <img src="/img/arrow-left-line.svg" (click)="hideContactDetails()">
+
+            <div class="contact-icon" [ngClass]="displayedContact.color">{{ displayedContact.name | initials }}</div> <!-- ngClass: SCSS-Klasse basierend auf dem color-Attribut des displayedContact -->
+
+            <div class="contact-head-right">
+                <div>{{displayedContact.name}}</div>
+                <div class="contact-edit-delete">
+                    <div (click)="this.generalService.showEditContactForm(displayedContact)">
+                        <img src="/img/edit.svg">
+                        Edit
+                    </div>
+                    <div (click)="this.generalService.deleteContact(displayedContact)">
+                        <img src="/img/delete.svg">
+                        Delete
+                    </div>
+                </div>
             </div>
-            <div (click)="this.generalService.deleteContact(displayedContact)">
-                <img src="/img/delete.svg">
-                Delete
-            </div>
+
         </div>
+
+        <div class="contact-info-container">
+
+            <h2>Contact Information</h2>
+
+            <div class="contact-mail-container">
+                <h3>Email</h3>
+                <div class="contact-mail">{{displayedContact.email}}</div>
+            </div>
+
+            <div class="contact-phone-container">
+                <h3>Phone</h3>
+                <div>{{displayedContact.phone}}</div>
+            </div>            
+
+        </div>
+
     </div>
-
-</div>
-
-<div class="contact-info-container">
-
-    <h2>Contact Information</h2>
-
-    <div class="contact-mail-container">
-        <h3>Email</h3>
-        <div class="contact-mail">{{displayedContact.email}}</div>
-    </div>
-
-    <div class="contact-phone-container">
-        <h3>Phone</h3>
-        <div>{{displayedContact.phone}}</div>
-    </div>            
 
 </div>

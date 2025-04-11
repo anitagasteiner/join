@@ -1,10 +1,67 @@
 @use './../../../shared/colors.scss' as colors;
+@use './../../../shared/breakpoints.scss' as bp;
+
+.bg-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 105px 0 0 25px;
+    @include bp.xl {
+        position: unset;
+        padding: unset;
+    }
+    @include bp.xxxl {
+        padding-right: calc((100% - 1600px) / 2);
+    }
+}
+
+.contact-details-container {
+    @include colors.bg-ivory;
+    @include colors.border-grey-light;
+    border-radius: 10px;
+    padding: 72px 36px;
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.1);
+    transform:  rotate(3deg);
+    @include bp.xl {
+        background-color: unset;
+        display: unset;
+        box-shadow: unset;
+        border: unset;
+        border-radius: unset;
+        height: unset;
+        transform: unset;
+        padding: 72px 36px 0 82px;
+    }
+}
 
 .contact-head-container {
     display: flex;
     flex-direction: row;
     gap: 54px;
     margin-bottom: 21px;
+    position: relative;
+    @include bp.xl {
+        position: unset;
+    }
+    >img {
+        cursor: pointer;
+        height: 32px;
+        width: 32px;
+        position: absolute;
+        top: -35px;
+        right: 5px;
+        @include bp.xl {
+            position: unset;
+            display: none;
+        }
+    }
 }
 
 .contact-icon {

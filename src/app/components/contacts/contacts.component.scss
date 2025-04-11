@@ -4,14 +4,16 @@
 .main-container {
     display: flex;
     flex-direction: row;
-    position: relative;
+    // position: relative;
 }
 
 .contacts-container {
     display: flex;
     flex-direction: column;
-    width: 100dvw;    
+    width: 100dvw;
+    position: relative;
     @include bp.xl {
+        position: unset;
         width: 456px;
         height: calc(100dvh - 96px);
         box-shadow: 4px 0 6px 0 rgba(0, 0, 0, 0.08);
@@ -76,17 +78,21 @@
 }
 
 .contact-details-container {
-    display: none;
-    padding: 72px 0 0 82px;
-    width: fit-content;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include colors.grey-light-transparent;
+    z-index: 2;
     @include bp.xl {
-        display: unset;        
-    }    
+        position: unset;
+        background-color: unset;
+        z-index: unset;
+    }
 }
 
 .add-edit-contact-container {
-    // align-self: center;
-    // justify-self: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -95,3 +101,4 @@
     @include colors.grey-light-transparent;
     z-index: 2;
 }
+

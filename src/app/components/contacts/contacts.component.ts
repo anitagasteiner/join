@@ -33,7 +33,7 @@ export class ContactsComponent {
 
   generalService = inject(GeneralService);
 
-  contactDetailsOpened: boolean = false;
+  // contactDetailsOpened: boolean = false;
 
   constructor(private dataBaseService: DataBaseService) {
     this.contacts$ = this.dataBaseService.getData<Contact>('contacts'); // Ich habe hier <Contact> angegeben, weil ich in der Funktion getData eine Typisierung verlange.
@@ -43,7 +43,7 @@ export class ContactsComponent {
   showContactDetails(contact: Contact) {
     this.displayedContact = contact;
     this.generalService.setSelectedContact(contact);
-    this.contactDetailsOpened = true;
+    this.generalService.contactDetailsOpened = true;
   }
 
   showAddContactForm() {

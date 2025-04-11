@@ -26,4 +26,8 @@ export class ContactDetailsComponent {
     // this.displayedContact$ = this.generalService.selectedContact$;
   }
 
+  hideContactDetails() {
+    this.generalService.contactDetailsOpened = false;
+  }
+
 }

@@ -18,6 +18,8 @@ export class GeneralService {
   contactToBeEdited: Contact | null = null;
   contactDeleted: boolean = false;
 
+  contactDetailsOpened: boolean = false;
+
   constructor(private dataBaseService: DataBaseService) {}
 
   setSelectedContact(contact: Contact) {
