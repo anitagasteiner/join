@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { CommonModule } from '@angular/common';
 import { GeneralService } from '../../services/general.service';
@@ -19,12 +19,10 @@ export class BoardComponent {
 
   tasks$: Observable<Task[]>;
 
-  // generalService = inject(GeneralService);
+  generalService = inject(GeneralService);
+  dataBaseService = inject(DataBaseService);
 
-  constructor(
-    private dataBaseService: DataBaseService,
-    private generalService: GeneralService
-  ) {
+  constructor() {
     this.tasks$ = this.dataBaseService.getData<Task>('tasks');
     this.generalService.activeNavBtn = 'board';
   }

@@ -1,19 +1,19 @@
 <div class="main-container">
 
-    <form>
+    <form (ngSubmit)="onSubmit(addTaskForm)" #addTaskForm="ngForm">
 
         <fieldset>
-            <input placeholder="Enter a title" onfocus="this.placeholder=''" type="text" name="title" id="title" required>
+            <input #title="ngModel" [(ngModel)]="newTask.title" placeholder="Enter a title" onfocus="this.placeholder=''" type="text" name="title" id="title" minlength="2" required>
             <legend></legend>
         </fieldset>
 
         <fieldset>
-            <textarea minlength="10" rows="3" placeholder="Enter a description" onfocus="this.placeholder=''" type="text" name="description" id="description"></textarea>
+            <textarea #description="ngModel" [(ngModel)]="newTask.description" rows="3" placeholder="Enter a description" onfocus="this.placeholder=''" type="text" name="description" id="description"></textarea>
             <legend><b>Description</b> (optional)</legend>
         </fieldset>
 
         <fieldset>
-            <input placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
+            <input #date="ngModel" [(ngModel)]="newTask.date" placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
             <legend><b>Due date</b></legend>
         </fieldset>
 
@@ -48,8 +48,8 @@
         <fieldset>
             <select>
                 <option value="0">Select task category</option>
-                <option value="1">Category A</option>
-                <option value="2">Category B</option>                
+                <option value="1">Technical Task</option>
+                <option value="2">User Story</option>                
             </select>
             <legend><b>Category</b></legend>
         </fieldset>

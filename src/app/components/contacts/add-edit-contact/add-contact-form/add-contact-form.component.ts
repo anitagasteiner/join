@@ -15,8 +15,8 @@ import { Contact } from './../../../../models/contact.model';
   styleUrls: [
     './add-contact-form.component.scss',
     './../add-edit-contact-form.scss'
-  ],
-  providers: [DataBaseService] // Service hier bereitstellen!
+  ]
+  //providers: [DataBaseService] // Service hier bereitstellen!
 })
 export class AddContactFormComponent {
 

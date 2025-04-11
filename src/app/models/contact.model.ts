@@ -5,4 +5,3 @@ export interface Contact {
     phone: string;
     color: string;
   }
-  
