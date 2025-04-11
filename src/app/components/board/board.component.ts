@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { GeneralService } from '../../services/general.service';
 import { Observable } from 'rxjs';
 import { DataBaseService } from '../../services/data-base.service';
+import { Task } from './../../models/task.model';
 
 @Component({
   selector: 'app-board',
@@ -16,7 +17,7 @@ import { DataBaseService } from '../../services/data-base.service';
 })
 export class BoardComponent {
 
-  tasks$: Observable<any[]>;
+  tasks$: Observable<Task[]>;
 
   // generalService = inject(GeneralService);
 
@@ -24,7 +25,7 @@ export class BoardComponent {
     private dataBaseService: DataBaseService,
     private generalService: GeneralService
   ) {
-    this.tasks$ = this.dataBaseService.getData('tasks');
+    this.tasks$ = this.dataBaseService.getData<Task>('tasks');
     this.generalService.activeNavBtn = 'board';
   }
 

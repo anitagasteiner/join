@@ -18,7 +18,7 @@
             </div>
 
             <div>
-                @for (task of tasks$ | async; track task.title; let index = $index) {
+                @for (task of tasks$ | async; track task.id; let index = $index) {
                     @if (task.status == "to-do") {
                         <app-task [task]="task"></app-task>
                     }            
