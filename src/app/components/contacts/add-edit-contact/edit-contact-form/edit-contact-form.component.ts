@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { DataBaseService } from '../../../../services/data-base.service';
 import { GeneralService } from '../../../../services/general.service';
 import { Contact } from './../../../../models/contact.model';
+import { firstValueFrom, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-contact-form',
@@ -23,6 +24,8 @@ export class EditContactFormComponent {
   @Output()updated = new EventEmitter<void>();
   @Output()cancelled = new EventEmitter<void>();
 
+  contacts$: Observable<Contact[]>; // contacts$ ist ein Observable mit der Liste aller Kontakte
+
   generalService = inject(GeneralService);
 
   editedContact: any = {};
@@ -30,7 +33,9 @@ export class EditContactFormComponent {
 
   @ViewChild('contactForm') contactForm!: NgForm; // Zugriff auf das Formular
 
-  constructor(private dataBaseService: DataBaseService) {}
+  constructor(private dataBaseService: DataBaseService) {
+      this.contacts$ = this.dataBaseService.getData<Contact>('contacts');
+  }
 
   ngOnInit() {
     this.editedContact = { ...this.contact }; // Kopie, nicht direktes Binding!
@@ -48,6 +53,10 @@ export class EditContactFormComponent {
         email: this.editedContact.email,
         phone: this.editedContact.phone
       });
+      this.refreshDisplayedContact(this.editedContact.id);
+
+      // this.generalService.setSelectedContact(this.editedContact);
+
       form.resetForm();
       this.contactEdited = true;
       setTimeout(() => {
@@ -63,6 +72,14 @@ export class EditContactFormComponent {
 
   onCancel() {
     this.cancelled.emit(); // zB Modal schließen
+  }
+
+  async refreshDisplayedContact(contactId: string) {
+    const contacts = await firstValueFrom(this.contacts$);
+    const updatedContact = contacts.find(c => c.id === contactId);
+    if (updatedContact) {
+      this.generalService.setSelectedContact(updatedContact);
+    }
   }
 
 }
