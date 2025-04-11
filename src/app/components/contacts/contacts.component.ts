@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { ContactComponent } from './contact/contact.component';
 import { CommonModule } from '@angular/common';
-import { GeneralService } from '../../general.service';
-import { DataBaseService } from '../../data-base.service';
+import { GeneralService } from '../../services/general.service';
+import { DataBaseService } from '../../services/data-base.service';
 import { Observable } from 'rxjs';
 import { AddEditContactComponent } from './add-edit-contact/add-edit-contact.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';

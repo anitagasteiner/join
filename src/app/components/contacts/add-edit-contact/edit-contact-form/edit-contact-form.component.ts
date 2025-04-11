@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Input, Output, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { DataBaseService } from '../../../../data-base.service';
-import { GeneralService } from '../../../../general.service';
+import { DataBaseService } from '../../../../services/data-base.service';
+import { GeneralService } from '../../../../services/general.service';
 import { Contact } from './../../../../models/contact.model';
 
 @Component({

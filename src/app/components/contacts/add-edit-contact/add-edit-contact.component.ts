@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { GeneralService } from '../../../general.service';
+import { GeneralService } from '../../../services/general.service';
 import { CommonModule } from '@angular/common';
 import { AddContactFormComponent } from './add-contact-form/add-contact-form.component';
 import { EditContactFormComponent } from './edit-contact-form/edit-contact-form.component';

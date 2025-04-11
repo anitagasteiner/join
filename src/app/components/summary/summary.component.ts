@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GeneralService } from '../../general.service';
+import { GeneralService } from '../../services/general.service';
 
 @Component({
   selector: 'app-summary',

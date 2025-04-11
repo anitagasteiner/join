@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { CommonModule } from '@angular/common';
-import { GeneralService } from '../../general.service';
+import { GeneralService } from '../../services/general.service';
 import { Observable } from 'rxjs';
-import { DataBaseService } from '../../data-base.service';
+import { DataBaseService } from '../../services/data-base.service';
 
 @Component({
   selector: 'app-board',

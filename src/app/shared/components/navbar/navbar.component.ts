@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { GeneralService } from '../../../general.service';
+import { GeneralService } from '../../../services/general.service';
 
 @Component({
   selector: 'app-navbar',
