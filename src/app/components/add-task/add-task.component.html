@@ -19,17 +19,17 @@
 
         <fieldset class="priority">
             <label>
-                <input type="radio" name="priority" value="3">
+                <input type="radio" name="priority" value="urgent" (change)="selectedPriority = 'urgent'">
                 <span>Urgent</span>
                 <img src="/img/prio-urgent.svg">
             </label>
             <label>
-                <input type="radio" name="priority" value="2">
+                <input type="radio" name="priority" value="medium" (change)="selectedPriority = 'medium'">
                 <span>Medium</span>
                 <img src="/img/prio-medium.svg">
             </label>
             <label>
-                <input type="radio" name="priority" value="1">
+                <input type="radio" name="priority" value="low" (change)="selectedPriority = 'low'">
                 <span>Low</span>
                 <img src="/img/prio-low.svg">
             </label>             
@@ -46,10 +46,11 @@
         </fieldset>
 
         <fieldset>
-            <select>
-                <option value="0">Select task category</option>
-                <option value="1">Technical Task</option>
-                <option value="2">User Story</option>                
+            <select id="category" name="category" [(ngModel)]="selectedCategory" required>
+                <option value="" disabled>Select task category</option>
+                <option *ngFor="let category of categories" [value]="category">
+                    {{ category }}
+                </option>
             </select>
             <legend><b>Category</b></legend>
         </fieldset>

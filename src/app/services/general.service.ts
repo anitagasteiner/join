@@ -15,10 +15,11 @@ export class GeneralService {
 
   addContactFormOpened: boolean = false;
   editContactFormOpened: boolean = false;
-  contactToBeEdited: Contact | null = null;
-  contactDeleted: boolean = false;
-
   contactDetailsOpened: boolean = false;
+
+  contactToBeEdited: Contact | null = null;
+
+  contactDeleted: boolean = false;  
 
   constructor(private dataBaseService: DataBaseService) {}
 

@@ -3,7 +3,6 @@ import { GeneralService } from '../../services/general.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Task } from './../../models/task.model';
-import { Timestamp } from '@angular/fire/firestore';
 import { DataBaseService } from '../../services/data-base.service';
 
 @Component({
@@ -15,7 +14,7 @@ import { DataBaseService } from '../../services/data-base.service';
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss'
 })
-export class AddTaskComponent {
+export class AddTaskComponent{
 
   newTask: Task = {
     id: '',
@@ -27,10 +26,15 @@ export class AddTaskComponent {
     category: '',
     subtasks: [],
     status: ''
-  };  
+  };
 
   generalService = inject(GeneralService);
   dataBaseService = inject(DataBaseService);
+
+  categories = ['Technical Task', 'User Story'];  
+  selectedCategory: string = '';
+
+  selectedPriority: string = '';  
 
   taskAdded: boolean = false;
 
@@ -44,6 +48,10 @@ export class AddTaskComponent {
       return;
     }
     this.newTask.status = 'to-do';
+    this.newTask.priority = this.selectedPriority;
+    // if (this.selectedCategory) {
+      this.newTask.category = this.selectedCategory;
+    // }    
     try {
       console.log('Speichere Task:', this.newTask);
       await this.dataBaseService.addData<Task>('tasks', this.newTask); // 'tasks' als Sammlungsname
