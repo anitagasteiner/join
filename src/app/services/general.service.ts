@@ -37,6 +37,10 @@ export class GeneralService {
     this.contactToBeEdited = null;
   }
 
+  hideContactDetails() {
+    this.contactDetailsOpened = false;
+  }
+
   async deleteContact(contact: Contact): Promise<void> {
     const confirmed = confirm(`Delete contact "${contact.name}"?`);
     if (!confirmed) {
@@ -46,6 +50,7 @@ export class GeneralService {
       await this.dataBaseService.deleteData('contacts', contact.id);
       this.contactDeleted = true;
       setTimeout(() => {
+        this.hideContactDetails();
         this.hideContactForm();
         this.contactDeleted = false;
       }, 1000);

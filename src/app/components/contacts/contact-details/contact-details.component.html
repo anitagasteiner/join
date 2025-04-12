@@ -6,25 +6,35 @@
 
             <div class="contact-head-container">
 
-                <img src="/img/arrow-left-line.svg" (click)="hideContactDetails()">
+                <img src="/img/arrow-left-line.svg" (click)="this.generalService.hideContactDetails()">
 
                 <div class="contact-icon" [ngClass]="displayedContact.color">{{ displayedContact.name | initials }}</div> <!-- ngClass: SCSS-Klasse basierend auf dem color-Attribut des displayedContact -->
 
                 <div class="contact-head-right">
+
                     <div>{{displayedContact.name}}</div>
+
                     <div class="contact-edit-delete">
+
                         <div (click)="this.generalService.showEditContactForm(displayedContact)">
                             <img src="/img/edit.svg">
                             Edit
                         </div>
+
                         <div (click)="this.generalService.deleteContact(displayedContact)">
                             <img src="/img/delete.svg">
                             Delete
                         </div>
+
                     </div>
+
                 </div>
 
             </div>
+
+            @if (generalService.contactDeleted && !generalService.editContactFormOpened) {
+                <div class="contact-deleted">Contact successfully<br>deleted.</div>
+            }
 
             <div class="contact-info-container">
 
