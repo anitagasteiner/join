@@ -103,8 +103,13 @@ textarea {
 
 input::placeholder,
 textarea::placeholder,
-select:invalid { 
+select:invalid,
+option:disabled { 
     @include colors.color-grey-light;
+}
+
+option {
+    @include colors.color-grey-dark;
 }
 
 select {
