@@ -35,7 +35,8 @@ export class AddTaskComponent{
     // assigned: [],
     assigned: [{
       id: '',
-      name: ''
+      name: '',
+      color: ''
     }],
     category: '',
     subtasks: [],
@@ -45,7 +46,7 @@ export class AddTaskComponent{
   categories = ['Technical Task', 'User Story'];  
   selectedCategory: string = '';
 
-  assignedContacts: {id: string; name: string}[] = [];
+  assignedContacts: {id: string; name: string, color: string}[] = [];
 
   selectedPriority: string = '';  
 
@@ -64,7 +65,8 @@ export class AddTaskComponent{
     this.newTask.priority = this.selectedPriority;
     this.newTask.assigned = this.assignedContacts.map(contact => ({
       id: contact.id,
-      name: contact.name
+      name: contact.name,
+      color: contact.color
     })); 
     this.newTask.category = this.selectedCategory;
     this.newTask.status = 'to-do';

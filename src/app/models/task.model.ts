@@ -8,7 +8,8 @@ export interface Task {
     priority: string;
     assigned: {
       id: string;
-      name: string
+      name: string;
+      color: string;
     }[];
     // assigned: string[];
     category: string;

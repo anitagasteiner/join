@@ -10,7 +10,12 @@
             <div>1/2Subtasks</div>
         </div>
         <div class="assigned-priority">
-            <div>{{task.assigned}}</div>
+            @if (task.assigned) {
+                @for (assignedContact of task.assigned; track assignedContact.id; let index = $index) {
+                    <div class="contact-icon" [ngClass]="assignedContact.color">{{ assignedContact.name | initials }}</div>
+                    <!-- <div>{{ assignedContact.name }}</div> -->
+                }
+            }
             <div>{{task.priority}}</div>
         </div>
 

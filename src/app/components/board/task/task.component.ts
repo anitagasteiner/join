@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Task } from './../../../models/task.model';
+import { InitialsPipe } from '../../../initials.pipe';
 
 @Component({
   selector: 'app-task',
   imports: [
-    CommonModule
+    CommonModule,
+    InitialsPipe
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
