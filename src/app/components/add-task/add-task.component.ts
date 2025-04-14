@@ -32,7 +32,11 @@ export class AddTaskComponent{
     description: '',
     date: Timestamp.now(),
     priority: '',
-    assigned: [],
+    // assigned: [],
+    assigned: [{
+      id: '',
+      name: ''
+    }],
     category: '',
     subtasks: [],
     status: ''
@@ -40,6 +44,8 @@ export class AddTaskComponent{
 
   categories = ['Technical Task', 'User Story'];  
   selectedCategory: string = '';
+
+  assignedContacts: {id: string; name: string}[] = [];
 
   selectedPriority: string = '';  
 
@@ -54,10 +60,14 @@ export class AddTaskComponent{
     if (form.invalid) {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
-    }
-    this.newTask.status = 'to-do';
+    }    
     this.newTask.priority = this.selectedPriority;
-    this.newTask.category = this.selectedCategory; 
+    this.newTask.assigned = this.assignedContacts.map(contact => ({
+      id: contact.id,
+      name: contact.name
+    })); 
+    this.newTask.category = this.selectedCategory;
+    this.newTask.status = 'to-do';
     try {
       console.log('Speichere Task:', this.newTask);
       await this.dataBaseService.addData<Task>('tasks', this.newTask); // 'tasks' als Sammlungsname

@@ -6,7 +6,11 @@ export interface Task {
     description: string;
     date: Timestamp | null;
     priority: string;
-    assigned: string[];
+    assigned: {
+      id: string;
+      name: string
+    }[];
+    // assigned: string[];
     category: string;
     subtasks: string[];
     status: string;
