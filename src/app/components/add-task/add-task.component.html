@@ -39,8 +39,12 @@
         <fieldset>
             <select>
                 <option value="0">Select contacts to assign</option>
-                <option value="1">Contact A</option>
-                <option value="2">Contact B</option>                
+                @for (contact of contacts$ | async; track contact.id; let index = $index) { 
+                    <option value="{{ index }} + 1">
+                        <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
+                        {{ contact.name }}
+                    </option>
+                }
             </select>
             <legend><b>Assigned to</b> (optional)</legend>
         </fieldset>

@@ -65,6 +65,17 @@ input, textarea, select {
     cursor: pointer;
 }
 
+.contact-icon {
+    @include colors.color-ivory;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
 .btns-create-clear {
     display: flex;
     justify-content: center;

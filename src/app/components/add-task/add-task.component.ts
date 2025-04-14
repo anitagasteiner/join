@@ -4,32 +4,39 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Task } from './../../models/task.model';
 import { DataBaseService } from '../../services/data-base.service';
+import { Timestamp } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { Contact } from '../../models/contact.model';
+import { InitialsPipe } from '../../initials.pipe';
 
 @Component({
   selector: 'app-add-task',
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    InitialsPipe
   ],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss'
 })
 export class AddTaskComponent{
 
+  generalService = inject(GeneralService);
+  dataBaseService = inject(DataBaseService);
+
+  contacts$: Observable<Contact[]>;
+
   newTask: Task = {
     id: '',
     title: '',
     description: '',
-    date: null, //Timestamp.now()
+    date: Timestamp.now(),
     priority: '',
     assigned: [],
     category: '',
     subtasks: [],
     status: ''
   };
-
-  generalService = inject(GeneralService);
-  dataBaseService = inject(DataBaseService);
 
   categories = ['Technical Task', 'User Story'];  
   selectedCategory: string = '';
@@ -39,6 +46,7 @@ export class AddTaskComponent{
   taskAdded: boolean = false;
 
   constructor() {
+    this.contacts$ = this.dataBaseService.getData<Contact>('contacts');
     this.generalService.activeNavBtn = 'add-task';
   }
 
@@ -49,16 +57,13 @@ export class AddTaskComponent{
     }
     this.newTask.status = 'to-do';
     this.newTask.priority = this.selectedPriority;
-    // if (this.selectedCategory) {
-      this.newTask.category = this.selectedCategory;
-    // }    
+    this.newTask.category = this.selectedCategory; 
     try {
       console.log('Speichere Task:', this.newTask);
       await this.dataBaseService.addData<Task>('tasks', this.newTask); // 'tasks' als Sammlungsname
       form.resetForm();
       this.taskAdded = true;
       setTimeout(() => {
-        // this.generalService.hideContactForm();
         this.taskAdded = false;
       }, 1000);
     } catch (error: any) {
