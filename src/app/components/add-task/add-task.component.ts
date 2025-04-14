@@ -8,6 +8,7 @@ import { Timestamp } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Contact } from '../../models/contact.model';
 import { InitialsPipe } from '../../initials.pipe';
+import { consumerPollProducersForChange } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-add-task',
@@ -32,7 +33,6 @@ export class AddTaskComponent{
     description: '',
     date: Timestamp.now(),
     priority: '',
-    // assigned: [],
     assigned: [{
       id: '',
       name: '',
@@ -55,6 +55,24 @@ export class AddTaskComponent{
   constructor() {
     this.contacts$ = this.dataBaseService.getData<Contact>('contacts');
     this.generalService.activeNavBtn = 'add-task';
+  }
+
+  isSelected(contact: Contact) {
+    return this.assignedContacts.some(c => c.id === contact.id);
+  }
+  
+  toggleContactSelection(event: Event, contact: Contact) {
+    const checkbox = event.target as HTMLInputElement;
+    const checked = checkbox.checked;
+    if (checked) {
+      this.assignedContacts.push({
+        id: contact.id,
+        name: contact.name,
+        color: contact.color
+      });
+    } else {
+      this.assignedContacts = this.assignedContacts.filter( c => c.id !== contact.id);
+    }
   }
 
   async onSubmit(form: NgForm) {
