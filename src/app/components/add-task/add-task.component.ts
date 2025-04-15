@@ -46,6 +46,7 @@ export class AddTaskComponent{
   categories = ['Technical Task', 'User Story'];  
   selectedCategory: string = '';
 
+  dropdownOpened: boolean = false;
   assignedContacts: {id: string; name: string, color: string}[] = [];
 
   selectedPriority: string = '';  
@@ -55,6 +56,17 @@ export class AddTaskComponent{
   constructor() {
     this.contacts$ = this.dataBaseService.getData<Contact>('contacts');
     this.generalService.activeNavBtn = 'add-task';
+  }
+
+  toggleDropdown() {
+    this.dropdownOpened = !this.dropdownOpened;
+  }
+
+  closeDropdown() {
+    //verzögert, damit Checkbox-Klicks noch erkannt werden
+    setTimeout(() => {
+      this.dropdownOpened = false;
+    }, 150);
   }
 
   isSelected(contact: Contact) {

@@ -36,23 +36,39 @@
             <legend><b>Priority</b></legend>
         </fieldset>
 
-        <fieldset>
-            <!-- <select name="assigned" multiple [(ngModel)]="assignedContacts"> -->
-                <option disabled value="0">Select contacts to assign</option>
-                @if (contacts$ | async; as contacts) {
-                    @for (contact of contacts$ | async; track contact.id; let index = $index) {
-                        <input type="checkbox" [checked]="isSelected(contact)" (change)="toggleContactSelection($event, contact)">
-                        <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
-                        <span>{{ contact.name }}</span>
-                        <!-- <option [ngValue]="contact">
-                            <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
-                            {{ contact.name }}
-                        </option> -->
-                    }
-                } @else {
-                    <p>Loading contacts ...</p>
-                }        
-            <!-- </select> -->
+        <fieldset class="assigned-container">
+                <div class="dropdown-container" tabindex="0">
+                    <div>Select contacts to assign</div>
+                    <div [ngClass]="{'arrow-open': dropdownOpened}" (click)="toggleDropdown()" (blur)="closeDropdown()">
+                        <img src="/img/drop-down-arrow.svg">
+                    </div>
+                </div>
+
+                @if (dropdownOpened) {
+                    <div class="dropdown-list">
+                        @if (contacts$ | async; as contacts) {
+                            @for (contact of contacts$ | async; track contact.id; let index = $index) {
+                                <div class="dropdown-contact">
+                                    <div>
+                                        <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
+                                        <span>{{ contact.name }}</span>
+                                    </div>                                    
+                                    <input type="checkbox" [checked]="isSelected(contact)" (change)="toggleContactSelection($event, contact)">
+                                    <span class="custom-checkbox"></span>
+                                    <!-- <option [ngValue]="contact">
+                                        <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
+                                        {{ contact.name }}
+                                    </option> -->
+                                </div>                                
+                            }
+                        } @else {
+                            <p>Loading contacts ...</p>
+                        }
+                    </div>
+                }                
+
+                <!-- <option disabled value="0">Select contacts to assign</option> -->
+                 
             <legend><b>Assigned to</b> (optional)</legend>
         </fieldset>
 

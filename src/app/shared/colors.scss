@@ -90,7 +90,7 @@ $colors: (
     color: $color;
 }
 
-@mixin grey-light-transparent {
+@mixin bg-grey-light-transparent {
     $bg-color: map.get($colors, "grey-light-transparent");
     background-color: $bg-color;
 }
@@ -147,5 +147,10 @@ $colors: (
 
 @mixin border-ivory {
     $border-color: map.get($colors, "ivory");
+    border: 2px solid $border-color;
+}
+
+@mixin border-blue-dark {
+    $border-color: map.get($colors, "blue-dark");
     border: 2px solid $border-color;
 }
