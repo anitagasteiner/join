@@ -187,10 +187,15 @@ input, textarea, select {
     >div {
         padding: 5px 10px;
         &:hover {
-            @include colors.bg-dark;
+            @include colors.bg-light;
             border-radius: 10px;
         }
     }
+}
+
+.checked-bg {
+    @include colors.bg-dark;
+    border-radius: 10px;
 }
 
 .dropdown-contact {
@@ -228,6 +233,7 @@ input, textarea, select {
     }
     >input:checked ~ .custom-checkbox { // When the checkbox is checked, add a blue background
         @include colors.bg-dark;
+        @include colors.border-ivory;
     }
     >input:checked ~ .custom-checkbox:after { // Show the checkmark when checked
         display: block;
@@ -240,7 +246,7 @@ input, textarea, select {
 .custom-checkbox { // Create a custom checkbox
     position: absolute;
     top: 15px;
-    right: 0;
+    right: 10px;
     width: 16px;
     height: 16px;
     @include colors.border-blue-dark;

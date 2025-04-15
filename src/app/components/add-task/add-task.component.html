@@ -48,7 +48,7 @@
                     <div class="dropdown-list">
                         @if (contacts$ | async; as contacts) {
                             @for (contact of contacts$ | async; track contact.id; let index = $index) {
-                                <div class="dropdown-contact">
+                                <div class="dropdown-contact" [ngClass]="{'checked-bg': isSelected(contact)}">
                                     <div>
                                         <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
                                         <div>{{ contact.name }}</div>
