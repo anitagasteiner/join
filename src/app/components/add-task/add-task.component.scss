@@ -163,48 +163,46 @@ input, textarea, select {
         height: 7px;
         width: 7px;
     }
-  }
+}
 
-  .arrow-open {
+.arrow-open {
     transform: rotate(180deg);
-  }
+}
   
-//   .dropdown-list {
-//     position: absolute;
-//     top: calc(100% + 4px);
-//     left: 0;
-//     right: 0;
-//     background: white;
-//     border: 1px solid #ccc;
-//     border-radius: 6px;
-//     max-height: 150px;
-//     overflow-y: auto;
-//     z-index: 10;
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   }
-  
-  .dropdown-list {
+ 
+.dropdown-list {
     @include colors.bg-ivory;
     position: absolute;
-    top: 32px;
+    top: 48px;
     left: 0;
     right: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    max-height: 150px;
-    overflow: auto;
-    // padding: 8px;
-  }
+    // display: flex;
+    // flex-direction: column;
+    // gap: 18px;
+    max-height: 132px;
+    // width: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px;
+    >div {
+        padding: 5px 10px;
+        &:hover {
+            @include colors.bg-dark;
+            border-radius: 10px;
+        }
+    }
+}
 
-  .dropdown-contact {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    user-select: none;
+.dropdown-contact {
+    // background-color: green;
+    display: block;    
+    position: relative;
+    // padding-right: 35px;
+    margin-bottom: 2px;
     cursor: pointer;
-    &:hover input ~ .custom-checkbox {
+    user-select: none;
+    width: auto;
+    &:hover input ~ .custom-checkbox { // On mouse-hover, add a grey background
         @include colors.bg-grey-light-transparent;
         width: 17px;
         height: 17px;
@@ -214,23 +212,35 @@ input, textarea, select {
         flex-direction: row;
         align-items: center;
         gap: 16px;
+        height: auto;
     }
-    >input {
+    >input { // Hide the browser's default checkbox
         position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         opacity: 0;
+        cursor: pointer;
         // height: 0;
         // width: 0;
+        z-index: 1;
     }
-    >input:checked ~ .custom-checkbox {
-        background-color: green;
+    >input:checked ~ .custom-checkbox { // When the checkbox is checked, add a blue background
+        @include colors.bg-dark;
     }
-    // >input:checked ~ .custom-checkbox:after {
-    //     background-color: red;
-    //     display: unset;
-    // }
-  }
+    >input:checked ~ .custom-checkbox:after { // Show the checkmark when checked
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 4px;
+    }
+}
 
-  .custom-checkbox {
+.custom-checkbox { // Create a custom checkbox
+    position: absolute;
+    top: 15px;
+    right: 0;
     width: 16px;
     height: 16px;
     @include colors.border-blue-dark;
@@ -239,22 +249,33 @@ input, textarea, select {
     //     content: '';
     //     display: none;
     // }
-  }
-  
-  .assigned-contact {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  
-  .contact-icon {
+}
+
+.custom-checkbox:after { // Create the checkmark/indicator (hidden when not checked)
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+.dropdown-contact .custom-checkbox:after { // Style the checkmark/indicator
+    right: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    @include colors.border-ivory;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.contact-icon {
+    @include colors.color-ivory;
+    @include colors.border-ivory;
+    border-radius: 50%;
     width: 42px;
     height: 42px;
-    border-radius: 50%;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-    background-color: gray; /* fallback */
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
   

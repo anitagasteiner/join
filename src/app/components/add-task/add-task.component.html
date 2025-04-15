@@ -51,8 +51,8 @@
                                 <div class="dropdown-contact">
                                     <div>
                                         <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
-                                        <span>{{ contact.name }}</span>
-                                    </div>                                    
+                                        <div>{{ contact.name }}</div>
+                                    </div>
                                     <input type="checkbox" [checked]="isSelected(contact)" (change)="toggleContactSelection($event, contact)">
                                     <span class="custom-checkbox"></span>
                                     <!-- <option [ngValue]="contact">
