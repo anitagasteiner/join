@@ -48,6 +48,20 @@ body {
     }
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+}
+  
+::-webkit-scrollbar-track {
+    @include colors.bg-blue-dark;
+}
+
+::-webkit-scrollbar-thumb {
+    @include colors.bg-ivory;
+    @include colors.border-blue-dark;
+    border-radius: 3px;
+}
+
 .d-none {
     display: none;
 }

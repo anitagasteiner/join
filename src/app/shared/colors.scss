@@ -41,6 +41,16 @@ $colors: (
     background-color: $bg-color;
 }
 
+@mixin bg-blue-light {
+    $bg-color: map.get($colors, "blue-light");
+    background-color: $bg-color;
+}
+
+@mixin bg-blue-dark {
+    $bg-color: map.get($colors, "blue-dark");
+    background-color: $bg-color;
+}
+
 @mixin bg-contact-blue {
     $bg-color: map.get($colors, "contact-blue");
     background-color: $bg-color !important;
