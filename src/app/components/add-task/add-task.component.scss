@@ -95,9 +95,7 @@ input, textarea, select {
 .btn-create-clear {
     font-size: 23px !important;
     @include colors.color-grey-dark;
-    &:hover {
-        cursor: pointer;
-    }
+    cursor: pointer;
 }
 
 .btn-clear {
@@ -186,10 +184,10 @@ input, textarea, select {
     padding: 8px;
     >div {
         padding: 5px 10px;
-        &:hover {
-            @include colors.bg-light;
-            border-radius: 10px;
-        }
+        // &:hover {
+        //     @include colors.bg-light;
+        //     border-radius: 10px;
+        // }
     }
 }
 
@@ -199,10 +197,8 @@ input, textarea, select {
 }
 
 .dropdown-contact {
-    // background-color: green;
     display: block;    
     position: relative;
-    // padding-right: 35px;
     margin-bottom: 2px;
     cursor: pointer;
     user-select: none;
@@ -241,6 +237,9 @@ input, textarea, select {
         top: 0;
         right: 4px;
     }
+    >span {
+        margin-top: 3px;
+    }
 }
 
 .custom-checkbox { // Create a custom checkbox
@@ -264,12 +263,12 @@ input, textarea, select {
 }
 
 .dropdown-contact .custom-checkbox:after { // Style the checkmark/indicator
-    right: 9px;
-    top: 5px;
+    // right: 9px;
+    // top: 5px;
     width: 5px;
     height: 10px;
     @include colors.border-ivory;
-    border-width: 0 3px 3px 0;
+    border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
 

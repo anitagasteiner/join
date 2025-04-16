@@ -5,10 +5,9 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Task } from './../../models/task.model';
 import { DataBaseService } from '../../services/data-base.service';
 import { Timestamp } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Contact } from '../../models/contact.model';
 import { InitialsPipe } from '../../initials.pipe';
-import { consumerPollProducersForChange } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-add-task',
@@ -54,7 +53,8 @@ export class AddTaskComponent{
   taskAdded: boolean = false;
 
   constructor() {
-    this.contacts$ = this.dataBaseService.getData<Contact>('contacts');
+    const originalContacts$ = this.dataBaseService.getData<Contact>('contacts');
+    this.contacts$ = originalContacts$.pipe(map(contacts => contacts.sort((a, b) => a.name.localeCompare(b.name))));
     this.generalService.activeNavBtn = 'add-task';
   }
 
