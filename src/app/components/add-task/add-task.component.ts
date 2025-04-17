@@ -48,7 +48,8 @@ export class AddTaskComponent{
   dropdownOpened: boolean = false;
   assignedContacts: {id: string; name: string, color: string}[] = [];
 
-  selectedPriority: string = '';  
+  selectedPriority: string = '';
+  selectOpened: boolean = false;
 
   taskAdded: boolean = false;
 
@@ -85,6 +86,10 @@ export class AddTaskComponent{
     } else {
       this.assignedContacts = this.assignedContacts.filter( c => c.id !== contact.id);
     }
+  }
+
+  toggleOpenClose() {
+    this.selectOpened = !this.selectOpened;
   }
 
   async onSubmit(form: NgForm) {

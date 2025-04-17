@@ -133,6 +133,10 @@ select {
     background: url('/img/drop-down-arrow.svg') no-repeat right 16px center;
 }
 
+.select-open {
+    background: url('/img/drop-down-arrow-up.svg') no-repeat right 16px center;
+}
+
 ::placeholder {
     @include colors.color-grey-dark;
 }
