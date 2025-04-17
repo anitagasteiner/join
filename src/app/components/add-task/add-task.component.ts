@@ -42,14 +42,16 @@ export class AddTaskComponent{
     status: ''
   };
 
-  categories = ['Technical Task', 'User Story'];  
-  selectedCategory: string = '';
+  selectedPriority: string = '';
+  selectOpened: boolean = false;
 
   dropdownOpened: boolean = false;
   assignedContacts: {id: string; name: string, color: string}[] = [];
 
-  selectedPriority: string = '';
-  selectOpened: boolean = false;
+  categories = ['Technical Task', 'User Story'];  
+  selectedCategory: string = '';
+
+  newSubtask: string = '';
 
   taskAdded: boolean = false;
 
@@ -57,6 +59,10 @@ export class AddTaskComponent{
     const originalContacts$ = this.dataBaseService.getData<Contact>('contacts');
     this.contacts$ = originalContacts$.pipe(map(contacts => contacts.sort((a, b) => a.name.localeCompare(b.name))));
     this.generalService.activeNavBtn = 'add-task';
+  }
+
+  trackByIndex(index: number): number {
+    return index;
   }
 
   toggleDropdown() {
@@ -90,6 +96,11 @@ export class AddTaskComponent{
 
   toggleOpenClose() {
     this.selectOpened = !this.selectOpened;
+  }
+
+  addSubtask() {
+    this.newTask.subtasks.push(this.newSubtask);
+    this.newSubtask = '';
   }
 
   async onSubmit(form: NgForm) {

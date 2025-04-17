@@ -19,7 +19,7 @@ form {
     }
 }
 
-.priority {
+.priority-container {
     >label {
         display: inline-block;
         margin-right: 10px;
@@ -51,9 +51,9 @@ input, textarea, select {
     }
 }
 
-#subtasks {
-    background: url('/img/add.svg') no-repeat right 21px center;
-}
+// #subtasks {
+//     background: url('/img/add.svg') no-repeat right 21px center;
+// }
 
 #date::-webkit-inner-spin-button {
     display: none;
@@ -75,6 +75,15 @@ input, textarea, select {
     justify-content: center;
     align-items: center;
     font-size: 12px;
+}
+
+.subtasks-container {
+    position: relative;
+    >img {
+        position: absolute;
+        bottom: 18px;
+        right: 20px;
+    }
 }
 
 .btns-create-clear {
@@ -183,6 +192,7 @@ input, textarea, select {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 8px;
+    z-index: 2;
     >div {
         padding: 5px 10px;
         // &:hover {
@@ -271,6 +281,21 @@ input, textarea, select {
     @include colors.border-ivory;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
+}
+
+.assigned-icons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    width: calc(100dvw - 15px);
+    @include bp.xs {
+        width: calc(100dvw - 50px);
+    }
+    @include bp.sm {
+        width: 488px;
+    }
 }
 
 .contact-icon {

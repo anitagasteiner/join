@@ -17,7 +17,7 @@
             <legend><b>Due date</b></legend>
         </fieldset>
 
-        <fieldset class="priority">
+        <fieldset class="priority-container">
             <label>
                 <input type="radio" name="priority" value="urgent" (change)="selectedPriority = 'urgent'">
                 <span>Urgent</span>
@@ -71,6 +71,13 @@
                  
             <legend><b>Assigned to</b> (optional)</legend>
         </fieldset>
+        @if (assignedContacts.length) {        
+            <div class="assigned-icons-container">
+                @for (assignedPerson of assignedContacts; track assignedPerson.id) {
+                    <div class="contact-icon" [ngClass]="assignedPerson.color">{{ assignedPerson.name | initials }}</div>
+                }
+            </div>
+        }
 
         <fieldset>
             <select id="category" name="category" [(ngModel)]="selectedCategory" [ngClass]="{'select-open': selectOpened}" (click)="toggleOpenClose()" required>
@@ -82,10 +89,20 @@
             <legend><b>Category</b></legend>
         </fieldset>
 
-        <fieldset>
-            <input placeholder="Add new subtask" onfocus="this.placeholder=''" type="text" name="subtasks" id="subtasks">
+        <fieldset class="subtasks-container">
+            <input #title="ngModel" [(ngModel)]="newSubtask" placeholder="Add new subtask" onfocus="this.placeholder=''" type="text" name="subtasks" id="subtasks">
+            <img src="/img/add.svg" (click)="addSubtask()">
             <legend><b>Subtasks</b> (optional)</legend>
         </fieldset>
+        @if (newTask.subtasks.length) {        
+            <div>
+                <ul>
+                    @for (subtask of newTask.subtasks; track trackByIndex) {
+                        <li>{{ subtask }}</li>
+                    }
+                </ul>
+            </div>
+        }
 
         <div class="btns-create-clear">
             <div class="btn-create-clear btn-clear">
