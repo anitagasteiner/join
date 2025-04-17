@@ -149,7 +149,7 @@ input, textarea, select {
     align-items: center;
     padding-right: 16px;
     cursor: pointer;
-    // user-select: none;
+    user-select: none;
     // position: relative;
     @include bp.xs {
         width: calc(100dvw - 50px);
