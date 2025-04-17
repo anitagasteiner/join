@@ -37,7 +37,7 @@
         </fieldset>
 
         <fieldset class="assigned-container">
-                <div class="dropdown-container" tabindex="0">
+                <div class="dropdown-container" tabindex="0" (click)="toggleDropdown()" (blur)="closeDropdown()">
                     <div>Select contacts to assign</div>
                     <div [ngClass]="{'arrow-open': dropdownOpened}" (click)="toggleDropdown()" (blur)="closeDropdown()">
                         <img src="/img/drop-down-arrow.svg">
