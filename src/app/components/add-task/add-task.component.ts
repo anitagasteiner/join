@@ -52,6 +52,7 @@ export class AddTaskComponent{
   selectedCategory: string = '';
 
   newSubtask: string = '';
+  subtaskBeingAdded: boolean = false;
 
   taskAdded: boolean = false;
 
@@ -98,10 +99,15 @@ export class AddTaskComponent{
     this.selectOpened = !this.selectOpened;
   }
 
+  addingSubtask() {
+    this.subtaskBeingAdded = true;
+  }
+
   addSubtask() {
     if (this.newSubtask !== '') {
       this.newTask.subtasks.push(this.newSubtask);
       this.newSubtask = '';
+      this.subtaskBeingAdded = false;
     }
   }
 
