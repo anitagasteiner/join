@@ -8,6 +8,7 @@ $colors: (
     "blue-dark": rgba(69, 137, 255, 1),
     "grey-light": rgba(224, 224, 224, 1),
     "grey-light-transparent": rgba(224, 224, 224, 0.5),
+    "grey-line": rgba(168, 168, 168, 1),
     "grey-dark": rgba(42, 54, 71, 1),
     "black-light": rgba(66, 82, 110, 1),
     "ivory": rgba(255, 250, 240, 1),
@@ -102,6 +103,11 @@ $colors: (
 
 @mixin bg-grey-light-transparent {
     $bg-color: map.get($colors, "grey-light-transparent");
+    background-color: $bg-color;
+}
+
+@mixin bg-grey-line {
+    $bg-color: map.get($colors, "grey-line");
     background-color: $bg-color;
 }
 

@@ -99,8 +99,10 @@ export class AddTaskComponent{
   }
 
   addSubtask() {
-    this.newTask.subtasks.push(this.newSubtask);
-    this.newSubtask = '';
+    if (this.newSubtask !== '') {
+      this.newTask.subtasks.push(this.newSubtask);
+      this.newSubtask = '';
+    }
   }
 
   async onSubmit(form: NgForm) {

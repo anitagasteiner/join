@@ -94,11 +94,18 @@
             <img src="/img/add.svg" (click)="addSubtask()">
             <legend><b>Subtasks</b> (optional)</legend>
         </fieldset>
-        @if (newTask.subtasks.length) {        
-            <div>
+        @if (newTask.subtasks.length) {
+            <div class="subtasks-list">
                 <ul>
                     @for (subtask of newTask.subtasks; track trackByIndex) {
-                        <li>{{ subtask }}</li>
+                        <li class="subtask">
+                            {{ subtask }}
+                            <div class="edit-delete-subtask">
+                                <img src="/img/edit.svg">
+                                <div></div>
+                                <img src="/img/delete.svg">
+                            </div>
+                        </li>
                     }
                 </ul>
             </div>
