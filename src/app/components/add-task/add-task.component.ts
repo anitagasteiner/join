@@ -115,11 +115,19 @@ export class AddTaskComponent{
   }
 
   addSubtask() {
-    if (this.newSubtask !== '') {
+    if (this.newSubtask !== '' && !this.checkIfPresent(this.newSubtask)) {
       this.newTask.subtasks.push(this.newSubtask);
       this.newSubtask = '';
       this.subtaskBeingAdded = false;
     }
+  }
+
+  checkIfPresent(entry: string) {
+    return this.newTask.subtasks.some(subtask => subtask === entry);
+  }
+
+  deleteSubtask(subtask: string) {
+    this.newTask.subtasks = this.newTask.subtasks.filter(entry => entry !== subtask);
   }
 
   async onSubmit(form: NgForm) {
