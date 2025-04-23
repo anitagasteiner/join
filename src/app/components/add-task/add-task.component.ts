@@ -155,6 +155,8 @@ export class AddTaskComponent{
       await this.dataBaseService.addData<Task>('tasks', this.newTask); // 'tasks' als Sammlungsname
       form.resetForm();
       this.newTask.subtasks = [];
+      this.selectedPriority = '';
+      this.assignedContacts = [];
       this.taskAdded = true;
       setTimeout(() => {
         this.taskAdded = false;
