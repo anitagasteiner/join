@@ -48,7 +48,17 @@
 .assigned-priority {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 24px;
+
+}
+
+.assigned {
+    display: flex;
+    flex-direction: row;
+    >div:nth-child(n + 2) {
+        margin-left: -25px;
+    }
 }
 
 .contact-icon {
