@@ -96,7 +96,7 @@
             }
             @if (subtaskBeingAdded) {
                 <div>
-                    <img src="/img/cancel-blue.svg">
+                    <img src="/img/cancel-blue.svg" (click)="stopAddingSubtask()">
                     <div></div>
                     <img src="/img/check-blue.svg" (click)="addSubtask()">
                 </div>

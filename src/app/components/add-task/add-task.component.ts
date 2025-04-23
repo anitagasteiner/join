@@ -110,6 +110,10 @@ export class AddTaskComponent{
     this.subtaskBeingAdded = true;
   }
 
+  stopAddingSubtask() {
+    this.subtaskBeingAdded = false;
+  }
+
   addSubtask() {
     if (this.newSubtask !== '') {
       this.newTask.subtasks.push(this.newSubtask);
