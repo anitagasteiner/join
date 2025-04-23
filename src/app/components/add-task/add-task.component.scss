@@ -26,18 +26,33 @@ form {
         padding-right: 14px;
         @include colors.border-grey-light;
         border-radius: 10px;
+        cursor: pointer;
         >input[type="radio"] {
             display: none;
         }
         >span {
             display: inline-block;
             padding: 10px;
-            cursor: pointer;
         }
-        >input[type="radio"]:checked + span {
-            background-color: orange;
-        }
+        // >input[type="radio"]:checked + span {
+        //     background-color: orange;
+        // }
     }    
+}
+
+.urgent-selected {
+    @include colors.bg-red;
+    @include colors.color-ivory;    
+}
+
+.medium-selected {
+    @include colors.bg-orange;
+    @include colors.color-ivory;
+}
+
+.low-selected {
+    @include colors.bg-green;
+    @include colors.color-ivory;
 }
 
 input, textarea, select {

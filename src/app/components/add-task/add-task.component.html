@@ -18,20 +18,32 @@
         </fieldset>
 
         <fieldset class="priority-container">
-            <label>
+            <label [ngClass]="{'urgent-selected': selectedPriority == 'urgent'}">
                 <input type="radio" name="priority" value="urgent" (change)="selectedPriority = 'urgent'">
                 <span>Urgent</span>
-                <img src="/img/prio-urgent.svg">
+                @if (selectedPriority == 'urgent') {
+                    <img src="/img/prio-urgent-sel.svg">
+                } @else {
+                    <img src="/img/prio-urgent.svg">
+                }                
             </label>
-            <label>
+            <label [ngClass]="{'medium-selected': selectedPriority == 'medium'}">
                 <input type="radio" name="priority" value="medium" (change)="selectedPriority = 'medium'">
                 <span>Medium</span>
-                <img src="/img/prio-medium.svg">
+                @if (selectedPriority == 'medium') {
+                    <img src="/img/prio-medium-sel.svg">
+                } @else {
+                    <img src="/img/prio-medium.svg">
+                }                
             </label>
-            <label>
+            <label [ngClass]="{'low-selected': selectedPriority == 'low'}">
                 <input type="radio" name="priority" value="low" (change)="selectedPriority = 'low'">
                 <span>Low</span>
-                <img src="/img/prio-low.svg">
+                @if (selectedPriority == 'low') {
+                    <img src="/img/prio-low-sel.svg">
+                } @else {
+                    <img src="/img/prio-low.svg">
+                }                
             </label>             
             <legend><b>Priority</b></legend>
         </fieldset>

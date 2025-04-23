@@ -154,6 +154,7 @@ export class AddTaskComponent{
       console.log('Speichere Task:', this.newTask);
       await this.dataBaseService.addData<Task>('tasks', this.newTask); // 'tasks' als Sammlungsname
       form.resetForm();
+      this.newTask.subtasks = [];
       this.taskAdded = true;
       setTimeout(() => {
         this.taskAdded = false;
