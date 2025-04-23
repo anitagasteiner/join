@@ -112,6 +112,7 @@ export class AddTaskComponent{
 
   stopAddingSubtask() {
     this.subtaskBeingAdded = false;
+    this.newSubtask = '';
   }
 
   addSubtask() {
