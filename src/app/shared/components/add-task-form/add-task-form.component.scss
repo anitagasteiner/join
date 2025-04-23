@@ -1,0 +1,370 @@
+@use './../../../shared/colors.scss' as colors;
+@use './../../../shared/breakpoints.scss' as bp;
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    align-items: center;
+    >fieldset:nth-child(1) {
+        padding-top: 48px;
+        >input {
+            font-size: 32px !important;
+        }
+    }
+}
+
+.priority-container {
+    >label {
+        display: inline-block;
+        margin-right: 10px;
+        padding-right: 14px;
+        @include colors.border-grey-light;
+        border-radius: 10px;
+        cursor: pointer;
+        >input[type="radio"] {
+            display: none;
+        }
+        >span {
+            display: inline-block;
+            padding: 10px;
+        }
+    }    
+}
+
+.urgent-selected {
+    @include colors.bg-red;
+    @include colors.color-ivory;    
+}
+
+.medium-selected {
+    @include colors.bg-orange;
+    @include colors.color-ivory;
+}
+
+.low-selected {
+    @include colors.bg-green;
+    @include colors.color-ivory;
+}
+
+input, textarea, select {
+    width: calc(100dvw - 15px);
+    padding: 8px 0 8px 12px;
+    @include bp.xs {
+        width: calc(100dvw - 50px);
+    }
+    @include bp.sm {
+        width: 488px;
+    }
+}
+
+#date::-webkit-inner-spin-button {
+    display: none;
+}
+
+#date::-webkit-calendar-picker-indicator {
+    background: url('/img/due-date.svg') center no-repeat;
+    margin-right: 19px;
+    cursor: pointer;
+}
+
+.contact-icon {
+    @include colors.color-ivory;
+    @include colors.border-ivory;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.subtasks-container {
+    position: relative;
+    >img {
+        position: absolute;
+        bottom: 18px;
+        right: 20px;
+        cursor: pointer;
+    }
+    >div {
+        position: absolute;
+        bottom: 12px;
+        right: 20px;
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        >img {
+            cursor: pointer;
+        }
+        >div {
+            @include colors.bg-grey-line;
+            height: auto;
+            width: 1px;
+        }
+    }
+}
+
+.btns-create-clear {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+    @include bp.lg {
+        justify-content: flex-end;
+        margin-top: 0;
+        gap: 25px;
+        position: absolute;
+        bottom: 55px;
+        right: 42px;
+    }
+}
+
+.btn-create-clear {
+    font-size: 23px !important;
+    @include colors.color-grey-dark;
+    cursor: pointer;
+}
+
+.btn-clear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px 10px 12px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    @include colors.bg-ivory;
+    @include colors.border-grey-light;
+    @include bp.sm {
+        padding: 16px 18px 16px 23px;
+        gap: 18px;
+    }
+    >img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.btn-create {
+    width: auto;
+    padding: 10px 38px 10px 12px;
+    background-image: url('/img/check.svg');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 24px 24px;
+    @include colors.color-ivory;
+}
+
+
+// Dropdown "Assigned to"
+
+.assigned-container {
+    position: relative;
+}
+
+.dropdown-container {
+    border: none;    
+    @include colors.border-bottom-grey-light;
+    font-family: 'Open-Sans', sans-serif;
+    font-size: 19px;
+    @include colors.color-grey-light;
+    width: calc(100dvw - 15px);
+    padding: 8px 0 8px 12px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 16px;
+    cursor: pointer;
+    user-select: none;
+    // position: relative;
+    @include bp.xs {
+        width: calc(100dvw - 50px);
+    }
+    @include bp.sm {
+        width: 488px;
+    }
+    >div >img {
+        height: 24px;
+        width: 24px;
+        margin-bottom: -4px;
+    }
+}
+
+.arrow-open {
+    transform: rotate(180deg);
+}
+  
+ 
+.dropdown-list {
+    @include colors.bg-ivory;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    right: 0;
+    // display: flex;
+    // flex-direction: column;
+    // gap: 18px;
+    max-height: 132px;
+    // width: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px;
+    z-index: 2;
+    >div {
+        padding: 5px 10px;
+        // &:hover {
+        //     @include colors.bg-light;
+        //     border-radius: 10px;
+        // }
+    }
+}
+
+.checked-bg {
+    @include colors.bg-dark;
+    border-radius: 10px;
+}
+
+.dropdown-contact {
+    display: block;    
+    position: relative;
+    margin-bottom: 2px;
+    cursor: pointer;
+    user-select: none;
+    width: auto;
+    &:hover input ~ .custom-checkbox { // On mouse-hover, add a grey background
+        @include colors.bg-grey-light-transparent;
+        width: 17px;
+        height: 17px;
+    }
+    >div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        height: auto;
+    }
+    >input { // Hide the browser's default checkbox
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        cursor: pointer;
+        // height: 0;
+        // width: 0;
+        z-index: 1;
+    }
+    >input:checked ~ .custom-checkbox { // When the checkbox is checked, add a blue background
+        @include colors.bg-dark;
+        @include colors.border-ivory;
+    }
+    >input:checked ~ .custom-checkbox:after { // Show the checkmark when checked
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 4px;
+    }
+    >span {
+        margin-top: 3px;
+    }
+}
+
+.custom-checkbox { // Create a custom checkbox
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    @include colors.border-blue-dark;
+    border-radius: 3px;
+    // &:after {
+    //     content: '';
+    //     display: none;
+    // }
+}
+
+.custom-checkbox:after { // Create the checkmark/indicator (hidden when not checked)
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+.dropdown-contact .custom-checkbox:after { // Style the checkmark/indicator
+    // right: 9px;
+    // top: 5px;
+    width: 5px;
+    height: 10px;
+    @include colors.border-ivory;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.assigned-icons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    width: calc(100dvw - 15px);
+    @include bp.xs {
+        width: calc(100dvw - 50px);
+    }
+    @include bp.sm {
+        width: 488px;
+    }
+}
+
+.contact-icon {
+    @include colors.color-ivory;
+    @include colors.border-ivory;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.subtasks-list {
+    width: calc(100dvw - 15px);
+    // padding: 8px 0 8px 12px;
+    @include bp.xs {
+        width: calc(100dvw - 50px);
+    }
+    @include bp.sm {
+        width: 488px;
+    }
+    >ul {
+        padding-left: 16px;
+        margin: 12px;
+    }
+}
+
+.subtask {
+    position: relative;
+    padding-bottom: 12px;
+    margin-left: 16px;
+}
+
+.edit-delete-subtask {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    >img {
+        cursor: pointer;
+    }
+    >div {
+        @include colors.bg-grey-line;
+        height: auto;
+        width: 1px;
+    }
+}

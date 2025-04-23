@@ -5,14 +5,14 @@ import { GeneralService } from '../../services/general.service';
 import { Observable } from 'rxjs';
 import { DataBaseService } from '../../services/data-base.service';
 import { Task } from './../../models/task.model';
-import { AddTaskComponent } from '../add-task/add-task.component';
+import { AddTaskFormComponent } from '../../shared/components/add-task-form/add-task-form.component';
 
 @Component({
   selector: 'app-board',
   imports: [
     CommonModule,
     TaskComponent,
-    AddTaskComponent
+    AddTaskFormComponent  
   ],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
