@@ -5,12 +5,14 @@ import { GeneralService } from '../../services/general.service';
 import { Observable } from 'rxjs';
 import { DataBaseService } from '../../services/data-base.service';
 import { Task } from './../../models/task.model';
+import { AddTaskComponent } from '../add-task/add-task.component';
 
 @Component({
   selector: 'app-board',
   imports: [
     CommonModule,
-    TaskComponent
+    TaskComponent,
+    AddTaskComponent
   ],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
@@ -25,6 +27,11 @@ export class BoardComponent {
   constructor() {
     this.tasks$ = this.dataBaseService.getData<Task>('tasks');
     this.generalService.activeNavBtn = 'board';
+  }
+
+  openAddTaskContainer(status: string) {
+    this.generalService.taskStatus = status;
+    this.generalService.addTaskContainerOpened = true;
   }
 
 }

@@ -19,7 +19,10 @@ export class GeneralService {
 
   contactToBeEdited: Contact | null = null;
 
-  contactDeleted: boolean = false;  
+  contactDeleted: boolean = false;
+
+  addTaskContainerOpened: boolean = false;
+  taskStatus: string = 'to-do';
 
   constructor(private dataBaseService: DataBaseService) {}
 

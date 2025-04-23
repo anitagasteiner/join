@@ -1,13 +1,35 @@
 @use './../../shared/colors.scss' as colors;
 @use './../../shared/breakpoints.scss' as bp;
 
+.add-task-container {
+    @include colors.bg-ivory;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    @include bp.lg {
+        top: 96px;
+    }
+    @include bp.xl {        
+        @include colors.border-grey-light;
+        border-top-left-radius: 30px;
+        padding: 12px;
+        bottom: unset;
+        left: unset;
+    }
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
     padding-left: 16px;
-    // overflow-x: hidden;
     @include bp.xxl {
         overflow-y: hidden;
     }
@@ -53,16 +75,6 @@ button {
     }
 }
 
-// .board-header {
-//     padding-top: 48px;
-//     padding-left: 64px;
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: flex-start;
-//     align-items: center;
-//     gap: 35px;
-// }
-
 .tasks-main-container {
     display: flex;
     flex-direction: column;
@@ -76,7 +88,6 @@ button {
     @include bp.xxl {
         flex-direction: row;
     }
-    // padding-left: 64px; 
 }
 
 .tasks-container {
@@ -101,6 +112,7 @@ button {
         >img {
             width: 30px;
             height: 30px;
+            cursor: pointer;
         }
     }
     >div:nth-child(2) {

@@ -142,6 +142,7 @@ export class AddTaskComponent{
     this.newTask.subtasks = [];
     this.selectedPriority = '';
     this.assignedContacts = [];
+    this.generalService.addTaskContainerOpened = false;
   }
 
   async onSubmit(form: NgForm) {
@@ -156,7 +157,7 @@ export class AddTaskComponent{
       color: contact.color
     })); 
     this.newTask.category = this.selectedCategory;
-    this.newTask.status = 'to-do';
+    this.newTask.status = this.generalService.taskStatus;
     try {
       console.log('Speichere Task:', this.newTask);
       await this.dataBaseService.addData<Task>('tasks', this.newTask); // 'tasks' als Sammlungsname
@@ -167,6 +168,7 @@ export class AddTaskComponent{
       this.taskAdded = true;
       setTimeout(() => {
         this.taskAdded = false;
+        this.generalService.addTaskContainerOpened = false;
       }, 1000);
     } catch (error: any) {
       console.error('Fehler beim Speichern des Tasks: ', error);

@@ -1,6 +1,18 @@
-<div class="main-container">
+<div class="main-container" [ngClass]="{'overflow-hidden': generalService.addTaskContainerOpened}">
     
     <div class="search-add-container">
+
+        @if (generalService.addTaskContainerOpened) {
+
+            <div class="add-task-container">
+    
+                <!-- <h2>Add Task</h2> -->
+    
+                <app-add-task></app-add-task>
+    
+            </div>
+    
+        }
 
         <input class="search-task" placeholder="Find task" onfocus="this.placeholder=''" type="text" name="find-task" id="findTask">
      
@@ -14,7 +26,7 @@
 
             <div>
                 To do
-                <img src="/img/plus-btn.svg">
+                <img src="/img/plus-btn.svg" (click)="openAddTaskContainer('to-do')">
             </div>
 
             <div>
@@ -31,7 +43,7 @@
 
             <div>
                 In progress
-                <img src="/img/plus-btn.svg">
+                <img src="/img/plus-btn.svg" (click)="openAddTaskContainer('in-progress')">
             </div>
 
             <div>
@@ -48,7 +60,7 @@
 
             <div>
                 Awaiting feedback
-                <img src="/img/plus-btn.svg">
+                <img src="/img/plus-btn.svg" (click)="openAddTaskContainer('waiting')">
             </div>
 
             <div>
