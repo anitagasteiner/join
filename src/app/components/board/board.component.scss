@@ -7,7 +7,10 @@
     align-items: flex-start;
     gap: 32px;
     padding-left: 16px;
-    overflow-x: hidden;
+    // overflow-x: hidden;
+    @include bp.xxl {
+        overflow-y: hidden;
+    }
 }
 
 .search-add-container {
@@ -67,6 +70,12 @@ button {
     padding-top: 29px;
     padding-bottom: 24px;
     width: 100%;
+    @include bp.xxl {
+        height: calc(100% - 200px);
+    }    
+    @include bp.xxl {
+        flex-direction: row;
+    }
     // padding-left: 64px; 
 }
 
@@ -74,7 +83,6 @@ button {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    overflow-x: auto;
     >div:nth-child(1) {
         @include colors.color-black-light;
         display: flex;
@@ -99,5 +107,9 @@ button {
         display: flex;
         flex-direction: row;
         gap: 16px;
+        overflow: auto;
+        @include bp.xxl {
+            flex-direction: column;
+        }
     }
 }
