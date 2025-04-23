@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { GeneralService } from '../../services/general.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -23,6 +23,8 @@ export class AddTaskComponent{
 
   generalService = inject(GeneralService);
   dataBaseService = inject(DataBaseService);
+
+  @ViewChild('subtaskInput', { static: false }) subtasks?: ElementRef;
 
   contacts$: Observable<Contact[]>;
 
@@ -97,6 +99,11 @@ export class AddTaskComponent{
 
   toggleOpenClose() {
     this.selectOpened = !this.selectOpened;
+  }
+
+  setFocus() {
+    this.subtasks?.nativeElement.focus();
+    this.addingSubtask();
   }
 
   addingSubtask() {

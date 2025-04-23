@@ -90,15 +90,15 @@
         </fieldset>
 
         <fieldset class="subtasks-container">
-            <input #title="ngModel" [(ngModel)]="newSubtask" placeholder="Add new subtask" onfocus="this.placeholder=''" type="text" name="subtasks" id="subtasks" (click)="addingSubtask()">
+            <input #subtaskInput #subtasks="ngModel" [(ngModel)]="newSubtask" placeholder="Add new subtask" onfocus="this.placeholder=''" type="text" name="subtasks" id="subtasks" (click)="addingSubtask()">
             @if (!subtaskBeingAdded) {
-                <img src="/img/add.svg" (click)="addSubtask()">
+                <img src="/img/add.svg" (click)="setFocus()">
             }
             @if (subtaskBeingAdded) {
                 <div>
                     <img src="/img/cancel-blue.svg">
                     <div></div>
-                    <img src="/img/check-blue.svg">
+                    <img src="/img/check-blue.svg" (click)="addSubtask()">
                 </div>
             }            
             <legend><b>Subtasks</b> (optional)</legend>
