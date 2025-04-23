@@ -8,6 +8,17 @@
     right: 0;
     bottom: 76px;
     left: 0;
+    >h2 {
+        display: none;
+        @include bp.xl {
+            display: unset;
+            font-weight: 700;
+            font-size: 48px;
+            margin-top: 48px;
+            padding-bottom: -36px;
+            margin: 0;
+        }
+    }
     @include bp.lg {
         top: 96px;
         bottom: 0;
