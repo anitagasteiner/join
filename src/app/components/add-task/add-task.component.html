@@ -110,7 +110,7 @@
                         <li class="subtask">
                             {{ subtask }}
                             <div class="edit-delete-subtask">
-                                <img src="/img/edit.svg">
+                                <img src="/img/edit.svg" (click)="editSubtask(subtask)">
                                 <div></div>
                                 <img src="/img/delete.svg" (click)="deleteSubtask(subtask)">
                             </div>

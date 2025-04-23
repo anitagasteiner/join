@@ -127,6 +127,12 @@ export class AddTaskComponent{
     return this.newTask.subtasks.some(subtask => subtask === entry);
   }
 
+  editSubtask(subtask: string) {
+    this.deleteSubtask(subtask);
+    this.setFocus();
+    this.newSubtask = subtask;
+  }
+
   deleteSubtask(subtask: string) {
     this.newTask.subtasks = this.newTask.subtasks.filter(entry => entry !== subtask);
   }
