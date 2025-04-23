@@ -137,6 +137,13 @@ export class AddTaskComponent{
     this.newTask.subtasks = this.newTask.subtasks.filter(entry => entry !== subtask);
   }
 
+  resetForm(form: NgForm) {
+    form.resetForm();
+    this.newTask.subtasks = [];
+    this.selectedPriority = '';
+    this.assignedContacts = [];
+  }
+
   async onSubmit(form: NgForm) {
     if (form.invalid) {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';

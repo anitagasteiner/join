@@ -3,12 +3,12 @@
     <form (ngSubmit)="onSubmit(addTaskForm)" #addTaskForm="ngForm">
 
         <fieldset>
-            <input #title="ngModel" [(ngModel)]="newTask.title" placeholder="Enter a title" onfocus="this.placeholder=''" type="text" name="title" id="title" minlength="2" required>
+            <input #title="ngModel" [(ngModel)]="newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" required>
             <legend></legend>
         </fieldset>
 
         <fieldset>
-            <textarea #description="ngModel" [(ngModel)]="newTask.description" rows="3" placeholder="Enter a description" onfocus="this.placeholder=''" type="text" name="description" id="description"></textarea>
+            <textarea #description="ngModel" [(ngModel)]="newTask.description" rows="3" placeholder="Enter a description" type="text" name="description" id="description"></textarea>
             <legend><b>Description</b> (optional)</legend>
         </fieldset>
 
@@ -133,7 +133,7 @@
         }
 
         <div class="btns-create-clear">
-            <div class="btn-create-clear btn-clear">
+            <div class="btn-create-clear btn-clear" (click)="resetForm(addTaskForm)">
                 <span>Clear</span>
                 <img src="/img/cancel.svg">
             </div>
