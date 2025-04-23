@@ -106,7 +106,7 @@
         @if (newTask.subtasks.length) {
             <div class="subtasks-list">
                 <ul>
-                    @for (subtask of newTask.subtasks; track trackByIndex) {
+                    @for (subtask of newTask.subtasks; track subtask) {
                         <li class="subtask">
                             {{ subtask }}
                             <div class="edit-delete-subtask">
