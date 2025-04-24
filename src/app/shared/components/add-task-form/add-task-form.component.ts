@@ -166,6 +166,7 @@ export class AddTaskFormComponent {
       this.selectedPriority = '';
       this.assignedContacts = [];
       this.taskAdded = true;
+      this.generalService.taskStatus = 'to-do';
       setTimeout(() => {
         this.taskAdded = false;
         this.generalService.addTaskContainerOpened = false;

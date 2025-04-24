@@ -72,6 +72,7 @@
 .assigned {
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
     >div:nth-child(n + 2) {
         margin-left: -10px;
     }

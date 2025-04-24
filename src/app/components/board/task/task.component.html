@@ -14,9 +14,11 @@
         <div class="assigned-priority">
             @if (task.assigned) {
                 <div class="assigned">
-                    @for (assignedContact of task.assigned; track assignedContact.id; let index = $index) {
-                        <div class="contact-icon" [ngClass]="assignedContact.color">{{ assignedContact.name | initials }}</div>
-                        <!-- <div>{{ assignedContact.name }}</div> -->
+                    @for (assignedContact of task.assigned.slice(0, 5); track assignedContact.id; let index = $index) {
+                        <div class="contact-icon" [ngClass]="assignedContact.color">{{ assignedContact.name | initials }}</div>                     
+                    }
+                    @if (task.assigned.length > 5) {
+                        ...
                     }
                 </div>                
             }
