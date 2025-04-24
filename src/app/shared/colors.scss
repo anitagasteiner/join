@@ -118,6 +118,11 @@ $colors: (
     background-color: $bg-color;
 }
 
+@mixin bg-grey-light {
+    $bg-color: map.get($colors, "grey-light");
+    background-color: $bg-color;
+}
+
 @mixin bg-grey-line {
     $bg-color: map.get($colors, "grey-line");
     background-color: $bg-color;

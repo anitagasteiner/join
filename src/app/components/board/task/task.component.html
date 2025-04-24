@@ -6,8 +6,10 @@
         <div class="title">{{task.title}}</div>
         <div class="description">{{task.description}}</div>
         <div class="subtasks">
-            <div>Line</div>
-            <div>XX/{{ task.subtasks.length }} Subtasks</div>
+            <div class="progress-container">
+                <div class="progress-bar" [style.width.%]="progress"></div>
+            </div>            
+            <div>{{ subtasksDone }}/{{ task.subtasks.length }} Subtasks</div>
         </div>
         <div class="assigned-priority">
             @if (task.assigned) {
