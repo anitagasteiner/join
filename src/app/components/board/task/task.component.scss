@@ -67,26 +67,26 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 24px;
-
 }
 
 .assigned {
     display: flex;
     flex-direction: row;
     >div:nth-child(n + 2) {
-        margin-left: -25px;
+        margin-left: -10px;
     }
 }
 
 .contact-icon {
     @include colors.color-ivory;
     @include colors.border-ivory;
+    border-width: 1px;
     border-radius: 50%;
-    width: 42px;
-    height: 42px;
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 12px;
+    align-items: center;    
 }
   
