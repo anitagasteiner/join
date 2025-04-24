@@ -34,11 +34,7 @@ export class AddTaskFormComponent {
     description: '',
     date: Timestamp.now(),
     priority: '',
-    assigned: [{
-      id: '',
-      name: '',
-      color: ''
-    }],
+    assigned: [],
     category: '',
     subtasks: [],
     status: ''
@@ -53,7 +49,11 @@ export class AddTaskFormComponent {
   categories = ['Technical Task', 'User Story'];  
   selectedCategory: string = '';
 
-  newSubtask: string = '';
+  newSubtask: {text: string; done: boolean} = {
+    text: '',
+    done: false
+  };
+  newSubtasks: {text: string; done: boolean}[] = [];
   subtaskBeingAdded: boolean = false;
 
   taskAdded: boolean = false;
@@ -61,25 +61,24 @@ export class AddTaskFormComponent {
   constructor() {
     const originalContacts$ = this.dataBaseService.getData<Contact>('contacts');
     this.contacts$ = originalContacts$.pipe(map(contacts => contacts.sort((a, b) => a.name.localeCompare(b.name))));
-    this.generalService.activeNavBtn = 'add-task';
   }
 
-  trackByIndex(index: number): number {
-    return index;
-  }
+  // trackByIndex(index: number): number {
+  //   return index;
+  // }
 
-  toggleDropdown() {
+  toggleAssignedDropdown() {
     this.dropdownOpened = !this.dropdownOpened;
   }
 
-  closeDropdown() {
+  closeAssignedDropdown() {
     //verzögert, damit Checkbox-Klicks noch erkannt werden
     setTimeout(() => {
       this.dropdownOpened = false;
     }, 150);
   }
 
-  isSelected(contact: Contact) {
+  contactIsSelected(contact: Contact) {
     return this.assignedContacts.some(c => c.id === contact.id);
   }
   
@@ -97,11 +96,11 @@ export class AddTaskFormComponent {
     }
   }
 
-  toggleOpenClose() {
+  toggleCategoryOpenClose() {
     this.selectOpened = !this.selectOpened;
   }
 
-  setFocus() {
+  setFocusOnSubtaskInput() {
     this.subtasks?.nativeElement.focus();
     this.addingSubtask();
   }
@@ -112,29 +111,29 @@ export class AddTaskFormComponent {
 
   stopAddingSubtask() {
     this.subtaskBeingAdded = false;
-    this.newSubtask = '';
+    this.newSubtask.text = '';
   }
 
   addSubtask() {
-    if (this.newSubtask !== '' && !this.checkIfPresent(this.newSubtask)) {
-      this.newTask.subtasks.push(this.newSubtask);
-      this.newSubtask = '';
+    if (this.newSubtask.text !== '' && !this.checkIfSubtaskPresent(this.newSubtask.text)) {
+      this.newSubtasks.push({ ...this.newSubtask });
+      this.newSubtask.text = '';
       this.subtaskBeingAdded = false;
     }
   }
 
-  checkIfPresent(entry: string) {
-    return this.newTask.subtasks.some(subtask => subtask === entry);
+  checkIfSubtaskPresent(newSubtask: string) {
+    return this.newSubtasks.some(entry => entry.text === newSubtask);
   }
 
   editSubtask(subtask: string) {
     this.deleteSubtask(subtask);
-    this.setFocus();
-    this.newSubtask = subtask;
+    this.setFocusOnSubtaskInput();
+    this.newSubtask.text = subtask;
   }
 
   deleteSubtask(subtask: string) {
-    this.newTask.subtasks = this.newTask.subtasks.filter(entry => entry !== subtask);
+    this.newSubtasks = this.newSubtasks.filter(entry => entry.text !== subtask );
   }
 
   resetForm(form: NgForm) {
@@ -157,9 +156,10 @@ export class AddTaskFormComponent {
       color: contact.color
     })); 
     this.newTask.category = this.selectedCategory;
+    this.newTask.subtasks = [...this.newSubtasks];
+    this.newSubtasks = [];
     this.newTask.status = this.generalService.taskStatus;
-    try {
-      console.log('Speichere Task:', this.newTask);
+    try {      
       await this.dataBaseService.addData<Task>('tasks', this.newTask); // 'tasks' als Sammlungsname
       form.resetForm();
       this.newTask.subtasks = [];

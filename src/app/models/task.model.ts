@@ -11,8 +11,11 @@ export interface Task {
       name: string;
       color: string;
     }[];
-    // assigned: string[];
     category: string;
-    subtasks: string[];
+    subtasks: {
+      text: string;
+      done: boolean;
+    }[];
+    // subtasks: string[];
     status: string;
   }
