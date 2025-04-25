@@ -20,6 +20,16 @@
 
     </div>
 
+    @if (generalService.taskDetailsOpened) {
+
+        <div class="bg-light">
+
+            <app-task-details></app-task-details>
+    
+        </div>
+
+    }
+
     <div class="tasks-main-container">
 
         <div class="tasks-container">

@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+// import { InitialsPipe } from '../../../initials.pipe';
+import { GeneralService } from '../../../services/general.service';
+
+@Component({
+  selector: 'app-task-details',
+  imports: [
+    CommonModule
+    // InitialsPipe
+  ],
+  templateUrl: './task-details.component.html',
+  styleUrl: './task-details.component.scss'
+})
+export class TaskDetailsComponent {
+
+  constructor(public generalService: GeneralService) {}
+
+}

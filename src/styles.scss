@@ -67,6 +67,16 @@ body {
     display: none;
 }
 
+.bg-light {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include colors.bg-grey-light-transparent;
+    z-index: 2;
+}
+
 .orange {
     @include colors.bg-contact-orange;
 }

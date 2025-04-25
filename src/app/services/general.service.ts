@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Contact } from '../models/contact.model';
 import { DataBaseService } from './data-base.service';
+import { Task } from '../models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,21 @@ export class GeneralService {
   addTaskContainerOpened: boolean = false;
   taskStatus: string = 'to-do';
 
+  taskDetailsOpened: boolean = false;
+  currentTask: Task | null = null;
+
   constructor(private dataBaseService: DataBaseService) {}
+  
+  showTaskDetails(task: Task) {
+    this.currentTask = task;
+    this.taskDetailsOpened = true;
+    console.log('task details opened?: ', this.taskDetailsOpened);
+  }
+
+  hideTaskDetails() {
+    this.taskDetailsOpened = false;
+    this.currentTask = null;
+  }
 
   setSelectedContact(contact: Contact) {
     this.selectedContactSubject.next(contact); // Wenn this.selectedContactSubject.next(contact) aufgerufen wird, wird der Wert aktualisiert, und alle Abonnenten des selectedContact$-Streams erhalten sofort den neuen Wert.

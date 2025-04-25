@@ -1,0 +1,24 @@
+    <div class="task-details-container">
+
+        <img src="/img/cancel-blue.svg" class="close-img" (click)="this.generalService.hideTaskDetails()">
+
+        <!-- <div class="category" [ngClass]="{'bg-orange': task.category == 'Technical Task', 'bg-blue-bright': task.category == 'User Story'}">{{ task.category }}</div>
+        <h2 class="title">{{task.title}}</h2>
+        <div class="description">{{task.description}}</div>
+        <div class="due-date">{{ task.date }}</div>
+        <div class="priority">{{ task.priority }}</div>
+        <div class="assigned">
+            @if (task.assigned) {
+                <div class="assigned">
+                    @for (assignedContact of task.assigned.slice(0, 5); track assignedContact.id; let index = $index) {
+                        <div class="contact-icon" [ngClass]="assignedContact.color">{{ assignedContact.name | initials }}</div>                     
+                    }
+                    @if (task.assigned.length > 5) {
+                        ...
+                    }
+                </div>                
+            }
+        </div> -->
+        <div class="subtasks">Subtasks will follow here</div>
+
+    </div>
