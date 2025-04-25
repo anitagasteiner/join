@@ -6,7 +6,7 @@
 
             <div class="contact-head-container">
 
-                <img src="/img/arrow-left-line.svg" (click)="this.generalService.hideContactDetails()">
+                <img src="/img/arrow-left-line.svg" (click)="generalService.hideContactDetails()">
 
                 <div class="contact-icon" [ngClass]="displayedContact.color">{{ displayedContact.name | initials }}</div> <!-- ngClass: SCSS-Klasse basierend auf dem color-Attribut des displayedContact -->
 
@@ -16,12 +16,12 @@
 
                     <div class="contact-edit-delete">
 
-                        <div (click)="this.generalService.showEditContactForm(displayedContact)">
+                        <div (click)="generalService.showEditContactForm(displayedContact)">
                             <img src="/img/edit.svg">
                             Edit
                         </div>
 
-                        <div (click)="this.generalService.deleteContact(displayedContact)">
+                        <div (click)="generalService.deleteContact(displayedContact)">
                             <img src="/img/delete.svg">
                             Delete
                         </div>

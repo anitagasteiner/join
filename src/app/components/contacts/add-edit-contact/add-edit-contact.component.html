@@ -2,13 +2,13 @@
     
     <div class="add-edit-contact-container">
 
-        <img src="/img/close.svg" (click)="this.generalService.hideContactForm()">
+        <img src="/img/close.svg" (click)="generalService.hideContactForm()">
 
         <div class="top-container">
-            @if (this.generalService.addContactFormOpened) {
+            @if (generalService.addContactFormOpened) {
                 <h2>Add contact</h2>
             }
-            @if (this.generalService.editContactFormOpened) {
+            @if (generalService.editContactFormOpened) {
                 <h2>Edit contact</h2>
             }
             <div>Tasks are better with a team!</div>
@@ -16,21 +16,21 @@
         
         <div class="bottom-container">
 
-            @if (this.generalService.editContactFormOpened) {
+            @if (generalService.editContactFormOpened) {
                 @if (selectedContact$ | async; as contact) {
                     <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
                 }
             }            
-            @if (this.generalService.addContactFormOpened) {
+            @if (generalService.addContactFormOpened) {
                 <div class="contact-icon">
                     <img src="/img/person-white.svg">
                 </div>
             }
 
-            @if (this.generalService.addContactFormOpened) {
+            @if (generalService.addContactFormOpened) {
                 <app-add-contact-form></app-add-contact-form>
             }
-            @if (this.generalService.editContactFormOpened && generalService.contactToBeEdited) {
+            @if (generalService.editContactFormOpened && generalService.contactToBeEdited) {
                 <app-edit-contact-form [contact]="generalService.contactToBeEdited" (updated)="onContactUpdated()" (cancelled)="generalService.hideContactForm()"></app-edit-contact-form>
             }
 
