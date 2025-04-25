@@ -33,7 +33,6 @@ export class GeneralService {
   showTaskDetails(task: Task) {
     this.currentTask = task;
     this.taskDetailsOpened = true;
-    console.log('task details opened?: ', this.taskDetailsOpened);
   }
 
   hideTaskDetails() {
