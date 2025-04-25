@@ -11,7 +11,10 @@ import { GeneralService } from '../../../services/general.service';
     InitialsPipe
   ],
   templateUrl: './task.component.html',
-  styleUrl: './task.component.scss'
+  styleUrls: [
+    './task.component.scss',
+    './../task-general.scss'
+  ]
 })
 export class TaskComponent {
 

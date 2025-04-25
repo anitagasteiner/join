@@ -10,7 +10,10 @@ import { GeneralService } from '../../../services/general.service';
     InitialsPipe
   ],
   templateUrl: './task-details.component.html',
-  styleUrl: './task-details.component.scss'
+  styleUrls: [
+    './task-details.component.scss',
+    './../task-general.scss'
+  ]
 })
 export class TaskDetailsComponent {
 
