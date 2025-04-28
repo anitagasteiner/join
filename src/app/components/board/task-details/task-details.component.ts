@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InitialsPipe } from '../../../initials.pipe';
-import { GeneralService } from '../../../services/general.service';
 import { Task } from '../../../models/task.model';
 import { Observable } from 'rxjs';
+import { TasksService } from '../../../services/tasks.service';
+import { GeneralService } from '../../../services/general.service';
 
 @Component({
   selector: 'app-task-details',
@@ -21,8 +22,9 @@ export class TaskDetailsComponent {
 
   // @Input()currentTask!: Task;
   generalService = inject(GeneralService);
+  tasksService = inject(TasksService);
 
-  displayedTask$: Observable<Task> = this.generalService.currentTask$; // displayedTask$ wird als Observable<Task> deklariert und sofort auf den Wert des currentTask$-Streams aus dem GeneralService gesetzt
+  displayedTask$: Observable<Task> = this.tasksService.currentTask$; // displayedTask$ wird als Observable<Task> deklariert und sofort auf den Wert des currentTask$-Streams aus dem TasksService gesetzt
 
   constructor() {}
 

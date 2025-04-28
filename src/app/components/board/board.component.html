@@ -1,8 +1,8 @@
-<div class="main-container" [ngClass]="{'overflow-hidden': generalService.addTaskContainerOpened}">
+<div class="main-container" [ngClass]="{'overflow-hidden': tasksService.addTaskContainerOpened}">
     
     <div class="search-add-container">
 
-        @if (generalService.addTaskContainerOpened) {
+        @if (tasksService.addTaskContainerOpened) {
 
             <div class="add-task-container">
     
@@ -20,7 +20,7 @@
 
     </div>
 
-    @if (generalService.taskDetailsOpened) {
+    @if (tasksService.taskDetailsOpened) {
 
         <div class="bg-light">
 

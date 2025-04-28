@@ -1,10 +1,11 @@
 import { Component, inject, Input } from '@angular/core';
-import { GeneralService } from '../../../services/general.service';
+// import { GeneralService } from '../../../services/general.service';
 import { CommonModule } from '@angular/common';
 import { AddContactFormComponent } from './add-contact-form/add-contact-form.component';
 import { EditContactFormComponent } from './edit-contact-form/edit-contact-form.component';
 import { Contact } from './../../../models/contact.model';
 import { InitialsPipe } from '../../../initials.pipe';
+import { ContactsService } from '../../../services/contacts.service';
 
 
 @Component({
@@ -28,14 +29,15 @@ export class AddEditContactComponent {
     color: ''
   };  
 
-  generalService = inject(GeneralService);
+  // generalService = inject(GeneralService);
+  contactsService = inject(ContactsService);
 
-  selectedContact$ = this.generalService.selectedContact$;
+  selectedContact$ = this.contactsService.selectedContact$;
 
   constructor() {}  
 
   onContactUpdated() {
-    this.generalService.hideContactForm();
+    this.contactsService.hideContactForm();
   }
 
 }

@@ -26,14 +26,14 @@
 
     <div class="btns-create-clear">
 
-        <div class="btn-create-clear btn-clear" (click)="generalService.deleteContact(editedContact)">Delete</div>
+        <div class="btn-create-clear btn-clear" (click)="contactsService.deleteContact(editedContact)">Delete</div>
 
         <div><input class="btn-create-clear btn-create btn-submit" type="submit" value="Save"></div>
 
         @if (contactEdited) {
             <div class="contact-changed">Contact successfully changed.</div>
         }
-       @if (generalService.contactDeleted) {
+       @if (contactsService.contactDeleted) {
             <div class="contact-changed">Contact successfully deleted.</div>
         }
         

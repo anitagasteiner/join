@@ -4,7 +4,7 @@
 
         <div class="task-details-top-container">
             <div class="category" [ngClass]="{'bg-orange': displayedTask.category == 'Technical Task', 'bg-blue-bright': displayedTask.category == 'User Story'}">{{ displayedTask.category }}</div>
-            <img src="/img/cancel-blue.svg" class="close-img" (click)="generalService.hideTaskDetails()">
+            <img src="/img/cancel-blue.svg" class="close-img" (click)="tasksService.hideTaskDetails()">
         </div>
         
         <h2>{{ displayedTask.title }}</h2>

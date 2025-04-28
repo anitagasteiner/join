@@ -7,6 +7,7 @@ import { map, Observable } from 'rxjs';
 import { AddEditContactComponent } from './add-edit-contact/add-edit-contact.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import { Contact } from './../../models/contact.model';
+import { ContactsService } from '../../services/contacts.service';
 
 @Component({
   selector: 'app-contacts',
@@ -32,6 +33,7 @@ export class ContactsComponent {
   };
 
   generalService = inject(GeneralService);
+  contactsService = inject(ContactsService);
 
   // contactDetailsOpened: boolean = false;
 
@@ -43,12 +45,12 @@ export class ContactsComponent {
 
   showContactDetails(contact: Contact) {
     this.displayedContact = contact;
-    this.generalService.setSelectedContact(contact);
-    this.generalService.contactDetailsOpened = true;
+    this.contactsService.setSelectedContact(contact);
+    this.contactsService.contactDetailsOpened = true;
   }
 
   showAddContactForm() {
-    this.generalService.addContactFormOpened = true;
+    this.contactsService.addContactFormOpened = true;
   }
 
 }

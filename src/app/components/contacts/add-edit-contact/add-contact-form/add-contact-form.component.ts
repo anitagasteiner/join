@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DataBaseService } from '../../../../services/data-base.service';
-import { GeneralService } from '../../../../services/general.service';
+// import { GeneralService } from '../../../../services/general.service';
 import { Contact } from './../../../../models/contact.model';
+import { ContactsService } from '../../../../services/contacts.service';
 
 @Component({
   selector: 'app-add-contact-form',
@@ -36,7 +37,8 @@ export class AddContactFormComponent {
 
   constructor(
     private dataBaseService: DataBaseService,
-    private generalService: GeneralService
+    // private generalService: GeneralService,
+    private contactsService: ContactsService
   ) {}
 
   async onSubmit(form: NgForm) {
@@ -51,7 +53,7 @@ export class AddContactFormComponent {
       form.resetForm();
       this.contactAdded = true;
       setTimeout(() => {
-        this.generalService.hideContactForm();
+        this.contactsService.hideContactForm();
         this.contactAdded = false;
       }, 1000);
     } catch (error: any) {

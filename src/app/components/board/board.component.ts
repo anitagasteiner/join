@@ -7,6 +7,7 @@ import { DataBaseService } from '../../services/data-base.service';
 import { Task } from './../../models/task.model';
 import { AddTaskFormComponent } from '../../shared/components/add-task-form/add-task-form.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-board',
@@ -44,6 +45,7 @@ export class BoardComponent {
 
   generalService = inject(GeneralService);
   dataBaseService = inject(DataBaseService);
+  tasksService = inject(TasksService);
 
   constructor() {
     const originalTasks$ = this.dataBaseService.getData<Task>('tasks');
@@ -52,14 +54,14 @@ export class BoardComponent {
   }
 
   openAddTaskContainer(status: string) {
-    this.generalService.taskStatus = status;
-    this.generalService.addTaskContainerOpened = true;
+    this.tasksService.taskStatus = status;
+    this.tasksService.addTaskContainerOpened = true;
   }
 
   showTaskDetails(task: Task) {
     this.displayedTask = task;
-    this.generalService.setCurrentTask(task);
-    this.generalService.taskDetailsOpened = true;
+    this.tasksService.setCurrentTask(task);
+    this.tasksService.taskDetailsOpened = true;
   }
 
 }
