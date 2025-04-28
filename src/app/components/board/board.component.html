@@ -42,7 +42,7 @@
             <div>
                 @for (task of tasks$ | async; track task.id; let index = $index) {
                     @if (task.status == "to-do") {
-                        <app-task [task]="task"></app-task>
+                        <app-task [task]="task" (click)="showTaskDetails(task)"></app-task>
                     }            
                 }
             </div>
@@ -59,7 +59,7 @@
             <div>
                 @for (task of tasks$ | async; track task.title; let index = $index) {
                     @if (task.status == "in-progress") {
-                        <app-task [task]="task"></app-task>
+                        <app-task [task]="task" (click)="showTaskDetails(task)"></app-task>
                     }            
                 }
             </div>
@@ -76,7 +76,7 @@
             <div>
                 @for (task of tasks$ | async; track task.title; let index = $index) {
                     @if (task.status == "waiting") {
-                        <app-task [task]="task"></app-task>
+                        <app-task [task]="task" (click)="showTaskDetails(task)"></app-task>
                     }            
                 }
             </div>            
@@ -92,7 +92,7 @@
             <div>
                 @for (task of tasks$ | async; track task.title; let index = $index) {
                     @if (task.status == "done") {
-                        <app-task [task]="task"></app-task>
+                        <app-task [task]="task" (click)="showTaskDetails(task)"></app-task>
                     }            
                 }
             </div>

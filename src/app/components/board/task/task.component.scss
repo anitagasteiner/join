@@ -12,21 +12,6 @@
     cursor: pointer;
 }
 
-.category {
-    width: fit-content;   
-    border-radius: 8px;
-    padding: 4px 16px;
-    @include colors.color-ivory;
-}
-
-.bg-orange {
-    @include colors.bg-orange;
-}
-
-.bg-blue-bright {
-    @include colors.bg-blue-bright-tasks;
-}
-
 .title {
     @include colors.color-dark;
     font-size: 16px;
@@ -54,14 +39,14 @@
     @include colors.bg-grey-light;
     border-radius: 8px;
     overflow: hidden;
-  }
+}
   
-  .progress-bar {
+.progress-bar {
     height: 8px;
     @include colors.bg-blue-dark;
     border-radius: 16px;
     transition: width 0.3s ease-in-out;
-  }
+}
 
 .assigned-priority {
     display: flex;
@@ -77,17 +62,4 @@
     >div:nth-child(n + 2) {
         margin-left: -10px;
     }
-}
-
-.contact-icon {
-    @include colors.color-ivory;
-    @include colors.border-ivory;
-    border-width: 1px;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
 }

@@ -10,7 +10,11 @@ import { Task } from '../models/task.model';
 export class GeneralService {
 
   private selectedContactSubject = new BehaviorSubject<any>(null); // Ein BehaviorSubject ist eine spezielle Art von Subject, das den neuesten Wert speichert und diesen Wert sofort an neue Abonnenten weitergibt.
-  selectedContact$ = this.selectedContactSubject.asObservable(); // Das $-Suffix deutet an, dass es sich um einen Observable-Stream handelt.    
+  selectedContact$ = this.selectedContactSubject.asObservable(); // Das $-Suffix deutet an, dass es sich um einen Observable-Stream handelt.
+
+  private currentTaskSubject = new BehaviorSubject<any>(null);
+  currentTask$ = this.currentTaskSubject.asObservable();
+  // currentTask: Task | null = null;
 
   activeNavBtn: string = 'summary';
 
@@ -26,23 +30,25 @@ export class GeneralService {
   taskStatus: string = 'to-do';
 
   taskDetailsOpened: boolean = false;
-  currentTask: Task | null = null;
+  taskToBeEdited: Task | null = null;
 
   constructor(private dataBaseService: DataBaseService) {}
-  
-  showTaskDetails(task: Task) {
-    this.currentTask = task;
-    this.taskDetailsOpened = true;
-    console.log('task details opened?: ', this.taskDetailsOpened);
+
+  capitalize(text: string): string {
+    return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
   hideTaskDetails() {
     this.taskDetailsOpened = false;
-    this.currentTask = null;
+    // this.currentTask = null;
   }
 
   setSelectedContact(contact: Contact) {
     this.selectedContactSubject.next(contact); // Wenn this.selectedContactSubject.next(contact) aufgerufen wird, wird der Wert aktualisiert, und alle Abonnenten des selectedContact$-Streams erhalten sofort den neuen Wert.
+  }
+
+  setCurrentTask(task: Task) {
+    this.currentTaskSubject.next(task);
   }
 
   showEditContactForm(contact: Contact) {

@@ -1,6 +1,6 @@
-@if (task) { <!-- wird nur gerendert, wenn task wirklich vorhanden ist -> Fehler wie "Cannot read properties of undefined" werden dadurch vermieden -->
+<div class="task-container">
 
-    <div class="task-container" (click)="generalService.showTaskDetails(task)">
+    @if (task) { <!-- wird nur gerendert, wenn task wirklich vorhanden ist -> Fehler wie "Cannot read properties of undefined" werden dadurch vermieden -->
 
         <div class="category" [ngClass]="{'bg-orange': task.category == 'Technical Task', 'bg-blue-bright': task.category == 'User Story'}">{{ task.category }}</div>
         <div class="title">{{ task.title }}</div>
@@ -22,9 +22,9 @@
                     }
                 </div>                
             }
-            <img src="/img/prio-{{task.priority}}.svg">
-        </div>        
+            <img src="/img/prio-{{ task.priority }}.svg">
+        </div>  
+        
+    }
 
-    </div>
-
-}
+</div>

@@ -1,0 +1,29 @@
+@use './../../shared/colors.scss' as colors;
+
+.category {
+    width: fit-content;   
+    border-radius: 8px;
+    padding: 4px 16px;
+    @include colors.color-ivory;
+}
+
+.bg-orange {
+    @include colors.bg-orange;
+}
+
+.bg-blue-bright {
+    @include colors.bg-blue-bright-tasks;
+}
+
+.contact-icon {
+    @include colors.color-ivory;
+    @include colors.border-ivory;
+    border-width: 1px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
