@@ -29,6 +29,10 @@ export class GeneralService {
   currentTask: Task | null = null;
 
   constructor(private dataBaseService: DataBaseService) {}
+
+  capitalize(text: string): string {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
   
   showTaskDetails(task: Task) {
     this.currentTask = task;

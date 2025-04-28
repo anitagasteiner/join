@@ -2,26 +2,70 @@
 
     <div class="task-details-container">
 
-        <img src="/img/cancel-blue.svg" class="close-img" (click)="generalService.hideTaskDetails()">
+        <div class="task-details-top-container">
+            <div class="category" [ngClass]="{'bg-orange': generalService.currentTask.category == 'Technical Task', 'bg-blue-bright': generalService.currentTask.category == 'User Story'}">{{ generalService.currentTask.category }}</div>
+            <img src="/img/cancel-blue.svg" class="close-img" (click)="generalService.hideTaskDetails()">
+        </div>
+        
+        <h2>{{generalService.currentTask.title}}</h2>
 
-        <div class="category" [ngClass]="{'bg-orange': generalService.currentTask.category == 'Technical Task', 'bg-blue-bright': generalService.currentTask.category == 'User Story'}">{{ generalService.currentTask.category }}</div>
-        <h2 class="title">{{generalService.currentTask.title}}</h2>
         <div class="description">{{generalService.currentTask.description}}</div>
-        <div class="due-date">{{ generalService.currentTask.date }}</div>
-        <div class="priority">{{ generalService.currentTask.priority }}</div>
-        <div class="assigned">
+
+        <div class="due-date">
+            <span>Due date:</span>
+            {{ generalService.currentTask.date }}
+        </div>
+
+        <div class="priority">
+            <span>Priority:</span>
+            <div>
+                {{ generalService.capitalize(generalService.currentTask.priority) }}
+                <img src="/img/prio-{{ generalService.currentTask.priority }}.svg">
+            </div>            
+        </div>
+
+        <div class="assigned-container">
+            <span>Assigned to:</span>
             @if (generalService.currentTask.assigned) {
-                <div class="assigned">
+                <div>
                     @for (assignedContact of generalService.currentTask.assigned.slice(0, 5); track assignedContact.id; let index = $index) {
-                        <div class="contact-icon" [ngClass]="assignedContact.color">{{ assignedContact.name | initials }}</div>                     
+                        <div class="assigned">
+                            <div class="contact-icon" [ngClass]="assignedContact.color">{{ assignedContact.name | initials }}</div>
+                            <div>{{ assignedContact.name }}</div>
+                        </div>                        
                     }
                     @if (generalService.currentTask.assigned.length > 5) {
                         ...
                     }
-                </div>                
+                </div>
             }
         </div>
-        <div class="subtasks">Subtasks will follow here</div>
+
+        <div class="subtasks-container">
+            <span>Subtasks:</span>
+            @if (generalService.currentTask.subtasks) {
+                <div>
+                    @for (subtask of generalService.currentTask.subtasks; track subtask.text; let index = $index) {
+                        <div class="subtask">
+                            <img src="/img/check-box.svg">
+                            <div>{{ subtask.text }}</div>
+                        </div>                        
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="task-details-bottom-container">
+            <div>
+                <img src="/img/delete.svg">
+                <span>Delete</span>
+            </div>
+            <div class="line"></div>
+            <div>
+                <img src="/img/edit.svg">
+                <span>Edit</span>
+            </div>
+        </div>
 
     </div>
 }
