@@ -1,17 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { GeneralService } from '../../services/general.service';
+import { map, Observable } from 'rxjs';
+import { Task } from '../../models/task.model';
+import { DataBaseService } from '../../services/data-base.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-summary',
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './summary.component.html',
   styleUrl: './summary.component.scss'
 })
 export class SummaryComponent {
 
-  // generalService = inject(GeneralService);
+  tasksCount$: Observable<number>;
+  todoCount$: Observable<number>;
+  inProgressCount$: Observable<number>;
+  waitingCount$: Observable<number>;
+  doneCount$: Observable<number>;
+  urgentCount$: Observable<number>;
+
+  dataBaseService = inject(DataBaseService);
 
   constructor(private generalService: GeneralService) {
+    const originalTasks$ = this.dataBaseService.getData<Task>('tasks');
+    this.tasksCount$ = originalTasks$.pipe(
+      map(tasks => tasks.length)
+    );
+    this.todoCount$ = originalTasks$.pipe(
+      map(tasks => tasks.filter(task => task.status === 'to-do').length)
+    )
+    this.inProgressCount$ = originalTasks$.pipe(
+      map(tasks => tasks.filter(task => task.status === 'in-progress').length)
+    )
+    this.waitingCount$ = originalTasks$.pipe(
+      map(tasks => tasks.filter(task => task.status === 'waiting').length)
+    )
+    this.doneCount$ = originalTasks$.pipe(
+      map(tasks => tasks.filter(task => task.status === 'done').length)
+    )
+    this.urgentCount$ = originalTasks$.pipe(
+      map(tasks => tasks.filter(task => task.priority === 'urgent').length)
+    )
     this.generalService.activeNavBtn = 'summary';
   }
 
@@ -30,5 +62,9 @@ export class SummaryComponent {
       return 'Hello';
     }
   }
+
+  // todoCount$: Observable<number> = this.tasks$.pipe(
+  //   map(tasks => tasks.filter(task => task.status === 'to-do').length)
+  // );
 
 }

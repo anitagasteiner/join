@@ -1,6 +1,8 @@
 <div class="main-container">
 
     <div class="greeting">{{ chooseGreeting() }}</div>
+    
+    <div>Anzahl der Tasks im Status "ToDo": </div>
 
     <div class="info-container">
 
@@ -8,7 +10,7 @@
             <div class="urgent-tasks-left">
                 <div class="img-number">
                     <img src="/img/urgent.svg">
-                    <div>1</div>
+                    <div>{{ urgentCount$ | async }}</div>
                 </div>                
                 <div class="description">Urgent Tasks</div>
             </div>
@@ -22,7 +24,7 @@
         <div class="tasks-container">
             <div class="img-number">
                 <img src="/img/board.svg">
-                <div>5</div>
+                <div>{{ tasksCount$ | async }}</div>
             </div>
             <div class="description">Tasks in<br>Board</div>
         </div>
@@ -30,7 +32,7 @@
         <div class="tasks-container tasks-to-do-container">
             <div class="img-number">
                 <img src="/img/to-do.svg">
-                <div>1</div>
+                <div>{{ todoCount$ | async }}</div>
             </div>
             <div class="description">Tasks To&nbsp;Do</div>
         </div>
@@ -38,7 +40,7 @@
         <div class="tasks-container">
             <div class="img-number">
                 <img src="/img/in-progress.svg">
-                <div>2</div>
+                <div>{{ inProgressCount$ | async }}</div>
             </div>
             <div class="description">Tasks in<br>Progress</div>
         </div>
@@ -46,7 +48,7 @@
         <div class="tasks-container">
             <div class="img-number">
                 <img src="/img/awaiting-feedback.svg">
-                <div>2</div>
+                <div>{{ waitingCount$ | async }}</div>
             </div>
             <div class="description">Tasks Awaiting<br>Feedback</div>
         </div>
@@ -54,7 +56,7 @@
         <div class="tasks-container">
             <div class="img-number">
                 <img src="/img/done.svg">
-                <div>1</div>
+                <div>{{ doneCount$ | async }}</div>
             </div>
             <div class="description">Tasks<br>Done</div>
         </div>
