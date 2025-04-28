@@ -3,11 +3,11 @@ import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { InitialsPipe } from '../../../initials.pipe';
 import { DataBaseService } from '../../../services/data-base.service';
-import { GeneralService } from '../../../services/general.service';
 import { Task } from '../../../models/task.model';
 import { map, Observable } from 'rxjs';
 import { Contact } from '../../../models/contact.model';
 import { Timestamp } from '@angular/fire/firestore';
+import { TasksService } from '../../../services/tasks.service';
 
 @Component({
   selector: 'app-add-task-form',
@@ -21,7 +21,7 @@ import { Timestamp } from '@angular/fire/firestore';
 })
 export class AddTaskFormComponent {
   
-  generalService = inject(GeneralService);
+  tasksService = inject(TasksService);
   dataBaseService = inject(DataBaseService);
 
   @ViewChild('subtaskInput', { static: false }) subtasks?: ElementRef;
@@ -141,7 +141,7 @@ export class AddTaskFormComponent {
     this.newTask.subtasks = [];
     this.selectedPriority = '';
     this.assignedContacts = [];
-    this.generalService.addTaskContainerOpened = false;
+    this.tasksService.addTaskContainerOpened = false;
   }
 
   async onSubmit(form: NgForm) {
@@ -158,7 +158,7 @@ export class AddTaskFormComponent {
     this.newTask.category = this.selectedCategory;
     this.newTask.subtasks = [...this.newSubtasks];
     this.newSubtasks = [];
-    this.newTask.status = this.generalService.taskStatus;
+    this.newTask.status = this.tasksService.taskStatus;
     try {      
       await this.dataBaseService.addData<Task>('tasks', this.newTask); // 'tasks' als Sammlungsname
       form.resetForm();
@@ -166,10 +166,10 @@ export class AddTaskFormComponent {
       this.selectedPriority = '';
       this.assignedContacts = [];
       this.taskAdded = true;
-      this.generalService.taskStatus = 'to-do';
+      this.tasksService.taskStatus = 'to-do';
       setTimeout(() => {
         this.taskAdded = false;
-        this.generalService.addTaskContainerOpened = false;
+        this.tasksService.addTaskContainerOpened = false;
       }, 1000);
     } catch (error: any) {
       console.error('Fehler beim Speichern des Tasks: ', error);
