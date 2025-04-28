@@ -63,8 +63,4 @@ export class SummaryComponent {
     }
   }
 
-  // todoCount$: Observable<number> = this.tasks$.pipe(
-  //   map(tasks => tasks.filter(task => task.status === 'to-do').length)
-  // );
-
 }
