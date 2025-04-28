@@ -1,9 +1,10 @@
 import { Component, inject, Input } from '@angular/core';
-import { GeneralService } from '../../../services/general.service';
+// import { GeneralService } from '../../../services/general.service';
 import { CommonModule } from '@angular/common';
 import { InitialsPipe } from '../../../initials.pipe';
 import { Observable } from 'rxjs';
 import { Contact } from './../../../models/contact.model';
+import { ContactsService } from '../../../services/contacts.service';
 
 @Component({
   selector: 'app-contact-details',
@@ -18,9 +19,10 @@ export class ContactDetailsComponent {
 
   // @Input()displayedContact!: Contact;
 
-  generalService = inject(GeneralService);
+  // generalService = inject(GeneralService);
+  contactsService = inject(ContactsService);
 
-  displayedContact$: Observable<Contact> = this.generalService.selectedContact$; // displayedContact$ wird als Observable<Contact> deklariert und sofort auf den Wert des selectedContact$-Streams aus dem GeneralService gesetzt
+  displayedContact$: Observable<Contact> = this.contactsService.selectedContact$; // displayedContact$ wird als Observable<Contact> deklariert und sofort auf den Wert des selectedContact$-Streams aus dem ContactsService gesetzt
 
   constructor() {
     // this.displayedContact$ = this.generalService.selectedContact$;

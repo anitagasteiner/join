@@ -20,13 +20,13 @@
  
     </div>
 
-    <div class="contact-details-container" [ngClass]="{'d-none': !generalService.contactDetailsOpened}">
+    <div class="contact-details-container" [ngClass]="{'d-none': !contactsService.contactDetailsOpened}">
 
         <app-contact-details></app-contact-details>        
 
     </div>
 
-    <div class="bg-light" [ngClass]="{'d-none': !generalService.addContactFormOpened && !generalService.editContactFormOpened}">
+    <div class="bg-light" [ngClass]="{'d-none': !contactsService.addContactFormOpened && !contactsService.editContactFormOpened}">
 
         <app-add-edit-contact></app-add-edit-contact>
 

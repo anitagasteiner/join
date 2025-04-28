@@ -2,13 +2,13 @@
     
     <div class="add-edit-contact-container">
 
-        <img src="/img/close.svg" (click)="generalService.hideContactForm()">
+        <img src="/img/close.svg" (click)="contactsService.hideContactForm()">
 
         <div class="top-container">
-            @if (generalService.addContactFormOpened) {
+            @if (contactsService.addContactFormOpened) {
                 <h2>Add contact</h2>
             }
-            @if (generalService.editContactFormOpened) {
+            @if (contactsService.editContactFormOpened) {
                 <h2>Edit contact</h2>
             }
             <div>Tasks are better with a team!</div>
@@ -16,22 +16,22 @@
         
         <div class="bottom-container">
 
-            @if (generalService.editContactFormOpened) {
+            @if (contactsService.editContactFormOpened) {
                 @if (selectedContact$ | async; as contact) {
                     <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
                 }
             }            
-            @if (generalService.addContactFormOpened) {
+            @if (contactsService.addContactFormOpened) {
                 <div class="contact-icon">
                     <img src="/img/person-white.svg">
                 </div>
             }
 
-            @if (generalService.addContactFormOpened) {
+            @if (contactsService.addContactFormOpened) {
                 <app-add-contact-form></app-add-contact-form>
             }
-            @if (generalService.editContactFormOpened && generalService.contactToBeEdited) {
-                <app-edit-contact-form [contact]="generalService.contactToBeEdited" (updated)="onContactUpdated()" (cancelled)="generalService.hideContactForm()"></app-edit-contact-form>
+            @if (contactsService.editContactFormOpened && contactsService.contactToBeEdited) {
+                <app-edit-contact-form [contact]="contactsService.contactToBeEdited" (updated)="onContactUpdated()" (cancelled)="contactsService.hideContactForm()"></app-edit-contact-form>
             }
 
         </div>

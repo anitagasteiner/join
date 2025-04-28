@@ -6,7 +6,7 @@
 
             <div class="contact-head-container">
 
-                <img src="/img/arrow-left-line.svg" (click)="generalService.hideContactDetails()">
+                <img src="/img/arrow-left-line.svg" (click)="contactsService.hideContactDetails()">
 
                 <div class="contact-icon" [ngClass]="displayedContact.color">{{ displayedContact.name | initials }}</div> <!-- ngClass: SCSS-Klasse basierend auf dem color-Attribut des displayedContact -->
 
@@ -16,12 +16,12 @@
 
                     <div class="contact-edit-delete">
 
-                        <div (click)="generalService.showEditContactForm(displayedContact)">
+                        <div (click)="contactsService.showEditContactForm(displayedContact)">
                             <img src="/img/edit.svg">
                             Edit
                         </div>
 
-                        <div (click)="generalService.deleteContact(displayedContact)">
+                        <div (click)="contactsService.deleteContact(displayedContact)">
                             <img src="/img/delete.svg">
                             Delete
                         </div>
@@ -32,7 +32,7 @@
 
             </div>
 
-            @if (generalService.contactDeleted && !generalService.editContactFormOpened) {
+            @if (contactsService.contactDeleted && !contactsService.editContactFormOpened) {
                 <div class="contact-deleted">Contact successfully<br>deleted.</div>
             }
 
@@ -42,12 +42,12 @@
 
                 <div class="contact-mail-container">
                     <h3>Email</h3>
-                    <div class="contact-mail">{{displayedContact.email}}</div>
+                    <div class="contact-mail">{{ displayedContact.email }}</div>
                 </div>
 
                 <div class="contact-phone-container">
                     <h3>Phone</h3>
-                    <div>{{displayedContact.phone}}</div>
+                    <div>{{ displayedContact.phone }}</div>
                 </div>            
 
             </div>
