@@ -8,6 +8,7 @@ import { map, Observable } from 'rxjs';
 import { Contact } from '../../../models/contact.model';
 import { Timestamp } from '@angular/fire/firestore';
 import { TasksService } from '../../../services/tasks.service';
+import { TaskFormInput } from '../../../models/task-form-input';
 
 @Component({
   selector: 'app-add-task-form',
@@ -28,16 +29,14 @@ export class AddTaskFormComponent {
 
   contacts$: Observable<Contact[]>;
 
-  newTask: Task = {
-    id: '',
+  newTask: TaskFormInput = {
     title: '',
     description: '',
-    date: Timestamp.now(),
+    date: new Date(),
     priority: '',
     assigned: [],
     category: '',
-    subtasks: [],
-    status: ''
+    subtasks: []
   };
 
   selectedPriority: string = '';
@@ -63,9 +62,20 @@ export class AddTaskFormComponent {
     this.contacts$ = originalContacts$.pipe(map(contacts => contacts.sort((a, b) => a.name.localeCompare(b.name))));
   }
 
-  // trackByIndex(index: number): number {
-  //   return index;
-  // }
+  convertFormToTask(taskFormInput: TaskFormInput): Task {
+    return {
+      id: '', // wird später von Firestore generiert
+      title: taskFormInput.title,
+      description: taskFormInput.description,
+      date: new Date(taskFormInput.date),
+      // date: Timestamp.fromDate(new Date(taskFormInput.date)),
+      priority: taskFormInput.priority,
+      assigned: taskFormInput.assigned,
+      category: taskFormInput.category,
+      subtasks: taskFormInput.subtasks,
+      status: this.tasksService.taskStatus,
+    };
+  }
 
   toggleAssignedDropdown() {
     this.dropdownOpened = !this.dropdownOpened;
@@ -138,9 +148,18 @@ export class AddTaskFormComponent {
 
   resetForm(form: NgForm) {
     form.resetForm();
-    this.newTask.subtasks = [];
+    this.newTask = {
+      title: '',
+      description: '',
+      date: new Date(),
+      priority: '',
+      assigned: [],
+      category: '',
+      subtasks: [],
+    };
     this.selectedPriority = '';
     this.assignedContacts = [];
+    this.newSubtasks = [];
     this.tasksService.addTaskContainerOpened = false;
   }
 
@@ -148,7 +167,7 @@ export class AddTaskFormComponent {
     if (form.invalid) {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
-    }    
+    }
     this.newTask.priority = this.selectedPriority;
     this.newTask.assigned = this.assignedContacts.map(contact => ({
       id: contact.id,
@@ -157,14 +176,10 @@ export class AddTaskFormComponent {
     })); 
     this.newTask.category = this.selectedCategory;
     this.newTask.subtasks = [...this.newSubtasks];
-    this.newSubtasks = [];
-    this.newTask.status = this.tasksService.taskStatus;
+    const taskToSave = this.convertFormToTask(this.newTask);
     try {      
-      await this.dataBaseService.addData<Task>('tasks', this.newTask); // 'tasks' als Sammlungsname
-      form.resetForm();
-      this.newTask.subtasks = [];
-      this.selectedPriority = '';
-      this.assignedContacts = [];
+      await this.dataBaseService.addData<Task>('tasks', taskToSave); // 'tasks' als Sammlungsname
+      this.resetForm(form);
       this.taskAdded = true;
       this.tasksService.taskStatus = 'to-do';
       setTimeout(() => {

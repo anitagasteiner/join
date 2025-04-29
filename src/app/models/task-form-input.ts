@@ -1,7 +1,4 @@
-// import { Timestamp } from '@angular/fire/firestore';
-
-export interface Task {
-    id: string;
+export interface TaskFormInput {
     title: string;
     description: string;
     date: Date;
@@ -16,5 +13,4 @@ export interface Task {
       text: string;
       done: boolean;
     }[];
-    status: string;
   }

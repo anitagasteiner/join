@@ -1,6 +1,6 @@
 <div class="main-container">
 
-    <div class="greeting">{{ chooseGreeting() }}</div>
+    <div class="greeting">{{ chooseGreeting() }}</div>   
 
     <div class="info-container">
 
@@ -14,7 +14,9 @@
             </div>
             <div class="line"></div>
             <div class="urgent-tasks-right">
-                <div class="date">XXOct 16, 2025XX</div>
+                <ng-container *ngIf="upcomingUrgentDeadline$ | async as deadline">
+                    <div class="date">{{ formatDate(deadline) }}</div>
+                </ng-container>
                 <div class="description">Upcoming Deadline</div>
             </div>
         </div>

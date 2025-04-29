@@ -8,6 +8,7 @@ import { Task } from './../../models/task.model';
 import { AddTaskFormComponent } from '../../shared/components/add-task-form/add-task-form.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TasksService } from '../../services/tasks.service';
+import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-board',
@@ -28,7 +29,7 @@ export class BoardComponent {
         id: 'string',
         title: 'string',
         description: 'string',
-        date: null,
+        date: new Date(),
         priority: 'string',
         assigned: [{
           id: 'string',
