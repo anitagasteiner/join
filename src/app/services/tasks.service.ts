@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Task } from '../models/task.model';
 import { DataBaseService } from './data-base.service';
+import { TaskFormInput } from '../models/task-form-input';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,16 @@ export class TasksService {
 
   private currentTaskSubject = new BehaviorSubject<any>(null);
   currentTask$ = this.currentTaskSubject.asObservable();
+
+  newTask: TaskFormInput = {
+    title: '',
+    description: '',
+    date: new Date(),
+    priority: '',
+    assigned: [],
+    category: '',
+    subtasks: []
+  };
 
   addTaskContainerOpened: boolean = false;
   taskDetailsOpened: boolean = false;
@@ -30,22 +41,22 @@ export class TasksService {
     this.currentTaskSubject.next(task);
   }
 
-    async deleteTask(task: Task): Promise<void> {
-      const confirmed = confirm(`Delete task "${task.title}"?`);
-      if (!confirmed) {
-        return;
-      }
-      try {
-        await this.dataBaseService.deleteData('tasks', task.id);
-        this.taskDeleted = true;
-        setTimeout(() => {
-          this.hideTaskDetails();
-          this.taskDeleted = false;
-        }, 1000);
-        console.log('Task gelöscht:', task);
-      } catch (error) {
-        console.error('Fehler beim Löschen des Tasks:', error);
-      }
+  async deleteTask(task: Task): Promise<void> {
+    const confirmed = confirm(`Delete task "${task.title}"?`);
+    if (!confirmed) {
+      return;
     }
+    try {
+      await this.dataBaseService.deleteData('tasks', task.id);
+      this.taskDeleted = true;
+      setTimeout(() => {
+        this.hideTaskDetails();
+        this.taskDeleted = false;
+      }, 1000);
+      console.log('Task gelöscht:', task);
+    } catch (error) {
+      console.error('Fehler beim Löschen des Tasks:', error);
+    }
+  }
 
 }

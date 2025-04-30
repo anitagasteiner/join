@@ -5,6 +5,7 @@ import { Task } from '../../../models/task.model';
 import { Observable } from 'rxjs';
 import { TasksService } from '../../../services/tasks.service';
 import { GeneralService } from '../../../services/general.service';
+import { TaskFormInput } from '../../../models/task-form-input';
 
 @Component({
   selector: 'app-task-details',
@@ -27,5 +28,22 @@ export class TaskDetailsComponent {
   displayedTask$: Observable<Task> = this.tasksService.currentTask$; // displayedTask$ wird als Observable<Task> deklariert und sofort auf den Wert des currentTask$-Streams aus dem TasksService gesetzt
 
   constructor() {}
+
+  openFormToEditTask(task: Task) {
+    this.tasksService.addTaskContainerOpened = true;
+    this.insertDataIntoForm(task);
+  }
+
+  insertDataIntoForm(task: Task) {
+    this.tasksService.newTask = {
+      title: task.title,
+      description: task.description,
+      date: task.date,
+      priority: task.priority,
+      assigned: task.assigned,
+      category: task.category,
+      subtasks: task.subtasks,
+    };
+  }
 
 }

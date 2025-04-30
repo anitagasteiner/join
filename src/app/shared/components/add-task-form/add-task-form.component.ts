@@ -6,7 +6,6 @@ import { DataBaseService } from '../../../services/data-base.service';
 import { Task } from '../../../models/task.model';
 import { map, Observable } from 'rxjs';
 import { Contact } from '../../../models/contact.model';
-import { Timestamp } from '@angular/fire/firestore';
 import { TasksService } from '../../../services/tasks.service';
 import { TaskFormInput } from '../../../models/task-form-input';
 
@@ -28,16 +27,6 @@ export class AddTaskFormComponent {
   @ViewChild('subtaskInput', { static: false }) subtasks?: ElementRef;
 
   contacts$: Observable<Contact[]>;
-
-  newTask: TaskFormInput = {
-    title: '',
-    description: '',
-    date: new Date(),
-    priority: '',
-    assigned: [],
-    category: '',
-    subtasks: []
-  };
 
   selectedPriority: string = '';
   selectOpened: boolean = false;
@@ -148,7 +137,7 @@ export class AddTaskFormComponent {
 
   resetForm(form: NgForm) {
     form.resetForm();
-    this.newTask = {
+    this.tasksService.newTask = {
       title: '',
       description: '',
       date: new Date(),
@@ -168,15 +157,15 @@ export class AddTaskFormComponent {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
     }
-    this.newTask.priority = this.selectedPriority;
-    this.newTask.assigned = this.assignedContacts.map(contact => ({
+    this.tasksService.newTask.priority = this.selectedPriority;
+    this.tasksService.newTask.assigned = this.assignedContacts.map(contact => ({
       id: contact.id,
       name: contact.name,
       color: contact.color
     })); 
-    this.newTask.category = this.selectedCategory;
-    this.newTask.subtasks = [...this.newSubtasks];
-    const taskToSave = this.convertFormToTask(this.newTask);
+    this.tasksService.newTask.category = this.selectedCategory;
+    this.tasksService.newTask.subtasks = [...this.newSubtasks];
+    const taskToSave = this.convertFormToTask(this.tasksService.newTask);
     try {      
       await this.dataBaseService.addData<Task>('tasks', taskToSave); // 'tasks' als Sammlungsname
       this.resetForm(form);

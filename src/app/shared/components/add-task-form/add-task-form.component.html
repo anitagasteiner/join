@@ -1,17 +1,17 @@
 <form (ngSubmit)="onSubmit(addTaskForm)" #addTaskForm="ngForm">
 
     <fieldset>
-        <input #title="ngModel" [(ngModel)]="newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" required>
+        <input #title="ngModel" [(ngModel)]="tasksService.newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" required>
         <legend></legend>
     </fieldset>
 
     <fieldset>
-        <textarea #description="ngModel" [(ngModel)]="newTask.description" rows="3" placeholder="Enter a description" type="text" name="description" id="description"></textarea>
+        <textarea #description="ngModel" [(ngModel)]="tasksService.newTask.description" rows="3" placeholder="Enter a description" type="text" name="description" id="description"></textarea>
         <legend><b>Description</b> (optional)</legend>
     </fieldset>
 
     <fieldset>
-        <input #date="ngModel" [(ngModel)]="newTask.date" placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
+        <input #date="ngModel" [(ngModel)]="tasksService.newTask.date" placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
         <legend><b>Due date</b></legend>
     </fieldset>
 
