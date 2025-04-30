@@ -40,9 +40,15 @@
             "production": {
               "fileReplacements": [
                 {
+<<<<<<< HEAD
                   "replace": "src/environments.environment.ts",
                   "with": "src/environments.environment.prod.ts"
                 }                
+=======
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+>>>>>>> 7424b935031db135f42e617af5bee34cbb7b2ec0
               ],
               "budgets": [
                 {
