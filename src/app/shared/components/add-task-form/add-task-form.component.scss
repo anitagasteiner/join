@@ -13,7 +13,16 @@ form {
             font-size: 32px !important;
         }
     }
+    >img {
+        height: 32px;
+        width: 32px;
+        cursor: pointer;
+        position: absolute;
+        top: 18px;
+        right: 32px;
+    }
 }
+
 
 .priority-container {
     >label {

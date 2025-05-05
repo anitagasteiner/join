@@ -32,6 +32,7 @@ export class TaskDetailsComponent {
   openFormToEditTask(task: Task) {
     this.tasksService.taskDetailsOpened = false;
     this.tasksService.addTaskContainerOpened = true;
+    this.tasksService.editTaskContainerOpened = true;
     this.insertDataIntoForm(task);
   }
 

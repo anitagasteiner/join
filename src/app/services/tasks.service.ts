@@ -28,6 +28,7 @@ export class TasksService {
   newSubtasks: {text: string; done: boolean}[] = [];
 
   addTaskContainerOpened: boolean = false;
+  editTaskContainerOpened: boolean = false;
   taskDetailsOpened: boolean = false;
   taskDeleted: boolean = false;
 

@@ -150,6 +150,7 @@ export class AddTaskFormComponent {
     this.tasksService.assignedContacts = [];
     this.tasksService.newSubtasks = [];
     this.tasksService.addTaskContainerOpened = false;
+    this.tasksService.editTaskContainerOpened = false;
   }
 
   async onSubmit(form: NgForm) {
@@ -174,6 +175,7 @@ export class AddTaskFormComponent {
       setTimeout(() => {
         this.taskAdded = false;
         this.tasksService.addTaskContainerOpened = false;
+        this.tasksService.editTaskContainerOpened = false;
       }, 1000);
     } catch (error: any) {
       console.error('Fehler beim Speichern des Tasks: ', error);
