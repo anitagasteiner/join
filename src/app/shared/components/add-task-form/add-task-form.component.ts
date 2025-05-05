@@ -32,7 +32,7 @@ export class AddTaskFormComponent {
   selectOpened: boolean = false;
 
   dropdownOpened: boolean = false;
-  assignedContacts: {id: string; name: string, color: string}[] = [];
+  // assignedContacts: {id: string; name: string, color: string}[] = [];
 
   categories = ['Technical Task', 'User Story'];  
   selectedCategory: string = '';
@@ -78,20 +78,20 @@ export class AddTaskFormComponent {
   }
 
   contactIsSelected(contact: Contact) {
-    return this.assignedContacts.some(c => c.id === contact.id);
+    return this.tasksService.assignedContacts.some(c => c.id === contact.id);
   }
   
   toggleContactSelection(event: Event, contact: Contact) {
     const checkbox = event.target as HTMLInputElement;
     const checked = checkbox.checked;
     if (checked) {
-      this.assignedContacts.push({
+      this.tasksService.assignedContacts.push({
         id: contact.id,
         name: contact.name,
         color: contact.color
       });
     } else {
-      this.assignedContacts = this.assignedContacts.filter( c => c.id !== contact.id);
+      this.tasksService.assignedContacts = this.tasksService.assignedContacts.filter( c => c.id !== contact.id);
     }
   }
 
@@ -147,7 +147,7 @@ export class AddTaskFormComponent {
       subtasks: [],
     };
     this.tasksService.selectedPriority = '';
-    this.assignedContacts = [];
+    this.tasksService.assignedContacts = [];
     this.newSubtasks = [];
     this.tasksService.addTaskContainerOpened = false;
   }
@@ -158,7 +158,7 @@ export class AddTaskFormComponent {
       return;
     }
     this.tasksService.newTask.priority = this.tasksService.selectedPriority;
-    this.tasksService.newTask.assigned = this.assignedContacts.map(contact => ({
+    this.tasksService.newTask.assigned = this.tasksService.assignedContacts.map(contact => ({
       id: contact.id,
       name: contact.name,
       color: contact.color

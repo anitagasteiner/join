@@ -81,9 +81,9 @@
              
         <legend><b>Assigned to</b> (optional)</legend>
     </fieldset>
-    @if (assignedContacts.length) {        
+    @if (tasksService.assignedContacts.length) {        
         <div class="assigned-icons-container">
-            @for (assignedPerson of assignedContacts; track assignedPerson.id) {
+            @for (assignedPerson of tasksService.assignedContacts; track assignedPerson.id) {
                 <div class="contact-icon" [ngClass]="assignedPerson.color">{{ assignedPerson.name | initials }}</div>
             }
         </div>
