@@ -47,6 +47,7 @@ export class TaskDetailsComponent {
     };
     this.tasksService.selectedPriority = task.priority;
     this.tasksService.assignedContacts = task.assigned;
+    this.tasksService.selectedCategory = task.category;
   }
 
 }

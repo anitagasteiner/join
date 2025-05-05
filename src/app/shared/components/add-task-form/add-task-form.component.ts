@@ -35,7 +35,7 @@ export class AddTaskFormComponent {
   // assignedContacts: {id: string; name: string, color: string}[] = [];
 
   categories = ['Technical Task', 'User Story'];  
-  selectedCategory: string = '';
+  // selectedCategory: string = '';
 
   newSubtask: {text: string; done: boolean} = {
     text: '',
@@ -163,7 +163,7 @@ export class AddTaskFormComponent {
       name: contact.name,
       color: contact.color
     })); 
-    this.tasksService.newTask.category = this.selectedCategory;
+    this.tasksService.newTask.category = this.tasksService.selectedCategory;
     this.tasksService.newTask.subtasks = [...this.newSubtasks];
     const taskToSave = this.convertFormToTask(this.tasksService.newTask);
     try {      

@@ -90,7 +90,7 @@
     }
 
     <fieldset>
-        <select id="category" name="category" [(ngModel)]="selectedCategory" [ngClass]="{'select-open': selectOpened}" (click)="toggleCategoryOpenClose()" required>
+        <select id="category" name="category" [(ngModel)]="tasksService.selectedCategory" [ngClass]="{'select-open': selectOpened}" (click)="toggleCategoryOpenClose()" required>
             <option value="" disabled>Select task category</option>
             <option *ngFor="let category of categories" [value]="category">
                 {{ category }}
