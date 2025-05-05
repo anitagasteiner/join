@@ -22,6 +22,19 @@ export class TasksService {
     subtasks: []
   };
 
+  taskToBeEdited: Task = {
+    id: '',
+    title: '',
+    description: '',
+    date: new Date(),
+    priority: '',
+    assigned: [],
+    category: '',
+    subtasks: [],
+    status: ''
+  }
+  // taskToBeEdited: Task | null = null;
+
   selectedPriority: string = '';
   assignedContacts: {id: string; name: string, color: string}[] = [];
   selectedCategory: string = '';
@@ -33,8 +46,6 @@ export class TasksService {
   taskDeleted: boolean = false;
 
   taskStatus: string = 'to-do';
-  
-  taskToBeEdited: Task | null = null;
 
   constructor(private dataBaseService: DataBaseService) { }
 

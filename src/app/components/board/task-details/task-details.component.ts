@@ -34,6 +34,7 @@ export class TaskDetailsComponent {
     this.tasksService.addTaskContainerOpened = true;
     this.tasksService.editTaskContainerOpened = true;
     this.insertDataIntoForm(task);
+    this.prepareDataToBeEdited(task);
   }
 
   insertDataIntoForm(task: Task) {
@@ -50,6 +51,20 @@ export class TaskDetailsComponent {
     this.tasksService.assignedContacts = task.assigned;
     this.tasksService.selectedCategory = task.category;
     this.tasksService.newSubtasks = task.subtasks;
+  }
+
+  prepareDataToBeEdited(task: Task) {
+    this.tasksService.taskToBeEdited = {
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      date: new Date(task.date),
+      priority: task.priority,
+      assigned: task.assigned,
+      category: task.category,
+      subtasks: task.subtasks,
+      status: task.status
+    };
   }
 
 }

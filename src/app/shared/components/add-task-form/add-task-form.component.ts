@@ -158,17 +158,14 @@ export class AddTaskFormComponent {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
     }
-    this.tasksService.newTask.priority = this.tasksService.selectedPriority;
-    this.tasksService.newTask.assigned = this.tasksService.assignedContacts.map(contact => ({
-      id: contact.id,
-      name: contact.name,
-      color: contact.color
-    })); 
-    this.tasksService.newTask.category = this.tasksService.selectedCategory;
-    this.tasksService.newTask.subtasks = [...this.tasksService.newSubtasks];
+    this.getNewTaskData();    
     const taskToSave = this.convertFormToTask(this.tasksService.newTask);
-    try {      
-      await this.dataBaseService.addData<Task>('tasks', taskToSave); // 'tasks' als Sammlungsname
+    try {
+      if (this.tasksService.editTaskContainerOpened && this.tasksService.taskToBeEdited.id) {
+        await this.dataBaseService.updateData<Task>('tasks', this.tasksService.taskToBeEdited.id, { ...taskToSave, id:this.tasksService.taskToBeEdited.id, status:this.tasksService.taskToBeEdited.status});
+      } else {
+        await this.dataBaseService.addData<Task>('tasks', taskToSave); // 'tasks' als Sammlungsname
+      }      
       this.resetForm(form);
       this.taskAdded = true;
       this.tasksService.taskStatus = 'to-do';
@@ -182,6 +179,17 @@ export class AddTaskFormComponent {
     }
     // finally {
     // }
+  }
+
+  getNewTaskData() {
+    this.tasksService.newTask.priority = this.tasksService.selectedPriority;
+    this.tasksService.newTask.assigned = this.tasksService.assignedContacts.map(contact => ({
+      id: contact.id,
+      name: contact.name,
+      color: contact.color
+    })); 
+    this.tasksService.newTask.category = this.tasksService.selectedCategory;
+    this.tasksService.newTask.subtasks = [...this.tasksService.newSubtasks];
   }
 
 }
