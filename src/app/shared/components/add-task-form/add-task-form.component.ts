@@ -28,7 +28,7 @@ export class AddTaskFormComponent {
 
   contacts$: Observable<Contact[]>;
 
-  selectedPriority: string = '';
+  // selectedPriority: string = '';
   selectOpened: boolean = false;
 
   dropdownOpened: boolean = false;
@@ -146,7 +146,7 @@ export class AddTaskFormComponent {
       category: '',
       subtasks: [],
     };
-    this.selectedPriority = '';
+    this.tasksService.selectedPriority = '';
     this.assignedContacts = [];
     this.newSubtasks = [];
     this.tasksService.addTaskContainerOpened = false;
@@ -157,7 +157,7 @@ export class AddTaskFormComponent {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
     }
-    this.tasksService.newTask.priority = this.selectedPriority;
+    this.tasksService.newTask.priority = this.tasksService.selectedPriority;
     this.tasksService.newTask.assigned = this.assignedContacts.map(contact => ({
       id: contact.id,
       name: contact.name,

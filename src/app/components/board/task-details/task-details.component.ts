@@ -30,6 +30,7 @@ export class TaskDetailsComponent {
   constructor() {}
 
   openFormToEditTask(task: Task) {
+    this.tasksService.taskDetailsOpened = false;
     this.tasksService.addTaskContainerOpened = true;
     this.insertDataIntoForm(task);
   }
@@ -44,6 +45,7 @@ export class TaskDetailsComponent {
       category: task.category,
       subtasks: task.subtasks,
     };
+    this.tasksService.selectedPriority = task.priority;
   }
 
 }

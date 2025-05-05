@@ -16,28 +16,28 @@
     </fieldset>
 
     <fieldset class="priority-container">
-        <label [ngClass]="{'urgent-selected': selectedPriority == 'urgent'}">
-            <input type="radio" name="priority" value="urgent" (change)="selectedPriority = 'urgent'">
+        <label [ngClass]="{'urgent-selected': tasksService.selectedPriority == 'urgent'}">
+            <input type="radio" name="priority" value="urgent" (change)="tasksService.selectedPriority = 'urgent'">
             <span>Urgent</span>
-            @if (selectedPriority == 'urgent') {
+            @if (tasksService.selectedPriority == 'urgent') {
                 <img src="/img/prio-urgent-sel.svg">
             } @else {
                 <img src="/img/prio-urgent.svg">
             }                
         </label>
-        <label [ngClass]="{'medium-selected': selectedPriority == 'medium'}">
-            <input type="radio" name="priority" value="medium" (change)="selectedPriority = 'medium'">
+        <label [ngClass]="{'medium-selected': tasksService.selectedPriority == 'medium'}">
+            <input type="radio" name="priority" value="medium" (change)="tasksService.selectedPriority = 'medium'">
             <span>Medium</span>
-            @if (selectedPriority == 'medium') {
+            @if (tasksService.selectedPriority == 'medium') {
                 <img src="/img/prio-medium-sel.svg">
             } @else {
                 <img src="/img/prio-medium.svg">
             }                
         </label>
-        <label [ngClass]="{'low-selected': selectedPriority == 'low'}">
-            <input type="radio" name="priority" value="low" (change)="selectedPriority = 'low'">
+        <label [ngClass]="{'low-selected': tasksService.selectedPriority == 'low'}">
+            <input type="radio" name="priority" value="low" (change)="tasksService.selectedPriority = 'low'">
             <span>Low</span>
-            @if (selectedPriority == 'low') {
+            @if (tasksService.selectedPriority == 'low') {
                 <img src="/img/prio-low-sel.svg">
             } @else {
                 <img src="/img/prio-low.svg">

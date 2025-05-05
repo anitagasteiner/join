@@ -22,6 +22,8 @@ export class TasksService {
     subtasks: []
   };
 
+  selectedPriority: string = '';
+
   addTaskContainerOpened: boolean = false;
   taskDetailsOpened: boolean = false;
   taskDeleted: boolean = false;
