@@ -41,7 +41,7 @@ export class TaskDetailsComponent {
     this.tasksService.newTask = {
       title: task.title,
       description: task.description,
-      date: task.date,
+      date: this.convertDateToString(task.date),
       priority: task.priority,
       assigned: task.assigned,
       category: task.category,
@@ -51,6 +51,14 @@ export class TaskDetailsComponent {
     this.tasksService.assignedContacts = task.assigned;
     this.tasksService.selectedCategory = task.category;
     this.tasksService.newSubtasks = task.subtasks;
+  }
+
+  convertDateToString(date: Date): string {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+    const day = d.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   prepareDataToBeEdited(task: Task) {

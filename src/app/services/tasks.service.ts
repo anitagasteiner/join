@@ -15,7 +15,7 @@ export class TasksService {
   newTask: TaskFormInput = {
     title: '',
     description: '',
-    date: new Date(),
+    date: '',
     priority: '',
     assigned: [],
     category: '',

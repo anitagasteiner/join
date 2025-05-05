@@ -13,7 +13,7 @@
 
         <div class="due-date">
             <span>Due date:</span>
-            {{ displayedTask.date }}
+            {{ displayedTask.date | date:'dd/MM/yyyy' }}
         </div>
 
         <div class="priority">

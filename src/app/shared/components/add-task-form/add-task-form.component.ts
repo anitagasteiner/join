@@ -140,7 +140,7 @@ export class AddTaskFormComponent {
     this.tasksService.newTask = {
       title: '',
       description: '',
-      date: new Date(),
+      date: '',
       priority: '',
       assigned: [],
       category: '',
