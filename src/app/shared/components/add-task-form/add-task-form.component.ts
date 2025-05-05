@@ -41,7 +41,7 @@ export class AddTaskFormComponent {
     text: '',
     done: false
   };
-  newSubtasks: {text: string; done: boolean}[] = [];
+  // newSubtasks: {text: string; done: boolean}[] = [];
   subtaskBeingAdded: boolean = false;
 
   taskAdded: boolean = false;
@@ -115,14 +115,14 @@ export class AddTaskFormComponent {
 
   addSubtask() {
     if (this.newSubtask.text !== '' && !this.checkIfSubtaskPresent(this.newSubtask.text)) {
-      this.newSubtasks.push({ ...this.newSubtask });
+      this.tasksService.newSubtasks.push({ ...this.newSubtask });
       this.newSubtask.text = '';
       this.subtaskBeingAdded = false;
     }
   }
 
   checkIfSubtaskPresent(newSubtask: string) {
-    return this.newSubtasks.some(entry => entry.text === newSubtask);
+    return this.tasksService.newSubtasks.some(entry => entry.text === newSubtask);
   }
 
   editSubtask(subtask: string) {
@@ -132,7 +132,7 @@ export class AddTaskFormComponent {
   }
 
   deleteSubtask(subtask: string) {
-    this.newSubtasks = this.newSubtasks.filter(entry => entry.text !== subtask );
+    this.tasksService.newSubtasks = this.tasksService.newSubtasks.filter(entry => entry.text !== subtask );
   }
 
   resetForm(form: NgForm) {
@@ -148,7 +148,7 @@ export class AddTaskFormComponent {
     };
     this.tasksService.selectedPriority = '';
     this.tasksService.assignedContacts = [];
-    this.newSubtasks = [];
+    this.tasksService.newSubtasks = [];
     this.tasksService.addTaskContainerOpened = false;
   }
 
@@ -164,7 +164,7 @@ export class AddTaskFormComponent {
       color: contact.color
     })); 
     this.tasksService.newTask.category = this.tasksService.selectedCategory;
-    this.tasksService.newTask.subtasks = [...this.newSubtasks];
+    this.tasksService.newTask.subtasks = [...this.tasksService.newSubtasks];
     const taskToSave = this.convertFormToTask(this.tasksService.newTask);
     try {      
       await this.dataBaseService.addData<Task>('tasks', taskToSave); // 'tasks' als Sammlungsname

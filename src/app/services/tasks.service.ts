@@ -25,6 +25,7 @@ export class TasksService {
   selectedPriority: string = '';
   assignedContacts: {id: string; name: string, color: string}[] = [];
   selectedCategory: string = '';
+  newSubtasks: {text: string; done: boolean}[] = [];
 
   addTaskContainerOpened: boolean = false;
   taskDetailsOpened: boolean = false;

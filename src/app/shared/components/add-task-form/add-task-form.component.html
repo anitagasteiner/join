@@ -113,10 +113,10 @@
         }            
         <legend><b>Subtasks</b> (optional)</legend>
     </fieldset>
-    @if (newSubtasks.length) {
+    @if (tasksService.newSubtasks.length) {
         <div class="subtasks-list">
             <ul>
-                @for (entry of newSubtasks; track entry.text) {
+                @for (entry of tasksService.newSubtasks; track entry.text) {
                     <li class="subtask">
                         {{ entry.text }}
                         <div class="edit-delete-subtask">
