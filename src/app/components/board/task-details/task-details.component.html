@@ -47,7 +47,7 @@
                 <div>
                     @for (subtask of displayedTask.subtasks; track subtask.text; let index = $index) {
                         <div class="subtask">
-                            <img src="/img/check-box.svg">
+                            <img [src]="subtask.done ? '/img/check-box.svg' : '/img/check-box-unchecked.svg'" (click)="tasksService.toggleSubtaskDone(displayedTask, subtask)">
                             <div>{{ subtask.text }}</div>
                         </div>                        
                     }
