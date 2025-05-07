@@ -6,6 +6,7 @@ import { EditContactFormComponent } from './edit-contact-form/edit-contact-form.
 import { Contact } from './../../../models/contact.model';
 import { InitialsPipe } from '../../../pipes/initials.pipe';
 import { ContactsService } from '../../../services/contacts.service';
+import { GeneralService } from '../../../services/general.service';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class AddEditContactComponent {
     color: ''
   };  
 
-  // generalService = inject(GeneralService);
+  generalService = inject(GeneralService);
   contactsService = inject(ContactsService);
 
   selectedContact$ = this.contactsService.selectedContact$;

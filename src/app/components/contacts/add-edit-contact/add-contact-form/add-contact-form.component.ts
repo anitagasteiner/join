@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DataBaseService } from '../../../../services/data-base.service';
 // import { GeneralService } from '../../../../services/general.service';
 import { Contact } from './../../../../models/contact.model';
 import { ContactsService } from '../../../../services/contacts.service';
+import { GeneralService } from '../../../../services/general.service';
 
 @Component({
   selector: 'app-add-contact-form',
@@ -21,6 +22,8 @@ import { ContactsService } from '../../../../services/contacts.service';
 })
 export class AddContactFormComponent {
 
+  generalService = inject(GeneralService);
+
   newContact: Contact = {
     id: '',
     name: '',
@@ -31,7 +34,7 @@ export class AddContactFormComponent {
 
   availableContactColors = ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green']
 
-  contactAdded: boolean = false;
+  // contactAdded: boolean = false;
 
   @ViewChild('contactForm') contactForm!: NgForm; // Zugriff auf das Formular
 
@@ -51,10 +54,14 @@ export class AddContactFormComponent {
       console.log('Speichere Kontakt:', this.newContact);
       await this.dataBaseService.addData<Contact>('contacts', this.newContact); // 'contacts' als Sammlungsname
       form.resetForm();
-      this.contactAdded = true;
-      setTimeout(() => {
-        this.contactsService.hideContactForm();
-        this.contactAdded = false;
+      // this.contactAdded = true;
+      this.contactsService.hideContactForm();
+      this.generalService.notificationOpened = true;
+      this.generalService.notificationContactAdded = true;
+      setTimeout(() => {        
+        // this.contactAdded = false;
+        this.generalService.notificationOpened = false;
+        this.generalService.notificationContactAdded = false;
       }, 1000);
     } catch (error: any) {
       console.error('Fehler beim Speichern des Kontakts: ', error);
