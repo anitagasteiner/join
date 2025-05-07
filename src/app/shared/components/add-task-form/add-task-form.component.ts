@@ -125,14 +125,15 @@ export class AddTaskFormComponent {
     return this.tasksService.newSubtasks.some(entry => entry.text === newSubtask);
   }
 
-  editSubtask(subtask: string) {
-    this.deleteSubtask(subtask);
+  editSubtask(entry: {text: string, done: boolean}) {
+    this.deleteSubtask(entry.text);
     this.setFocusOnSubtaskInput();
-    this.newSubtask.text = subtask;
+    this.newSubtask.text = entry.text;
+    this.newSubtask.done = entry.done;
   }
 
-  deleteSubtask(subtask: string) {
-    this.tasksService.newSubtasks = this.tasksService.newSubtasks.filter(entry => entry.text !== subtask );
+  deleteSubtask(subtaskText: string) {
+    this.tasksService.newSubtasks = this.tasksService.newSubtasks.filter(entry => entry.text !== subtaskText );
   }
 
   resetForm(form: NgForm) {
