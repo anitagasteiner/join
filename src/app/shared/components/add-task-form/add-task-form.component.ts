@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { InitialsPipe } from '../../../initials.pipe';
+import { InitialsPipe } from '../../../pipes/initials.pipe';
 import { DataBaseService } from '../../../services/data-base.service';
 import { Task } from '../../../models/task.model';
 import { map, Observable } from 'rxjs';
