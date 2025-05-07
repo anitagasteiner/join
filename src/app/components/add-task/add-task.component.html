@@ -3,7 +3,9 @@
     <app-add-task-form></app-add-task-form>
 
     @if (generalService.notificationOpened) {
-        <app-notifications></app-notifications>
+        <div class="notification-container">
+            <app-notifications></app-notifications>
+        </div>        
     }
 
 </div>
