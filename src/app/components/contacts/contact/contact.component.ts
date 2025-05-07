@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { InitialsPipe } from '../../../initials.pipe';
+import { InitialsPipe } from '../../../pipes/initials.pipe';
 import { Contact } from './../../../models/contact.model';
 
 @Component({

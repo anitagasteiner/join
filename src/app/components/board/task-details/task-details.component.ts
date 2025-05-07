@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InitialsPipe } from '../../../initials.pipe';
+import { InitialsPipe } from '../../../pipes/initials.pipe';
 import { Task } from '../../../models/task.model';
 import { Observable } from 'rxjs';
 import { TasksService } from '../../../services/tasks.service';

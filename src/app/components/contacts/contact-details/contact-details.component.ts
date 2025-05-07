@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 // import { GeneralService } from '../../../services/general.service';
 import { CommonModule } from '@angular/common';
-import { InitialsPipe } from '../../../initials.pipe';
+import { InitialsPipe } from '../../../pipes/initials.pipe';
 import { Observable } from 'rxjs';
 import { Contact } from './../../../models/contact.model';
 import { ContactsService } from '../../../services/contacts.service';

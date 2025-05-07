@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AddContactFormComponent } from './add-contact-form/add-contact-form.component';
 import { EditContactFormComponent } from './edit-contact-form/edit-contact-form.component';
 import { Contact } from './../../../models/contact.model';
-import { InitialsPipe } from '../../../initials.pipe';
+import { InitialsPipe } from '../../../pipes/initials.pipe';
 import { ContactsService } from '../../../services/contacts.service';
 
 
