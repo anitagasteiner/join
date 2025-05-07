@@ -60,14 +60,12 @@ export class TasksService {
 
   async toggleSubtaskDone(task: Task, subtask: { text: string; done: boolean }) {
     const subtaskToBeEdited = task.subtasks.find(st => st.text === subtask.text);
-    console.log('before: ', task.subtasks);
     if (subtaskToBeEdited && subtask.done === true) {
       subtaskToBeEdited.done = false;      
     } else if (subtaskToBeEdited && subtask.done === false) {
       subtaskToBeEdited.done = true;      
     }
     await this.dataBaseService.updateData<Task>('tasks', task.id, { ...task, subtasks: task.subtasks});
-    console.log('after: ', task.subtasks);
   }
 
   async deleteTask(task: Task): Promise<void> {
