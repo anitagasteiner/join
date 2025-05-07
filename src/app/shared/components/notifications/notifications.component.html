@@ -1,0 +1,10 @@
+<div>
+    @if (generalService.notificationTaskAdded) {
+        Task added to board.
+        <img src="/img/board-white.svg">
+    } @else if (generalService.notificationContactAdded) {
+        Contact successfully added.
+    } @else if (generalService.notificationSignedUp) {
+        You signed up successfully.
+    }    
+</div>
