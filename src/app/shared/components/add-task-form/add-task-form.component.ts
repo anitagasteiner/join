@@ -6,7 +6,6 @@ import { DataBaseService } from '../../../services/data-base.service';
 import { Task } from '../../../models/task.model';
 import { map, Observable } from 'rxjs';
 import { Contact } from '../../../models/contact.model';
-import { Timestamp } from '@angular/fire/firestore';
 import { TasksService } from '../../../services/tasks.service';
 import { TaskFormInput } from '../../../models/task-form-input';
 
@@ -29,30 +28,20 @@ export class AddTaskFormComponent {
 
   contacts$: Observable<Contact[]>;
 
-  newTask: TaskFormInput = {
-    title: '',
-    description: '',
-    date: new Date(),
-    priority: '',
-    assigned: [],
-    category: '',
-    subtasks: []
-  };
-
-  selectedPriority: string = '';
+  // selectedPriority: string = '';
   selectOpened: boolean = false;
 
   dropdownOpened: boolean = false;
-  assignedContacts: {id: string; name: string, color: string}[] = [];
+  // assignedContacts: {id: string; name: string, color: string}[] = [];
 
   categories = ['Technical Task', 'User Story'];  
-  selectedCategory: string = '';
+  // selectedCategory: string = '';
 
   newSubtask: {text: string; done: boolean} = {
     text: '',
     done: false
   };
-  newSubtasks: {text: string; done: boolean}[] = [];
+  // newSubtasks: {text: string; done: boolean}[] = [];
   subtaskBeingAdded: boolean = false;
 
   taskAdded: boolean = false;
@@ -89,20 +78,20 @@ export class AddTaskFormComponent {
   }
 
   contactIsSelected(contact: Contact) {
-    return this.assignedContacts.some(c => c.id === contact.id);
+    return this.tasksService.assignedContacts.some(c => c.id === contact.id);
   }
   
   toggleContactSelection(event: Event, contact: Contact) {
     const checkbox = event.target as HTMLInputElement;
     const checked = checkbox.checked;
     if (checked) {
-      this.assignedContacts.push({
+      this.tasksService.assignedContacts.push({
         id: contact.id,
         name: contact.name,
         color: contact.color
       });
     } else {
-      this.assignedContacts = this.assignedContacts.filter( c => c.id !== contact.id);
+      this.tasksService.assignedContacts = this.tasksService.assignedContacts.filter( c => c.id !== contact.id);
     }
   }
 
@@ -126,14 +115,14 @@ export class AddTaskFormComponent {
 
   addSubtask() {
     if (this.newSubtask.text !== '' && !this.checkIfSubtaskPresent(this.newSubtask.text)) {
-      this.newSubtasks.push({ ...this.newSubtask });
+      this.tasksService.newSubtasks.push({ ...this.newSubtask });
       this.newSubtask.text = '';
       this.subtaskBeingAdded = false;
     }
   }
 
   checkIfSubtaskPresent(newSubtask: string) {
-    return this.newSubtasks.some(entry => entry.text === newSubtask);
+    return this.tasksService.newSubtasks.some(entry => entry.text === newSubtask);
   }
 
   editSubtask(subtask: string) {
@@ -143,24 +132,25 @@ export class AddTaskFormComponent {
   }
 
   deleteSubtask(subtask: string) {
-    this.newSubtasks = this.newSubtasks.filter(entry => entry.text !== subtask );
+    this.tasksService.newSubtasks = this.tasksService.newSubtasks.filter(entry => entry.text !== subtask );
   }
 
   resetForm(form: NgForm) {
     form.resetForm();
-    this.newTask = {
+    this.tasksService.newTask = {
       title: '',
       description: '',
-      date: new Date(),
+      date: '',
       priority: '',
       assigned: [],
       category: '',
       subtasks: [],
     };
-    this.selectedPriority = '';
-    this.assignedContacts = [];
-    this.newSubtasks = [];
+    this.tasksService.selectedPriority = '';
+    this.tasksService.assignedContacts = [];
+    this.tasksService.newSubtasks = [];
     this.tasksService.addTaskContainerOpened = false;
+    this.tasksService.editTaskContainerOpened = false;
   }
 
   async onSubmit(form: NgForm) {
@@ -168,29 +158,38 @@ export class AddTaskFormComponent {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
     }
-    this.newTask.priority = this.selectedPriority;
-    this.newTask.assigned = this.assignedContacts.map(contact => ({
-      id: contact.id,
-      name: contact.name,
-      color: contact.color
-    })); 
-    this.newTask.category = this.selectedCategory;
-    this.newTask.subtasks = [...this.newSubtasks];
-    const taskToSave = this.convertFormToTask(this.newTask);
-    try {      
-      await this.dataBaseService.addData<Task>('tasks', taskToSave); // 'tasks' als Sammlungsname
+    this.getNewTaskData();    
+    const taskToSave = this.convertFormToTask(this.tasksService.newTask);
+    try {
+      if (this.tasksService.editTaskContainerOpened && this.tasksService.taskToBeEdited.id) {
+        await this.dataBaseService.updateData<Task>('tasks', this.tasksService.taskToBeEdited.id, { ...taskToSave, id:this.tasksService.taskToBeEdited.id, status:this.tasksService.taskToBeEdited.status});
+      } else {
+        await this.dataBaseService.addData<Task>('tasks', taskToSave); // 'tasks' als Sammlungsname
+      }      
       this.resetForm(form);
       this.taskAdded = true;
       this.tasksService.taskStatus = 'to-do';
       setTimeout(() => {
         this.taskAdded = false;
         this.tasksService.addTaskContainerOpened = false;
+        this.tasksService.editTaskContainerOpened = false;
       }, 1000);
     } catch (error: any) {
       console.error('Fehler beim Speichern des Tasks: ', error);
     }
     // finally {
     // }
+  }
+
+  getNewTaskData() {
+    this.tasksService.newTask.priority = this.tasksService.selectedPriority;
+    this.tasksService.newTask.assigned = this.tasksService.assignedContacts.map(contact => ({
+      id: contact.id,
+      name: contact.name,
+      color: contact.color
+    })); 
+    this.tasksService.newTask.category = this.tasksService.selectedCategory;
+    this.tasksService.newTask.subtasks = [...this.tasksService.newSubtasks];
   }
 
 }

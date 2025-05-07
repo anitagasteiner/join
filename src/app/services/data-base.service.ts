@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { DocumentData } from '@angular/fire/compat/firestore';
-import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, Timestamp, updateDoc, WithFieldValue } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, setDoc, Timestamp, WithFieldValue } from '@angular/fire/firestore';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
@@ -38,7 +38,7 @@ export class DataBaseService {
   async updateData<T extends { [key: string]: any }>(collectionName: string, docId: string, newData: T): Promise<void> { // T extends { [key: string]: any } -> Das ist, was updateDoc intern braucht - ein beliebiges Objekt mit Properties.
     const docRef = doc(this.firestore, collectionName, docId);
     return this.ngZone.run(() => {
-      return updateDoc(docRef, newData);
+      return setDoc(docRef, newData); //ersetzt das gesamte Dokument
     });
   }
 

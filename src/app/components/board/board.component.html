@@ -2,11 +2,23 @@
     
     <div class="search-add-container">
 
-        @if (tasksService.addTaskContainerOpened) {
+        @if (tasksService.addTaskContainerOpened && !tasksService.editTaskContainerOpened) {
 
             <div class="add-task-container">
     
                 <h2>Add Task</h2>
+    
+                <app-add-task-form></app-add-task-form>
+    
+            </div>
+    
+        }
+
+        @if (tasksService.editTaskContainerOpened) {
+
+            <div class="add-task-container">
+    
+                <h2>Edit Task</h2>
     
                 <app-add-task-form></app-add-task-form>
     

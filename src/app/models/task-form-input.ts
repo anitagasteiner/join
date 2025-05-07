@@ -1,7 +1,7 @@
 export interface TaskFormInput {
     title: string;
     description: string;
-    date: Date;
+    date: string;
     priority: string;
     assigned: {
       id: string;

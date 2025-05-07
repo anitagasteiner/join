@@ -5,6 +5,7 @@ import { Task } from '../../../models/task.model';
 import { Observable } from 'rxjs';
 import { TasksService } from '../../../services/tasks.service';
 import { GeneralService } from '../../../services/general.service';
+import { TaskFormInput } from '../../../models/task-form-input';
 
 @Component({
   selector: 'app-task-details',
@@ -27,5 +28,51 @@ export class TaskDetailsComponent {
   displayedTask$: Observable<Task> = this.tasksService.currentTask$; // displayedTask$ wird als Observable<Task> deklariert und sofort auf den Wert des currentTask$-Streams aus dem TasksService gesetzt
 
   constructor() {}
+
+  openFormToEditTask(task: Task) {
+    this.tasksService.taskDetailsOpened = false;
+    this.tasksService.addTaskContainerOpened = true;
+    this.tasksService.editTaskContainerOpened = true;
+    this.insertDataIntoForm(task);
+    this.prepareDataToBeEdited(task);
+  }
+
+  insertDataIntoForm(task: Task) {
+    this.tasksService.newTask = {
+      title: task.title,
+      description: task.description,
+      date: this.convertDateToString(task.date),
+      priority: task.priority,
+      assigned: task.assigned,
+      category: task.category,
+      subtasks: task.subtasks,
+    };
+    this.tasksService.selectedPriority = task.priority;
+    this.tasksService.assignedContacts = task.assigned;
+    this.tasksService.selectedCategory = task.category;
+    this.tasksService.newSubtasks = task.subtasks;
+  }
+
+  convertDateToString(date: Date): string {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+    const day = d.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  prepareDataToBeEdited(task: Task) {
+    this.tasksService.taskToBeEdited = {
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      date: new Date(task.date),
+      priority: task.priority,
+      assigned: task.assigned,
+      category: task.category,
+      subtasks: task.subtasks,
+      status: task.status
+    };
+  }
 
 }

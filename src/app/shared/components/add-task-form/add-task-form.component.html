@@ -1,43 +1,43 @@
 <form (ngSubmit)="onSubmit(addTaskForm)" #addTaskForm="ngForm">
 
     <fieldset>
-        <input #title="ngModel" [(ngModel)]="newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" required>
+        <input #title="ngModel" [(ngModel)]="tasksService.newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" required>
         <legend></legend>
     </fieldset>
 
     <fieldset>
-        <textarea #description="ngModel" [(ngModel)]="newTask.description" rows="3" placeholder="Enter a description" type="text" name="description" id="description"></textarea>
+        <textarea #description="ngModel" [(ngModel)]="tasksService.newTask.description" rows="3" placeholder="Enter a description" type="text" name="description" id="description"></textarea>
         <legend><b>Description</b> (optional)</legend>
     </fieldset>
 
     <fieldset>
-        <input #date="ngModel" [(ngModel)]="newTask.date" placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
+        <input #date="ngModel" [(ngModel)]="tasksService.newTask.date" placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
         <legend><b>Due date</b></legend>
     </fieldset>
 
     <fieldset class="priority-container">
-        <label [ngClass]="{'urgent-selected': selectedPriority == 'urgent'}">
-            <input type="radio" name="priority" value="urgent" (change)="selectedPriority = 'urgent'">
+        <label [ngClass]="{'urgent-selected': tasksService.selectedPriority == 'urgent'}">
+            <input type="radio" name="priority" value="urgent" (change)="tasksService.selectedPriority = 'urgent'">
             <span>Urgent</span>
-            @if (selectedPriority == 'urgent') {
+            @if (tasksService.selectedPriority == 'urgent') {
                 <img src="/img/prio-urgent-sel.svg">
             } @else {
                 <img src="/img/prio-urgent.svg">
             }                
         </label>
-        <label [ngClass]="{'medium-selected': selectedPriority == 'medium'}">
-            <input type="radio" name="priority" value="medium" (change)="selectedPriority = 'medium'">
+        <label [ngClass]="{'medium-selected': tasksService.selectedPriority == 'medium'}">
+            <input type="radio" name="priority" value="medium" (change)="tasksService.selectedPriority = 'medium'">
             <span>Medium</span>
-            @if (selectedPriority == 'medium') {
+            @if (tasksService.selectedPriority == 'medium') {
                 <img src="/img/prio-medium-sel.svg">
             } @else {
                 <img src="/img/prio-medium.svg">
             }                
         </label>
-        <label [ngClass]="{'low-selected': selectedPriority == 'low'}">
-            <input type="radio" name="priority" value="low" (change)="selectedPriority = 'low'">
+        <label [ngClass]="{'low-selected': tasksService.selectedPriority == 'low'}">
+            <input type="radio" name="priority" value="low" (change)="tasksService.selectedPriority = 'low'">
             <span>Low</span>
-            @if (selectedPriority == 'low') {
+            @if (tasksService.selectedPriority == 'low') {
                 <img src="/img/prio-low-sel.svg">
             } @else {
                 <img src="/img/prio-low.svg">
@@ -81,16 +81,16 @@
              
         <legend><b>Assigned to</b> (optional)</legend>
     </fieldset>
-    @if (assignedContacts.length) {        
+    @if (tasksService.assignedContacts.length) {        
         <div class="assigned-icons-container">
-            @for (assignedPerson of assignedContacts; track assignedPerson.id) {
+            @for (assignedPerson of tasksService.assignedContacts; track assignedPerson.id) {
                 <div class="contact-icon" [ngClass]="assignedPerson.color">{{ assignedPerson.name | initials }}</div>
             }
         </div>
     }
 
     <fieldset>
-        <select id="category" name="category" [(ngModel)]="selectedCategory" [ngClass]="{'select-open': selectOpened}" (click)="toggleCategoryOpenClose()" required>
+        <select id="category" name="category" [(ngModel)]="tasksService.selectedCategory" [ngClass]="{'select-open': selectOpened}" (click)="toggleCategoryOpenClose()" required>
             <option value="" disabled>Select task category</option>
             <option *ngFor="let category of categories" [value]="category">
                 {{ category }}
@@ -113,10 +113,10 @@
         }            
         <legend><b>Subtasks</b> (optional)</legend>
     </fieldset>
-    @if (newSubtasks.length) {
+    @if (tasksService.newSubtasks.length) {
         <div class="subtasks-list">
             <ul>
-                @for (entry of newSubtasks; track entry.text) {
+                @for (entry of tasksService.newSubtasks; track entry.text) {
                     <li class="subtask">
                         {{ entry.text }}
                         <div class="edit-delete-subtask">
@@ -130,12 +130,21 @@
         </div>
     }
 
-    <div class="btns-create-clear">
-        <div class="btn-create-clear btn-clear" (click)="resetForm(addTaskForm)">
-            <span>Clear</span>
-            <img src="/img/cancel.svg">
+    @if (!tasksService.editTaskContainerOpened) {
+        <div class="btns-create-clear">
+            <div class="btn-create-clear btn-clear" (click)="resetForm(addTaskForm)">
+                <span>Clear</span>
+                <img src="/img/cancel.svg">
+            </div>
+            <input class="btn-create-clear btn-create btn-submit" type="submit" value="Create task">
         </div>
-        <input class="btn-create-clear btn-create btn-submit" type="submit" value="Create task">
-    </div>        
+    }    
+
+    @if (tasksService.editTaskContainerOpened) {
+        <div class="btn-ok">
+            <input class="btn-create-clear btn-create btn-submit" type="submit" value="Ok">
+        </div>
+        <img src="/img/cancel-blue.svg" (click)="resetForm(addTaskForm)">
+    }
 
 </form>

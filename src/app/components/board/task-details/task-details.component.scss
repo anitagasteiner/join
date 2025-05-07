@@ -114,6 +114,9 @@ h2 {
     flex-direction: row;
     gap: 16px;
     padding-left: 16px;
+    >img {
+        cursor: pointer;
+    }
 }
 
 .task-details-bottom-container{
