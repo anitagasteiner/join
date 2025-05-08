@@ -31,5 +31,11 @@
         <app-add-edit-contact></app-add-edit-contact>
 
     </div>
+    
+    @if (generalService.notificationOpened) {
+        <div class="notification-container">
+            <app-notifications></app-notifications>
+        </div>        
+    }
 
 </div>

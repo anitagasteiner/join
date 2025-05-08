@@ -8,6 +8,7 @@ import { map, Observable } from 'rxjs';
 import { Contact } from '../../../models/contact.model';
 import { TasksService } from '../../../services/tasks.service';
 import { TaskFormInput } from '../../../models/task-form-input';
+import { GeneralService } from '../../../services/general.service';
 
 @Component({
   selector: 'app-add-task-form',
@@ -23,6 +24,7 @@ export class AddTaskFormComponent {
   
   tasksService = inject(TasksService);
   dataBaseService = inject(DataBaseService);
+  generalService = inject(GeneralService);
 
   @ViewChild('subtaskInput', { static: false }) subtasks?: ElementRef;
 
@@ -166,6 +168,12 @@ export class AddTaskFormComponent {
         await this.dataBaseService.updateData<Task>('tasks', this.tasksService.taskToBeEdited.id, { ...taskToSave, id:this.tasksService.taskToBeEdited.id, status:this.tasksService.taskToBeEdited.status});
       } else {
         await this.dataBaseService.addData<Task>('tasks', taskToSave); // 'tasks' als Sammlungsname
+        this.generalService.notificationOpened = true;
+        this.generalService.notificationTaskAdded = true;
+        setTimeout(() => {
+          this.generalService.notificationOpened = false;
+          this.generalService.notificationTaskAdded = false;
+        }, 1000);
       }      
       this.resetForm(form);
       this.taskAdded = true;

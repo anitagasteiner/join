@@ -2,4 +2,11 @@
 
     <app-add-task-form></app-add-task-form>
 
+    @if (generalService.notificationOpened) {
+        <div class="notification-container">
+            <app-notifications></app-notifications>
+        </div>        
+    }
+
 </div>
+

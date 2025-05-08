@@ -1,0 +1,18 @@
+@use './../../../shared/colors.scss' as colors;
+
+div {
+    @include colors.bg-blue-dark;
+    @include colors.color-ivory;
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 23px;
+    >img {
+        width: 22px;
+        height: 26px;
+    }
+}

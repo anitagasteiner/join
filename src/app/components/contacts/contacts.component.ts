@@ -8,6 +8,7 @@ import { AddEditContactComponent } from './add-edit-contact/add-edit-contact.com
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import { Contact } from './../../models/contact.model';
 import { ContactsService } from '../../services/contacts.service';
+import { NotificationsComponent } from '../../shared/components/notifications/notifications.component';
 
 @Component({
   selector: 'app-contacts',
@@ -15,7 +16,8 @@ import { ContactsService } from '../../services/contacts.service';
     CommonModule,
     ContactComponent,
     AddEditContactComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    NotificationsComponent
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
