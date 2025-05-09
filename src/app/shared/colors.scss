@@ -148,6 +148,11 @@ $colors: (
     color: $color !important;
 }
 
+@mixin color-grey-line {
+    $color: map.get($colors, "grey-line");
+    color: $color !important;
+}
+
 @mixin color-black-light {
     $color: map.get($colors, "black-light");
     color: $color !important;
@@ -186,4 +191,10 @@ $colors: (
 @mixin border-blue-dark {
     $border-color: map.get($colors, "blue-dark");
     border: 2px solid $border-color;
+}
+
+@mixin border-grey-dotted {
+    $border-color: map.get($colors, "grey-line");
+    border: 2px solid $border-color;
+    border-style: dotted;
 }

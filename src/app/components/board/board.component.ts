@@ -8,7 +8,7 @@ import { Task } from './../../models/task.model';
 import { AddTaskFormComponent } from '../../shared/components/add-task-form/add-task-form.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TasksService } from '../../services/tasks.service';
-import { Timestamp } from '@angular/fire/firestore';
+import { NoTasksComponent } from './no-tasks/no-tasks.component';
 
 @Component({
   selector: 'app-board',
@@ -16,14 +16,26 @@ import { Timestamp } from '@angular/fire/firestore';
     CommonModule,
     TaskComponent,
     AddTaskFormComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    NoTasksComponent
   ],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
 })
 export class BoardComponent {
 
+  generalService = inject(GeneralService);
+  dataBaseService = inject(DataBaseService);
+  tasksService = inject(TasksService);
+
   tasks$: Observable<Task[]>;
+
+  todoCount$: Observable<number>;
+  inProgressCount$: Observable<number>;
+  waitingCount$: Observable<number>;
+  doneCount$: Observable<number>;
+
+  // status: string[] = ['to-do', 'in-progress', 'waiting', 'done'];
 
   displayedTask: Task = {
         id: 'string',
@@ -44,14 +56,22 @@ export class BoardComponent {
         status: ''
   }
 
-  generalService = inject(GeneralService);
-  dataBaseService = inject(DataBaseService);
-  tasksService = inject(TasksService);
-
   constructor() {
     const originalTasks$ = this.dataBaseService.getData<Task>('tasks');
     this.tasks$ = originalTasks$.pipe(map(tasks => tasks.sort((a, b) => a.title.localeCompare(b.title))));
     this.generalService.activeNavBtn = 'board';
+    this.todoCount$ = originalTasks$.pipe(
+      map(tasks => tasks.filter(task => task.status === 'to-do').length)
+    );
+    this.inProgressCount$ = originalTasks$.pipe(
+      map(tasks => tasks.filter(task => task.status === 'in-progress').length)
+    );
+    this.waitingCount$ = originalTasks$.pipe(
+      map(tasks => tasks.filter(task => task.status === 'waiting').length)
+    );
+    this.doneCount$ = originalTasks$.pipe(
+      map(tasks => tasks.filter(task => task.status === 'done').length)
+    );
   }
 
   openAddTaskContainer(status: string) {
