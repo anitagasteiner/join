@@ -1,0 +1,13 @@
+@use './../../../shared/colors.scss' as colors;
+
+div {
+    @include colors.border-grey-dotted;
+    @include colors.bg-grey-light;
+    @include colors.color-grey-line;
+    border-radius: 10px;
+    width: 392px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
