@@ -52,7 +52,7 @@
             </div>
 
             @if (tasks$ | async; as tasks) {
-                <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['inProgressList', 'waitingList', 'doneList']" cdkDropListGroup id="toDoList" (cdkDropListDropped)="drop($event, 'to-do')">
+                <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['inProgressList', 'waitingList', 'doneList']" cdkDropListGroup id="toDoList" (cdkDropListDropped)="drop($event, 'to-do')" (cdkDropListEntered)="highlightDropZone('to-do')" (cdkDropListExited)="removeHighlight('to-do')" [ngClass]="{ 'drop-zone-active': activeDropZone === 'to-do' }">
                     @if (todoCount$ | async) {
                         @for (task of tasks$ | async; track task.id; let index = $index) {
                             @if (task.status == "to-do") {
@@ -75,7 +75,7 @@
             </div>
 
             @if (tasks$ | async; as tasks) {
-                <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'waitingList', 'doneList']" id="inProgressList" (cdkDropListDropped)="drop($event, 'in-progress')">
+                <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'waitingList', 'doneList']" cdkDropListGroup id="inProgressList" (cdkDropListDropped)="drop($event, 'in-progress')" (cdkDropListEntered)="highlightDropZone('in-progress')" (cdkDropListExited)="removeHighlight('in-progress')" [ngClass]="{ 'drop-zone-active': activeDropZone === 'in-progress' }">
                     @if (inProgressCount$ | async) {
                         @for (task of tasks$ | async; track task.title; let index = $index) {
                             @if (task.status == "in-progress") {
@@ -99,7 +99,7 @@
             </div>
 
             @if (tasks$ | async; as tasks) {
-                <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'inProgressList', 'doneList']" id="waitingList" (cdkDropListDropped)="drop($event, 'waiting')">
+                <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'inProgressList', 'doneList']" cdkDropListGroup id="waitingList" (cdkDropListDropped)="drop($event, 'waiting')"(cdkDropListEntered)="highlightDropZone('waiting')" (cdkDropListExited)="removeHighlight('waiting')" [ngClass]="{ 'drop-zone-active': activeDropZone === 'waiting' }">
                     @if (waitingCount$ | async) {
                         @for (task of tasks$ | async; track task.title; let index = $index) {
                             @if (task.status == "waiting") {
@@ -121,7 +121,7 @@
             </div>
 
             @if (tasks$ | async; as tasks) {
-                <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'inProgressList', 'waitingList']" id="doneList" (cdkDropListDropped)="drop($event, 'done')">
+                <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'inProgressList', 'waitingList']" cdkDropListGroup id="doneList" (cdkDropListDropped)="drop($event, 'done')" (cdkDropListEntered)="highlightDropZone('done')" (cdkDropListExited)="removeHighlight('done')" [ngClass]="{ 'drop-zone-active': activeDropZone === 'done' }">
                     @if (doneCount$ | async) {
                         @for (task of tasks$ | async; track task.title; let index = $index) {
                             @if (task.status == "done") {

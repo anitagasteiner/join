@@ -37,6 +37,8 @@ export class BoardComponent {
   waitingCount$: Observable<number>;
   doneCount$: Observable<number>;
 
+  activeDropZone: string | null = null;
+
   // status: string[] = ['to-do', 'in-progress', 'waiting', 'done'];
 
   displayedTask: Task = {
@@ -92,6 +94,17 @@ export class BoardComponent {
     if (task.status !== newStatus) {
       task.status = newStatus;
       await this.dataBaseService.updateData<Task>('tasks', task.id, task);
+    }
+    this.activeDropZone = null;
+  }
+
+  highlightDropZone(status: string) {
+    this.activeDropZone = status;
+  }
+
+  removeHighlight(status: string) {
+    if (this.activeDropZone === status) {
+      this.activeDropZone = null;
     }
   }
 
