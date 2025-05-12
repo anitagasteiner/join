@@ -9,11 +9,13 @@ import { AddTaskFormComponent } from '../../shared/components/add-task-form/add-
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TasksService } from '../../services/tasks.service';
 import { NoTasksComponent } from './no-tasks/no-tasks.component';
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-board',
   imports: [
     CommonModule,
+    DragDropModule,
     TaskComponent,
     AddTaskFormComponent,
     TaskDetailsComponent,
@@ -83,6 +85,14 @@ export class BoardComponent {
     this.displayedTask = task;
     this.tasksService.setCurrentTask(task);
     this.tasksService.taskDetailsOpened = true;
+  }
+
+  async drop(event: CdkDragDrop<Task[]>, newStatus: string) {
+    const task: Task = event.item.data;
+    if (task.status !== newStatus) {
+      task.status = newStatus;
+      await this.dataBaseService.updateData<Task>('tasks', task.id, task);
+    }
   }
 
 }
