@@ -26,7 +26,7 @@
     
         }
 
-        <input class="search-task" placeholder="Find task" onfocus="this.placeholder=''" type="text" name="find-task" id="findTask">
+        <input class="search-task" placeholder="Find task title" type="text" [formControl]="searchControl">
      
         <button class="btn-submit" (click)="openAddTaskContainer('to-do')">Add task</button>
 
@@ -54,7 +54,7 @@
             @if (tasks$ | async; as tasks) {
                 <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['inProgressList', 'waitingList', 'doneList']" cdkDropListGroup id="toDoList" (cdkDropListDropped)="drop($event, 'to-do')" (cdkDropListEntered)="highlightDropZone('to-do')" (cdkDropListExited)="removeHighlight('to-do')" [ngClass]="{ 'drop-zone-active': activeDropZone === 'to-do' }">
                     @if (todoCount$ | async) {
-                        @for (task of tasks$ | async; track task.id; let index = $index) {
+                        @for (task of filteredTasks$ | async; track task.id; let index = $index) {
                             @if (task.status == "to-do") {
                                 <app-task cdkDrag [cdkDragData]="task" [cdkDragStartDelay]="{ touch: 300, mouse: 0 }" [task]="task" (click)="showTaskDetails(task)"></app-task>
                             }         
@@ -77,7 +77,7 @@
             @if (tasks$ | async; as tasks) {
                 <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'waitingList', 'doneList']" cdkDropListGroup id="inProgressList" (cdkDropListDropped)="drop($event, 'in-progress')" (cdkDropListEntered)="highlightDropZone('in-progress')" (cdkDropListExited)="removeHighlight('in-progress')" [ngClass]="{ 'drop-zone-active': activeDropZone === 'in-progress' }">
                     @if (inProgressCount$ | async) {
-                        @for (task of tasks$ | async; track task.title; let index = $index) {
+                        @for (task of filteredTasks$ | async; track task.title; let index = $index) {
                             @if (task.status == "in-progress") {
                                 <app-task cdkDrag [cdkDragData]="task" [cdkDragStartDelay]="{ touch: 300, mouse: 0 }" [task]="task" (click)="showTaskDetails(task)"></app-task>
                             }            
@@ -101,7 +101,7 @@
             @if (tasks$ | async; as tasks) {
                 <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'inProgressList', 'doneList']" cdkDropListGroup id="waitingList" (cdkDropListDropped)="drop($event, 'waiting')"(cdkDropListEntered)="highlightDropZone('waiting')" (cdkDropListExited)="removeHighlight('waiting')" [ngClass]="{ 'drop-zone-active': activeDropZone === 'waiting' }">
                     @if (waitingCount$ | async) {
-                        @for (task of tasks$ | async; track task.title; let index = $index) {
+                        @for (task of filteredTasks$ | async; track task.title; let index = $index) {
                             @if (task.status == "waiting") {
                                 <app-task cdkDrag [cdkDragData]="task" [cdkDragStartDelay]="{ touch: 300, mouse: 0 }" [task]="task" (click)="showTaskDetails(task)"></app-task>
                             }            
@@ -123,7 +123,7 @@
             @if (tasks$ | async; as tasks) {
                 <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'inProgressList', 'waitingList']" cdkDropListGroup id="doneList" (cdkDropListDropped)="drop($event, 'done')" (cdkDropListEntered)="highlightDropZone('done')" (cdkDropListExited)="removeHighlight('done')" [ngClass]="{ 'drop-zone-active': activeDropZone === 'done' }">
                     @if (doneCount$ | async) {
-                        @for (task of tasks$ | async; track task.title; let index = $index) {
+                        @for (task of filteredTasks$ | async; track task.title; let index = $index) {
                             @if (task.status == "done") {
                                 <app-task cdkDrag [cdkDragData]="task" [cdkDragStartDelay]="{ touch: 300, mouse: 0 }" [task]="task" (click)="showTaskDetails(task)"></app-task>
                             }            

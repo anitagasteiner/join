@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { CommonModule } from '@angular/common';
 import { GeneralService } from '../../services/general.service';
-import { map, Observable } from 'rxjs';
+import { combineLatest, debounceTime, map, Observable, startWith } from 'rxjs';
 import { DataBaseService } from '../../services/data-base.service';
 import { Task } from './../../models/task.model';
 import { AddTaskFormComponent } from '../../shared/components/add-task-form/add-task-form.component';
@@ -10,12 +10,14 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TasksService } from '../../services/tasks.service';
 import { NoTasksComponent } from './no-tasks/no-tasks.component';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-board',
   imports: [
     CommonModule,
     DragDropModule,
+    ReactiveFormsModule,
     TaskComponent,
     AddTaskFormComponent,
     TaskDetailsComponent,
@@ -30,7 +32,11 @@ export class BoardComponent {
   dataBaseService = inject(DataBaseService);
   tasksService = inject(TasksService);
 
+  searchControl = new FormControl('');
+
   tasks$: Observable<Task[]>;
+
+  filteredTasks$: Observable<Task[]>;
 
   todoCount$: Observable<number>;
   inProgressCount$: Observable<number>;
@@ -62,7 +68,20 @@ export class BoardComponent {
 
   constructor() {
     const originalTasks$ = this.dataBaseService.getData<Task>('tasks');
-    this.tasks$ = originalTasks$.pipe(map(tasks => tasks.sort((a, b) => a.title.localeCompare(b.title))));
+    const allTasks$ = originalTasks$.pipe(map(tasks => tasks.sort((a, b) => a.title.localeCompare(b.title))));
+    this.tasks$ = allTasks$;
+    this.filteredTasks$ = combineLatest([
+      allTasks$,
+      this.searchControl.valueChanges.pipe(startWith(''), debounceTime(200))
+    ]).pipe(
+      map(([tasks, search]) => {
+        const term = (search ?? '').toLowerCase();
+        return tasks.filter(task =>
+          task.title.toLowerCase().includes(term)
+          // || task.description?.toLowerCase().includes(term)
+        );
+      })
+    );
     this.generalService.activeNavBtn = 'board';
     this.todoCount$ = originalTasks$.pipe(
       map(tasks => tasks.filter(task => task.status === 'to-do').length)
