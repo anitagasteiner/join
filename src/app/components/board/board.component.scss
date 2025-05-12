@@ -133,8 +133,13 @@ button {
         flex-direction: row;
         gap: 16px;
         overflow: auto;
+        scrollbar-width: 7px;
+        padding-bottom: 12px;
+        padding-right: 12px;
         @include bp.xxl {
             flex-direction: column;
+            scrollbar-width: none;
+            padding-bottom: 0;
         }
     }
 }
