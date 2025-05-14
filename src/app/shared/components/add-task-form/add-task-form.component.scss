@@ -135,25 +135,27 @@ input, textarea, select {
     font-size: 23px !important;
     @include colors.color-grey-dark;
     cursor: pointer;
+    &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
 }
 
 .btn-clear {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 12px 10px 12px;
+    width: auto;
+    padding: 10px 38px 10px 12px;
     border-radius: 10px;
     box-sizing: border-box;
     @include colors.bg-ivory;
     @include colors.border-grey-light;
-    @include bp.sm {
-        padding: 16px 18px 16px 23px;
-        gap: 18px;
-    }
-    >img {
-        width: 24px;
-        height: 24px;
+    @include colors.color-grey-font;
+    background-image: url('/img/cancel.svg');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 24px 24px;
+    &:hover {
+        @include colors.border-blue-dark;
+        @include colors.color-dark;
+        background-image: url('/img/cancel-blue.svg');
     }
 }
 
@@ -165,6 +167,9 @@ input, textarea, select {
     background-position: right 8px center;
     background-size: 24px 24px;
     @include colors.color-ivory;
+    &:hover {
+        @include colors.bg-blue-bright;
+    }
 }
 
 

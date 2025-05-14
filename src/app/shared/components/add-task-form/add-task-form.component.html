@@ -132,10 +132,7 @@
 
     @if (!tasksService.editTaskContainerOpened) {
         <div class="btns-create-clear">
-            <div class="btn-create-clear btn-clear" (click)="resetForm(addTaskForm)">
-                <span>Clear</span>
-                <img src="/img/cancel.svg">
-            </div>
+            <div class="btn-create-clear btn-clear" (click)="resetForm(addTaskForm)">Clear</div>
             <input class="btn-create-clear btn-create btn-submit" type="submit" value="Create task">
         </div>
     }    

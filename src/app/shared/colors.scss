@@ -7,7 +7,9 @@ $colors: (
     "blue-bright-tasks": rgba(0, 56, 255, 1),
     "blue-bright": rgba(0, 93, 255, 1),
     "blue-light": rgba(210, 227, 255, 1),
+    "blue-lighter": rgba(227, 238, 255, 1),
     "blue-dark": rgba(69, 137, 255, 1),
+    "grey-font": rgba(100, 113, 136, 1),
     "grey-light": rgba(224, 224, 224, 1),
     "grey-light-transparent": rgba(224, 224, 224, 0.5),
     "grey-line": rgba(168, 168, 168, 1),
@@ -106,6 +108,13 @@ $colors: (
     color: $color;
 }
 
+@mixin bg-lighter {
+    $bg-color: map.get($colors, "blue-lighter");
+    $color: map.get($colors, "blue-dark");
+    background-color: $bg-color;
+    color: $color;
+}
+
 @mixin bg-dark {
     $bg-color: map.get($colors, "blue-dark");
     $color: map.get($colors, "ivory");
@@ -145,6 +154,11 @@ $colors: (
 
 @mixin color-grey-light {
     $color: map.get($colors, "grey-light");
+    color: $color !important;
+}
+
+@mixin color-grey-font {
+    $color: map.get($colors, "grey-font");
     color: $color !important;
 }
 
