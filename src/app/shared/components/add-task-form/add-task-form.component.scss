@@ -131,20 +131,12 @@ input, textarea, select {
     }
 }
 
-.btn-create-clear {
-    font-size: 23px !important;
-    @include colors.color-grey-dark;
-    cursor: pointer;
-    &:hover {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
-}
-
 .btn-clear {
     width: auto;
     padding: 10px 38px 10px 12px;
     border-radius: 10px;
     box-sizing: border-box;
+    font-size: 23px !important;
     @include colors.bg-ivory;
     @include colors.border-grey-light;
     @include colors.color-grey-font;
@@ -153,6 +145,8 @@ input, textarea, select {
     background-position: right 8px center;
     background-size: 24px 24px;
     &:hover {
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         @include colors.border-blue-dark;
         @include colors.color-dark;
         background-image: url('/img/cancel-blue.svg');
@@ -167,9 +161,6 @@ input, textarea, select {
     background-position: right 8px center;
     background-size: 24px 24px;
     @include colors.color-ivory;
-    &:hover {
-        @include colors.bg-blue-bright;
-    }
 }
 
 

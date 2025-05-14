@@ -154,11 +154,15 @@ select {
 .btn-submit {
     width: auto;
     height: auto;
+    padding: 10px 38px 10px 12px;
+    font-size: 23px !important;
     @include colors.bg-dark;
     border: none !important;
-    border-radius: 10px;
+    border-radius: 10px;    
     &:hover {
         cursor: pointer;
+        @include colors.bg-blue-bright;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 }
 
