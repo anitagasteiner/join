@@ -74,13 +74,9 @@ input {
 }
 
 button {
-    font-size: 23px !important;
     background-image: url('/img/add-light.svg');
-    background-repeat: no-repeat;
     background-position: right 16px center;
     background-size: 15px 15px;
-    @include colors.color-ivory;
-    box-sizing: border-box;
     display: none;
     @include bp.lg {
         display: unset;

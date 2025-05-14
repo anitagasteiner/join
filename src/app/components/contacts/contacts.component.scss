@@ -4,7 +4,6 @@
 .main-container {
     display: flex;
     flex-direction: row;
-    // position: relative;
 }
 
 .contacts-container {
@@ -29,35 +28,24 @@
     right: 42px;
     @include bp.lg {
         position: unset;
+        padding-top: 32px;
+        padding-bottom: 16px;
         display: flex;
         justify-content: center;
         width: 100%;
-        padding-top: 32px;
-        padding-bottom: 16px;
     }
     >button {
-        width: fit-content;
-        box-sizing: border-box;
+        background-image: url('/img/add-contact.svg');
     }
     >button:nth-child(1) {
-        width: 64px !important;
-        height: 64px !important;
-        >img {
-            height: 32px;
-            width: 32px;
-        }
         @include bp.lg {
             display: none;
         }
     }
     >button:nth-child(2) {
-        font-size: 23px !important;
-        padding: 14px 110px 14px 68px;        
-        background-image: url('/img/add-contact.svg');
-        background-repeat: no-repeat;
         background-position: right 68px center;
-        background-size: 32px 32px;        
-        @include colors.color-ivory;        
+        background-size: 32px 32px;
+        width: 357px;
         display: none;
         @include bp.lg {
             display: unset;            

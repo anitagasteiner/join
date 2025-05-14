@@ -151,18 +151,52 @@ select {
     @include colors.color-grey-dark;
 }
 
-.btn-submit {
-    width: auto;
-    height: auto;
-    padding: 10px 38px 10px 12px;
+.btn {
     font-size: 23px !important;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+.btn-txt {
+    padding: 12px 16px !important;
+}
+
+.btn-img {
+    width: 64px !important;
+    height: 64px !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 32px 32px;
+}
+
+.btn-txt-img {
+    padding: 12px 38px 12px 8px !important;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 24px 24px;   
+}
+
+.btn-submit {
     @include colors.bg-dark;
     border: none !important;
-    border-radius: 10px;    
+    @include colors.color-ivory;
     &:hover {
-        cursor: pointer;
         @include colors.bg-blue-bright;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+.btn-quit {
+    box-sizing: border-box;
+    @include colors.bg-ivory;
+    @include colors.border-grey-light;
+    @include colors.color-grey-font;
+    &:hover {
+        @include colors.border-blue-dark;
+        @include colors.color-dark;
     }
 }
 
