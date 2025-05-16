@@ -5,11 +5,14 @@ import { Task } from '../../models/task.model';
 import { DataBaseService } from '../../services/data-base.service';
 import { CommonModule } from '@angular/common';
 import { Timestamp } from '@angular/fire/firestore';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-summary',
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './summary.component.html',
   styleUrl: './summary.component.scss'

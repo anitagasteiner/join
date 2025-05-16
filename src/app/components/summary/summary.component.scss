@@ -22,8 +22,6 @@
 }
 
 .info-container {
-    // width: 912px;
-    // height: 100%;
     margin-top: 56px;
     display: grid;
     grid-template-areas:
@@ -32,22 +30,25 @@
         "board progress"
         "feedback done";
     grid-template-columns: repeat(auto-fill);
-    gap: 8px;
+    grid-auto-rows: 136px;
+    grid-template-rows: 136px 110px 136px 136px;
+    grid-gap: 8px;
     box-sizing: border-box;
     padding-bottom: 24px;
-    // padding: 0 30px 30px 30px;
-    // justify-content: center;
     @include bp.md {
         margin-top: 0;
     }
     @include bp.xs {
         gap: 16px;
+        grid-template-rows: 136px 110px 156px 156px;
     }
     @include bp.xl {
         grid-template-areas:
         "urgent urgent urgent board"
         "todo progress feedback done";
-        gap: 32px;
+        grid-template-rows: 218px 218px;
+        grid-template-columns: 208px 208px 208px 208px;
+        grid-gap: 26px;
     }
     >div:nth-child(1) {
         grid-area: urgent;
@@ -70,6 +71,9 @@
 }
 
 img {
+    @include colors.outline-ivory;
+    border-radius: 50%;
+    outline-offset: -5px;
     height: 63px;
     width: 63px;
     @include bp.xl {
@@ -84,10 +88,47 @@ img {
     @include colors.bg-dark;
     @include colors.border-grey-light;
     display: flex;
-    // justify-content: space-around;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 8px;    
+    cursor: pointer;
+    &:hover {
+        border-top-left-radius: 0;
+        @include colors.bg-ivory;
+        @include colors.color-dark;
+        box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.15);
+        height: 140%;
+        gap: 12px;
+        z-index: 1;
+    }
+    &:hover .line {
+        @include colors.bg-blue-dark;
+    }
+    &:hover .urgent-tasks-left {
+        >div:nth-child(1) {
+            gap: 0;
+            @include bp.xl {
+                gap: 16px;
+                >img {
+                    height: 118px;
+                    width: 118px;
+                }
+            }
+        }
+        >div:nth-child(2) {
+            font-weight: 600;
+        }
+        >div >img {
+            width: 92px;
+            height: 92px;
+        }
+    }
+    &:hover .urgent-tasks-right {
+        gap: 18px;
+        >div:nth-child(2) {
+            font-weight: 600;
+        }
+    }
     @include bp.xs {
         width: 396px;
         gap: 16px;
@@ -97,6 +138,12 @@ img {
         height: 219px;
         border-radius: 20px;
         gap: 50px;
+        &:hover {
+            height: 120%;
+            width: 105%;
+            gap: 50px;
+            margin: -10px;
+        }
     }
 }
 
@@ -106,16 +153,12 @@ img {
     align-items: center;
     justify-content: center;
     gap: 3px;
-    >div >img {
-        @include colors.border-grey-light;
-        border-radius: 50%;            
-    }
 }
 
 .line {
     @include colors.bg-ivory;
     width: 2.5px;
-    height: 118px;
+    height: 80%;
     margin-top: 16px;
     margin-bottom: 16px;
     @include bp.xs {
@@ -178,6 +221,20 @@ img {
     align-items: center;
     justify-content: center;
     gap: 5px;
+    cursor: pointer;
+    &:hover {
+        border-top-left-radius: 0;
+    }
+    &:hover .img-number {
+        >img {
+            width: 92px;
+            height: 92px;
+            outline-offset: -10px;
+        }
+    }
+    &:hover .description {
+        font-weight: 600;
+    }
     @include bp.xs {
         width: 186px;
         height: 152px;
@@ -197,6 +254,27 @@ img {
     width: 300px;
     height: 106px;
     @include colors.bg-light;
+    &:hover {
+        @include colors.bg-ivory;
+        @include colors.color-dark;
+        box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.15);
+        height: 140%;
+        z-index: 1;
+        @include bp.xl {
+            margin: -10px;
+            width: 110%;
+            height: 115%;        
+        }
+    }
+    &:hover .img-number {
+        >img {
+            width: 92px;
+            height: 92px;
+        }
+    }
+    &:hover .description {
+        font-weight: 600;
+    }
     @include bp.xs {
         width: 396px;
         gap: 16px;
@@ -206,5 +284,24 @@ img {
         border-radius: 20px;
         width: 204px;
         height: 219px;
+    }
+}
+
+.tasks-container-small:hover {
+    margin: -5px;
+    width: 105%;
+    height: 130%;
+    @include colors.bg-blue-bright;
+    @include colors.color-ivory;
+    @include colors.border-blue-bright;
+    z-index: 1;
+    box-shadow: 0 0 10px 3px rgba(0, 93, 255, 0.5);    
+    >div:nth-child(1) {
+        gap: 4px;
+    }
+    @include bp.xl {
+        margin: -10px;
+        width: 110%;
+        height: 115%;        
     }
 }

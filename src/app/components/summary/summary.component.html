@@ -4,7 +4,7 @@
 
     <div class="info-container">
 
-        <div class="urgent-tasks-container">
+        <div class="urgent-tasks-container" routerLink="board" routerLinkActive="active">
             <div class="urgent-tasks-left">
                 <div class="img-number">
                     <img src="/img/urgent.svg">
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="tasks-container">
+        <div class="tasks-container tasks-container-small" routerLink="board" routerLinkActive="active">
             <div class="img-number">
                 <img src="/img/board.svg">
                 <div>{{ tasksCount$ | async }}</div>
@@ -29,7 +29,7 @@
             <div class="description">Tasks in<br>Board</div>
         </div>
 
-        <div class="tasks-container tasks-to-do-container">
+        <div class="tasks-container tasks-to-do-container" routerLink="board" routerLinkActive="active">
             <div class="img-number">
                 <img src="/img/to-do.svg">
                 <div>{{ todoCount$ | async }}</div>
@@ -37,7 +37,7 @@
             <div class="description">Tasks To&nbsp;Do</div>
         </div>
 
-        <div class="tasks-container">
+        <div class="tasks-container tasks-container-small" routerLink="board" routerLinkActive="active">
             <div class="img-number">
                 <img src="/img/in-progress.svg">
                 <div>{{ inProgressCount$ | async }}</div>
@@ -45,7 +45,7 @@
             <div class="description">Tasks in<br>Progress</div>
         </div>
 
-        <div class="tasks-container">
+        <div class="tasks-container tasks-container-small" routerLink="board" routerLinkActive="active">
             <div class="img-number">
                 <img src="/img/awaiting-feedback.svg">
                 <div>{{ waitingCount$ | async }}</div>
@@ -53,7 +53,7 @@
             <div class="description">Tasks Awaiting<br>Feedback</div>
         </div>
 
-        <div class="tasks-container">
+        <div class="tasks-container tasks-container-small" routerLink="board" routerLinkActive="active">
             <div class="img-number">
                 <img src="/img/done.svg">
                 <div>{{ doneCount$ | async }}</div>
