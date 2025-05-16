@@ -207,8 +207,18 @@ $colors: (
     border: 2px solid $border-color;
 }
 
+@mixin border-blue-bright {
+    $border-color: map.get($colors, "blue-bright");
+    border: 2px solid $border-color;
+}
+
 @mixin border-grey-dotted {
     $border-color: map.get($colors, "grey-line");
     border: 2px solid $border-color;
     border-style: dotted;
+}
+
+@mixin outline-ivory {
+    $border-color: map.get($colors, "ivory");
+    outline: 2px solid $border-color;
 }
