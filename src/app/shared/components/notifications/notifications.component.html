@@ -1,10 +1,18 @@
-<div>
-    @if (generalService.notificationTaskAdded) {
+@if (generalService.notificationTaskAdded) {
+    <div>
         Task added to board.
         <img src="/img/board-white.svg">
-    } @else if (generalService.notificationContactAdded) {
-        Contact successfully created.
-    } @else if (generalService.notificationSignedUp) {
-        You signed up successfully.
-    }    
-</div>
+    </div>
+} @else if (generalService.notificationTaskEdited) {
+    <div>Task successfully edited.</div>
+} @else if (generalService.notificationTaskDeleted) {
+    <div>Task successfully deleted.</div>
+} @else if (generalService.notificationContactAdded) {
+    <div>Contact successfully created.</div>
+} @else if (generalService.notificationContactEdited) {
+    <div>Contact successfully edited.</div>
+} @else if (generalService.notificationContactDeleted) {
+    <div>Contact successfully deleted.</div>
+} @else if (generalService.notificationSignedUp) {
+    <div>You signed up successfully.</div>
+}

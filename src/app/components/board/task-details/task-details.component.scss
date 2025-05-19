@@ -140,21 +140,21 @@ h2 {
     height: 24px;
 }
 
-.task-deleted {
-    @include colors.border-grey-light;
-    @include colors.color-dark;
-    @include colors.bg-ivory;
-    border-radius: 10px;
-    padding: 36px;
-    font-size: 24px;
-    text-align: center;
-    transform:  rotate(-6deg);
-    position: absolute;
-    top: 25%;
-    left: 20%;
-    @include bp.xl {
-        top: 300px;
-        right: 20%;
-        left: 50%;
-    }
-}
+// .task-deleted {
+//     @include colors.border-grey-light;
+//     @include colors.color-dark;
+//     @include colors.bg-ivory;
+//     border-radius: 10px;
+//     padding: 36px;
+//     font-size: 24px;
+//     text-align: center;
+//     transform:  rotate(-6deg);
+//     position: absolute;
+//     top: 25%;
+//     left: 20%;
+//     @include bp.xl {
+//         top: 300px;
+//         right: 20%;
+//         left: 50%;
+//     }
+// }

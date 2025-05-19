@@ -101,6 +101,13 @@ body {
     @include colors.bg-contact-green;
 }
 
+.notifications-container {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    z-index: 2;
+}
+
 
 // Forms
 

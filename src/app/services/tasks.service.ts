@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Task } from '../models/task.model';
 import { DataBaseService } from './data-base.service';
 import { TaskFormInput } from '../models/task-form-input';
+import { GeneralService } from './general.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class TasksService {
 
   private currentTaskSubject = new BehaviorSubject<any>(null);
   currentTask$ = this.currentTaskSubject.asObservable();
+
+  generalService = inject(GeneralService);
 
   newTask: TaskFormInput = {
     title: '',
@@ -43,7 +46,7 @@ export class TasksService {
   addTaskContainerOpened: boolean = false;
   editTaskContainerOpened: boolean = false;
   taskDetailsOpened: boolean = false;
-  taskDeleted: boolean = false;
+  // taskDeleted: boolean = false;
 
   taskStatus: string = 'to-do';
 
@@ -75,10 +78,10 @@ export class TasksService {
     }
     try {
       await this.dataBaseService.deleteData('tasks', task.id);
-      this.taskDeleted = true;
+      this.hideTaskDetails();
+      this.generalService.notificationTaskDeleted = true;
       setTimeout(() => {
-        this.hideTaskDetails();
-        this.taskDeleted = false;
+        this.generalService.notificationTaskDeleted = false;
       }, 1000);
       console.log('Task gelöscht:', task);
     } catch (error) {

@@ -166,12 +166,14 @@ export class AddTaskFormComponent {
     try {
       if (this.tasksService.editTaskContainerOpened && this.tasksService.taskToBeEdited.id) {
         await this.dataBaseService.updateData<Task>('tasks', this.tasksService.taskToBeEdited.id, { ...taskToSave, id:this.tasksService.taskToBeEdited.id, status:this.tasksService.taskToBeEdited.status});
+        this.generalService.notificationTaskEdited = true;
+        setTimeout(() => {
+          this.generalService.notificationTaskEdited = false;
+        }, 1000);
       } else {
         await this.dataBaseService.addData<Task>('tasks', taskToSave); // 'tasks' als Sammlungsname
-        this.generalService.notificationOpened = true;
         this.generalService.notificationTaskAdded = true;
         setTimeout(() => {
-          this.generalService.notificationOpened = false;
           this.generalService.notificationTaskAdded = false;
         }, 1000);
       }      

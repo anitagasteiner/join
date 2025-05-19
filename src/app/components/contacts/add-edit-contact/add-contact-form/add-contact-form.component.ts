@@ -54,13 +54,9 @@ export class AddContactFormComponent {
       console.log('Speichere Kontakt:', this.newContact);
       await this.dataBaseService.addData<Contact>('contacts', this.newContact); // 'contacts' als Sammlungsname
       form.resetForm();
-      // this.contactAdded = true;
       this.contactsService.hideContactForm();
-      this.generalService.notificationOpened = true;
       this.generalService.notificationContactAdded = true;
-      setTimeout(() => {        
-        // this.contactAdded = false;
-        this.generalService.notificationOpened = false;
+      setTimeout(() => {
         this.generalService.notificationContactAdded = false;
       }, 1000);
     } catch (error: any) {

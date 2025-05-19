@@ -1,5 +1,9 @@
 <div class="main-container">
 
+    <div class="notifications-container">
+        <app-notifications></app-notifications>
+    </div>
+
     <div class="contacts-container">
 
         <div class="btn-container">
@@ -31,11 +35,5 @@
         <app-add-edit-contact></app-add-edit-contact>
 
     </div>
-    
-    @if (generalService.notificationOpened) {
-        <div class="notification-container">
-            <app-notifications></app-notifications>
-        </div>        
-    }
 
 </div>
