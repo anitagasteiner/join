@@ -81,17 +81,16 @@ export class TasksService {
     // }
     try {
       await this.dataBaseService.deleteData('tasks', task.id);
-      this.hideTaskDetails();
       this.generalService.notificationTaskDeleted = true;
+      this.hideTaskDetails();      
       setTimeout(() => {
         this.generalService.notificationTaskDeleted = false;
       }, 1000);
-      console.log('Task gelöscht:', task);
       this.generalService.confirmationDeleteTask = false;
+      this.taskToBeDeleted = null;
     } catch (error) {
       console.error('Fehler beim Löschen des Tasks:', error);
     }
-    // this.deleteTaskConfirmed = false;
   }
 
 }

@@ -6,11 +6,11 @@
             <button class="btn btn-quit btn-txt" (click)="closeConfirmationDeleteTask()">No</button>
         </div>        
     </div>
-} @else if (generalService.confirmationDeleteContact) {
+} @else if (generalService.confirmationDeleteContact && contactsService.contactToBeDeleted) {
     <div class="confirmation-container">
         <div>Do you really want to delete this contact?</div>
         <div>
-            <button class="btn btn-submit btn-txt">Yes</button>
+            <button class="btn btn-submit btn-txt" (click)="contactsService.deleteContact(contactsService.contactToBeDeleted)">Yes</button>
             <button class="btn btn-quit btn-txt" (click)="closeConfirmationDeleteContact()">No</button>
         </div>
     </div>

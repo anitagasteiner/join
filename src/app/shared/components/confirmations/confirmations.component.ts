@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { GeneralService } from '../../../services/general.service';
 import { TasksService } from '../../../services/tasks.service';
-import { Task } from '../../../models/task.model';
+import { ContactsService } from '../../../services/contacts.service';
 '../models/task.model';
 
 @Component({
@@ -14,6 +14,7 @@ export class ConfirmationsComponent {
 
   generalService = inject(GeneralService);
   tasksService = inject(TasksService);
+  contactsService = inject(ContactsService);
 
   closeConfirmationDeleteTask() {
     this.generalService.confirmationDeleteTask = false;
