@@ -12,6 +12,7 @@ import { NoTasksComponent } from './no-tasks/no-tasks.component';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NotificationsComponent } from '../../shared/components/notifications/notifications.component';
+import { ConfirmationsComponent } from '../../shared/components/confirmations/confirmations.component';
 
 @Component({
   selector: 'app-board',
@@ -23,7 +24,8 @@ import { NotificationsComponent } from '../../shared/components/notifications/no
     AddTaskFormComponent,
     TaskDetailsComponent,
     NoTasksComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ConfirmationsComponent
   ],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'

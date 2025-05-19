@@ -9,6 +9,7 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
 import { Contact } from './../../models/contact.model';
 import { ContactsService } from '../../services/contacts.service';
 import { NotificationsComponent } from '../../shared/components/notifications/notifications.component';
+import { ConfirmationsComponent } from '../../shared/components/confirmations/confirmations.component';
 
 @Component({
   selector: 'app-contacts',
@@ -17,7 +18,8 @@ import { NotificationsComponent } from '../../shared/components/notifications/no
     ContactComponent,
     AddEditContactComponent,
     ContactDetailsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ConfirmationsComponent
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'

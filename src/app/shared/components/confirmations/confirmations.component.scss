@@ -1,0 +1,23 @@
+@use './../../../shared/colors.scss' as colors;
+
+.confirmation-container {
+    @include colors.bg-blue-bright;
+    @include colors.color-ivory;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    font-size: 26px;
+    padding: 56px;
+    >div:nth-child(2) {
+        display: flex;
+        flex-direction: row;
+        gap: 32px;        
+    }
+}
+
+button {
+    font-size: 26px !important;
+}
