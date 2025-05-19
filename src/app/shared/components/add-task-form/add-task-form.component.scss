@@ -7,6 +7,7 @@ form {
     align-items: center;
     gap: 8px;
     align-items: center;
+    padding-bottom: 16px;
     >fieldset:nth-child(1) {
         padding-top: 48px;
         >input {
@@ -116,21 +117,20 @@ input, textarea, select {
     }
 }
 
-.btns-create-clear {
+.btns-container {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     gap: 8px;
-    margin-top: 8px;
+    margin: 16px;
     >input {
         width: auto !important;
     }
     @include bp.lg {
-        justify-content: flex-end;
-        margin-top: 0;
-        gap: 25px;
-        position: absolute;
-        bottom: 55px;
-        right: 42px;
+        gap: 16px;
+        margin: 32px 16px 0 0;
+        align-self: flex-end;
+        justify-self: flex-end;
     }
 }
 

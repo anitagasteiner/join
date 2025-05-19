@@ -131,15 +131,15 @@
     }
 
     @if (!tasksService.editTaskContainerOpened) {
-        <div class="btns-create-clear">
+        <div class="btns-container">
             <div class="btn btn-txt-img btn-quit btn-clear" (click)="resetForm(addTaskForm)">Clear</div>
             <input class="btn btn-txt-img btn-submit btn-create" type="submit" value="Create task">
         </div>
     }    
 
     @if (tasksService.editTaskContainerOpened) {
-        <div class="btn-ok">
-            <input class="btn btn-txt-img btn-submit" type="submit" value="Ok">
+        <div class="btns-container">
+            <input class="btn btn-txt-img btn-submit btn-create" type="submit" value="Ok">
         </div>
         <img src="/img/cancel-blue.svg" (click)="resetForm(addTaskForm)">
     }
