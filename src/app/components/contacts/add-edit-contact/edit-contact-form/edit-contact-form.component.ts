@@ -6,6 +6,7 @@ import { DataBaseService } from '../../../../services/data-base.service';
 import { Contact } from './../../../../models/contact.model';
 import { firstValueFrom, Observable } from 'rxjs';
 import { ContactsService } from '../../../../services/contacts.service';
+import { GeneralService } from '../../../../services/general.service';
 
 @Component({
   selector: 'app-edit-contact-form',
@@ -27,11 +28,11 @@ export class EditContactFormComponent {
 
   contacts$: Observable<Contact[]>; // contacts$ ist ein Observable mit der Liste aller Kontakte
 
-  // generalService = inject(GeneralService);
+  generalService = inject(GeneralService);
   contactsService = inject(ContactsService);
 
   editedContact: any = {};
-  contactEdited: boolean = false;
+  // contactEdited: boolean = false;
 
   @ViewChild('contactForm') contactForm!: NgForm; // Zugriff auf das Formular
 
@@ -60,10 +61,10 @@ export class EditContactFormComponent {
       // this.generalService.setSelectedContact(this.editedContact);
 
       form.resetForm();
-      this.contactEdited = true;
+      this.generalService.notificationContactEdited = true;
+      this.contactsService.hideContactForm();
       setTimeout(() => {
-        this.contactsService.hideContactForm();
-        this.contactEdited = false;
+        this.generalService.notificationContactEdited = false;
       }, 1000);
     } catch (error: any) {
       console.error('Fehler beim Ändern des Kontakts: ', error);

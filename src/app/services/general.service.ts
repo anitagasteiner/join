@@ -9,9 +9,15 @@ export class GeneralService {
 
   constructor() { }
 
-  notificationOpened: boolean = false;
+  // notificationOpened: boolean = false;
   notificationTaskAdded: boolean = false;
+  notificationTaskEdited: boolean = false;
+  notificationTaskDeleted: boolean = false;
+
   notificationContactAdded: boolean = false;
+  notificationContactEdited: boolean = false;
+  notificationContactDeleted: boolean = false;
+
   notificationSignedUp: boolean = false;
 
   capitalize(text: string): string {

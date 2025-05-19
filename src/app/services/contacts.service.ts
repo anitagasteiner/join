@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Contact } from '../models/contact.model';
 import { DataBaseService } from './data-base.service';
+import { GeneralService } from './general.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,12 @@ export class ContactsService {
   private selectedContactSubject = new BehaviorSubject<any>(null); // Ein BehaviorSubject ist eine spezielle Art von Subject, das den neuesten Wert speichert und diesen Wert sofort an neue Abonnenten weitergibt.
   selectedContact$ = this.selectedContactSubject.asObservable(); // Das $-Suffix deutet an, dass es sich um einen Observable-Stream handelt.
 
+  generalService = inject(GeneralService);
+
   addContactFormOpened: boolean = false;  
   editContactFormOpened: boolean = false;
   contactDetailsOpened: boolean = false;
-  contactDeleted: boolean = false;
+  // contactDeleted: boolean = false;
 
   contactToBeEdited: Contact | null = null;  
 
@@ -46,11 +49,11 @@ export class ContactsService {
     }
     try {
       await this.dataBaseService.deleteData('contacts', contact.id);
-      this.contactDeleted = true;
+      this.generalService.notificationContactDeleted = true;
+      this.hideContactDetails();
+      this.hideContactForm();
       setTimeout(() => {
-        this.hideContactDetails();
-        this.hideContactForm();
-        this.contactDeleted = false;
+        this.generalService.notificationContactDeleted = false;
       }, 1000);
       console.log('Kontakt gelöscht:', contact);
     } catch (error) {
