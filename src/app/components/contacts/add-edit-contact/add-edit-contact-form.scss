@@ -17,16 +17,6 @@ form {
             @include colors.border-bottom-grey-light;
         }
     }
-    >div >input {
-        margin-top: 52px;
-        width: auto;
-        padding: 10px 38px 10px 12px;
-        background-image: url('/img/check.svg');
-        background-repeat: no-repeat;
-        background-position: right 8px center;
-        background-size: 24px 24px;
-        @include colors.color-ivory;
-    }
 }
 
 #name {
@@ -50,6 +40,4 @@ form {
     font-weight: 400;
 }
 
-.btn-create {
-    @include colors.color-ivory;
-}
+

@@ -8,6 +8,14 @@
     right: 0;
     bottom: 76px;
     left: 0;
+    overflow-y: auto;
+    @include bp.lg {
+        top: 96px;
+        bottom: 0;
+    }
+    @include bp.xl {
+        height: calc(100dvh - 126px);
+    }
     >h2 {
         display: none;
         @include bp.xl {
@@ -27,9 +35,11 @@
     @include bp.xl {        
         @include colors.border-grey-light;
         border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
         padding: 12px;
         bottom: unset;
         left: unset;
+        max-height: 850px;
     }
 }
 
@@ -73,7 +83,7 @@ input {
     background: url('/img/search.svg') no-repeat right 21px center;
 }
 
-button {
+.btn-add-task {
     background-image: url('/img/add-light.svg');
     background-position: right 16px center;
     background-size: 15px 15px;
