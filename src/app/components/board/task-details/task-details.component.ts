@@ -75,4 +75,9 @@ export class TaskDetailsComponent {
     };
   }
 
+  openConfirmationDeleteTask(displayedTask: Task) {
+    this.generalService.confirmationDeleteTask = true;
+    this.tasksService.taskToBeDeleted = displayedTask;
+  }  
+
 }

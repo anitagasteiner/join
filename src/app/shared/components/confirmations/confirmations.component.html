@@ -1,17 +1,17 @@
-@if (generalService.confirmationDeleteTask) {
+@if (generalService.confirmationDeleteTask && tasksService.taskToBeDeleted) {
     <div class="confirmation-container">
         <div>Do you really want to delete this task?</div>
         <div>
-            <button class="btn btn-submit btn-txt">Yes</button>
-            <button class="btn btn-quit btn-txt">No</button>
+            <button class="btn btn-submit btn-txt" (click)="tasksService.deleteTask(tasksService.taskToBeDeleted)">Yes</button>
+            <button class="btn btn-quit btn-txt" (click)="closeConfirmationDeleteTask()">No</button>
         </div>        
     </div>
-} @else if (!generalService.confirmationDeleteContact) {
+} @else if (generalService.confirmationDeleteContact) {
     <div class="confirmation-container">
         <div>Do you really want to delete this contact?</div>
         <div>
             <button class="btn btn-submit btn-txt">Yes</button>
-            <button class="btn btn-quit btn-txt">No</button>
+            <button class="btn btn-quit btn-txt" (click)="closeConfirmationDeleteContact()">No</button>
         </div>
     </div>
 }

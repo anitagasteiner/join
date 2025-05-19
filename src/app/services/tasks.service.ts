@@ -38,6 +38,8 @@ export class TasksService {
   }
   // taskToBeEdited: Task | null = null;
 
+  taskToBeDeleted: Task | null = null;
+
   selectedPriority: string = '';
   assignedContacts: {id: string; name: string, color: string}[] = [];
   selectedCategory: string = '';
@@ -46,7 +48,8 @@ export class TasksService {
   addTaskContainerOpened: boolean = false;
   editTaskContainerOpened: boolean = false;
   taskDetailsOpened: boolean = false;
-  // taskDeleted: boolean = false;
+
+  // deleteTaskConfirmed: boolean = false;
 
   taskStatus: string = 'to-do';
 
@@ -72,10 +75,10 @@ export class TasksService {
   }
 
   async deleteTask(task: Task): Promise<void> {
-    const confirmed = confirm(`Delete task "${task.title}"?`);
-    if (!confirmed) {
-      return;
-    }
+    // const confirmed = confirm(`Delete task "${task.title}"?`);
+    // if (!this.deleteTaskConfirmed) {
+    //   return;
+    // }
     try {
       await this.dataBaseService.deleteData('tasks', task.id);
       this.hideTaskDetails();
@@ -84,9 +87,11 @@ export class TasksService {
         this.generalService.notificationTaskDeleted = false;
       }, 1000);
       console.log('Task gelöscht:', task);
+      this.generalService.confirmationDeleteTask = false;
     } catch (error) {
       console.error('Fehler beim Löschen des Tasks:', error);
     }
+    // this.deleteTaskConfirmed = false;
   }
 
 }
