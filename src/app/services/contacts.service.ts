@@ -19,7 +19,8 @@ export class ContactsService {
   contactDetailsOpened: boolean = false;
   // contactDeleted: boolean = false;
 
-  contactToBeEdited: Contact | null = null;  
+  contactToBeEdited: Contact | null = null;
+  contactToBeDeleted: Contact | null = null;
 
   constructor(private dataBaseService: DataBaseService) { }
 
@@ -43,10 +44,10 @@ export class ContactsService {
   }
 
   async deleteContact(contact: Contact): Promise<void> {
-    const confirmed = confirm(`Delete contact "${contact.name}"?`);
-    if (!confirmed) {
-      return;
-    }
+    // const confirmed = confirm(`Delete contact "${contact.name}"?`);
+    // if (!confirmed) {
+    //   return;
+    // }
     try {
       await this.dataBaseService.deleteData('contacts', contact.id);
       this.generalService.notificationContactDeleted = true;
@@ -55,14 +56,11 @@ export class ContactsService {
       setTimeout(() => {
         this.generalService.notificationContactDeleted = false;
       }, 1000);
-      console.log('Kontakt gelöscht:', contact);
+      this.generalService.confirmationDeleteContact = false;
+      this.contactToBeDeleted = null;
     } catch (error) {
       console.error('Fehler beim Löschen des Kontakts:', error);
     }
-  }
-
-  confirmDeleteContact() {
-    
   }
 
 }

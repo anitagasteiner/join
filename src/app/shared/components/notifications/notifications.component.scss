@@ -3,15 +3,13 @@
 div {
     @include colors.bg-blue-dark;
     @include colors.color-ivory;
-    width: 326px;
-    height: 74px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     font-size: 23px;
-    padding: 8px 24px;
+    padding: 32px 32px;
     >img {
         width: 22px;
         height: 26px;

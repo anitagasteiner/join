@@ -20,6 +20,9 @@ export class GeneralService {
 
   notificationSignedUp: boolean = false;
 
+  confirmationDeleteTask: boolean = false;
+  confirmationDeleteContact: boolean = false;
+
   capitalize(text: string): string {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }  
