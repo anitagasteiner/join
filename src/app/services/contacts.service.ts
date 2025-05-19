@@ -61,4 +61,8 @@ export class ContactsService {
     }
   }
 
+  confirmDeleteContact() {
+    
+  }
+
 }
