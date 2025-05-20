@@ -6,6 +6,7 @@ import { DataBaseService } from '../../services/data-base.service';
 import { CommonModule } from '@angular/common';
 import { Timestamp } from '@angular/fire/firestore';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { trigger, style, animate, transition } from '@angular/animations'; // transition
 
 @Component({
   selector: 'app-summary',
@@ -15,7 +16,15 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     RouterLinkActive
   ],
   templateUrl: './summary.component.html',
-  styleUrl: './summary.component.scss'
+  styleUrl: './summary.component.scss',
+  animations: [
+    trigger('slideInUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(100%)', opacity: 0 }),
+        animate('600ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
+      ])      
+    ])
+  ]
 })
 export class SummaryComponent {
 
