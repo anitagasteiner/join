@@ -154,3 +154,12 @@ input {
     border-radius: 10px;
     @include colors.bg-grey-light-transparent;
 }
+
+.element-position {
+    display: flex;
+    justify-content: center;
+    padding-top: 84px;
+    @include bp.lg {
+        padding-top: 100px;
+    }
+}

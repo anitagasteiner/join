@@ -5,7 +5,7 @@ import { Task } from '../../../models/task.model';
 import { Observable } from 'rxjs';
 import { TasksService } from '../../../services/tasks.service';
 import { GeneralService } from '../../../services/general.service';
-import { TaskFormInput } from '../../../models/task-form-input';
+// import { TaskFormInput } from '../../../models/task-form-input';
 
 @Component({
   selector: 'app-task-details',
