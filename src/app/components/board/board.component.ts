@@ -13,6 +13,7 @@ import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NotificationsComponent } from '../../shared/components/notifications/notifications.component';
 import { ConfirmationsComponent } from '../../shared/components/confirmations/confirmations.component';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-board',
@@ -28,7 +29,15 @@ import { ConfirmationsComponent } from '../../shared/components/confirmations/co
     ConfirmationsComponent
   ],
   templateUrl: './board.component.html',
-  styleUrl: './board.component.scss'
+  styleUrl: './board.component.scss',
+  animations: [
+    trigger('slideIn', [
+      transition(':enter', [
+        style({ transform: 'translateX(100%)', opacity: 0 }),
+        animate('600ms ease-out', style({ transform: 'translateX(0)', opacity: 1 }))
+      ])      
+    ])
+  ]
 })
 export class BoardComponent {
 

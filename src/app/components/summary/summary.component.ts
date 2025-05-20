@@ -6,7 +6,7 @@ import { DataBaseService } from '../../services/data-base.service';
 import { CommonModule } from '@angular/common';
 import { Timestamp } from '@angular/fire/firestore';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { trigger, style, animate, transition } from '@angular/animations'; // transition
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-summary',
