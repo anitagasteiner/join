@@ -1,67 +1,26 @@
 <div class="main-container" [ngClass]="{'overflow-hidden': tasksService.addTaskContainerOpened}">
+    
+    <div class="search-add-container">
+        <input class="search-task" placeholder="Find task title" type="text" [formControl]="searchControl">     
+        <button class="btn btn-txt-img btn-submit btn-add-task" (click)="openAddTaskContainer('to-do')">Add task</button>
+    </div>
+
+    @if (tasksService.addTaskContainerOpened || tasksService.editTaskContainerOpened) {
+        <div class="bg-light">
+            <app-add-edit-task></app-add-edit-task>
+        </div>            
+    }
+
+    @if (tasksService.taskDetailsOpened) {
+        <div class="bg-light element-position">
+            <app-task-details></app-task-details>    
+        </div>
+    }
 
     <div>
         <app-notifications></app-notifications>
         <app-confirmations></app-confirmations>
     </div>
-    
-    <div class="search-add-container">
-
-        @if (tasksService.addTaskContainerOpened && !tasksService.editTaskContainerOpened) {
-
-            <div class="bg-light">
-
-                <div class="bg-container" [@slideIn]>
-
-                    <div class="add-edit-task-container">
-        
-                        <h2>Add Task</h2>
-        
-                        <app-add-task-form></app-add-task-form>
-        
-                    </div>
-
-                </div>
-            
-            </div>
-    
-        }
-
-        @if (tasksService.editTaskContainerOpened) {
-
-            <div class="bg-light">
-
-                <div class="bg-container" [@slideIn]>            
-
-                    <div class="add-edit-task-container">
-            
-                        <h2>Edit Task</h2>
-            
-                        <app-add-task-form></app-add-task-form>
-            
-                    </div>
-
-                </div>
-
-            </div>
-    
-        }
-
-        <input class="search-task" placeholder="Find task title" type="text" [formControl]="searchControl">
-     
-        <button class="btn btn-txt-img btn-submit btn-add-task" (click)="openAddTaskContainer('to-do')">Add task</button>
-
-    </div>
-
-    @if (tasksService.taskDetailsOpened) {
-
-        <div class="bg-light element-position">
-
-            <app-task-details></app-task-details>
-    
-        </div>
-
-    }
 
     <div class="tasks-main-container">
 

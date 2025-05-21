@@ -1,0 +1,21 @@
+<div class="bg-container" [@slideIn]>
+
+    <div class="add-edit-task-container">
+
+        @if (tasksService.addTaskContainerOpened && !tasksService.editTaskContainerOpened) {
+
+            <h2>Add Task</h2>
+
+        }
+        
+        @if (tasksService.editTaskContainerOpened) {
+
+            <h2>Edit Task</h2>
+
+        }
+
+        <app-add-task-form></app-add-task-form>
+
+    </div>
+
+</div>

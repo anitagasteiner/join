@@ -5,7 +5,6 @@ import { GeneralService } from '../../services/general.service';
 import { combineLatest, debounceTime, map, Observable, startWith } from 'rxjs';
 import { DataBaseService } from '../../services/data-base.service';
 import { Task } from './../../models/task.model';
-import { AddTaskFormComponent } from '../../shared/components/add-task-form/add-task-form.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TasksService } from '../../services/tasks.service';
 import { NoTasksComponent } from './no-tasks/no-tasks.component';
@@ -13,7 +12,7 @@ import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NotificationsComponent } from '../../shared/components/notifications/notifications.component';
 import { ConfirmationsComponent } from '../../shared/components/confirmations/confirmations.component';
-import { trigger, style, animate, transition } from '@angular/animations';
+import { AddEditTaskComponent } from './add-edit-task/add-edit-task.component';
 
 @Component({
   selector: 'app-board',
@@ -22,22 +21,14 @@ import { trigger, style, animate, transition } from '@angular/animations';
     DragDropModule,
     ReactiveFormsModule,
     TaskComponent,
-    AddTaskFormComponent,
     TaskDetailsComponent,
     NoTasksComponent,
     NotificationsComponent,
-    ConfirmationsComponent
+    ConfirmationsComponent,
+    AddEditTaskComponent
   ],
   templateUrl: './board.component.html',
-  styleUrl: './board.component.scss',
-    animations: [
-      trigger('slideIn', [
-        transition(':enter', [
-          style({ transform: 'translateX(100%)', opacity: 0 }),
-          animate('600ms ease-out', style({ transform: 'translateX(0)', opacity: 1 }))
-        ])      
-      ])
-    ]
+  styleUrl: './board.component.scss'
 })
 export class BoardComponent {
 

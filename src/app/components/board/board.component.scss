@@ -25,51 +25,6 @@
     gap: 35px;
 }
 
-.bg-container {
-    position: absolute;
-    top: 84px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include bp.lg {
-        justify-content: flex-end;
-        align-items: flex-start;
-        top: 100px;
-    }
-    @include bp.xxxl {
-        padding-right: calc((100% - 1600px) / 2);
-    }
-}
-
-.add-edit-task-container {
-    @include colors.bg-ivory;
-    width: fit-content;
-    max-height: 650px;
-    overflow-y: auto;
-    @include bp.xl {        
-        @include colors.border-grey-light;
-        border-top-left-radius: 30px;
-        border-bottom-left-radius: 30px;
-        padding: 12px;
-        height: calc(100dvh - 126px);
-        max-height: 850px;
-    }
-    >h2 {
-        display: none;
-        @include bp.xl {
-            display: unset;
-            font-weight: 700;
-            font-size: 48px;
-            // padding-top: 150px;
-            // padding-bottom: -36px;
-            // margin: 0;
-        }
-    }
-}
-
 .search-task {
     // font-size: 16px;
     width: 280px;
