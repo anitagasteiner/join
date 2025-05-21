@@ -1,52 +1,6 @@
 @use './../../shared/colors.scss' as colors;
 @use './../../shared/breakpoints.scss' as bp;
 
-.add-task-container {
-    @include colors.bg-ivory;
-    position: absolute;
-    top: 80px;
-    right: 0;
-    bottom: 76px;
-    left: 0;
-    overflow-y: auto;
-    @include bp.lg {
-        top: 96px;
-        bottom: 0;
-    }
-    @include bp.xl {
-        height: calc(100dvh - 126px);
-    }
-    >h2 {
-        display: none;
-        @include bp.xl {
-            display: unset;
-            font-weight: 700;
-            font-size: 48px;
-            margin-top: 50px;
-            padding-bottom: -36px;
-            margin: 0;
-        }
-    }
-    @include bp.lg {
-        top: 96px;
-        bottom: 0;
-        left: 232px;
-    }
-    @include bp.xl {        
-        @include colors.border-grey-light;
-        border-top-left-radius: 30px;
-        border-bottom-left-radius: 30px;
-        padding: 12px;
-        bottom: unset;
-        left: unset;
-        max-height: 850px;
-    }
-}
-
-.overflow-hidden {
-    overflow: hidden;
-}
-
 .main-container {
     display: flex;
     flex-direction: column;
@@ -58,6 +12,10 @@
     }
 }
 
+.overflow-hidden {
+    overflow: hidden;
+}
+
 .search-add-container {
     padding-top: 72px;
     // padding-left: 65px;
@@ -67,20 +25,62 @@
     gap: 35px;
 }
 
-input {
-    width: 280px;
-    padding: 8px 0 8px 12px;
-    @include bp.xs {
-        width: 384px;
-    }
+.bg-container {
+    position: absolute;
+    top: 84px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @include bp.lg {
-        width: 312px;
+        justify-content: flex-end;
+        align-items: flex-start;
+        top: 100px;
+    }
+    @include bp.xxxl {
+        padding-right: calc((100% - 1600px) / 2);
+    }
+}
+
+.add-edit-task-container {
+    @include colors.bg-ivory;
+    width: fit-content;
+    max-height: 650px;
+    overflow-y: auto;
+    @include bp.xl {        
+        @include colors.border-grey-light;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        padding: 12px;
+        height: calc(100dvh - 126px);
+        max-height: 850px;
+    }
+    >h2 {
+        display: none;
+        @include bp.xl {
+            display: unset;
+            font-weight: 700;
+            font-size: 48px;
+            // padding-top: 150px;
+            // padding-bottom: -36px;
+            // margin: 0;
+        }
     }
 }
 
 .search-task {
     // font-size: 16px;
+    width: 280px;
+    padding: 8px 0 8px 12px;
     background: url('/img/search.svg') no-repeat right 21px center;
+    @include bp.xs {
+        width: 384px;
+    }
+    @include bp.lg {
+        width: 312px;
+    }    
 }
 
 .btn-add-task {
@@ -90,6 +90,15 @@ input {
     display: none;
     @include bp.lg {
         display: unset;
+    }
+}
+
+.element-position {
+    display: flex;
+    justify-content: center;
+    padding-top: 84px;
+    @include bp.lg {
+        padding-top: 100px;
     }
 }
 

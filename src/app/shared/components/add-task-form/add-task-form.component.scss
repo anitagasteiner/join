@@ -8,6 +8,7 @@ form {
     gap: 8px;
     align-items: center;
     padding-bottom: 16px;
+    position: relative;
     >fieldset:nth-child(1) {
         padding-top: 48px;
         >input {
@@ -19,7 +20,7 @@ form {
         width: 32px;
         cursor: pointer;
         position: absolute;
-        top: 18px;
+        top: -38px;
         right: 32px;
     }
 }

@@ -1,6 +1,6 @@
 <div class="main-container" [ngClass]="{'overflow-hidden': tasksService.addTaskContainerOpened}">
 
-    <div class="notifications-container">
+    <div>
         <app-notifications></app-notifications>
         <app-confirmations></app-confirmations>
     </div>
@@ -9,24 +9,40 @@
 
         @if (tasksService.addTaskContainerOpened && !tasksService.editTaskContainerOpened) {
 
-            <div class="add-task-container">
-    
-                <h2>Add Task</h2>
-    
-                <app-add-task-form></app-add-task-form>
-    
+            <div class="bg-light">
+
+                <div class="bg-container" [@slideIn]>
+
+                    <div class="add-edit-task-container">
+        
+                        <h2>Add Task</h2>
+        
+                        <app-add-task-form></app-add-task-form>
+        
+                    </div>
+
+                </div>
+            
             </div>
     
         }
 
         @if (tasksService.editTaskContainerOpened) {
 
-            <div class="add-task-container">
-    
-                <h2>Edit Task</h2>
-    
-                <app-add-task-form></app-add-task-form>
-    
+            <div class="bg-light">
+
+                <div class="bg-container" [@slideIn]>            
+
+                    <div class="add-edit-task-container">
+            
+                        <h2>Edit Task</h2>
+            
+                        <app-add-task-form></app-add-task-form>
+            
+                    </div>
+
+                </div>
+
             </div>
     
         }
@@ -39,7 +55,7 @@
 
     @if (tasksService.taskDetailsOpened) {
 
-        <div class="bg-light">
+        <div class="bg-light element-position">
 
             <app-task-details></app-task-details>
     

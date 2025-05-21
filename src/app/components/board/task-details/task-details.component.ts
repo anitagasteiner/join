@@ -5,7 +5,8 @@ import { Task } from '../../../models/task.model';
 import { Observable } from 'rxjs';
 import { TasksService } from '../../../services/tasks.service';
 import { GeneralService } from '../../../services/general.service';
-import { TaskFormInput } from '../../../models/task-form-input';
+// import { TaskFormInput } from '../../../models/task-form-input';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-task-details',
@@ -17,7 +18,15 @@ import { TaskFormInput } from '../../../models/task-form-input';
   styleUrls: [
     './task-details.component.scss',
     './../task-general.scss'
-  ]
+  ],
+    animations: [
+      trigger('slideIn', [
+        transition(':enter', [
+          style({ transform: 'translateX(100%)', opacity: 0 }),
+          animate('600ms ease-out', style({ transform: 'translateX(0)', opacity: 1 }))
+        ])      
+      ])
+    ]
 })
 export class TaskDetailsComponent {
 

@@ -30,11 +30,21 @@
         <app-contact-details></app-contact-details>        
 
     </div>
+    
+    @if (contactsService.addContactFormOpened || contactsService.editContactFormOpened) {
 
-    <div class="bg-light" [ngClass]="{'d-none': !contactsService.addContactFormOpened && !contactsService.editContactFormOpened}">
+        <div class="bg-light">
+
+            <app-add-edit-contact></app-add-edit-contact>
+
+        </div>
+
+    }
+ 
+    <!-- <div class="bg-light" [@slideIn] [ngClass]="{'d-none': !contactsService.addContactFormOpened && !contactsService.editContactFormOpened}">
 
         <app-add-edit-contact></app-add-edit-contact>
 
-    </div>
+    </div> -->
 
 </div>
