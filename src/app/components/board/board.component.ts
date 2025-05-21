@@ -30,14 +30,14 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
-  animations: [
-    trigger('slideIn', [
-      transition(':enter', [
-        style({ transform: 'translateX(100%)', opacity: 0 }),
-        animate('600ms ease-out', style({ transform: 'translateX(0)', opacity: 1 }))
-      ])      
-    ])
-  ]
+    animations: [
+      trigger('slideIn', [
+        transition(':enter', [
+          style({ transform: 'translateX(100%)', opacity: 0 }),
+          animate('600ms ease-out', style({ transform: 'translateX(0)', opacity: 1 }))
+        ])      
+      ])
+    ]
 })
 export class BoardComponent {
 
