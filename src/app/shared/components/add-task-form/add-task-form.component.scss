@@ -1,12 +1,25 @@
 @use './../../../shared/colors.scss' as colors;
 @use './../../../shared/breakpoints.scss' as bp;
 
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100dvw - 15px);
+    @include bp.xs {
+        width: calc(100dvw - 50px);
+    }
+    @include bp.sm {
+        width: 488px;
+    }
+}
+
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
     gap: 8px;
-    align-items: center;
     padding-bottom: 16px;
     position: relative;
     >fieldset:nth-child(1) {
@@ -20,28 +33,58 @@ form {
         width: 32px;
         cursor: pointer;
         position: absolute;
-        top: -38px;
-        right: 32px;
+        top: -86px;
+        right: 6px;
     }
 }
 
+fieldset, input, textarea, select {
+    width: 100%;
+}
 
 .priority-container {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    @include bp.xs {
+        gap: 6px;
+    }
+    @include bp.sm {
+        gap: 16px;
+    }
     >label {
-        display: inline-block;
-        margin-right: 10px;
-        padding-right: 14px;
         @include colors.border-grey-light;
         border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        gap: 6px;
+        padding: 10px;
         cursor: pointer;
+        @include bp.xs {
+            gap: 16px;
+            padding: 12px 16px;
+        }
+        @include bp.sm {
+            padding: 14px 22px;
+        }
         >input[type="radio"] {
             display: none;
         }
-        >span {
-            display: inline-block;
-            padding: 10px;
-        }
-    }    
+    }
+    >label:nth-child(1):hover {
+         @include colors.border-bottom-red;
+    }
+    >label:nth-child(2):hover {
+         @include colors.border-bottom-orange;
+    }
+    >label:nth-child(3):hover {
+         @include colors.border-bottom-green;
+    }
+}
+
+legend {
+    margin-bottom: 4px;
 }
 
 .urgent-selected {
@@ -60,14 +103,11 @@ form {
 }
 
 input, textarea, select {
-    width: calc(100dvw - 15px);
     padding: 8px 0 8px 12px;
-    @include bp.xs {
-        width: calc(100dvw - 50px);
-    }
-    @include bp.sm {
-        width: 488px;
-    }
+}
+
+#date {
+    cursor: text;
 }
 
 #date::-webkit-inner-spin-button {
@@ -122,6 +162,7 @@ input, textarea, select {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-self: center;
     gap: 8px;
     margin: 16px;
     >input {
@@ -151,6 +192,9 @@ input, textarea, select {
 
 .assigned-container {
     position: relative;
+    >div {
+        width: 100%;
+    }
 }
 
 .dropdown-container {
