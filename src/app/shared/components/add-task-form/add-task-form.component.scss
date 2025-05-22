@@ -1,12 +1,16 @@
 @use './../../../shared/colors.scss' as colors;
 @use './../../../shared/breakpoints.scss' as bp;
 
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
-    align-items: center;
     padding-bottom: 16px;
     position: relative;
     >fieldset:nth-child(1) {
@@ -40,7 +44,20 @@ form {
             display: inline-block;
             padding: 10px;
         }
-    }    
+    }
+    >label:nth-child(1):hover {
+         @include colors.border-bottom-red;
+    }
+    >label:nth-child(2):hover {
+         @include colors.border-bottom-orange;
+    }
+    >label:nth-child(3):hover {
+         @include colors.border-bottom-green;
+    }
+}
+
+legend {
+    margin-bottom: 4px;
 }
 
 .urgent-selected {
@@ -67,6 +84,10 @@ input, textarea, select {
     @include bp.sm {
         width: 488px;
     }
+}
+
+#date {
+    cursor: text;
 }
 
 #date::-webkit-inner-spin-button {
