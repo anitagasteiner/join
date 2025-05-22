@@ -49,40 +49,41 @@
         </fieldset>
 
         <fieldset class="assigned-container">
-                <div class="dropdown-container" tabindex="0" (click)="toggleAssignedDropdown()" (blur)="closeAssignedDropdown()">
-                    <div>Select contacts to assign</div>
-                    <div>
-                        <img [ngClass]="{'arrow-open': dropdownOpened}" src="/img/drop-down-arrow.svg">
-                    </div>
+            <div class="dropdown-container" tabindex="0" (click)="toggleAssignedDropdown()" (blur)="closeAssignedDropdown()">
+                <div>Select contacts to assign</div>
+                <div>
+                    <img [ngClass]="{'arrow-open': dropdownOpened}" src="/img/drop-down-arrow.svg">
                 </div>
+            </div>
 
-                @if (dropdownOpened) {
-                    <div class="dropdown-list">
-                        @if (contacts$ | async; as contacts) {
-                            @for (contact of contacts$ | async; track contact.id; let index = $index) {
-                                <div class="dropdown-contact" [ngClass]="{'checked-bg': contactIsSelected(contact)}">
-                                    <div>
-                                        <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
-                                        <div>{{ contact.name }}</div>
-                                    </div>
-                                    <input type="checkbox" [checked]="contactIsSelected(contact)" (change)="toggleContactSelection($event, contact)">
-                                    <span class="custom-checkbox"></span>
-                                    <!-- <option [ngValue]="contact">
-                                        <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
-                                        {{ contact.name }}
-                                    </option> -->
-                                </div>                                
-                            }
-                        } @else {
-                            <p>Loading contacts ...</p>
+            @if (dropdownOpened) {
+                <div class="dropdown-list">
+                    @if (contacts$ | async; as contacts) {
+                        @for (contact of contacts$ | async; track contact.id; let index = $index) {
+                            <div class="dropdown-contact" [ngClass]="{'checked-bg': contactIsSelected(contact)}">
+                                <div>
+                                    <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
+                                    <div>{{ contact.name }}</div>
+                                </div>
+                                <input type="checkbox" [checked]="contactIsSelected(contact)" (change)="toggleContactSelection($event, contact)">
+                                <span class="custom-checkbox"></span>
+                                <!-- <option [ngValue]="contact">
+                                    <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
+                                    {{ contact.name }}
+                                </option> -->
+                            </div>                                
                         }
-                    </div>
-                }                
+                    } @else {
+                        <p>Loading contacts ...</p>
+                    }
+                </div>
+            }                
 
-                <!-- <option disabled value="0">Select contacts to assign</option> -->
+            <!-- <option disabled value="0">Select contacts to assign</option> -->
                 
             <legend><b>Assigned to</b> (optional)</legend>
         </fieldset>
+        
         @if (tasksService.assignedContacts.length) {        
             <div class="assigned-icons-container">
                 @for (assignedPerson of tasksService.assignedContacts; track assignedPerson.id) {
