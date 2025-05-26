@@ -12,10 +12,20 @@ import { NotificationsComponent } from "../../shared/components/notifications/no
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss'
 })
-export class AddTaskComponent{
+export class AddTaskComponent {
 
-  generalService = inject(GeneralService);
+  /**
+   * Instance of GeneralService used to interact with general data.
+   * 
+   * @type {GeneralService}
+   * @memberof AddTaskComponent
+   */
+  generalService: GeneralService = inject(GeneralService);
 
+  /**
+   * Initializes the AddTaskComponent and sets the currently active navigation button in the general service to 'add-task'.
+   * This is used to highlight the navigation button that corresponds to the currently opened section.
+   */
   constructor() {
     this.generalService.activeNavBtn = 'add-task';
   }
