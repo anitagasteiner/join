@@ -96,3 +96,5 @@ export class AddContactFormComponent {
   }
 
 }
+
+//TODO - Funktion übersichtlicher!
