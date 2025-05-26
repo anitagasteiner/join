@@ -8,6 +8,18 @@ import { Component, Input } from '@angular/core';
 })
 export class NoTasksComponent {
 
+  /**
+   * Optional input representing the task's status category 'to-do', 'in-progress', 'waiting' or 'done'.
+   * 
+   * @type {string}
+   * @memberof NoTasksComponent
+   */
    @Input()status?: string;
 
 }
+
+
+  /**
+   * The Task object passed into the component.
+   * This property is optional to allow safe rendering.
+   */
