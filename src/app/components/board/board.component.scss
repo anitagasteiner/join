@@ -117,5 +117,6 @@
     @include colors.border-grey-dotted;
     border-radius: 10px;
     @include colors.bg-grey-light-transparent;
-    cursor: grabbing;
+    cursor: move;
+    // cursor: grabbing;
 }
