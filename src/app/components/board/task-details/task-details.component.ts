@@ -33,10 +33,9 @@ import { trigger, style, animate, transition } from '@angular/animations';
 export class TaskDetailsComponent {
 
   /**
-   * Instance of GeneralService used to interact with general data.
+   * Instance of GeneralService used to interact with general data and operations.
    * 
    * @type {GeneralService}
-   * @memberof TaskDetailsComponent
    */
   generalService: GeneralService = inject(GeneralService);
 
@@ -44,7 +43,6 @@ export class TaskDetailsComponent {
    * Instance of TasksService used to manage task data and operations.
    * 
    * @type {TasksService}
-   * @memberof TaskDetailsComponent
    */
   tasksService: TasksService = inject(TasksService);
 
@@ -53,7 +51,6 @@ export class TaskDetailsComponent {
    * Subscribes to the currentTask$ observable from TasksService.
    * 
    * @type {Observable<Task>}
-   * @memberof TaskDetailsComponent
    */
   displayedTask$: Observable<Task> = this.tasksService.currentTask$;
 
@@ -65,7 +62,6 @@ export class TaskDetailsComponent {
    * Adjusts visibility flags and prepares the form data.
    * 
    * @param {Task} task - The currently displayed task to be edited.
-   * @memberof TaskDetailsComponent
    */
   openFormToEditTask(task: Task) {
     this.tasksService.taskDetailsOpened = false;
@@ -80,7 +76,6 @@ export class TaskDetailsComponent {
    * These data are used to fill in the form.
    * 
    * @param {Task} task - The task to be edited.
-   * @memberof TaskDetailsComponent
    */
   insertDataIntoForm(task: Task) {
     this.tasksService.newTask = {
@@ -103,7 +98,6 @@ export class TaskDetailsComponent {
    * 
    * @param {Date} date - The date to be converted.
    * @returns {string} - The formatted date string.
-   * @memberof TaskDetailsComponent
    */
   convertDateToString(date: Date): string {
     const d = new Date(date);
@@ -118,7 +112,6 @@ export class TaskDetailsComponent {
    * Copies all relevant task properties to the 'taskToBeEdited' object in the tasks service.
    * 
    * @param {Task} task - The task to prepare for editing.
-   * @memberof TaskDetailsComponent
    */
   prepareDataToBeEdited(task: Task) {
     this.tasksService.taskToBeEdited = {
@@ -139,7 +132,6 @@ export class TaskDetailsComponent {
    * Sets the deletion target task in the tasks service and shows confirmation UI.
    * 
    * @param {Task} displayedTask - The task to be deleted.
-   * @memberof TaskDetailsComponent
    */
   openConfirmationDeleteTask(displayedTask: Task) {
     this.generalService.confirmationDeleteTask = true;

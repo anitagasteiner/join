@@ -28,7 +28,6 @@ export class TaskComponent {
    * It's updated every time the 'progress' getter is called.
    * 
    * @type {string}
-   * @memberof TaskComponent
    */
   subtasksDone: string = '0';
 

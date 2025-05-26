@@ -15,10 +15,9 @@ import { NotificationsComponent } from "../../shared/components/notifications/no
 export class AddTaskComponent {
 
   /**
-   * Instance of GeneralService used to interact with general data.
+   * Instance of GeneralService used to interact with general data and operations.
    * 
    * @type {GeneralService}
-   * @memberof AddTaskComponent
    */
   generalService: GeneralService = inject(GeneralService);
 

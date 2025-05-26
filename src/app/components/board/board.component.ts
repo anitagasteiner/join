@@ -32,25 +32,89 @@ import { AddEditTaskComponent } from './add-edit-task/add-edit-task.component';
 })
 export class BoardComponent {
 
-  generalService = inject(GeneralService);
-  dataBaseService = inject(DataBaseService);
-  tasksService = inject(TasksService);
+  /**
+   * Instance of GeneralService used to interact with general data and operations.
+   * 
+   * @type {GeneralService}
+   */
+  generalService: GeneralService = inject(GeneralService);
 
-  searchControl = new FormControl('');
+  /**
+   * Instance of TasksService used to manage task data and operations.
+   * 
+   * @type {TasksService}
+   */
+  tasksService: TasksService = inject(TasksService);
 
+  /**
+   * Instance of DataBaseService for accessing the Firebase Database.
+   * 
+   * @type {DataBaseService}
+   */
+  dataBaseService: DataBaseService = inject(DataBaseService);
+
+
+  /**
+   * FormControl for managing the task search input.
+   * 
+   * @type {FormControl}
+   */
+  searchControl: FormControl = new FormControl('');
+
+  /**
+   * Observable stream of all tasks.
+   * 
+   * @type {Observable<Task[]>}
+   */
   tasks$: Observable<Task[]>;
 
+  /**
+   * Observable stream of tasks filtered by task search input.
+   * 
+   * @type {Observable<Task[]>}
+   */
   filteredTasks$: Observable<Task[]>;
 
+  /**
+   * Observable emitting the number of tasks with status 'to-do'.
+   * 
+   * @type {Observable<number>}
+   */
   todoCount$: Observable<number>;
+
+  /**
+   * Observable emitting the number of tasks with status 'in-progress'.
+   * 
+   * @type {Observable<number>}
+   */
   inProgressCount$: Observable<number>;
+
+  /**
+   * Observable emitting the number of tasks with status 'waiting'.
+   * 
+   * @type {Observable<number>}
+   */
   waitingCount$: Observable<number>;
+
+  /**
+   * Observable emitting the number of tasks with status 'done'.
+   * 
+   * @type {Observable<number>}
+   */
   doneCount$: Observable<number>;
 
+  /**
+   * Currently highlighted drop zone during drag & drop.
+   * 
+   * @type {(string | null)}
+   */
   activeDropZone: string | null = null;
 
-  // status: string[] = ['to-do', 'in-progress', 'waiting', 'done'];
-
+  /**
+   * The task that's details are currently displayed.
+   * 
+   * @type {Task}
+   */
   displayedTask: Task = {
         id: 'string',
         title: 'string',
@@ -70,6 +134,11 @@ export class BoardComponent {
         status: ''
   }
 
+  /**
+   * Initializes the BoardComponent, loads and filters tasks, sets up counters.
+   * Sets the currently active navigation button in the general service to 'board'. This is used to highlight the navigation button that corresponds to the currently opened section. //TODO - Hier weiter mit JSDoc; vorher aber den Constructor vereinfachen, Teile auslagern!
+   * 
+   */
   constructor() {
     const originalTasks$ = this.dataBaseService.getData<Task>('tasks');
     const allTasks$ = originalTasks$.pipe(map(tasks => tasks.sort((a, b) => a.title.localeCompare(b.title))));
