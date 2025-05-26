@@ -5,7 +5,6 @@ import { Task } from '../../../models/task.model';
 import { Observable } from 'rxjs';
 import { TasksService } from '../../../services/tasks.service';
 import { GeneralService } from '../../../services/general.service';
-// import { TaskFormInput } from '../../../models/task-form-input';
 import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -20,6 +19,9 @@ import { trigger, style, animate, transition } from '@angular/animations';
     './../task-general.scss'
   ],
     animations: [
+    /**
+     * Animation trigger for sliding in the task details panel from the right.
+     */
       trigger('slideIn', [
         transition(':enter', [
           style({ transform: 'translateX(100%)', opacity: 0 }),
@@ -30,14 +32,41 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class TaskDetailsComponent {
 
-  // @Input()currentTask!: Task;
-  generalService = inject(GeneralService);
-  tasksService = inject(TasksService);
+  /**
+   * Instance of GeneralService used to interact with general data.
+   * 
+   * @type {GeneralService}
+   * @memberof TaskDetailsComponent
+   */
+  generalService: GeneralService = inject(GeneralService);
 
-  displayedTask$: Observable<Task> = this.tasksService.currentTask$; // displayedTask$ wird als Observable<Task> deklariert und sofort auf den Wert des currentTask$-Streams aus dem TasksService gesetzt
+  /**
+   * Instance of TasksService used to manage task data and operations.
+   * 
+   * @type {TasksService}
+   * @memberof TaskDetailsComponent
+   */
+  tasksService: TasksService = inject(TasksService);
+
+  /**
+   * Observable emitting the currently displayed task.
+   * Subscribes to the currentTask$ observable from TasksService.
+   * 
+   * @type {Observable<Task>}
+   * @memberof TaskDetailsComponent
+   */
+  displayedTask$: Observable<Task> = this.tasksService.currentTask$;
 
   constructor() {}
 
+
+  /**
+   * Opens the form to edit a given task.
+   * Adjusts visibility flags and prepares the form data.
+   * 
+   * @param {Task} task - The currently displayed task to be edited.
+   * @memberof TaskDetailsComponent
+   */
   openFormToEditTask(task: Task) {
     this.tasksService.taskDetailsOpened = false;
     this.tasksService.addTaskContainerOpened = true;
@@ -46,6 +75,13 @@ export class TaskDetailsComponent {
     this.prepareDataToBeEdited(task);
   }
 
+  /**
+   * Inserts the data of the task into the 'newTask' object in TasksService.
+   * These data are used to fill in the form.
+   * 
+   * @param {Task} task - The task to be edited.
+   * @memberof TaskDetailsComponent
+   */
   insertDataIntoForm(task: Task) {
     this.tasksService.newTask = {
       title: task.title,
@@ -62,6 +98,13 @@ export class TaskDetailsComponent {
     this.tasksService.newSubtasks = task.subtasks;
   }
 
+  /**
+   * Converts a Date object to a string formatted as 'YYYY-MM-DD'.
+   * 
+   * @param {Date} date - The date to be converted.
+   * @returns {string} - The formatted date string.
+   * @memberof TaskDetailsComponent
+   */
   convertDateToString(date: Date): string {
     const d = new Date(date);
     const year = d.getFullYear();
@@ -70,6 +113,13 @@ export class TaskDetailsComponent {
     return `${year}-${month}-${day}`;
   }
 
+  /**
+   * Prepares the task data to be edited.
+   * Copies all relevant task properties to the 'taskToBeEdited' object in the tasks service.
+   * 
+   * @param {Task} task - The task to prepare for editing.
+   * @memberof TaskDetailsComponent
+   */
   prepareDataToBeEdited(task: Task) {
     this.tasksService.taskToBeEdited = {
       id: task.id,
@@ -84,6 +134,13 @@ export class TaskDetailsComponent {
     };
   }
 
+  /**
+   * Opens a confirmation dialog for deleting the given task.
+   * Sets the deletion target task in the tasks service and shows confirmation UI.
+   * 
+   * @param {Task} displayedTask - The task to be deleted.
+   * @memberof TaskDetailsComponent
+   */
   openConfirmationDeleteTask(displayedTask: Task) {
     this.generalService.confirmationDeleteTask = true;
     this.tasksService.taskToBeDeleted = displayedTask;

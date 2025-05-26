@@ -28,7 +28,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 export class AddEditTaskComponent {
 
   /**
-   * Instance of the TasksService used to interact with task-related data.
+   * Instance of TasksService used to manage task data and operations.
    * 
    * @type {TasksService}
    * @memberof AddEditTaskComponent
