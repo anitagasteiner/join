@@ -42,6 +42,19 @@ fieldset, input, textarea, select {
     width: 100%;
 }
 
+.notification-container {
+    position: relative;
+}
+
+.notification {
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+}
+
 .priority-container {
     display: flex;
     flex-direction: row;

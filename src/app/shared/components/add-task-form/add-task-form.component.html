@@ -2,9 +2,12 @@
 
     <form (ngSubmit)="onSubmit(addTaskForm)" #addTaskForm="ngForm">
 
-        <fieldset>
+        <fieldset class="notification-container">
             <input #title="ngModel" [(ngModel)]="tasksService.newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" required>
             <legend></legend>
+            @if (!title.valid && title.touched && !title.disabled) {
+                <span class="notification">Please insert title.</span>
+            }
         </fieldset>
 
         <fieldset>
@@ -12,9 +15,12 @@
             <legend><b>Description</b> (optional)</legend>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="notification-container">
             <input #date="ngModel" [(ngModel)]="tasksService.newTask.date" placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
             <legend><b>Due date</b></legend>
+            @if (!date.valid && date.touched && !date.disabled) {
+                <span class="notification">Please insert date.</span>
+            }
         </fieldset>
 
         <fieldset class="priority-container">

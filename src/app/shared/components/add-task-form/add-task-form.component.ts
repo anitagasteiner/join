@@ -158,7 +158,6 @@ export class AddTaskFormComponent {
 
   async onSubmit(form: NgForm) {
     if (form.invalid) {
-      // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
     }
     this.getNewTaskData();    
