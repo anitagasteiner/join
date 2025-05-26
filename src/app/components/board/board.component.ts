@@ -66,6 +66,13 @@ export class BoardComponent {
    * 
    * @type {Observable<Task[]>}
    */
+  unsortedTasks$: Observable<Task[]>;
+
+  /**
+   * Observable stream of all tasks, sorted by title.
+   * 
+   * @type {Observable<Task[]>}
+   */
   tasks$: Observable<Task[]>;
 
   /**
@@ -135,16 +142,38 @@ export class BoardComponent {
   }
 
   /**
-   * Initializes the BoardComponent, loads and filters tasks, sets up counters.
-   * Sets the currently active navigation button in the general service to 'board'. This is used to highlight the navigation button that corresponds to the currently opened section. //TODO - Hier weiter mit JSDoc; vorher aber den Constructor vereinfachen, Teile auslagern!
-   * 
+   * Initializes the BoardComponent, loads, sorts and filters the tasks.
+   * Sets up counters depending on the tasks' statuses.
+   * Sets the currently active navigation button in the general service to 'board'. This is used to highlight the navigation button that corresponds to the currently opened section.
    */
-  constructor() {
-    const originalTasks$ = this.dataBaseService.getData<Task>('tasks');
-    const allTasks$ = originalTasks$.pipe(map(tasks => tasks.sort((a, b) => a.title.localeCompare(b.title))));
-    this.tasks$ = allTasks$;
-    this.filteredTasks$ = combineLatest([
-      allTasks$,
+  constructor() {    
+    this.unsortedTasks$ = this.dataBaseService.getData<Task>('tasks');
+    this.tasks$ = this.sortTasks();
+    this.filteredTasks$ = this.filterTasks();
+    this.todoCount$ = this.countTasks('to-do');
+    this.inProgressCount$ = this.countTasks('in-progress');
+    this.waitingCount$ = this.countTasks('waiting');
+    this.doneCount$ = this.countTasks('done');
+    this.generalService.activeNavBtn = 'board';
+  }
+
+  /**
+   * Sorts the tasks alphabetically by title.
+   * 
+   * @returns {Observable<Task[]>} A sorted observable of Tasks.
+   */
+  sortTasks(): Observable<Task[]> {
+    return this.unsortedTasks$.pipe(map(tasks => tasks.sort((a, b) => a.title.localeCompare(b.title))));    
+  }
+
+  /**
+   * Filters the sorted tasks based on the current search term.
+   * 
+   * @returns {Observable<Task[]>} Filtered task stream.
+   */
+  filterTasks(): Observable<Task[]> {
+    return combineLatest([
+      this.tasks$,
       this.searchControl.valueChanges.pipe(startWith(''), debounceTime(200))
     ]).pipe(
       map(([tasks, search]) => {
@@ -155,33 +184,48 @@ export class BoardComponent {
         );
       })
     );
-    this.generalService.activeNavBtn = 'board';
-    this.todoCount$ = originalTasks$.pipe(
-      map(tasks => tasks.filter(task => task.status === 'to-do').length)
-    );
-    this.inProgressCount$ = originalTasks$.pipe(
-      map(tasks => tasks.filter(task => task.status === 'in-progress').length)
-    );
-    this.waitingCount$ = originalTasks$.pipe(
-      map(tasks => tasks.filter(task => task.status === 'waiting').length)
-    );
-    this.doneCount$ = originalTasks$.pipe(
-      map(tasks => tasks.filter(task => task.status === 'done').length)
-    );
   }
 
-  openAddTaskContainer(status: string) {
+  /**
+   * Counts tasks that match the given status.
+   * 
+   * @param {string} status - The task status to filter by.
+   * @returns {Observable<number>} Count of tasks with the given status.
+   */
+  countTasks(status: string): Observable<number> {
+    return this.unsortedTasks$.pipe(
+      map(tasks => tasks.filter(task => task.status === status).length)
+    );    
+  }
+
+  /**
+   * Opens the UI container to add a new task with the specified status.
+   * 
+   * @param {string} status - The status to assign to the new task.
+   */
+  openAddTaskContainer(status: string): void {
     this.tasksService.taskStatus = status;
     this.tasksService.addTaskContainerOpened = true;
   }
 
-  showTaskDetails(task: Task) {
+  /**
+   * Displays the details of the selected task.
+   * 
+   * @param {Task} task - The task to display in detail view.
+   */
+  showTaskDetails(task: Task): void {
     this.displayedTask = task;
     this.tasksService.setCurrentTask(task);
     this.tasksService.taskDetailsOpened = true;
   }
 
-  async drop(event: CdkDragDrop<Task[]>, newStatus: string) {
+  /**
+   * Handles the task drop event, updates the task's status and persits the change.
+   * 
+   * @param {CdkDragDrop<Task[]>} event - The drag and drop event.
+   * @param {string} newStatus - The new status to assign to the dropped task.
+   */
+  async drop(event: CdkDragDrop<Task[]>, newStatus: string): Promise<void> {
     const task: Task = event.item.data;
     if (task.status !== newStatus) {
       task.status = newStatus;
@@ -190,11 +234,21 @@ export class BoardComponent {
     this.activeDropZone = null;
   }
 
-  highlightDropZone(status: string) {
+  /**
+   * Sets the currently active drop zone to visually highlight this area.
+   * 
+   * @param {string} status - The status of the drop zone to highlight.
+   */
+  highlightDropZone(status: string): void {
     this.activeDropZone = status;
   }
 
-  removeHighlight(status: string) {
+  /**
+   * Removes the highlight from the drop zone when it's not active any more.
+   * 
+   * @param {string} status - The status of the drop zone to unhighlight.
+   */
+  removeHighlight(status: string): void {
     if (this.activeDropZone === status) {
       this.activeDropZone = null;
     }
