@@ -17,9 +17,3 @@ export class NoTasksComponent {
    @Input()status?: string;
 
 }
-
-
-  /**
-   * The Task object passed into the component.
-   * This property is optional to allow safe rendering.
-   */

@@ -13,6 +13,10 @@ import { trigger, style, animate, transition } from '@angular/animations';
   templateUrl: './add-edit-task.component.html',
   styleUrl: './add-edit-task.component.scss',
   animations: [
+    /**
+     * Animation trigger for sliding in the form to add or edit a task from the right.
+     * Applies when the component enters the DOM.
+     */
     trigger('slideIn', [
       transition(':enter', [
         style({ transform: 'translateX(100%)', opacity: 0 }),
@@ -23,6 +27,12 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class AddEditTaskComponent {
 
-  tasksService = inject(TasksService);
+  /**
+   * Instance of the TasksService used to interact with task-related data.
+   * 
+   * @type {TasksService}
+   * @memberof AddEditTaskComponent
+   */
+  tasksService: TasksService = inject(TasksService);
 
 }
