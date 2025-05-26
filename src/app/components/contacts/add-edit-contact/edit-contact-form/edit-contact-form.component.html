@@ -28,7 +28,14 @@
 
         <div class="btn btn-txt btn-quit" (click)="contactsService.deleteContact(editedContact)">Delete</div>
 
-        <div><input class="btn btn-txt-img btn-submit btn-save" type="submit" value="Save"></div>
+        <div>
+            @if (!name.valid || !email.valid || !phone.valid) {
+                <input class="btn btn-txt-img btn-submit btn-save btn-invalid" type="submit" value="Save">
+            }
+            @if (name.valid && email.valid && phone.valid) {
+                <input class="btn btn-txt-img btn-submit btn-save" type="submit" value="Save">
+            }            
+        </div>
         
     </div>
 

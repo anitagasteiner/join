@@ -204,3 +204,6 @@ export class AddTaskFormComponent {
   }
 
 }
+
+
+//TODO - Form Validation Notifications!!! (wie bei Add Contact)

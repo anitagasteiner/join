@@ -24,8 +24,13 @@
         }
     </fieldset>
 
-    <div>         
-        <input class="btn btn-txt-img btn-submit btn-create" type="submit" value="Create contact">
+    <div>
+        @if (!name.valid || !email.valid || !phone.valid) {
+            <input class="btn btn-txt-img btn-submit btn-create btn-invalid" type="submit" value="Create contact">
+        }
+        @if (name.valid && email.valid && phone.valid) {
+            <input class="btn btn-txt-img btn-submit btn-create" type="submit" value="Create contact">
+        }        
     </div>
 
 </form>
