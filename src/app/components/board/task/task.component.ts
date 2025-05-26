@@ -31,7 +31,7 @@ export class TaskComponent {
    */
   subtasksDone: string = '0';
 
-  constructor() { }
+  constructor() {}
 
   /**
    * Calculates the percentage of completed subtasks.

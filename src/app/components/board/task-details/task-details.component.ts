@@ -56,7 +56,6 @@ export class TaskDetailsComponent {
 
   constructor() {}
 
-
   /**
    * Opens the form to edit a given task.
    * Adjusts visibility flags and prepares the form data.

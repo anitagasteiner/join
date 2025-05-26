@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DataBaseService } from '../../../../services/data-base.service';
-// import { GeneralService } from '../../../../services/general.service';
 import { Contact } from './../../../../models/contact.model';
 import { ContactsService } from '../../../../services/contacts.service';
 import { GeneralService } from '../../../../services/general.service';
@@ -18,12 +17,21 @@ import { GeneralService } from '../../../../services/general.service';
     './add-contact-form.component.scss',
     './../add-edit-contact-form.scss'
   ]
-  //providers: [DataBaseService] // Service hier bereitstellen!
 })
 export class AddContactFormComponent {
 
-  generalService = inject(GeneralService);
-
+  /**
+   * Instance of GeneralService used to interact with general data and operations.
+   * 
+   * @type {GeneralService}
+   */
+  generalService: GeneralService = inject(GeneralService);
+  
+  /**
+   * The new contact that is being created.
+   * 
+   * @type {Contact}
+   */
   newContact: Contact = {
     id: '',
     name: '',
@@ -32,19 +40,40 @@ export class AddContactFormComponent {
     color: ''
   };
 
-  availableContactColors = ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green'];
+  /**
+   * List of possible colors to assign to a new contact.
+   * 
+   * @type {string[]}
+   */
+  availableContactColors: string[] = ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green'];
 
-  // contactAdded: boolean = false;
+  /**
+   * Reference to the contact form in the template.
+   * 
+   * @type {NgForm}
+   */
+  @ViewChild('contactForm') contactForm!: NgForm; //NOTE - Zugriff auf das Formular
 
-  @ViewChild('contactForm') contactForm!: NgForm; // Zugriff auf das Formular
-
+  /**
+   * Creates an instance of the AddContactFormComponent.
+   * 
+   * @param {DataBaseService} dataBaseService - Service to interact with the Firebase Database.
+   * @param {ContactsService} contactsService - Service to manage contact data and operations.
+   */
   constructor(
     private dataBaseService: DataBaseService,
-    // private generalService: GeneralService,
     private contactsService: ContactsService
   ) {}
 
-  async onSubmit(form: NgForm) {
+  /**
+   * Handles form submissions for creating a new contact.
+   * Validates the form and assigns a random color to the contact.
+   * Saves the contact to the database, resets the form and shows a notification.
+   * 
+   * @param {NgForm} form - The submitted contact form.
+   * @returns {Promise<void>}
+   */
+  async onSubmit(form: NgForm): Promise<void> {
     if (form.invalid) {
       // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
@@ -67,3 +96,5 @@ export class AddContactFormComponent {
   }
 
 }
+
+//TODO Form Notifications!!!
