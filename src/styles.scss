@@ -77,6 +77,10 @@ body {
     z-index: 2;
 }
 
+
+// Colors for contact icons:
+// ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green'];
+
 .orange {
     @include colors.bg-contact-orange;
 }

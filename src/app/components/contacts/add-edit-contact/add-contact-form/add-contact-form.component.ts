@@ -32,7 +32,7 @@ export class AddContactFormComponent {
     color: ''
   };
 
-  availableContactColors = ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green']
+  availableContactColors = ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green'];
 
   // contactAdded: boolean = false;
 
