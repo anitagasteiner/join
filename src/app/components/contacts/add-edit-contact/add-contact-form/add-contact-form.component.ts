@@ -80,19 +80,22 @@ export class AddContactFormComponent {
     }
     this.newContact.color = this.availableContactColors[Math.floor(Math.random() * this.availableContactColors.length)];
     try {
-      console.log('Speichere Kontakt:', this.newContact);
       await this.dataBaseService.addData<Contact>('contacts', this.newContact); // 'contacts' als Sammlungsname
       form.resetForm();
       this.contactsService.hideContactForm();
-      this.generalService.notificationContactAdded = true;
-      setTimeout(() => {
-        this.generalService.notificationContactAdded = false;
-      }, 1000);
+      this.handleNotification();      
     } catch (error: any) {
-      console.error('Fehler beim Speichern des Kontakts: ', error);
+      this.generalService.handleErrorNotification();
     }
     // finally {
     // }
+  }
+
+  handleNotification() {
+    this.generalService.notificationContactAdded = true;
+    setTimeout(() => {
+      this.generalService.notificationContactAdded = false;
+    }, 1000);
   }
 
 }

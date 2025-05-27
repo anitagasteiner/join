@@ -15,4 +15,6 @@
     <div>Contact successfully deleted.</div>
 } @else if (generalService.notificationSignedUp) {
     <div>You signed up successfully.</div>
+} @else if (generalService.notificationError) {
+    <div>An unexpected error occurred.<br>Please try again.</div>
 }

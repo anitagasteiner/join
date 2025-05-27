@@ -20,11 +20,20 @@ export class GeneralService {
 
   notificationSignedUp: boolean = false;
 
+  notificationError: boolean = false;
+
   confirmationDeleteTask: boolean = false;
   confirmationDeleteContact: boolean = false;
 
   capitalize(text: string): string {
     return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  handleErrorNotification() {
+    this.notificationError = true;
+    setTimeout(() => {
+      this.notificationError = false;
+    }, 1000);
   }  
 
 }
