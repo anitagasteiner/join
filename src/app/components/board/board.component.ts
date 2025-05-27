@@ -53,7 +53,6 @@ export class BoardComponent {
    */
   dataBaseService: DataBaseService = inject(DataBaseService);
 
-
   /**
    * FormControl for managing the task search input.
    * 
