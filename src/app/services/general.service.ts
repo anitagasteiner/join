@@ -29,6 +29,9 @@ export class GeneralService {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
+  /**
+   * Displays a short error notification and hides it again after 1 second.
+   */
   handleErrorNotification() {
     this.notificationError = true;
     setTimeout(() => {

@@ -41,7 +41,7 @@ export class AddContactFormComponent {
   };
 
   /**
-   * List of possible colors to assign to a new contact.
+   * Predefined list of colors that can be randomly assigned to a new contact.
    * 
    * @type {string[]}
    */
@@ -49,6 +49,7 @@ export class AddContactFormComponent {
 
   /**
    * Reference to the contact form in the template.
+   * Used for validation and resetting.
    * 
    * @type {NgForm}
    */
@@ -66,31 +67,39 @@ export class AddContactFormComponent {
   ) {}
 
   /**
-   * Handles form submissions for creating a new contact.
+   * Handles the submission of the form for creating a new contact.
    * Validates the form and assigns a random color to the contact.
-   * Saves the contact to the database, resets the form and shows a notification.
+   * Saves the contact to the database, resets the form and displays a confirmation notification.
+   * In case of an error, it displays an error notification.
    * 
    * @param {NgForm} form - The submitted contact form.
    * @returns {Promise<void>}
    */
   async onSubmit(form: NgForm): Promise<void> {
     if (form.invalid) {
-      // this.errorMessage = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
     }
-    this.newContact.color = this.availableContactColors[Math.floor(Math.random() * this.availableContactColors.length)];
+    this.setContactColor();    
     try {
-      await this.dataBaseService.addData<Contact>('contacts', this.newContact); // 'contacts' als Sammlungsname
+      await this.dataBaseService.addData<Contact>('contacts', this.newContact); //NOTE - 'contacts' als Sammlungsname
       form.resetForm();
       this.contactsService.hideContactForm();
       this.handleNotification();      
     } catch (error: any) {
       this.generalService.handleErrorNotification();
     }
-    // finally {
-    // }
   }
 
+  /**
+   * Assigns a random color from the list of available contact colors to the 'newContact'.
+   */
+  setContactColor() {
+    this.newContact.color = this.availableContactColors[Math.floor(Math.random() * this.availableContactColors.length)];
+  }
+
+  /**
+   * Displays a short success notification when a contact is added and hides it again after 1 second.
+   */
   handleNotification() {
     this.generalService.notificationContactAdded = true;
     setTimeout(() => {
@@ -99,5 +108,3 @@ export class AddContactFormComponent {
   }
 
 }
-
-//TODO - Funktion übersichtlicher!
