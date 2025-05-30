@@ -26,33 +26,68 @@ import { ConfirmationsComponent } from '../../shared/components/confirmations/co
 })
 export class ContactsComponent {
 
-  contacts$: Observable<Contact[]>; // contacts$ ist ein Observable mit der Liste aller Kontakte
+  /**
+   * Instance of GeneralService used to interact with general data and operations.
+   * 
+   * @type {GeneralService}
+   */
+  generalService: GeneralService = inject(GeneralService);
 
-  displayedContact: Contact = {
-    id: '',
-    name: '',
-    email: '',
-    phone: '',
-    color: ''
-  };
+  /**
+   * Instance of ContactsService used to manage contact data and operations.
+   * 
+   * @type {ContactsService}
+   */
+  contactsService: ContactsService = inject(ContactsService);
 
-  generalService = inject(GeneralService);
-  contactsService = inject(ContactsService);
+  /**
+   * Observable stream of all contacts.
+   * 
+   * @type {Observable<Contact[]>}
+   */
+  unsortedContacts$: Observable<Contact[]>;
 
-  // contactDetailsOpened: boolean = false;
+  /**
+   * Observable stream of all contacts, sorted alphabetically by name.
+   * 
+   * @type {Observable<Contact[]>}
+   */
+  contacts$: Observable<Contact[]>;
 
+  /**
+   * Creates an instance of ContactsComponent.
+   * Initializes the contacts stream and sorts the contacts.
+   * Sets the currently active navigation button in the general service to 'contacts'. This is used to highlight the navigation button that corresponds to the currently opened section.
+   * 
+   * @param {DataBaseService} dataBaseService - Service to access the backend database.
+   */
   constructor(private dataBaseService: DataBaseService) {
-    const originalContacts$ = this.dataBaseService.getData<Contact>('contacts'); // Ich habe hier <Contact> angegeben, weil ich in der Funktion getData eine Typisierung verlange.
-    this.contacts$ = originalContacts$.pipe(map(contacts => contacts.sort((a, b) => a.name.localeCompare(b.name))));
+    this.unsortedContacts$ = this.dataBaseService.getData<Contact>('contacts'); // NOTE - Ich habe hier <Contact> angegeben, weil ich in der Funktion getData eine Typisierung verlange.
+    this.contacts$ = this.sortContacts();
     this.generalService.activeNavBtn = 'contacts';
   }
 
+  /**
+   * Sorts the contacts alphabetically by name.
+   * 
+   * @returns {Observable<Contact[]>} A sorted observable of Contacts.
+   */
+  sortContacts(): Observable<Contact[]> {
+    return this.unsortedContacts$.pipe(map(contacts => contacts.sort((a, b) => a.name.localeCompare(b.name))));
+  }
+
+  /**
+   * Updates the selected contact in the ContactsService.
+   * Displays the contact details view for the selected contact.
+   */
   showContactDetails(contact: Contact) {
-    this.displayedContact = contact;
     this.contactsService.setSelectedContact(contact);
     this.contactsService.contactDetailsOpened = true;
   }
 
+  /**
+   * Opens the form for adding a new contact.
+   */
   showAddContactForm() {
     this.contactsService.addContactFormOpened = true;
   }

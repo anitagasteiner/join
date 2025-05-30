@@ -19,7 +19,7 @@
             @for (contact of contacts$ | async; track contact.id; let index = $index) { 
                 <app-contact [contact]="contact" (click)="showContactDetails(contact)"></app-contact>
             }
-            <!-- Mit track contact.id sage ich Angular, dass es id als eindeutigen Identifikator verwenden soll (für Change Detection). -->
+            <!-- NOTE - Mit track contact.id sage ich Angular, dass es id als eindeutigen Identifikator verwenden soll (für Change Detection). -->
 
         </div>
  
@@ -40,11 +40,5 @@
         </div>
 
     }
- 
-    <!-- <div class="bg-light" [@slideIn] [ngClass]="{'d-none': !contactsService.addContactFormOpened && !contactsService.editContactFormOpened}">
-
-        <app-add-edit-contact></app-add-edit-contact>
-
-    </div> -->
 
 </div>
