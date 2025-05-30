@@ -61,6 +61,6 @@ export class GeneralService {
     setTimeout(() => {
       this.notificationError = false;
     }, 5000);
-  }  
+  }
 
 }

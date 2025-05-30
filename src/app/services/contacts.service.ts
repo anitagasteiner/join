@@ -14,7 +14,7 @@ export class ContactsService {
 
   /**
    * Internal subject to manage the currently selected contact.
-   * It emits the latest contact to all subscribers immediately.
+   * Emits the latest contact to all subscribers immediately.
    * 
    * @private
    * @type {BehaviorSubject<Contact | null>}
