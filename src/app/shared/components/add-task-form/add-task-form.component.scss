@@ -55,6 +55,11 @@ fieldset, input, textarea, select {
     font-weight: 400;
 }
 
+.priority-notification {
+    top: -20px !important;
+    left: 70px !important;
+}
+
 .priority-container {
     display: flex;
     flex-direction: row;

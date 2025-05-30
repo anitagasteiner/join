@@ -9,6 +9,7 @@ import { Contact } from '../../../models/contact.model';
 import { TasksService } from '../../../services/tasks.service';
 import { TaskFormInput } from '../../../models/task-form-input';
 import { GeneralService } from '../../../services/general.service';
+import { TitleStrategy } from '@angular/router';
 
 @Component({
   selector: 'app-add-task-form',
@@ -94,6 +95,34 @@ export class AddTaskFormComponent {
    * @type {boolean}
    */
   subtaskBeingAdded: boolean = false;
+
+  /**
+   * Indicates if the title is missing.
+   * 
+   * @type {boolean}
+   */
+  titleMissing: boolean = false;
+
+  /**
+   * Indicates if the due date is missing.
+   * 
+   * @type {boolean}
+   */
+  dateMissing: boolean = false;
+
+  /**
+   * Indicates if the priority is missing.
+   * 
+   * @type {boolean}
+   */
+  priorityMissing: boolean = false;
+
+  /**
+   * Indicates if the category is missing.
+   * 
+   * @type {boolean}
+   */
+  categoryMissing: boolean = false;
 
   /**
    * Initializes the AddTaskFormComponent.
@@ -258,6 +287,10 @@ export class AddTaskFormComponent {
     this.tasksService.newSubtasks = [];
     this.tasksService.addTaskContainerOpened = false;
     this.tasksService.editTaskContainerOpened = false;
+    this.titleMissing = false;
+    this.dateMissing = false;
+    this.categoryMissing = false;
+    this.priorityMissing = false;
   }
 
   /**
@@ -286,7 +319,8 @@ export class AddTaskFormComponent {
    * @param {NgForm} form - The form being submitted.
    */
   async onSubmit(form: NgForm): Promise<void> {
-    if (form.invalid) {
+    this.checkMissingValues();
+    if (form.invalid || this.priorityMissing || this.categoryMissing) {
       return;
     }
     this.getNewTaskData();    
@@ -306,6 +340,28 @@ export class AddTaskFormComponent {
       }, 1000);
     } catch (error: any) {
       this.generalService.handleErrorNotification();
+    }
+  }
+ 
+  /**
+   * Checks if any required fields are missing to handle the notifications.
+   */
+  checkMissingValues(): void {
+    if (!this.tasksService.newTask.title) {
+      this.titleMissing = true;
+    } else {
+      this.titleMissing = false;
+    }
+    if (!this.tasksService.newTask.date) {
+      this.dateMissing = true;
+    } else {
+      this.dateMissing = false;
+    }
+    if (!this.tasksService.selectedPriority) {
+      this.priorityMissing = true;
+    }
+    if (!this.tasksService.selectedCategory) {
+      this.categoryMissing = true;
     }
   }
 
@@ -352,5 +408,3 @@ export class AddTaskFormComponent {
   }
 
 }
-
-//TODO - Form Validation Notifications!!! (wie bei Add Contact)

@@ -5,7 +5,7 @@
         <fieldset class="notification-container">
             <input #title="ngModel" [(ngModel)]="tasksService.newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" required>
             <legend></legend>
-            @if (!title.valid && title.touched && !title.disabled) {
+            @if (!title.valid && title.touched && !title.disabled || titleMissing) {
                 <span class="notification">Please insert title.</span>
             }
         </fieldset>
@@ -18,14 +18,14 @@
         <fieldset class="notification-container">
             <input #date="ngModel" [(ngModel)]="tasksService.newTask.date" placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
             <legend><b>Due date</b></legend>
-            @if (!date.valid && date.touched && !date.disabled) {
+            @if (!date.valid && date.touched && !date.disabled || dateMissing) {
                 <span class="notification">Please insert date.</span>
             }
         </fieldset>
 
-        <fieldset class="priority-container">
+        <fieldset class="priority-container notification-container">
             <label [ngClass]="{'urgent-selected': tasksService.selectedPriority == 'urgent'}">
-                <input type="radio" name="priority" value="urgent" (change)="tasksService.selectedPriority = 'urgent'">
+                <input type="radio" name="priority" value="urgent" (change)="tasksService.selectedPriority = 'urgent'; priorityMissing = false">
                 <span>Urgent</span>
                 @if (tasksService.selectedPriority == 'urgent') {
                     <img src="/img/prio-urgent-sel.svg">
@@ -34,7 +34,7 @@
                 }                
             </label>
             <label [ngClass]="{'medium-selected': tasksService.selectedPriority == 'medium'}">
-                <input type="radio" name="priority" value="medium" (change)="tasksService.selectedPriority = 'medium'">
+                <input type="radio" name="priority" value="medium" (change)="tasksService.selectedPriority = 'medium'; priorityMissing = false">
                 <span>Medium</span>
                 @if (tasksService.selectedPriority == 'medium') {
                     <img src="/img/prio-medium-sel.svg">
@@ -43,7 +43,7 @@
                 }                
             </label>
             <label [ngClass]="{'low-selected': tasksService.selectedPriority == 'low'}">
-                <input type="radio" name="priority" value="low" (change)="tasksService.selectedPriority = 'low'">
+                <input type="radio" name="priority" value="low" (change)="tasksService.selectedPriority = 'low'; priorityMissing = false">
                 <span>Low</span>
                 @if (tasksService.selectedPriority == 'low') {
                     <img src="/img/prio-low-sel.svg">
@@ -52,6 +52,9 @@
                 }                
             </label>             
             <legend><b>Priority</b></legend>
+            @if (priorityMissing) {
+                <span class="notification priority-notification">Please select priority.</span>
+            }
         </fieldset>
 
         <fieldset class="assigned-container">
@@ -73,19 +76,13 @@
                                 </div>
                                 <input type="checkbox" [checked]="contactIsSelected(contact)" (change)="toggleContactSelection($event, contact)">
                                 <span class="custom-checkbox"></span>
-                                <!-- <option [ngValue]="contact">
-                                    <div class="contact-icon" [ngClass]="contact.color">{{ contact.name | initials }}</div>
-                                    {{ contact.name }}
-                                </option> -->
                             </div>                                
                         }
                     } @else {
                         <p>Loading contacts ...</p>
                     }
                 </div>
-            }                
-
-            <!-- <option disabled value="0">Select contacts to assign</option> -->
+            }
                 
             <legend><b>Assigned to</b> (optional)</legend>
         </fieldset>
@@ -98,14 +95,17 @@
             </div>
         }
 
-        <fieldset>
-            <select id="category" name="category" [(ngModel)]="tasksService.selectedCategory" [ngClass]="{'select-open': selectOpened}" (click)="toggleCategoryOpenClose()" required>
+        <fieldset class="notification-container">
+            <select id="category" name="category" [(ngModel)]="tasksService.selectedCategory" [ngClass]="{'select-open': selectOpened}" (click)="toggleCategoryOpenClose(); categoryMissing = false" required>
                 <option value="" disabled>Select task category</option>
                 <option *ngFor="let category of categories" [value]="category">
                     {{ category }}
                 </option>
             </select>
             <legend><b>Category</b></legend>
+            @if (categoryMissing) {
+                <span class="notification">Please select category.</span>
+            }
         </fieldset>
 
         <fieldset class="subtasks-container">
