@@ -35,9 +35,9 @@ export class ContactDetailsComponent {
    * Observable that holds the currently selected (displayed) contact.
    * Used to bind contact details in the template.
    * 
-   * @type {Observable<Contact>}
+   * @type {Observable<Contact | null>}
    */
-  displayedContact$: Observable<Contact> = this.contactsService.selectedContact$; // NOTE - 'displayedContact$' wird als 'Observable<Contact>' deklariert und sofort auf den Wert des 'selectedContact$'-Streams aus dem ContactsService gesetzt.
+  displayedContact$: Observable<Contact | null> = this.contactsService.selectedContact$; // NOTE - 'displayedContact$' wird als 'Observable<Contact>' deklariert und sofort auf den Wert des 'selectedContact$'-Streams aus dem ContactsService gesetzt.
 
   constructor() { }
 

@@ -65,9 +65,9 @@ export class AddEditContactComponent {
   /**
    * Observable of the currently selected contact, used for reactive display logic.
    * 
-   * @type {Observable<Contact>}
+   * @type {Observable<Contact | null>}
    */
-  selectedContact$: Observable<Contact> = this.contactsService.selectedContact$;
+  selectedContact$: Observable<Contact | null> = this.contactsService.selectedContact$;
 
   constructor() { }
 

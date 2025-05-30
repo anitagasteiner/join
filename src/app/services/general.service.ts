@@ -36,7 +36,7 @@ export class GeneralService {
     this.notificationError = true;
     setTimeout(() => {
       this.notificationError = false;
-    }, 1000);
+    }, 5000);
   }  
 
 }

@@ -34,6 +34,7 @@ export class SummaryComponent {
   /**
    * Instance of DataBaseService used to retrieve and manage data from the Firebase database.
    * 
+   * @private
    * @type {DataBaseService}
    */
   private dataBaseService: DataBaseService = inject(DataBaseService);
