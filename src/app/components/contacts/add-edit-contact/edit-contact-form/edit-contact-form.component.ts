@@ -24,6 +24,8 @@ export class EditContactFormComponent {
   /**
    * Contact data passed from the parent component.
    * Used to pre-fill the form for editing the contact.
+   * 
+   * @type {Contact}
    */
   @Input()contact!: Contact;
 

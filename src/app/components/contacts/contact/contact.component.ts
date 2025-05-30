@@ -14,14 +14,12 @@ import { Contact } from './../../../models/contact.model';
 })
 export class ContactComponent {
 
-  @Input()contact?: Contact; // Das Fragezeichen macht das Property optional, die Komponente benötigt beim Start also nicht zwingend einen Wert für contact. In Kombination mit @if (contact) in der HTML-Datei wird verhindert, dass die Komponente versucht auf contact zuzugreifen, wenn es noch gar nicht gesetzt wurde.
-
-  // @Input()contact: Contact = {
-  //   id: '',
-  //   name: '',
-  //   email: '',
-  //   phone: '',
-  //   color: ''
-  //}; // Es wird ein Default-Wert gesetzt, was vor allem hilfreich ist, falls der Input bei der Initialisierung kurz undefined ist.
+  /**
+   * Contact data passed from the parent component.
+   * Used to display the contact in the contact list.
+   * 
+   * @type {Contact | undefined}
+   */
+  @Input()contact?: Contact; // NOTE - Das Fragezeichen macht das Property optional, die Komponente benötigt beim Start also nicht zwingend einen Wert für contact. In Kombination mit @if (contact) in der HTML-Datei wird verhindert, dass die Komponente versucht auf contact zuzugreifen, wenn es noch gar nicht gesetzt wurde.
 
 }
