@@ -16,10 +16,20 @@ import { GeneralService } from '../../../services/general.service';
 })
 export class NavbarComponent {
 
-  generalService = inject(GeneralService);
+  /**
+   * Instance of GeneralService used to interact with general data and operations.
+   * 
+   * @type {GeneralService}
+   */
+  generalService: GeneralService = inject(GeneralService);
 
   constructor() { }
 
+  /**
+   * Changes the color of the currently active navigation button by updating the 'activeNavBtn' value in GeneralService.
+   * 
+   * @param {string} btn - The identifier of the clicked navigation button.
+   */
   changeColor(btn: string) {
     this.generalService.activeNavBtn = btn; 
   }
