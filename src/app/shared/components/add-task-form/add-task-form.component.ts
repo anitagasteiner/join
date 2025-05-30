@@ -127,14 +127,14 @@ export class AddTaskFormComponent {
   /**
    * Toggles the visibility of the assign contacts dropdown.
    */
-  toggleAssignedDropdown() {
+  toggleAssignedDropdown(): void {
     this.dropdownOpened = !this.dropdownOpened;
   }
 
   /**
    * Closes the assign contacts dropdown with a slight delay to allow checkbox interactions to complete before hiding the element.
    */
-  closeAssignedDropdown() {
+  closeAssignedDropdown(): void {
     setTimeout(() => {
       this.dropdownOpened = false;
     }, 150);
@@ -156,7 +156,7 @@ export class AddTaskFormComponent {
    * @param {Event} event - The checkbox event.
    * @param {Contact} contact - The contact being toggled.
    */
-  toggleContactSelection(event: Event, contact: Contact) {
+  toggleContactSelection(event: Event, contact: Contact): void {
     const checkbox = event.target as HTMLInputElement;
     const checked = checkbox.checked;
     if (checked) {
@@ -173,14 +173,14 @@ export class AddTaskFormComponent {
   /**
    * Toggles the visibility of the category selection dropdown.
    */
-  toggleCategoryOpenClose() {
+  toggleCategoryOpenClose(): void {
     this.selectOpened = !this.selectOpened;
   }
 
   /**
    * Focuses the subtask input field and activates edit mode.
    */
-  setFocusOnSubtaskInput() {
+  setFocusOnSubtaskInput(): void {
     this.subtasks?.nativeElement.focus();
     this.addingSubtask();
   }
@@ -189,7 +189,7 @@ export class AddTaskFormComponent {
    * Marks that a new subtask is currently being added.
    * Sets the 'subtaskBeingAdded' flag to 'true' to control the UI state.
    */
-  addingSubtask() {
+  addingSubtask(): void {
     this.subtaskBeingAdded = true;
   }
 
@@ -197,7 +197,7 @@ export class AddTaskFormComponent {
    * Resets the subtask input state after adding or canceling.
    * Sets 'subtaskBeingAdded' to 'false' and clears the subtask text.
    */
-  stopAddingSubtask() {
+  stopAddingSubtask(): void {
     this.subtaskBeingAdded = false;
     this.newSubtask.text = '';
   }
@@ -205,7 +205,7 @@ export class AddTaskFormComponent {
   /**
    * Adds a subtask to the list if it doesn't already exist.
    */
-  addSubtask() {
+  addSubtask(): void {
     if (this.newSubtask.text !== '' && !this.checkIfSubtaskPresent(this.newSubtask.text)) {
       this.tasksService.newSubtasks.push({ ...this.newSubtask });
       this.newSubtask.text = '';
@@ -228,7 +228,7 @@ export class AddTaskFormComponent {
    * 
    * @param {{text: string, done: boolean}} entry - The subtask entry to edit.
    */
-  editSubtask(entry: {text: string, done: boolean}) {
+  editSubtask(entry: {text: string, done: boolean}): void {
     this.deleteSubtask(entry.text);
     this.setFocusOnSubtaskInput();
     this.newSubtask.text = entry.text;
@@ -240,7 +240,7 @@ export class AddTaskFormComponent {
    * 
    * @param {string} subtaskText - The text of the subtask to be deleted.
    */
-  deleteSubtask(subtaskText: string) {
+  deleteSubtask(subtaskText: string): void {
     this.tasksService.newSubtasks = this.tasksService.newSubtasks.filter(entry => entry.text !== subtaskText );
   }
 
@@ -250,7 +250,7 @@ export class AddTaskFormComponent {
    * 
    * @param {NgForm} form - The form instance to reset.
    */
-  resetForm(form: NgForm) {
+  resetForm(form: NgForm): void {
     form.resetForm();
     this.emptyNewTask();    
     this.tasksService.selectedPriority = '';
@@ -263,7 +263,7 @@ export class AddTaskFormComponent {
   /**
    * Empties the 'newTask' form data model in the tasks service.
    */
-  emptyNewTask() {
+  emptyNewTask(): void {
     this.tasksService.newTask = {
       title: '',
       description: '',
@@ -285,7 +285,7 @@ export class AddTaskFormComponent {
    * 
    * @param {NgForm} form - The form being submitted.
    */
-  async onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm): Promise<void> {
     if (form.invalid) {
       return;
     }
@@ -312,7 +312,7 @@ export class AddTaskFormComponent {
   /**
    * Collects and stores form data into the task service model.
    */
-  getNewTaskData() {
+  getNewTaskData(): void {
     this.tasksService.newTask.priority = this.tasksService.selectedPriority;
     this.tasksService.newTask.assigned = this.tasksService.assignedContacts.map(contact => ({
       id: contact.id,
@@ -326,7 +326,7 @@ export class AddTaskFormComponent {
   /**
    * Displays a temporary success notification after a task has been edited and hides it after 1 second.
    */
-  handleSuccessNotificationTaskEdited() {
+  handleSuccessNotificationTaskEdited(): void {
     this.generalService.notificationTaskEdited = true;
     setTimeout(() => {
       this.generalService.notificationTaskEdited = false;
@@ -336,7 +336,7 @@ export class AddTaskFormComponent {
   /**
    * Displays a temporary success notification after a new task has been added and hides it after 1 second.
    */
-  handleSuccessNotificationTaskAdded() {
+  handleSuccessNotificationTaskAdded(): void {
     this.generalService.notificationTaskAdded = true;
     setTimeout(() => {
       this.generalService.notificationTaskAdded = false;
@@ -346,7 +346,7 @@ export class AddTaskFormComponent {
   /**
    * Closes the task form container (both add and edit modes).
    */
-  closeFormContainer() {
+  closeFormContainer(): void {
     this.tasksService.addTaskContainerOpened = false;
     this.tasksService.editTaskContainerOpened = false;    
   }
