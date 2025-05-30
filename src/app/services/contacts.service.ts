@@ -83,7 +83,7 @@ export class ContactsService {
    * 
    * @param {Contact} contact - The currently selected contact.
    */
-  setSelectedContact(contact: Contact) {
+  setSelectedContact(contact: Contact): void {
     this.selectedContactSubject.next(contact); //NOTE - Wenn this.selectedContactSubject.next(contact) aufgerufen wird, wird der Wert aktualisiert, und alle Abonnenten des selectedContact$-Streams erhalten sofort den neuen Wert.
   }
 
@@ -92,7 +92,7 @@ export class ContactsService {
    * 
    * @param {Contact} contact - The contact to be edited.
    */
-  showEditContactForm(contact: Contact) {
+  showEditContactForm(contact: Contact): void {
     this.contactToBeEdited = contact;
     this.editContactFormOpened = true;
   }
@@ -100,7 +100,7 @@ export class ContactsService {
   /**
    * Hides both the add and edit contact forms and clears the editing state.
    */
-  hideContactForm() {
+  hideContactForm(): void {
     this.addContactFormOpened = false;
     this.editContactFormOpened = false;
     this.contactToBeEdited = null;
@@ -109,7 +109,7 @@ export class ContactsService {
   /**
    * Hides the contact details view.
    */
-  hideContactDetails() {
+  hideContactDetails(): void {
     this.contactDetailsOpened = false;
   }
 
@@ -140,7 +140,7 @@ export class ContactsService {
   /**
    * Displays a temporary success notification for contact deletion and hides it after 1 second.
    */
-  handleSuccessNotification() {
+  handleSuccessNotification(): void {
     this.generalService.notificationContactDeleted = true;
     setTimeout(() => {
       this.generalService.notificationContactDeleted = false;

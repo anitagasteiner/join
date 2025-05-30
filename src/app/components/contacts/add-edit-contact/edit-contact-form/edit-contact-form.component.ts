@@ -79,7 +79,7 @@ export class EditContactFormComponent {
   /**
    * Lifecycle hook that initializes the form data with a copy of the passed contact to prevent direct mutation.
    */
-  ngOnInit() {
+  ngOnInit(): void {
     this.editedContact = { ...this.contact }; //NOTE - Kopie, nicht direktes Binding!
   }
 
@@ -92,7 +92,7 @@ export class EditContactFormComponent {
    *
    * @param form - The submitted contact form.
    */
-  async onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm): Promise<void> {
     if (form.invalid) {
       return;
     }
@@ -115,7 +115,7 @@ export class EditContactFormComponent {
   /**
    * Displays a short success notification when a contact is edited and hides it again after 1 second.
    */
-  handleNotification() {
+  handleNotification(): void {
     this.generalService.notificationContactEdited = true;
     setTimeout(() => {
       this.generalService.notificationContactEdited = false;
@@ -125,14 +125,14 @@ export class EditContactFormComponent {
   /**
    * Cancels the editing process and emits the cancellation event.
    */
-  onCancel() {
+  onCancel(): void {
     this.cancelled.emit();
   }
 
   /**
    * Refreshes the displayed contact in the UI based on its ID.
    */
-  async refreshDisplayedContact(contactId: string) {
+  async refreshDisplayedContact(contactId: string): Promise<void> {
     const contacts = await firstValueFrom(this.contacts$);
     const updatedContact = contacts.find(c => c.id === contactId);
     if (updatedContact) {

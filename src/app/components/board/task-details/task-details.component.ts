@@ -52,9 +52,9 @@ export class TaskDetailsComponent {
    * 
    * @type {Observable<Task>}
    */
-  displayedTask$: Observable<Task> = this.tasksService.currentTask$;
+  displayedTask$: Observable<Task | null> = this.tasksService.currentTask$;
 
-  constructor() {}
+  constructor() { }
 
   /**
    * Opens the form to edit a given task.
@@ -62,7 +62,7 @@ export class TaskDetailsComponent {
    * 
    * @param {Task} task - The currently displayed task to be edited.
    */
-  openFormToEditTask(task: Task) {
+  openFormToEditTask(task: Task): void {
     this.tasksService.taskDetailsOpened = false;
     this.tasksService.addTaskContainerOpened = true;
     this.tasksService.editTaskContainerOpened = true;
@@ -76,7 +76,7 @@ export class TaskDetailsComponent {
    * 
    * @param {Task} task - The task to be edited.
    */
-  insertDataIntoForm(task: Task) {
+  insertDataIntoForm(task: Task): void {
     this.tasksService.newTask = {
       title: task.title,
       description: task.description,
@@ -112,7 +112,7 @@ export class TaskDetailsComponent {
    * 
    * @param {Task} task - The task to prepare for editing.
    */
-  prepareDataToBeEdited(task: Task) {
+  prepareDataToBeEdited(task: Task): void {
     this.tasksService.taskToBeEdited = {
       id: task.id,
       title: task.title,
@@ -132,7 +132,7 @@ export class TaskDetailsComponent {
    * 
    * @param {Task} displayedTask - The task to be deleted.
    */
-  openConfirmationDeleteTask(displayedTask: Task) {
+  openConfirmationDeleteTask(displayedTask: Task): void {
     this.generalService.confirmationDeleteTask = true;
     this.tasksService.taskToBeDeleted = displayedTask;
   }  

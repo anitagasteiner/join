@@ -56,7 +56,7 @@ export class GeneralService {
   /**
    * Displays a short error notification and hides it again after 5 seconds.
    */
-  handleErrorNotification() {
+  handleErrorNotification(): void {
     this.notificationError = true;
     setTimeout(() => {
       this.notificationError = false;

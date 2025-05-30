@@ -47,7 +47,7 @@ export class ContactDetailsComponent {
    * 
    * @param {Contact} displayedContact - The contact that is to be deleted.
    */
-  openConfirmationDeleteContact(displayedContact: Contact) {
+  openConfirmationDeleteContact(displayedContact: Contact): void {
     this.generalService.confirmationDeleteContact = true;
     this.contactsService.contactToBeDeleted = displayedContact;
   } 

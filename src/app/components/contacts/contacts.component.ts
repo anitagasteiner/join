@@ -80,7 +80,7 @@ export class ContactsComponent {
    * Updates the selected contact in the ContactsService.
    * Displays the contact details view for the selected contact.
    */
-  showContactDetails(contact: Contact) {
+  showContactDetails(contact: Contact): void {
     this.contactsService.setSelectedContact(contact);
     this.contactsService.contactDetailsOpened = true;
   }
@@ -88,7 +88,7 @@ export class ContactsComponent {
   /**
    * Opens the form for adding a new contact.
    */
-  showAddContactForm() {
+  showAddContactForm(): void {
     this.contactsService.addContactFormOpened = true;
   }
 

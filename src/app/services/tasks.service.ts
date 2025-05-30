@@ -192,7 +192,7 @@ export class TasksService {
   /**
    * Displays a temporary success notification after task deletion and hides it after 1 second.
    */
-  handleSuccessNotification() {
+  handleSuccessNotification(): void {
     this.generalService.notificationTaskDeleted = true;
     setTimeout(() => {
       this.generalService.notificationTaskDeleted = false;
