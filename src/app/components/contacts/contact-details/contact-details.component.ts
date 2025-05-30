@@ -1,5 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
-// import { GeneralService } from '../../../services/general.service';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InitialsPipe } from '../../../pipes/initials.pipe';
 import { Observable } from 'rxjs';
@@ -18,20 +17,39 @@ import { GeneralService } from '../../../services/general.service';
 })
 export class ContactDetailsComponent {
 
-  // @Input()displayedContact!: Contact;
+  /**
+   * Instance of GeneralService used to interact with general data and operations.
+   * 
+   * @type {GeneralService}
+   */
+  generalService: GeneralService = inject(GeneralService);
 
-  generalService = inject(GeneralService);
-  contactsService = inject(ContactsService);
+  /**
+   * Instance of ContactsService used to manage contact data and operations.
+   * 
+   * @type {ContactsService}
+   */
+  contactsService: ContactsService = inject(ContactsService);
 
-  displayedContact$: Observable<Contact> = this.contactsService.selectedContact$; // displayedContact$ wird als Observable<Contact> deklariert und sofort auf den Wert des selectedContact$-Streams aus dem ContactsService gesetzt
+  /**
+   * Observable that holds the currently selected (displayed) contact.
+   * Used to bind contact details in the template.
+   * 
+   * @type {Observable<Contact>}
+   */
+  displayedContact$: Observable<Contact> = this.contactsService.selectedContact$; // NOTE - 'displayedContact$' wird als 'Observable<Contact>' deklariert und sofort auf den Wert des 'selectedContact$'-Streams aus dem ContactsService gesetzt.
 
-  constructor() {
-    // this.displayedContact$ = this.generalService.selectedContact$;
-  }
+  constructor() { }
 
-    openConfirmationDeleteContact(displayedContact: Contact) {
-      this.generalService.confirmationDeleteContact = true;
-      this.contactsService.contactToBeDeleted = displayedContact;
-    } 
+  /**
+   * Opens a confirmation dialog to delete the selected contact.
+   * Sets the UI flag to show the confirmation and stores the contact to be deleted.
+   * 
+   * @param {Contact} displayedContact - The contact that is to be deleted.
+   */
+  openConfirmationDeleteContact(displayedContact: Contact) {
+    this.generalService.confirmationDeleteContact = true;
+    this.contactsService.contactToBeDeleted = displayedContact;
+  } 
 
 }

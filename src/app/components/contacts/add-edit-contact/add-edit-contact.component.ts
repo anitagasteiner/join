@@ -48,7 +48,7 @@ export class AddEditContactComponent {
     color: ''
   };
 
-    /**
+  /**
    * Instance of GeneralService used to interact with general data and operations.
    * 
    * @type {GeneralService}

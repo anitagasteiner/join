@@ -8,7 +8,7 @@
 
                 <img src="/img/arrow-left-line.svg" (click)="contactsService.hideContactDetails()">
 
-                <div class="contact-icon" [ngClass]="displayedContact.color">{{ displayedContact.name | initials }}</div> <!-- ngClass: SCSS-Klasse basierend auf dem color-Attribut des displayedContact -->
+                <div class="contact-icon" [ngClass]="displayedContact.color">{{ displayedContact.name | initials }}</div> <!-- NOTE - ngClass: SCSS-Klasse basierend auf dem color-Attribut des displayedContact -->
 
                 <div class="contact-head-right">
 
