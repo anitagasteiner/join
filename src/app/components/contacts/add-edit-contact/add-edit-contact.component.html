@@ -31,7 +31,7 @@
                 <app-add-contact-form></app-add-contact-form>
             }
             @if (contactsService.editContactFormOpened && contactsService.contactToBeEdited) {
-                <app-edit-contact-form [contact]="contactsService.contactToBeEdited" (updated)="onContactUpdated()" (cancelled)="contactsService.hideContactForm()"></app-edit-contact-form>
+                <app-edit-contact-form [contact]="contactsService.contactToBeEdited" (cancelled)="contactsService.hideContactForm()"></app-edit-contact-form>
             }
 
         </div>

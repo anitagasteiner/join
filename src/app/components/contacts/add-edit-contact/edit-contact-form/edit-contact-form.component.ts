@@ -139,5 +139,3 @@ export class EditContactFormComponent {
   }
 
 }
-
-//TODO - Bugfixing: Beim Editieren eines Kontaktes verschwindet die Contact Color.
