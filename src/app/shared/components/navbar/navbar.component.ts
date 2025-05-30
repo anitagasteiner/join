@@ -30,7 +30,7 @@ export class NavbarComponent {
    * 
    * @param {string} btn - The identifier of the clicked navigation button.
    */
-  changeColor(btn: string) {
+  changeColor(btn: string): void {
     this.generalService.activeNavBtn = btn; 
   }
 

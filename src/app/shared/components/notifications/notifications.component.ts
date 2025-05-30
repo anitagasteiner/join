@@ -9,6 +9,11 @@ import { GeneralService } from '../../../services/general.service';
 })
 export class NotificationsComponent {
 
-  generalService = inject(GeneralService);
+  /**
+   * Instance of GeneralService used to interact with general data and operations.
+   * 
+   * @type {GeneralService}
+   */
+  generalService: GeneralService = inject(GeneralService);
 
 }
