@@ -4,6 +4,9 @@ import { Contact } from '../models/contact.model';
 import { DataBaseService } from './data-base.service';
 import { GeneralService } from './general.service';
 
+/**
+ * A service for managing contact-related state and operations.
+ */
 @Injectable({
   providedIn: 'root'
 })

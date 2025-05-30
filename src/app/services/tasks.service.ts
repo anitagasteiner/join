@@ -5,6 +5,9 @@ import { DataBaseService } from './data-base.service';
 import { TaskFormInput } from '../models/task-form-input';
 import { GeneralService } from './general.service';
 
+/**
+ * A service for managing task data and operations.
+ */
 @Injectable({
   providedIn: 'root'
 })
