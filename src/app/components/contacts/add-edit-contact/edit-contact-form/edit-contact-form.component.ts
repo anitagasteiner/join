@@ -98,7 +98,8 @@ export class EditContactFormComponent {
       await this.dataBaseService.updateData<any>('contacts', this.editedContact.id, {
         name: this.editedContact.name,
         email: this.editedContact.email,
-        phone: this.editedContact.phone
+        phone: this.editedContact.phone,
+        color: this.editedContact.color
       });
       this.refreshDisplayedContact(this.editedContact.id);
       form.resetForm();      
