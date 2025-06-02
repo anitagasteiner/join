@@ -1,14 +1,20 @@
 @use './../../../shared/colors.scss' as colors;
+@use './../../../shared/breakpoints.scss' as bp;
 
 .contact-container {
-    width: 352px;
+    width: 290px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 35px;
-    padding: 15px 0 15px 24px;
+    gap: 15px;
+    padding: 15px 0 15px 15px;
     border-radius: 10px;
+    @include bp.xs {
+        width: 352px;
+        gap: 35px;
+        padding: 15px 0 15px 24px;
+    }
     &:hover {
         cursor: pointer;
         @include colors.bg-light;
@@ -25,6 +31,7 @@
     justify-content: center;
     align-items: center;
     font-size: 12px;
+    flex-shrink: 0;
 }
 
 .contact-name-mail-container {
@@ -37,4 +44,16 @@
 
 .contact-name {
     font-size: 19px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break:break-word;
+    flex-grow: 0;
+}
+
+.contact-mail {
+    width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    flex-grow: 0;
 }
