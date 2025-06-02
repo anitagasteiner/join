@@ -12,8 +12,11 @@
     border-radius: 10px;
     @include bp.xs {
         width: 352px;
-        gap: 35px;
+        gap: 25px;
         padding: 15px 0 15px 24px;
+    }
+    @include bp.sm {
+        gap: 35px;
     }
     &:hover {
         cursor: pointer;
@@ -47,7 +50,6 @@
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break:break-word;
-    flex-grow: 0;
 }
 
 .contact-mail {
@@ -55,5 +57,4 @@
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
-    flex-grow: 0;
 }
