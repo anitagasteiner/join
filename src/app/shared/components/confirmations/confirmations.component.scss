@@ -1,4 +1,5 @@
 @use './../../../shared/colors.scss' as colors;
+@use './../../../shared/breakpoints.scss' as bp;
 
 .confirmation-container {
     @include colors.bg-blue-bright;
@@ -8,16 +9,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 48px;
+    text-align: center;
+    gap: 24px;
     font-size: 23px;
-    padding: 56px;
+    padding: 42px;
+    @include bp.xs {
+        margin: 8px;
+    }
+    @include bp.sm {
+        margin: 56px;
+        padding: 56px;
+        gap: 48px;
+    }
+    @include bp.lg {
+        margin-left: -64px;
+    }
     >div:nth-child(2) {
         display: flex;
         flex-direction: row;
         gap: 32px;        
     }
 }
-
-// button {
-//     font-size: 26px !important;
-// }
