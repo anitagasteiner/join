@@ -9,13 +9,19 @@
     @include colors.bg-ivory;
     z-index: 2;
     width: 260px;
+    max-height: 80%;
     padding: 32px 24px;
+    overflow-y: auto;
      @include bp.xs {
         width: 320px;
      }
     @include bp.sm {
         width: 500px;
     }
+}
+
+.task-details-container::-webkit-scrollbar {
+    display: none;
 }
 
 .task-details-top-container {
