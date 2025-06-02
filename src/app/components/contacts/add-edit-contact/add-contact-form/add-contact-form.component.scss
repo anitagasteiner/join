@@ -1,4 +1,9 @@
+@use './../../../../shared/breakpoints.scss' as bp;
+
 .btn-create {
     background-image: url('/img/check.svg');
-    margin-top: 52px;
+    margin-top: 24px;
+    @include bp.lg {
+        margin-top: 52px;
+    }
 }

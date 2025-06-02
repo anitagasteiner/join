@@ -1,4 +1,5 @@
 @use './../../../shared/colors.scss' as colors;
+@use './../../../shared/breakpoints.scss' as bp;
 
 form {
     display: flex;
@@ -9,12 +10,26 @@ form {
         position: relative;    
         >input {
             font-size: 19px;
-            width: 364px;
+            min-width: 280px;
             margin: 0 16px;
             border-radius: 0;
             border: none;
-            padding-left: 21px;
+            padding-left: 8px;
             @include colors.border-bottom-grey-light;
+            @include bp.xs {
+                padding-left: 12px;
+                width: 300px;
+            }
+            @include bp.lg {
+                padding-left: 21px;
+                width: 364px;
+            }
+        }
+    }
+    >fieldset:nth-child(1) {
+        margin-top: 32px;
+        @include bp.lg {
+            margin-top: 0;
         }
     }
 }
