@@ -107,9 +107,28 @@ body {
 
 .notifications-container {
     position: absolute;
-    top: 40%;
-    left: 40%;
+    top: 30%;
+    left: 8px;
+    right: 14px;
     z-index: 3;
+    max-width: 350px;
+    @include bp.xs {
+        left: 10%;
+        right: unset;
+        max-width: unset;
+        width: 350px;
+    }
+    @include bp.sm {
+        width: fit-content;
+    }
+    @include bp.md {
+        left: 25%;
+    }
+    @include bp.lg {
+        top: 40%;
+        left: 40%;
+
+    }
 }
 
 
