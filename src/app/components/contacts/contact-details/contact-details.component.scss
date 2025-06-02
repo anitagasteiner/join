@@ -10,7 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 105px 0 0 25px;
+    padding: 85px 5px 5px;
     @include bp.xl {
         position: unset;
         padding: unset;
@@ -24,12 +24,17 @@
     @include colors.bg-ivory;
     @include colors.border-grey-light;
     border-radius: 10px;
-    padding: 72px 36px;
-    margin: 30px 60px 30px 50px;
-    width: fit-content;
+    padding: 72px 24px;
+    width: 100%;
     height: fit-content;
     box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.1);
-    transform:  rotate(3deg);
+    @include bp.sm { 
+        padding: 72px 36px;
+    }    
+    @include bp.md {
+        width: fit-content;
+        transform:  rotate(3deg);
+    }
     @include bp.xl {
         background-color: unset;
         display: unset;
@@ -46,9 +51,13 @@
 .contact-head-container {
     display: flex;
     flex-direction: row;
-    gap: 54px;
+    align-items: center;
+    gap: 25px;
     margin-bottom: 21px;
     position: relative;
+    @include bp.sm {
+        gap: 54px;
+    }
     @include bp.xl {
         position: unset;
     }
@@ -70,13 +79,24 @@
     @include colors.color-ivory;
     @include colors.border-ivory;
     border-radius: 50%;
-    min-width: 120px;
-    height: 120px;
+    min-width: 90px;
+    height: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 500;
-    font-size: 47px;    
+    font-size: 40px;
+    flex-shrink: 0;
+    @include bp.xs {
+        min-width: 100px;
+        height: 100px;
+        font-size: 42px;
+    }
+    @include bp.sm {
+        min-width: 120px;
+        height: 120px;
+        font-size: 47px;
+    }
 }
 
 .contact-head-right {
@@ -87,7 +107,13 @@
     gap: 8px;
     >div:nth-child(1) {
         font-weight: 600;
-        font-size: 48px;
+        font-size: 36px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        @include bp.sm {
+            font-size: 48px;
+        }
     }
 }
 

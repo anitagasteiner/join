@@ -217,4 +217,7 @@ select {
 
 .contact-mail {
     @include colors.color-dark;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
