@@ -6,7 +6,11 @@
             <input #title="ngModel" [(ngModel)]="tasksService.newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" required>
             <legend></legend>
             @if (!title.valid && title.touched && !title.disabled || titleMissing) {
-                <span class="notification">Please insert title.</span>
+                <span class="notification">Your task needs a title</span>
+                <img class="img-error" src="/img/message-error.svg">
+            }
+            @if (title.valid) {
+                <img class="img-error" src="/img/message-ok.svg">
             }
         </fieldset>
 
@@ -19,7 +23,11 @@
             <input #date="ngModel" [(ngModel)]="tasksService.newTask.date" placeholder="dd/mm/yyyy" onfocus="this.placeholder=''" type="date" name="date" id="date" required>
             <legend><b>Due date</b></legend>
             @if (!date.valid && date.touched && !date.disabled || dateMissing) {
-                <span class="notification">Please insert date.</span>
+                <span class="notification">Your task needs a deadline</span>
+                <img class="img-error" src="/img/message-error.svg">
+            }
+            @if (date.valid && !dateMissing) {
+                <img class="img-error" src="/img/message-ok.svg">
             }
         </fieldset>
 
@@ -53,7 +61,11 @@
             </label>             
             <legend><b>Priority</b></legend>
             @if (priorityMissing) {
-                <span class="notification priority-notification">Please select priority.</span>
+                <span class="notification priority-notification">Your task needs a priority level</span>
+                <img class="img-error priority-img-error" src="/img/message-error.svg">
+            }
+            @if (this.tasksService.selectedPriority !== '') {
+                <img class="img-error priority-img-error" src="/img/message-ok.svg">
             }
         </fieldset>
 
@@ -104,7 +116,11 @@
             </select>
             <legend><b>Category</b></legend>
             @if (categoryMissing) {
-                <span class="notification">Please select category.</span>
+                <span class="notification">Your task needs a category</span>
+                <img class="img-error" src="/img/message-error.svg">
+            }
+            @if (this.tasksService.selectedCategory == 'Technical Task' || this.tasksService.selectedCategory == 'User Story') {
+                <img class="img-error" src="/img/message-ok.svg">
             }
         </fieldset>
 

@@ -48,16 +48,29 @@ fieldset, input, textarea, select {
 
 .notification {
     position: absolute;
-    left: 3px;
-    bottom: 3px;
+    right: 82px;
+    bottom: 8px;
     color: red;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
 }
 
+.img-error {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 48px;
+    bottom: 4px;
+}
+
 .priority-notification {
-    top: -20px !important;
-    left: 70px !important;
+    z-index: -1;
+    top: -26px !important;
+}
+
+.priority-img-error {
+    bottom: unset !important;
+    top: -32px;
 }
 
 .priority-container {
