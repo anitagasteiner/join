@@ -24,6 +24,7 @@
     max-height: 650px;
     box-sizing: border-box;
     position: relative;
+    overflow-y: auto;
     @include bp.xs {
         max-width: 396px;        
     }
@@ -42,6 +43,10 @@
             right: 26px;
         }
     }
+}
+
+.add-edit-contact-container::-webkit-scrollbar {
+    display: none;
 }
 
 .top-container {
