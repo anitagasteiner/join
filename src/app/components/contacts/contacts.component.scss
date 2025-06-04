@@ -60,6 +60,7 @@
     align-items: center;
     overflow: auto;
     margin-top: 24px;
+    padding-bottom: 24px;
     @include bp.lg {
         margin-top: 0;
     }
