@@ -28,14 +28,11 @@
             <span>Assigned to:</span>
             @if (displayedTask.assigned) {
                 <div>
-                    @for (assignedContact of displayedTask.assigned.slice(0, 5); track assignedContact.id; let index = $index) {
+                    @for (assignedContact of displayedTask.assigned; track assignedContact.id; let index = $index) {
                         <div class="assigned">
                             <div class="contact-icon" [ngClass]="assignedContact.color">{{ assignedContact.name | initials }}</div>
                             <div>{{ assignedContact.name }}</div>
                         </div>                        
-                    }
-                    @if (displayedTask.assigned.length > 5) {
-                        ...
                     }
                 </div>
             }
