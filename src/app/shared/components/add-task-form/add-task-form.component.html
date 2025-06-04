@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit(addTaskForm)" #addTaskForm="ngForm">
 
         <fieldset class="notification-container">
-            <input #title="ngModel" [(ngModel)]="tasksService.newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" required>
+            <input #title="ngModel" [(ngModel)]="tasksService.newTask.title" placeholder="Enter a title" type="text" name="title" id="title" minlength="2" maxlength="50" required>
             <legend></legend>
             @if (!title.valid && title.touched && !title.disabled || titleMissing) {
                 <span class="notification">Your task needs a title.</span>
@@ -15,7 +15,7 @@
         </fieldset>
 
         <fieldset>
-            <textarea #description="ngModel" [(ngModel)]="tasksService.newTask.description" rows="3" placeholder="Enter a description" type="text" name="description" id="description"></textarea>
+            <textarea #description="ngModel" [(ngModel)]="tasksService.newTask.description" rows="3" placeholder="Enter a description" type="text" name="description" id="description" maxlength="300"></textarea>
             <legend><b>Description</b> (optional)</legend>
         </fieldset>
 
@@ -99,12 +99,15 @@
             <legend><b>Assigned to</b> (optional)</legend>
         </fieldset>
         
-        @if (tasksService.assignedContacts.length) {        
+        @if (tasksService.assignedContacts.length) {
             <div class="assigned-icons-container">
-                @for (assignedPerson of tasksService.assignedContacts; track assignedPerson.id) {
+                @for (assignedPerson of tasksService.assignedContacts.slice(0, 5); track assignedPerson.id) {
                     <div class="contact-icon" [ngClass]="assignedPerson.color">{{ assignedPerson.name | initials }}</div>
                 }
-            </div>
+                @if (tasksService.assignedContacts.length > 5) {
+                    ...
+                }
+            </div>            
         }
 
         <fieldset class="notification-container">
@@ -125,7 +128,7 @@
         </fieldset>
 
         <fieldset class="subtasks-container">
-            <input #subtaskInput #subtasks="ngModel" [(ngModel)]="newSubtask.text" placeholder="Add new subtask" type="text" name="subtasks" id="subtasks" (click)="addingSubtask()">
+            <input #subtaskInput #subtasks="ngModel" [(ngModel)]="newSubtask.text" placeholder="Add new subtask" type="text" name="subtasks" id="subtasks" maxlength="50" (click)="addingSubtask()">
             @if (!subtaskBeingAdded) {
                 <img src="/img/add.svg" (click)="setFocusOnSubtaskInput()">
             }

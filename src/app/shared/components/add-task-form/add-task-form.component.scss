@@ -19,7 +19,7 @@ form {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    gap: 8px;
+    gap: 16px;
     padding-bottom: 16px;
     position: relative;
     >fieldset:nth-child(1) {
@@ -40,6 +40,10 @@ form {
 
 fieldset, input, textarea, select {
     width: 100%;
+}
+
+input, textarea, select {
+    padding: 8px 0 8px 12px;
 }
 
 .notification-container {
@@ -139,10 +143,6 @@ legend {
     @include colors.color-ivory;
 }
 
-input, textarea, select {
-    padding: 8px 0 8px 12px;
-}
-
 #date {
     cursor: text;
 }
@@ -171,6 +171,9 @@ input, textarea, select {
 
 .subtasks-container {
     position: relative;
+    >input {
+        padding-right: 72px;
+    }
     >img {
         position: absolute;
         bottom: 18px;
@@ -180,7 +183,7 @@ input, textarea, select {
     >div {
         position: absolute;
         bottom: 12px;
-        right: 20px;
+        right: 16px;
         display: flex;
         flex-direction: row;
         gap: 4px;
@@ -304,7 +307,7 @@ input, textarea, select {
     cursor: pointer;
     user-select: none;
     width: auto;
-    &:hover input ~ .custom-checkbox { // On mouse-hover, add a grey background
+    &:hover input ~ .custom-checkbox { //NOTE - On mouse-hover, add a grey background
         @include colors.bg-grey-light-transparent;
         width: 17px;
         height: 17px;
@@ -316,7 +319,7 @@ input, textarea, select {
         gap: 16px;
         height: auto;
     }
-    >input { // Hide the browser's default checkbox
+    >input { //NOTE - Hide the browser's default checkbox
         position: absolute;
         top: 0;
         left: 0;
@@ -380,6 +383,9 @@ input, textarea, select {
     align-items: flex-start;
     gap: 8px;
     width: calc(100dvw - 15px);
+    >div:nth-child(n + 2) {
+        margin-left: -20px;
+    }
     @include bp.xs {
         width: calc(100dvw - 50px);
     }
@@ -398,6 +404,7 @@ input, textarea, select {
     justify-content: center;
     align-items: center;
     font-size: 12px;
+    flex-shrink: 0;
 }
 
 .subtasks-list {
@@ -419,6 +426,10 @@ input, textarea, select {
     position: relative;
     padding-bottom: 12px;
     margin-left: 16px;
+    padding-right: 64px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break:break-word;
 }
 
 .edit-delete-subtask {
