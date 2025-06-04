@@ -43,6 +43,10 @@
     }
 }
 
+.add-edit-task-container::-webkit-scrollbar {
+    display: none;
+}
+
 h2 {
     font-weight: 700;
     font-size: 48px;
