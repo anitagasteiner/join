@@ -48,29 +48,35 @@ fieldset, input, textarea, select {
 
 .notification {
     position: absolute;
-    right: 82px;
-    bottom: 8px;
+    left: 38px;
+    bottom: 0;
     color: red;
     font-size: 16px;
     font-weight: 400;
-}
-
-.img-error {
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    right: 48px;
-    bottom: 4px;
+    opacity: 0.5;
 }
 
 .priority-notification {
-    z-index: -1;
-    top: -26px !important;
+    bottom: unset !important;
+    top: -20px;
+    left: 98px !important;
 }
 
-.priority-img-error {
-    bottom: unset !important;
-    top: -32px;
+.validation-img {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    opacity: 0.4;
+}
+
+.title-validation-img, .date-validation-img, .category-validation-img {
+    left: 4px;
+    bottom: 4px;
+}
+
+.priority-validation-img {
+    top: -34px;
+    left: 64px;
 }
 
 .priority-container {
