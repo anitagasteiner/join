@@ -128,17 +128,21 @@
         </fieldset>
 
         <fieldset class="subtasks-container">
-            <input #subtaskInput #subtasks="ngModel" [(ngModel)]="newSubtask.text" placeholder="Add new subtask" type="text" name="subtasks" id="subtasks" maxlength="50" (click)="addingSubtask()">
-            @if (!subtaskBeingAdded) {
-                <img src="/img/add.svg" (click)="setFocusOnSubtaskInput()">
-            }
-            @if (subtaskBeingAdded) {
-                <div>
-                    <img src="/img/cancel-blue.svg" (click)="stopAddingSubtask()">
-                    <div></div>
-                    <img src="/img/check-blue.svg" (click)="addSubtask()">
-                </div>
-            }            
+            @if (tasksService.newSubtasks.length < 10) {
+                <input #subtaskInput #subtasks="ngModel" [(ngModel)]="newSubtask.text" placeholder="Add new subtask" type="text" name="subtasks" id="subtasks" maxlength="50" (click)="addingSubtask()">
+                @if (!subtaskBeingAdded) {
+                    <img src="/img/add.svg" (click)="setFocusOnSubtaskInput()">
+                }
+                @if (subtaskBeingAdded) {
+                    <div>
+                        <img src="/img/cancel-blue.svg" (click)="stopAddingSubtask()">
+                        <div></div>
+                        <img src="/img/check-blue.svg" (click)="addSubtask()">
+                    </div>
+                }
+            } @else {
+                <span class="notification subtasks-notification">You can add up to 10 subtasks.</span>                
+            }                
             <legend><b>Subtasks</b> (optional)</legend>
         </fieldset>
         @if (tasksService.newSubtasks.length) {
