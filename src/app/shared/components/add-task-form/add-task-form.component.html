@@ -7,10 +7,10 @@
             <legend></legend>
             @if (!title.valid && title.touched && !title.disabled || titleMissing) {
                 <span class="notification">Your task needs a title.</span>
-                <img class="validation-img title-validation-img" src="/img/message-error.svg">
+                <img class="validation-img title-validation-img" src="/img/input-error.svg">
             }
             @if (title.valid) {
-                <img class="validation-img title-validation-img" src="/img/message-ok.svg">
+                <img class="validation-img title-validation-img" src="/img/input-ok.svg">
             }
         </fieldset>
 
@@ -24,10 +24,10 @@
             <legend><b>Due date</b></legend>
             @if (!date.valid && date.touched && !date.disabled || dateMissing) {
                 <span class="notification">Your task needs a deadline.</span>
-                <img class="validation-img date-validation-img" src="/img/message-error.svg">
+                <img class="validation-img date-validation-img" src="/img/input-error.svg">
             }
             @if (date.valid && !dateMissing) {
-                <img class="validation-img date-validation-img" src="/img/message-ok.svg">
+                <img class="validation-img date-validation-img" src="/img/input-ok.svg">
             }
         </fieldset>
 
@@ -62,10 +62,10 @@
             <legend><b>Priority</b></legend>
             @if (priorityMissing) {
                 <span class="notification priority-notification">Your task needs a priority.</span>
-                <img class="validation-img priority-validation-img" src="/img/message-error.svg">
+                <img class="validation-img priority-validation-img" src="/img/input-error.svg">
             }
             @if (this.tasksService.selectedPriority !== '') {
-                <img class="validation-img priority-validation-img" src="/img/message-ok.svg">
+                <img class="validation-img priority-validation-img" src="/img/input-ok.svg">
             }
         </fieldset>
 
@@ -120,10 +120,10 @@
             <legend><b>Category</b></legend>
             @if (categoryMissing) {
                 <span class="notification">Your task needs a category.</span>
-                <img class="validation-img category-validation-img" src="/img/message-error.svg">
+                <img class="validation-img category-validation-img" src="/img/input-error.svg">
             }
             @if (this.tasksService.selectedCategory == 'Technical Task' || this.tasksService.selectedCategory == 'User Story') {
-                <img class="validation-img category-validation-img" src="/img/message-ok.svg">
+                <img class="validation-img category-validation-img" src="/img/input-ok.svg">
             }
         </fieldset>
 

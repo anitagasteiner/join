@@ -4,7 +4,11 @@
         <input #name="ngModel" [(ngModel)]="editedContact.name" placeholder="Name" onfocus="this.placeholder=''" type="text" name="name" id="name" required pattern="[A-Za-zÄäÖöÜüß\-]{2,} [A-Za-zÄäÖöÜüß\-]{2,}"> <!-- Eingabefeld für den Namen ist mit der ngModel-Direktive mit editContact.name verbunden -> Eingabewerte werden direkt synchronisiert -->
         <legend></legend>
         @if (!name.valid && name.touched && !name.disabled) {
-            <span class="notification">Please insert first and last name (at least two characters each).</span>
+            <span class="notification">Insert first and last name.</span>
+            <img class="validation-img" src="/img/input-error.svg">
+        }
+        @if (name.valid) {
+            <img class="validation-img" src="/img/input-ok.svg">
         }
     </fieldset>
 
@@ -12,7 +16,11 @@
         <input #email="ngModel" [(ngModel)]="editedContact.email" placeholder="Email" onfocus="this.placeholder=''" type="email" name="email" id="email" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
         <legend></legend>
         @if (!email.valid && email.touched && !email.disabled) {
-            <span class="notification">Please insert email address.</span>
+            <span class="notification">Insert email address.</span>
+            <img class="validation-img" src="/img/input-error.svg">
+        }
+        @if (email.valid) {
+            <img class="validation-img" src="/img/input-ok.svg">
         }
     </fieldset>
 
@@ -20,7 +28,11 @@
         <input #phone="ngModel" [(ngModel)]="editedContact.phone" placeholder="Phone" onfocus="this.placeholder=''" type="text" name="phone" id="phone" required pattern="\+[0-9]{1,3} [0-9]{4,14}">
         <legend></legend>
         @if (!phone.valid && phone.touched && !phone.disabled) {
-            <span class="notification">Please insert phone number using the following format: +123 1234567890.</span>
+            <span class="notification">Use Format +123 4567890.</span>
+            <img class="validation-img" src="/img/input-error.svg">
+        }
+        @if (phone.valid) {
+            <img class="validation-img" src="/img/input-ok.svg">
         }
     </fieldset>
 
