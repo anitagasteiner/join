@@ -5,7 +5,10 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
+    @include bp.md {
+        gap: 40px;
+    }
     >fieldset{
         position: relative;    
         >input {
@@ -29,7 +32,7 @@ form {
     >fieldset:nth-child(1) {
         margin-top: 32px;
         @include bp.lg {
-            margin-top: 0;
+            margin-top: 8px;
         }
     }
 }
@@ -51,6 +54,6 @@ form {
     left: 10px;
     top: 32px;
     color: red;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
 }

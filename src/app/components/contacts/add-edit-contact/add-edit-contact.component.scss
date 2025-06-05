@@ -21,15 +21,19 @@
 
 .add-edit-contact-container {
     width: 100dvw;    
-    max-height: 650px;
+    max-height: 600px;
     box-sizing: border-box;
     position: relative;
     overflow-y: auto;
     @include bp.xs {
         max-width: 396px;        
     }
+    @include bp.md {
+        max-height: 750px;
+    }
     @include bp.lg {
-        max-width: 584px;
+        max-width: 564px;
+        max-height: 900px;
     }
     >img {
         width: 32px;
@@ -56,14 +60,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
     font-family: 'Inter', sans-serif !important;
-    height: 328px;
+    height: 200px;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
+    @include bp.md {
+        gap: 12px;
+        height: 300px;
+    }
     @include bp.lg {
         border-top-right-radius: unset;
-        height: 362px;
     }
     >div {
         font-size: 21px;
@@ -75,8 +82,11 @@
 
 h2 {
     font-weight: 700;
-    font-size: 47px;
+    font-size: 38px;
     margin: 0;
+    @include bp.md {
+        font-size: 47px;
+    }
     @include bp.lg {
         font-size: 48px;
     }
@@ -86,19 +96,22 @@ h2 {
     @include colors.bg-ivory;
     @include colors.border-grey-light;
     border-top: none;
-    height: 428px;
+    height: 320px;
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    @include bp.md {
+        height: 428px;
+    }
     @include bp.lg {
         position: unset;
         display: flex;
         flex-direction: column;
         gap: 32px;
-        padding: 72px 81px;
+        padding: 56px 81px;
         height: auto;
     }
 }
@@ -108,15 +121,29 @@ h2 {
     @include colors.bg-contact-grey;
     @include colors.border-ivory;
     border-radius: 50%;
-    min-width: 120px;
-    height: 120px;
+    min-width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
+    font-size: 26px;
     position: absolute;
-    top: -60px;
+    top: -45px;
+    @include bp.md {
+        min-width: 120px;
+        height: 120px;
+        top: -60px;
+        font-size: 47px;
+    }
     @include bp.lg {
         position: unset;
+    }
+    >img {
+        width: 52px;
+        height: 52px;
+        @include bp.md {
+            width: 64px;
+            height: 64px;
+        }
     }
 }
