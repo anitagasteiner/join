@@ -1,7 +1,7 @@
-<form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm"> <!-- Das Formular verwendet Angulars ngSubmit-Direktive, um die onSubmit-Methode zu triggern, wenn das Formular abgesendet wird. Das #contactForm="ngForm"-Attribut erstellt eine lokale Template-Variable, die das gesamte Formularobjekt enthält. -> Validierung, Status -->
+<form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm"> <!--NOTE - Das Formular verwendet Angulars ngSubmit-Direktive, um die onSubmit-Methode zu triggern, wenn das Formular abgesendet wird. Das #contactForm="ngForm"-Attribut erstellt eine lokale Template-Variable, die das gesamte Formularobjekt enthält. -> Validierung, Status -->
         
     <fieldset>
-        <input #name="ngModel" [(ngModel)]="editedContact.name" placeholder="Name" onfocus="this.placeholder=''" type="text" name="name" id="name" required pattern="[A-Za-zÄäÖöÜüß\-]{2,} [A-Za-zÄäÖöÜüß\-]{2,}"> <!-- Eingabefeld für den Namen ist mit der ngModel-Direktive mit editContact.name verbunden -> Eingabewerte werden direkt synchronisiert -->
+        <input #name="ngModel" [(ngModel)]="editedContact.name" placeholder="Name" onfocus="this.placeholder=''" type="text" name="name" id="name" required pattern="[A-Za-zÄäÖöÜüß\-]{2,} [A-Za-zÄäÖöÜüß\-]{2,}"> <!--NOTE - Eingabefeld für den Namen ist mit der ngModel-Direktive mit editContact.name verbunden -> Eingabewerte werden direkt synchronisiert -->
         <legend></legend>
         @if (!name.valid && name.touched && !name.disabled) {
             <span class="notification">Insert first and last name.</span>

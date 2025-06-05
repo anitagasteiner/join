@@ -242,6 +242,11 @@ $colors: (
     border-bottom: 2px solid $border-color;
 }
 
+@mixin border-bottom-blue-bright {
+    $border-color: map.get($colors, "blue-bright");
+    border-bottom: 2px solid $border-color;
+}
+
 @mixin outline-ivory {
     $border-color: map.get($colors, "ivory");
     outline: 2px solid $border-color;
