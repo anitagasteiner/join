@@ -222,6 +222,11 @@ $colors: (
     border-style: dotted;
 }
 
+@mixin border-grey-line {
+    $border-color: map.get($colors, "grey-line");
+    border: 2px solid $border-color;
+}
+
 @mixin border-bottom-red {
     $border-color: map.get($colors, "red");
     border-bottom: 2px solid $border-color;

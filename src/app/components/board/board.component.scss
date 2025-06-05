@@ -26,16 +26,26 @@
 }
 
 .search-task {
-    // font-size: 16px;
     width: 280px;
     padding: 8px 0 8px 12px;
-    background: url('/img/search.svg') no-repeat right 21px center;
+    background: url('/img/search.svg') no-repeat right 16px center;
+    outline: none;
+    @include colors.border-grey-line;
+    border-radius: 10px;
     @include bp.xs {
         width: 384px;
     }
     @include bp.lg {
         width: 312px;
-    }    
+    }
+    &:hover {
+        background-image: url('/img/search-bright.svg');
+        @include colors.border-blue-dark;
+    }
+    &:focus {
+        background-image: url('/img/search-dark.svg');
+        @include colors.border-blue-bright;
+    }
 }
 
 .btn-add-task {
