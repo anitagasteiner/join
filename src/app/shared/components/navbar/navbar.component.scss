@@ -17,11 +17,10 @@ nav {
     @include bp.lg {
         height: calc(100dvh - 96px);
         width: 232px;
-        // display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-        top: 96px;
+        top: 0;
         font-size: 16px;
         box-shadow: 1px 0 4px 0 rgba(0, 0, 0, 0.16);
         @include colors.border-left-grey-light;
@@ -29,7 +28,6 @@ nav {
 }
 
 .nav-container {
-    // width: 100dvw;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -50,7 +48,6 @@ nav {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        // height: 40px;
         height: 100%;
         width: 100%;
         padding: 8px 0 8px;

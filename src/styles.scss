@@ -42,7 +42,6 @@ body {
     overflow: auto;
     @include bp.lg {
         height: calc(100dvh - 96px);
-        // height: calc(100dvh - 96px - 24px);
         margin-left: 232px;
         @include colors.border-right-grey-light;
     }
@@ -78,8 +77,7 @@ body {
 }
 
 
-// Colors for contact icons:
-// ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green'];
+//NOTE - Colors for contact icons: 'orange', 'blue', 'violet', 'blueviolet', 'pink', 'green'
 
 .orange {
     @include colors.bg-contact-orange;
@@ -127,8 +125,14 @@ body {
     @include bp.lg {
         top: 40%;
         left: 40%;
-
     }
+}
+
+.contact-mail {
+    @include colors.color-dark;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 
@@ -232,11 +236,4 @@ select {
         @include colors.border-blue-dark;
         @include colors.color-dark;
     }
-}
-
-.contact-mail {
-    @include colors.color-dark;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
 }
