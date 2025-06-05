@@ -238,6 +238,9 @@ legend {
     cursor: pointer;
     background: url('/img/cancel-blue.svg') no-repeat center;
     background-size: 32px;
+    @include bp.xl {
+        top: -76px;
+    }
     &:hover {
         background-image: url('/img/cancel-bright.svg');
     }
