@@ -28,7 +28,7 @@
 
             <div>
                 To do
-                <img src="/img/plus-btn.svg" (click)="openAddTaskContainer('to-do')">
+                <div class="add-btn" (click)="openAddTaskContainer('to-do')"></div>
             </div>
 
             @if (tasks$ | async; as tasks) {
@@ -51,7 +51,7 @@
 
             <div>
                 In progress
-                <img src="/img/plus-btn.svg" (click)="openAddTaskContainer('in-progress')">
+                <div class="add-btn" (click)="openAddTaskContainer('in-progress')"></div>
             </div>
 
             @if (tasks$ | async; as tasks) {
@@ -75,7 +75,7 @@
 
             <div>
                 Awaiting feedback
-                <img src="/img/plus-btn.svg" (click)="openAddTaskContainer('waiting')">
+                <div class="add-btn" src="/img/plus-btn.svg" (click)="openAddTaskContainer('waiting')"></div>
             </div>
 
             @if (tasks$ | async; as tasks) {
@@ -96,9 +96,7 @@
 
         <div class="tasks-container">
 
-            <div>
-                Done
-            </div>
+            <div>Done</div>
 
             @if (tasks$ | async; as tasks) {
                 <div cdkDropList [cdkDropListData]="tasks" [cdkDropListConnectedTo]="['toDoList', 'inProgressList', 'waitingList']" cdkDropListGroup id="doneList" (cdkDropListDropped)="drop($event, 'done')" (cdkDropListEntered)="highlightDropZone('done')" (cdkDropListExited)="removeHighlight('done')" [ngClass]="{ 'drop-zone-active': activeDropZone === 'done' }">

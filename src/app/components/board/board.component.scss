@@ -91,11 +91,6 @@
         @include bp.lg {
             width: 280px;
         }
-        >img {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-        }
     }
     >div:nth-child(2) {
         display: flex;
@@ -110,6 +105,16 @@
             scrollbar-width: none;
             padding-bottom: 16px;
         }
+    }
+}
+
+.add-btn {
+    width: 30px;
+    height: 30px;
+    background: url('/img/plus-btn.svg') center no-repeat;
+    cursor: pointer;
+    &:hover {
+        background-image: url('/img/plus-btn-dark.svg');
     }
 }
 
