@@ -29,12 +29,16 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-
-.close-img {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
+    >div:nth-child(2) {
+        width: 32px;
+        height: 32px;
+        background: url('/img/cancel-blue.svg') no-repeat center;
+        background-size: 32px;
+        cursor: pointer;
+    }
+    >div:nth-child(2):hover {
+        background-image: url('/img/cancel-bright.svg');
+    }
 }
 
 h2 {
