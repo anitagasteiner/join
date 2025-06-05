@@ -53,15 +53,9 @@
         </div>
 
         <div class="task-details-bottom-container">
-            <div (click)="openConfirmationDeleteTask(displayedTask)">
-                <img src="/img/delete.svg">
-                <span>Delete</span>
-            </div>
+            <div (click)="openConfirmationDeleteTask(displayedTask)">Delete</div>
             <div class="line"></div>
-            <div>
-                <img src="/img/edit.svg" (click)="openFormToEditTask(displayedTask)">
-                <span>Edit</span>
-            </div>
+            <div (click)="openFormToEditTask(displayedTask)">Edit</div>
         </div>
 
     </ng-container>

@@ -141,11 +141,25 @@ h2 {
     align-self: flex-end;
     gap: 8px;
     >div:nth-child(odd) {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
+        padding-left: 30px;
+        width: 56px;        
         cursor: pointer;
+        &:hover {
+            @include colors.color-blue-bright;
+            font-weight: 700;
+        }
+    }
+    >div:nth-child(1) {
+        background: url('/img/delete.svg') left no-repeat;
+    }
+    >div:nth-child(1):hover {
+        background-image: url('/img/delete-dark.svg');
+    }
+    >div:nth-child(3) {
+        background: url('/img/edit.svg') left no-repeat;
+    }
+    >div:nth-child(3):hover {
+        background-image: url('/img/edit-dark.svg');
     }
 }
 
