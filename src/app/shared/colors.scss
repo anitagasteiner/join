@@ -171,6 +171,11 @@ $colors: (
     color: $color !important;
 }
 
+@mixin color-blue-bright {
+    $color: map.get($colors, "blue-bright");
+    color: $color !important;
+}
+
 @mixin border-grey-light {
     $border-color: map.get($colors, "grey-light");
     border: 2px solid $border-color;

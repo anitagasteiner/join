@@ -15,17 +15,8 @@
                     <div>{{displayedContact.name}}</div>
 
                     <div class="contact-edit-delete">
-
-                        <div (click)="contactsService.showEditContactForm(displayedContact)">
-                            <img src="/img/edit.svg">
-                            Edit
-                        </div>
-
-                        <div (click)="openConfirmationDeleteContact(displayedContact)">
-                            <img src="/img/delete.svg">
-                            Delete
-                        </div>
-
+                        <div (click)="contactsService.showEditContactForm(displayedContact)">Edit</div>
+                        <div (click)="openConfirmationDeleteContact(displayedContact)">Delete</div>
                     </div>
 
                 </div>
