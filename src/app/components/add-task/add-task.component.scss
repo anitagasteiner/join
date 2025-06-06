@@ -1,6 +1,11 @@
+@use './../../shared/breakpoints.scss' as bp;
+
 .main-container {
     position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    @include bp.xl {
+        padding-top: 48px;
+    }
 }

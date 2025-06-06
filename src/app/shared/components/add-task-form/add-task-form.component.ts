@@ -282,7 +282,7 @@ export class AddTaskFormComponent {
   resetForm(form: NgForm): void {
     form.resetForm();
     this.emptyNewTask();    
-    this.tasksService.selectedPriority = '';
+    this.tasksService.selectedPriority = 'medium';
     this.tasksService.assignedContacts = [];
     this.tasksService.newSubtasks = [];
     this.tasksService.addTaskContainerOpened = false;
