@@ -8,9 +8,14 @@
     bottom: 0;
     left: 0;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 85px 5px 5px;
+    justify-content: flex-start;
+    align-items: flex-start;    
+    @include bp.xs {
+        padding: 85px 5px 5px;
+    }
+    @include bp.md {
+        justify-content: center;
+    }
     @include bp.xl {
         position: unset;
         padding: unset;
@@ -25,8 +30,7 @@
     @include colors.border-grey-light;
     border-radius: 10px;
     padding: 72px 24px;
-    width: 100%;
-    // height: fit-content;
+    width: 100dvw;
     max-height: calc(100dvh - 250px);
     box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.1);
     overflow-y: auto;
