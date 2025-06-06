@@ -10,7 +10,6 @@ export class NoTasksComponent {
 
   /**
    * Optional input representing the task's status category 'to-do', 'in-progress', 'waiting' or 'done'.
-   * 
    * @type {string}
    */
    @Input()status?: string;

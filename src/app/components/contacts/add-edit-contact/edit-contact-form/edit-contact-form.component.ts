@@ -24,7 +24,6 @@ export class EditContactFormComponent {
   /**
    * Contact data passed from the parent component.
    * Used to pre-fill the form for editing the contact.
-   * 
    * @type {Contact}
    */
   @Input()contact!: Contact;
@@ -46,14 +45,12 @@ export class EditContactFormComponent {
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
 
   /**
    * Instance of ContactsService used to manage contact data and operations.
-   * 
    * @type {ContactsService}
    */
   contactsService: ContactsService = inject(ContactsService);
@@ -89,7 +86,6 @@ export class EditContactFormComponent {
    * Refreshes the displayed contact and resets the form.
    * Triggers the confirmation notification.
    * In case of an error, it displays an error notification.
-   *
    * @param form - The submitted contact form.
    */
   async onSubmit(form: NgForm): Promise<void> {

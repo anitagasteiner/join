@@ -16,7 +16,6 @@ export class TasksService {
   /**
    * Internal subject to manage the currently selected task.
    * Emits the currently selected task to all subscribers immediately.
-   * 
    * @private
    * @type {BehaviorSubject<Task | null>}
    */
@@ -24,21 +23,18 @@ export class TasksService {
 
   /**
    * Observable stream of the currently selected task.
-   * 
    * @type {Observable<Task | null>}
    */
   currentTask$: Observable<Task | null> = this.currentTaskSubject.asObservable();
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
 
   /**
    * The new task that is being created.
-   * 
    * @type {TaskFormInput}
    */
   newTask: TaskFormInput = {
@@ -53,7 +49,6 @@ export class TasksService {
 
   /**
    * The task that is currently being edited.
-   * 
    * @type {Task}
    */
   taskToBeEdited: Task = {
@@ -70,56 +65,48 @@ export class TasksService {
 
   /** 
    * The task that is selected for deletion.
-   * 
    * @type {Task | null}
    */
   taskToBeDeleted: Task | null = null;
 
   /**
    * Currently selected priority. Default selection is 'medium'.
-   * 
    * @type {string}
    */
   selectedPriority: string = 'medium';
 
   /**
    * List of contacts assigned to the task.
-   *
    * @type {Array<{id: string; name: string; color: string}>}
    */
   assignedContacts: {id: string; name: string, color: string}[] = [];
 
   /**
    * Currently selected category.
-   * 
    * @type {string}
    */
   selectedCategory: string = '';
 
   /**
    * List of new subtasks.
-   * 
    * @type {Array<{ text: string; done: boolean }>}
    */
   newSubtasks: {text: string; done: boolean}[] = [];
 
   /**
    * Indicates if the 'add task' UI container is open.
-   * 
    * @type {boolean}
    */
   addTaskContainerOpened: boolean = false;
 
   /**
    * Indicates if the 'edit task' UI container is open.
-   * 
    * @type {boolean}
    */
   editTaskContainerOpened: boolean = false;
 
   /**
    * Indicates if the task details view is open.
-   * 
    * @type {boolean}
    */
   taskDetailsOpened: boolean = false;
@@ -127,14 +114,12 @@ export class TasksService {
   /**
    * Task status ('to-do', 'in-progress', 'waiting' or 'done').
    * Default status: 'to-do'.
-   * 
    * @type {string}
    */
   taskStatus: string = 'to-do';
 
   /**
    * Creates an instance of TasksService.
-   * 
    * @param {DataBaseService} dataBaseService - Service to interact with the Firestore database.
    */
   constructor(private dataBaseService: DataBaseService) { }
@@ -148,7 +133,6 @@ export class TasksService {
 
   /**
    * Sets the currently selected task to be used in the detail view.
-   *
    * @param {Task} task - The task to set as current.
    */  
   setCurrentTask(task: Task): void {
@@ -157,7 +141,6 @@ export class TasksService {
 
   /**
    * Toggles the completion status of a given subtask and updates the task in the database.
-   *
    * @param {Task} task - The parent task containing the subtask.
    * @param {{ text: string; done: boolean }} subtask - The subtask to toggle.
    */
@@ -174,7 +157,6 @@ export class TasksService {
   /**
    * Deletes a task from the database and updates related UI state.
    * Shows a success notification or triggers an error handler if deletion fails.
-   *
    * @param {Task} task - The task to delete.
    */
   async deleteTask(task: Task): Promise<void> {

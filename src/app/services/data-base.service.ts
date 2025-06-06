@@ -13,7 +13,6 @@ export class DataBaseService {
 
   /**
    * Creates an instance of DataBaseService.
-   * 
    * @param firestore - Firestore instance for accessing the database.
    * @param ngZone - Angular NgZone used to ensure UI updates are handled properly.
    */
@@ -22,7 +21,6 @@ export class DataBaseService {
   /**
    * Retrieves all documents from a Firestore collection and returns them as an observable array.
    * Converts Firestore Timestamps to JavaScript Date objects when found in the 'date' field.
-   * 
    * @template T - The expected return type of the documents.
    * @param data - Name of the Firestore collection to query.
    * @returns Observable stream of typed document data with IDs included.
@@ -46,7 +44,6 @@ export class DataBaseService {
 
   /**
    * Adds a new document to a specified Firestore collection.
-   * 
    * @template T - The shape of the data being added.
    * @param collectionName - The name of the collection to add to.
    * @param data - The data object to be added as a new document.
@@ -61,7 +58,6 @@ export class DataBaseService {
 
   /**
    * Updates an existing document in the specified collection with new data.
-   * 
    * @template T - The structure of the new data.
    * @param collectionName - The collection that contains the document.
    * @param docId - The ID of the document to update.
@@ -77,7 +73,6 @@ export class DataBaseService {
 
   /**
    * Deletes a document from the specified Firestore collection.
-   * 
    * @param collectionName - The collection containing the document.
    * @param docId - The ID of the document to delete.
    * @returns A promise that resolves when the document is successfully deleted.

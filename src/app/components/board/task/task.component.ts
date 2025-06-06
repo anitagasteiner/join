@@ -26,7 +26,6 @@ export class TaskComponent {
   /**
    * Stores the number of completed subtasks in a string.
    * It's updated every time the 'progress' getter is called.
-   * 
    * @type {string}
    */
   subtasksDone: string = '0';

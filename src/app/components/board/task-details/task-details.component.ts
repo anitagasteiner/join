@@ -34,14 +34,12 @@ export class TaskDetailsComponent {
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
 
   /**
    * Instance of TasksService used to manage task data and operations.
-   * 
    * @type {TasksService}
    */
   tasksService: TasksService = inject(TasksService);
@@ -49,7 +47,6 @@ export class TaskDetailsComponent {
   /**
    * Observable emitting the currently displayed task.
    * Subscribes to the currentTask$ observable from TasksService.
-   * 
    * @type {Observable<Task>}
    */
   displayedTask$: Observable<Task | null> = this.tasksService.currentTask$;
@@ -59,7 +56,6 @@ export class TaskDetailsComponent {
   /**
    * Opens the form to edit a given task.
    * Adjusts visibility flags and prepares the form data.
-   * 
    * @param {Task} task - The currently displayed task to be edited.
    */
   openFormToEditTask(task: Task): void {
@@ -73,7 +69,6 @@ export class TaskDetailsComponent {
   /**
    * Inserts the data of the task into the 'newTask' object in TasksService.
    * These data are used to fill in the form.
-   * 
    * @param {Task} task - The task to be edited.
    */
   insertDataIntoForm(task: Task): void {
@@ -94,7 +89,6 @@ export class TaskDetailsComponent {
 
   /**
    * Converts a Date object to a string formatted as 'YYYY-MM-DD'.
-   * 
    * @param {Date} date - The date to be converted.
    * @returns {string} - The formatted date string.
    */
@@ -109,7 +103,6 @@ export class TaskDetailsComponent {
   /**
    * Prepares the task data to be edited.
    * Copies all relevant task properties to the 'taskToBeEdited' object in the tasks service.
-   * 
    * @param {Task} task - The task to prepare for editing.
    */
   prepareDataToBeEdited(task: Task): void {
@@ -129,7 +122,6 @@ export class TaskDetailsComponent {
   /**
    * Opens a confirmation dialog for deleting the given task.
    * Sets the deletion target task in the tasks service and shows confirmation UI.
-   * 
    * @param {Task} displayedTask - The task to be deleted.
    */
   openConfirmationDeleteTask(displayedTask: Task): void {

@@ -28,28 +28,24 @@ export class ContactsComponent {
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
 
   /**
    * Instance of ContactsService used to manage contact data and operations.
-   * 
    * @type {ContactsService}
    */
   contactsService: ContactsService = inject(ContactsService);
 
   /**
    * Observable stream of all contacts.
-   * 
    * @type {Observable<Contact[]>}
    */
   unsortedContacts$: Observable<Contact[]>;
 
   /**
    * Observable stream of all contacts, sorted alphabetically by name.
-   * 
    * @type {Observable<Contact[]>}
    */
   contacts$: Observable<Contact[]>;
@@ -58,7 +54,6 @@ export class ContactsComponent {
    * Creates an instance of ContactsComponent.
    * Initializes the contacts stream and sorts the contacts.
    * Sets the currently active navigation button in the general service to 'contacts'. This is used to highlight the navigation button that corresponds to the currently opened section.
-   * 
    * @param {DataBaseService} dataBaseService - Service to access the backend database.
    */
   constructor(private dataBaseService: DataBaseService) {
@@ -69,7 +64,6 @@ export class ContactsComponent {
 
   /**
    * Sorts the contacts alphabetically by name.
-   * 
    * @returns {Observable<Contact[]>} A sorted observable of Contacts.
    */
   sortContacts(): Observable<Contact[]> {

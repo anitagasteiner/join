@@ -10,7 +10,6 @@ export class InitialsPipe implements PipeTransform {
 
   /**
    * Transforms a full name into a string of up to two uppercase initials.
-   * 
    * @param {string} fullName - The full name string to convert.
    * @returns {string} The initials derived from the name.
    */

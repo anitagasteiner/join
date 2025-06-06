@@ -19,14 +19,12 @@ export class ContactDetailsComponent {
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
 
   /**
    * Instance of ContactsService used to manage contact data and operations.
-   * 
    * @type {ContactsService}
    */
   contactsService: ContactsService = inject(ContactsService);
@@ -34,7 +32,6 @@ export class ContactDetailsComponent {
   /**
    * Observable that holds the currently selected (displayed) contact.
    * Used to bind contact details in the template.
-   * 
    * @type {Observable<Contact | null>}
    */
   displayedContact$: Observable<Contact | null> = this.contactsService.selectedContact$; // NOTE - 'displayedContact$' wird als 'Observable<Contact>' deklariert und sofort auf den Wert des 'selectedContact$'-Streams aus dem ContactsService gesetzt.
@@ -44,7 +41,6 @@ export class ContactDetailsComponent {
   /**
    * Opens a confirmation dialog to delete the selected contact.
    * Sets the UI flag to show the confirmation and stores the contact to be deleted.
-   * 
    * @param {Contact} displayedContact - The contact that is to be deleted.
    */
   openConfirmationDeleteContact(displayedContact: Contact): void {

@@ -22,14 +22,12 @@ export class AddContactFormComponent {
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
   
   /**
    * The new contact that is being created.
-   * 
    * @type {Contact}
    */
   newContact: Contact = {
@@ -42,7 +40,6 @@ export class AddContactFormComponent {
 
   /**
    * Predefined list of colors that can be randomly assigned to a new contact.
-   * 
    * @type {string[]}
    */
   availableContactColors: string[] = ['orange', 'blue', 'violet', 'blueviolet', 'pink', 'green'];
@@ -50,14 +47,12 @@ export class AddContactFormComponent {
   /**
    * Reference to the contact form in the template.
    * Used for validation and resetting.
-   * 
    * @type {NgForm}
    */
   @ViewChild('contactForm') contactForm!: NgForm; //NOTE - Zugriff auf das Formular
 
   /**
    * Creates an instance of the AddContactFormComponent.
-   * 
    * @param {DataBaseService} dataBaseService - Service to interact with the Firebase Database.
    * @param {ContactsService} contactsService - Service to manage contact data and operations.
    */
@@ -71,7 +66,6 @@ export class AddContactFormComponent {
    * Validates the form and assigns a random color to the contact.
    * Saves the contact to the database, resets the form and displays a confirmation notification.
    * In case of an error, it displays an error notification.
-   * 
    * @param {NgForm} form - The submitted contact form.
    * @returns {Promise<void>}
    */

@@ -25,63 +25,54 @@ export class AddTaskFormComponent {
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
 
   /**
    * Instance of TasksService used to manage task data and operations.
-   * 
    * @type {TasksService}
    */
   tasksService: TasksService = inject(TasksService);
 
   /**
    * Instance of DataBaseService for accessing the Firebase Database.
-   * 
    * @type {DataBaseService}
    */
   dataBaseService: DataBaseService = inject(DataBaseService);
 
   /**
    * Reference to the subtask input element for focusing.
-   * 
    * @type {ElementRef | undefined}
    */
   @ViewChild('subtaskInput', { static: false }) subtasks?: ElementRef;
 
   /**
    * Sorted list of contacts for task assignment.
-   * 
    * @type {Observable<Contact[]>}
    */
   contacts$: Observable<Contact[]>;
 
   /**
    * Indicates if the 'category' selection is opened.
-   * 
    * @type {boolean}
    */
   selectOpened: boolean = false;
 
   /**
    * Indicates if the dropdown containing the contacts to assign is opened.
-   * 
    * @type {boolean}
    */
   dropdownOpened: boolean = false;
 
   /**
    * Available categories to choose from.
-   * 
    * @type {string[]}
    */
   categories: string[] = ['Technical Task', 'User Story'];
 
   /**
    * Temporary subtask to be added to a task.
-   * 
    * @type {{text: string, done: boolean}}
    */
   newSubtask: {text: string; done: boolean} = {
@@ -91,35 +82,30 @@ export class AddTaskFormComponent {
 
   /**
    * Indicates if a subtask is currently being entered.
-   * 
    * @type {boolean}
    */
   subtaskBeingAdded: boolean = false;
 
   /**
    * Indicates if the title is missing.
-   * 
    * @type {boolean}
    */
   titleMissing: boolean = false;
 
   /**
    * Indicates if the due date is missing.
-   * 
    * @type {boolean}
    */
   dateMissing: boolean = false;
 
   /**
    * Indicates if the priority is missing.
-   * 
    * @type {boolean}
    */
   priorityMissing: boolean = false;
 
   /**
    * Indicates if the category is missing.
-   * 
    * @type {boolean}
    */
   categoryMissing: boolean = false;
@@ -135,7 +121,6 @@ export class AddTaskFormComponent {
 
   /**
    * Converts the form input into a Task object.
-   * 
    * @param {TaskFormInput} taskFormInput - The input from the task form.
    * @returns {Task} The constructed Task object.
    */
@@ -171,7 +156,6 @@ export class AddTaskFormComponent {
 
   /**
    * Checks if a contact is already selected for assignment.
-   * 
    * @param {Contact} contact - The contact to check.
    * @returns {boolean}
    */
@@ -181,7 +165,6 @@ export class AddTaskFormComponent {
   
   /**
    * Adds or removes a contact from the list of assigned contacts.
-   * 
    * @param {Event} event - The checkbox event.
    * @param {Contact} contact - The contact being toggled.
    */
@@ -244,7 +227,6 @@ export class AddTaskFormComponent {
 
   /**
    * Checks whether a subtask with the same text already exists.
-   * 
    * @param {string} newSubtask - The subtask text to check.
    * @returns {boolean}
    */
@@ -254,7 +236,6 @@ export class AddTaskFormComponent {
 
   /**
    * Allows editing an existing subtask by setting its value in the input.
-   * 
    * @param {{text: string, done: boolean}} entry - The subtask entry to edit.
    */
   editSubtask(entry: {text: string, done: boolean}): void {
@@ -266,7 +247,6 @@ export class AddTaskFormComponent {
 
   /**
    * Deletes a subtask by its text.
-   * 
    * @param {string} subtaskText - The text of the subtask to be deleted.
    */
   deleteSubtask(subtaskText: string): void {
@@ -276,7 +256,6 @@ export class AddTaskFormComponent {
   /**
    * Resets the form and clears all relevant task form states.
    * Closes the add/edit task form container.
-   * 
    * @param {NgForm} form - The form instance to reset.
    */
   resetForm(form: NgForm): void {
@@ -315,7 +294,6 @@ export class AddTaskFormComponent {
    * Resets the form and sets the 'taskStatus' in the tasks services to its default value ('to-do').
    * Closes the form container.
    * In case of an error, it displays an error notification.
-   * 
    * @param {NgForm} form - The form being submitted.
    */
   async onSubmit(form: NgForm): Promise<void> {

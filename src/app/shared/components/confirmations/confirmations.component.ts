@@ -14,21 +14,18 @@ export class ConfirmationsComponent {
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
 
   /**
    * Instance of TasksService used to manage task data and operations.
-   * 
    * @type {TasksService}
    */
   tasksService: TasksService = inject(TasksService);
 
   /**
    * Instance of ContactsService used to manage contact data and operations.
-   * 
    * @type {ContactsService}
    */
   contactsService: ContactsService = inject(ContactsService);

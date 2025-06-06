@@ -33,7 +33,6 @@ export class SummaryComponent {
 
   /**
    * Instance of DataBaseService used to retrieve and manage data from the Firebase database.
-   * 
    * @private
    * @type {DataBaseService}
    */
@@ -41,63 +40,54 @@ export class SummaryComponent {
 
   /**
    * Observable stream of all tasks.
-   * 
    * @type {Observable<Task[]>}
    */
   tasks$: Observable<Task[]>;
 
   /**
    * Total number of tasks.
-   * 
    * @type {Observable<number>}
    */
   tasksCount$: Observable<number>;
 
   /**
    * Number of tasks with status 'to-do'.
-   * 
    * @type {Observable<number>}
    */
   todoCount$: Observable<number>;
 
   /**
    * Number of tasks with status 'in-progress'.
-   * 
    * @type {Observable<number>}
    */
   inProgressCount$: Observable<number>;
 
   /**
    * Number of tasks with status 'waiting'.
-   * 
    * @type {Observable<number>}
    */
   waitingCount$: Observable<number>;
 
   /**
    * Number of tasks with status 'done'.
-   * 
    * @type {Observable<number>}
    */
   doneCount$: Observable<number>;
 
   /**
    * Number of tasks with priority 'urgent'.
-   * 
    * @type {Observable<number>}
    */
   urgentCount$: Observable<number>;
 
   /**
    * List of urgent tasks.
-   * 
    * @type {Observable<Task[]>}
    */
   urgentTasks$: Observable<Task[]>;
 
   /**
    * Date of the next upcoming urgent task deadline.
-   * 
    * @type {Observable<Date | null>}
    */
   upcomingUrgentDeadline$: Observable<Date | null>;
@@ -108,7 +98,6 @@ export class SummaryComponent {
    * Initializes streams to count all tasks, to count the tasks by their different statuses, and to count the urgent tasks.
    * Initializes stream to get the next upcoming urgent deadline.
    * Sets the currently active navigation button in the general service to 'summary'. This is used to highlight the navigation button that corresponds to the currently opened section.
-   * 
    * @param {GeneralService} generalService - Service used to interact with general data and operations.
    */
   constructor(private generalService: GeneralService) {
@@ -126,7 +115,6 @@ export class SummaryComponent {
 
   /**
    * Returns an appropriate greeting string based on the current time of day.
-   * 
    * @returns {string} Greeting message
    */
   chooseGreeting(): string {
@@ -147,7 +135,6 @@ export class SummaryComponent {
 
   /**
    * Counts the total number of tasks.
-   * 
    * @returns {Observable<number>} Observable with total task count.
    */
   countTasks(): Observable<number> {
@@ -158,7 +145,6 @@ export class SummaryComponent {
 
   /**
    * Counts the number of tasks that match a specific status.
-   * 
    * @param {string} status - The status to filter tasks by.
    * @returns {Observable<number>} Observable with the count.
    */
@@ -170,7 +156,6 @@ export class SummaryComponent {
 
   /**
    * Filters and returns all urgent tasks.
-   * 
    * @returns {Observable<Task[]>} Observable with list of urgent tasks.
    */
   getUrgentTasks(): Observable<Task[]> {
@@ -181,7 +166,6 @@ export class SummaryComponent {
 
   /**
    * Counts the number of urgent tasks.
-   * 
    * @returns {Observable<number>} Observable with the count of urgent tasks.
    */
   countUrgentTasks(): Observable<number> {
@@ -192,7 +176,6 @@ export class SummaryComponent {
 
   /**
    * Determines the earliest upcoming deadline among the urgent tasks.
-   * 
    * @param {Observable<Task[]>} urgentTasks$ - Observable stream of urgent tasks.
    * @returns {Observable<Date | null>} Observable with the next deadline or null if none.
    */
@@ -222,7 +205,6 @@ export class SummaryComponent {
 
   /**
    * Formats a given Date object into a string in the format 'day month year', using British English locale formatting.
-   * 
    * @param {Date} date - The date to be formatted.
    * @returns {string} Date string formatted in the 'en-GB' locale.
    */

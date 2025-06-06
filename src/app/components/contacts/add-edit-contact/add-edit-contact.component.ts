@@ -37,7 +37,6 @@ export class AddEditContactComponent {
 
   /**
    * The contact to edit. Stays empty if a new contact is added.
-   * 
    * @type {Contact}
    */
   @Input()contact: Contact = {
@@ -50,21 +49,18 @@ export class AddEditContactComponent {
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
 
   /**
    * Instance of ContactsService used to manage contact data and operations.
-   * 
    * @type {ContactsService}
    */
   contactsService: ContactsService = inject(ContactsService);
 
   /**
    * Observable of the currently selected contact, used for reactive display logic.
-   * 
    * @type {Observable<Contact | null>}
    */
   selectedContact$: Observable<Contact | null> = this.contactsService.selectedContact$;

@@ -29,7 +29,6 @@ export class AddEditTaskComponent {
 
   /**
    * Instance of TasksService used to manage task data and operations.
-   * 
    * @type {TasksService}
    */
   tasksService: TasksService = inject(TasksService);

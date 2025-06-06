@@ -45,7 +45,6 @@ export class GeneralService {
 
   /**
    * Capitalizes the first letter of the provided text.
-   * 
    * @param text - The string to capitalize.
    * @returns The input string with the first letter capitalized.
    */

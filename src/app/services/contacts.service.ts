@@ -15,7 +15,6 @@ export class ContactsService {
   /**
    * Internal subject to manage the currently selected contact.
    * Emits the latest contact to all subscribers immediately.
-   * 
    * @private
    * @type {BehaviorSubject<Contact | null>}
    */
@@ -23,21 +22,18 @@ export class ContactsService {
 
   /**
    * Observable stream of the currently selected contact.
-   * 
    * @type {Observable<Contact | null>}
    */
   selectedContact$: Observable<Contact | null> = this.selectedContactSubject.asObservable(); //NOTE - Das $-Suffix deutet an, dass es sich um einen Observable-Stream handelt.
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
 
   /**
    * Boolean flag indicating if the form to add a new contact is opened.
-   * 
    * @type {boolean}
    */
   addContactFormOpened: boolean = false;  
@@ -45,42 +41,36 @@ export class ContactsService {
 
   /**
    * Boolean flag indicating if the form to edit a selected contact is opened.
-   * 
    * @type {boolean}
    */
   editContactFormOpened: boolean = false;
 
   /**
    * Boolean flag indicating if the contact details view is opened.
-   * 
    * @type {boolean}
    */
   contactDetailsOpened: boolean = false;
 
   /**
    * The contact currently selected for editing.
-   * 
    * @type {Contact | null}
    */
   contactToBeEdited: Contact | null = null;
 
   /**
    * The contact currently selected for deletion.
-   * 
    * @type {Contact | null}
    */
   contactToBeDeleted: Contact | null = null;
 
   /**
    * Creates an instance of ContactsService.
-   * 
    * @param {DataBaseService} dataBaseService - Service for CRUD operations with the database. //NOTE - C: Create, R: Read, U: Update, D: Delete
    */
   constructor(private dataBaseService: DataBaseService) { }
 
   /**
    * Updates the currently selected contact.
-   * 
    * @param {Contact} contact - The currently selected contact.
    */
   setSelectedContact(contact: Contact): void {
@@ -89,7 +79,6 @@ export class ContactsService {
 
   /**
    * Sets the contact to be edited and opens the form to edit the selected contact.
-   * 
    * @param {Contact} contact - The contact to be edited.
    */
   showEditContactForm(contact: Contact): void {
@@ -120,7 +109,6 @@ export class ContactsService {
    * Assures that the form to edit/delete a contact is hidden.
    * Temporarily shows a notification after successful deletion.
    * In case of an error, it displays an error notification.
-   * 
    * @param {Contact} contact - The contact to be deleted.
    * @returns {Promise<void>}
    */

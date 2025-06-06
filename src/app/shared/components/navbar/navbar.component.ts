@@ -18,7 +18,6 @@ export class NavbarComponent {
 
   /**
    * Instance of GeneralService used to interact with general data and operations.
-   * 
    * @type {GeneralService}
    */
   generalService: GeneralService = inject(GeneralService);
@@ -27,7 +26,6 @@ export class NavbarComponent {
 
   /**
    * Changes the color of the currently active navigation button by updating the 'activeNavBtn' value in GeneralService.
-   * 
    * @param {string} btn - The identifier of the clicked navigation button.
    */
   changeColor(btn: string): void {
