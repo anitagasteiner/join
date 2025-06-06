@@ -76,11 +76,11 @@ export class TasksService {
   taskToBeDeleted: Task | null = null;
 
   /**
-   * Currently selected priority.
+   * Currently selected priority. Default selection is 'medium'.
    * 
    * @type {string}
    */
-  selectedPriority: string = '';
+  selectedPriority: string = 'medium';
 
   /**
    * List of contacts assigned to the task.
