@@ -9,10 +9,8 @@
     left: 0;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;    
-    @include bp.xs {
-        padding: 85px 5px 5px;
-    }
+    align-items: flex-start;
+    padding: 85px 5px 5px;
     @include bp.md {
         justify-content: center;
     }
