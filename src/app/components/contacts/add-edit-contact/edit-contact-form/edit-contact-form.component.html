@@ -1,7 +1,7 @@
 <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm"> <!--NOTE - Das Formular verwendet Angulars ngSubmit-Direktive, um die onSubmit-Methode zu triggern, wenn das Formular abgesendet wird. Das #contactForm="ngForm"-Attribut erstellt eine lokale Template-Variable, die das gesamte Formularobjekt enthält. -> Validierung, Status -->
         
     <fieldset>
-        <input #name="ngModel" [(ngModel)]="editedContact.name" placeholder="Name" onfocus="this.placeholder=''" type="text" name="name" id="name" required pattern="[A-Za-zÄäÖöÜüß\-]{2,} [A-Za-zÄäÖöÜüß\-]{2,}"> <!--NOTE - Eingabefeld für den Namen ist mit der ngModel-Direktive mit editContact.name verbunden -> Eingabewerte werden direkt synchronisiert -->
+        <input #name="ngModel" [(ngModel)]="editedContact.name" placeholder="Name" onfocus="this.placeholder=''" type="text" name="name" id="name" required pattern="[A-Za-zÄäÖöÜüß\-]{2,} [A-Za-zÄäÖöÜüß\-]{2,}" maxlength="50"> <!--NOTE - Eingabefeld für den Namen ist mit der ngModel-Direktive mit editContact.name verbunden -> Eingabewerte werden direkt synchronisiert -->
         <legend></legend>
         @if (!name.valid && name.touched && !name.disabled) {
             <span class="notification">Insert first and last name.</span>
@@ -13,7 +13,7 @@
     </fieldset>
 
     <fieldset>
-        <input #email="ngModel" [(ngModel)]="editedContact.email" placeholder="Email" onfocus="this.placeholder=''" type="email" name="email" id="email" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+        <input #email="ngModel" [(ngModel)]="editedContact.email" placeholder="Email" onfocus="this.placeholder=''" type="email" name="email" id="email" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" maxlength="50">
         <legend></legend>
         @if (!email.valid && email.touched && !email.disabled) {
             <span class="notification">Insert email address.</span>
@@ -25,7 +25,7 @@
     </fieldset>
 
     <fieldset>
-        <input #phone="ngModel" [(ngModel)]="editedContact.phone" placeholder="Phone" onfocus="this.placeholder=''" type="text" name="phone" id="phone" required pattern="\+[0-9]{1,3} [0-9]{4,14}">
+        <input #phone="ngModel" [(ngModel)]="editedContact.phone" placeholder="Phone" onfocus="this.placeholder=''" type="text" name="phone" id="phone" required pattern="\+[0-9]{1,3} [0-9]{4,14}" maxlength="18">
         <legend></legend>
         @if (!phone.valid && phone.touched && !phone.disabled) {
             <span class="notification">Use Format +123 4567890.</span>
