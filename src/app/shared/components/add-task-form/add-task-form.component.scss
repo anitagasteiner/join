@@ -22,8 +22,14 @@ form {
     gap: 16px;
     padding-bottom: 16px;
     position: relative;
+    @include bp.xl {
+        padding-bottom: 8px;
+    }
     >fieldset:nth-child(1) {
         padding-top: 48px;
+        @include bp.xl {
+            padding-top: 0;
+        }
         >input {
             font-size: 32px !important;
             padding-right: 8px;
