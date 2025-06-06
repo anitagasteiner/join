@@ -26,8 +26,10 @@
     border-radius: 10px;
     padding: 72px 24px;
     width: 100%;
-    height: fit-content;
+    // height: fit-content;
+    max-height: calc(100dvh - 250px);
     box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
     @include bp.sm { 
         padding: 72px 36px;
     }    
@@ -46,6 +48,10 @@
         margin: unset;
         padding: 72px 36px 0 82px;
     }
+}
+
+.contact-details-container::-webkit-scrollbar {
+    display: none;
 }
 
 .contact-head-container {
